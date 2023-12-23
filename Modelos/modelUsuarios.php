@@ -39,10 +39,16 @@
     }
     $usuario=new Usuarios();
     $accion=$_POST["accion"];
-    $datos=$_POST["datos"];
-    if(isset($accion) && isset($datos))
+   
+    $nombre = $_POST["nombre"];
+    $apellido = $_POST["apellido"];
+    $correo = $_POST["correo"];
+    $usuario = $_POST["usuario"];
+    $password = $_POST["contraseña"];
+    
+    if(isset($accion) )
     {
-        $usuario->$accion($datos); 
+        $usuario->$accion($nombre , $apellido ,$correo, $usuario, $password); 
     }
 
 
