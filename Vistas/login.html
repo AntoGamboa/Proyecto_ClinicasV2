@@ -74,7 +74,21 @@
                     <div class="contenedor_input">
     
                         <input class="input_nombre" id="nombre" type="text" required autocomplete="off">
-                        <label for="">Nombre Usuario</label>
+                        <label for="">Nombre</label>
+    
+                    </div>
+
+                    <div class="contenedor_input">
+    
+                        <input class="input_apellido" id="apellido" type="text" required autocomplete="off">
+                        <label for="">Apellido</label>
+    
+                    </div>
+
+                    <div class="contenedor_input">
+    
+                        <input class="input_usuario" id="usuario" type="text" required autocomplete="off">
+                        <label for="">Usuario</label>
     
                     </div>
                     
@@ -96,19 +110,18 @@
                         <p>tienes una cuenta? <a onclick="cambio_iniciarsesion()" class="registrar_link">Iniciar sesion</a></p>
                     </div>
                     
-                    <button type="button" class="button" >Registrar</button>
+                    <button type="button" class="button" onclick="CrearRegistro()">Registrar</button>
     
                     
     
                 </form>
-                <script src="../Controladores/controllerlogin.js"></script>
-                <script src="../Controladores/controllernav.js"></script>
+                <script src="js/controllerlogin.js"></script>
+                <script src="js/controllernav.js"></script>
                 <script src="../Controladores/ControllerUsuario.js"></script>
             </div>
     
         </div>
         
     </section>
-    <script src="/Controladores/ControllerUsuario.js"></script>
 </body>
 </html>

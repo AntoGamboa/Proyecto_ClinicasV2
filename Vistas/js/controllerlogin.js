@@ -52,12 +52,6 @@ function cambio_iniciarsesion() {
   nav.classList.remove("oscuro");
 }
 
-var inputs = document.getElementsByTagName("input");
 
-for (var i = 0; i < inputs.length; i++) {
-  inputs[i].addEventListener("input", function (event) {
-    console.log(event.target.value);
-  });
-}
 
 
