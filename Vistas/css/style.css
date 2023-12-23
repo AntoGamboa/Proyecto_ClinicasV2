@@ -1,0 +1,171 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.loginregister_container {
+  font-family: sans-serif;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 35px;
+  background-color: rgb(255, 255, 255);
+  min-height: 100vh;
+  gap: 80px;
+  transition: background-color 0.8s ease;
+  background: linear-gradient(
+      to right,
+      rgb(255, 255, 255) 10%,
+      rgba(255, 255, 255, 0.912) 55%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url(imagen_clinica1.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.loginregister_container.oscuro {
+  background: linear-gradient(
+      to right,
+      rgba(8, 10, 27, 0.625) 10%,
+      rgba(8, 10, 27, 0.985) 40%,
+      rgb(8, 10, 27) 100%
+    ),
+    url(imagen_clinica1.jpg);
+  background-position: center;
+  background-size: cover;
+  gap: 80px;
+
+  min-height: 100vh;
+}
+
+.contenedor_box {
+  width: 1000px;
+  border-top: 3.5px solid rgb(22, 145, 216);
+  border-bottom: 3.5px solid rgb(22, 145, 216);
+  min-height: 600px;
+  padding-bottom: 40px;
+  color: rgb(22, 145, 216);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10%;
+}
+
+.contenedor_box h2 {
+  margin-right: 90px;
+}
+
+.login_box.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.login_box {
+  opacity: 0;
+  pointer-events: none;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 50px;
+  position: relative;
+  width: 300px;
+  pointer-events: none;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.register_box {
+  opacity: 0;
+  width: 200px;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 50px;
+  position: relative;
+  width: 400px;
+  height: 100%;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.register_box.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.text_container {
+  margin-top: 40px;
+  margin-right: 60px;
+  width: 400px;
+
+  font-size: 25px;
+  font-weight: 5000;
+  line-height: 1.5;
+}
+
+.contenedor_input {
+  margin-top: 15px;
+  position: relative;
+  width: 120%;
+  height: 50%;
+  border-bottom: 2px solid rgb(22, 145, 216);
+  margin: 40px 0;
+}
+
+.contenedor_input input:focus ~ label,
+.contenedor_input input:valid ~ label {
+  top: -8px;
+}
+
+.contenedor_input label {
+  position: absolute;
+  top: 30%;
+  left: 5px;
+  transform: translateY(-60%);
+  font-size: 15px;
+  font-weight: 500;
+  transition: transform 0.3s;
+  pointer-events: none;
+}
+
+.contenedor_input input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 15px;
+
+  padding: 0 35px 0 5px;
+  padding-bottom: 10px;
+}
+
+.button {
+  width: 50%;
+  height: 50px;
+  background: rgb(91, 168, 213);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 30px;
+  border: none;
+
+  cursor: pointer;
+  font-size: 15px;
+  color: aliceblue;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_registrar a,
+.button_iniciarsesion a {
+  text-decoration: underline;
+  cursor: pointer;
+}
