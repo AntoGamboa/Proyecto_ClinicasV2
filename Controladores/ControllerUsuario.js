@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+const registraruser= function (accion)
+=======
 function CrearRegistro(accion)
+>>>>>>> 06a1ad445de2ad0ec849390aba082371920ab34a
 {
     let nombre = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
@@ -29,7 +33,7 @@ function CrearRegistro(accion)
         }
         else
         {
-            throw new console.error("Fallo al realizar el registro");
+            console.log("Tremendo error mi pana");
         }
     }
     
@@ -37,3 +41,8 @@ function CrearRegistro(accion)
     )
     
 }
+const Registrarse = function ()
+{
+    registraruser("CrearRegistro");
+}
+
