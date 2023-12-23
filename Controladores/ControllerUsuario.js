@@ -1,4 +1,4 @@
-const CrearRegistro= function (accion)
+const registraruser= function (accion)
 {
     let nombre = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
@@ -15,7 +15,7 @@ const CrearRegistro= function (accion)
     formdata.append("usuario",usuario);
     formdata.append("contraseña",password);
     
-    fetch("/Modelos/modesUsuario.php",
+    fetch("../Modelos/modelUsuarios.php",
         {
             method: "POST",
             body: formdata
@@ -29,7 +29,7 @@ const CrearRegistro= function (accion)
         }
         else
         {
-            throw new console.error("Fallo al realizar el registro");
+            console.log("Tremendo error mi pana");
         }
     }
     
@@ -37,3 +37,8 @@ const CrearRegistro= function (accion)
     )
     
 }
+const Registrarse = function ()
+{
+    registraruser("CrearRegistro");
+}
+

@@ -62,7 +62,19 @@
     
             <h2>Crear Cuenta</h2>
     
-                <form action="#">
+                <form action="#" method="post">
+                    <div class="contenedor_input">
+    
+                        <input class="input_correo" id="nombre" type="mail" required autocomplete="off">
+                        <label for="">nombre</label>
+    
+                    </div>
+                    <div class="contenedor_input">
+    
+                        <input class="input_correo" id="apellido" type="mail" required autocomplete="off">
+                        <label for="">apellido</label>
+    
+                    </div>
     
                     <div class="contenedor_input">
     
@@ -73,7 +85,7 @@
     
                     <div class="contenedor_input">
     
-                        <input class="input_nombre" id="nombre" type="text" required autocomplete="off">
+                        <input class="input_nombre" id="usuario" type="text" required autocomplete="off">
                         <label for="">Nombre Usuario</label>
     
                     </div>
@@ -96,7 +108,7 @@
                         <p>tienes una cuenta? <a onclick="cambio_iniciarsesion()" class="registrar_link">Iniciar sesion</a></p>
                     </div>
                     
-                    <button type="button" class="button"  >Registrar</button>
+                    <button type="button" class="button" onclick="Registrarse()" >Registrar</button>
     
                     
     
@@ -108,5 +120,6 @@
         
     </section>
     <script src="/Controladores/ControllerUsuario.js"></script>
+    
 </body>
 </html>
