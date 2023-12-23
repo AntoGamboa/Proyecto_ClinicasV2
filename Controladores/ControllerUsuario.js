@@ -1,4 +1,4 @@
-const CrearRegistro= function (accion)
+function CrearRegistro(accion)
 {
     let nombre = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
@@ -15,7 +15,7 @@ const CrearRegistro= function (accion)
     formdata.append("usuario",usuario);
     formdata.append("contraseña",password);
     
-    fetch("/Modelos/modesUsuario.php",
+    fetch("../Modelos/modelUsuarios.php",
         {
             method: "POST",
             body: formdata
