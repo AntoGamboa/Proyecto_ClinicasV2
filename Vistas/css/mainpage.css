@@ -1,0 +1,46 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.mainpage_cont{
+    display: flex;
+    justify-content: center;
+
+    flex-direction: column;
+}
+
+.seccion1{
+    margin-top: 50px;
+    color: white;
+    min-width: 100vh;
+    display: flex;
+    height: 600px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: left;
+    background-image: linear-gradient(70deg, rgba(44, 139, 255, 0.86) 50%, transparent 60%), url("13-clinica-médica.jpg");
+}
+
+.seccion1 .seccion1_textcont{
+    margin-left: 12%;
+    font-size: 20px;
+    max-width: 400px;
+}
+
+.seccion2{
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(44, 139, 255);
+}
+
+.seccion2 h2{
+    font-size: 40px;
+
+}
+
