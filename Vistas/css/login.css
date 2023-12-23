@@ -20,7 +20,7 @@
       rgba(255, 255, 255, 0.912) 55%,
       rgba(255, 255, 255, 0) 100%
     ),
-    url(imagen_clinica1.jpg);
+    url(../recursos/img/imagen_clinica1.jpg);
   background-position: center;
   background-size: cover;
 }
@@ -32,7 +32,7 @@
       rgba(8, 10, 27, 0.985) 40%,
       rgb(8, 10, 27) 100%
     ),
-    url(imagen_clinica1.jpg);
+    url(../recursos/img/imagen_clinica1.jpg);
   background-position: center;
   background-size: cover;
   gap: 80px;
