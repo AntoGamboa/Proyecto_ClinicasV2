@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 const registraruser= function (accion)
+=======
+function CrearRegistro(accion)
+>>>>>>> 06a1ad445de2ad0ec849390aba082371920ab34a
 {
     let nombre = document.getElementById('nombre').value;
     let apellido = document.getElementById('apellido').value;
