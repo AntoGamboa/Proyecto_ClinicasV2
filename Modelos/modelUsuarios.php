@@ -1,4 +1,5 @@
 <?php
+    header('Access-Control-Allow-Origin: *');
     require_once("/XAMP/htdocs/Proyecto_Clinicasv2/Conexion/conexion.php");
     class Usuarios extends conexion
     {
@@ -31,24 +32,31 @@
         public function CrearRegistro($nombre, $apellido, $correo, $usuario, $password)
         {
             $query= <<<eot
-                INSERT INTO Usuarios(nombre,apellido,correo,usuario,contraseña) values(?,?,?,?,?);
+                INSERT INTO usuarios(nombre,apellido,correo,usuario,contraseña) values (?,?,?,?,?);
             eot;
             $this->getConexion()->prepare($query)->execute(array($nombre, $apellido, $correo, $usuario, $password));
 
         }
     }
-    $usuario=new Usuarios();
+
+    $objUsuario=new Usuarios();
     $accion=$_POST["accion"];
-   
     $nombre = $_POST["nombre"];
     $apellido = $_POST["apellido"];
     $correo = $_POST["correo"];
     $usuario = $_POST["usuario"];
-    $password = $_POST["contraseña"];
-    
+    $password = $_POST["Contraseña"];
     if(isset($accion) )
     {
-        $usuario->$accion($nombre , $apellido ,$correo, $usuario, $password); 
+        try
+        {
+            $objUsuario->$accion($nombre , $apellido ,$correo, $usuario, $password); 
+            echo json_encode(["mensaje" => "Registro exitoso"]);
+        }
+        catch(Exception $e)
+        {
+            echo json_encode(["mensaje" => $e->getMessage()]);
+        }
     }
 
 
