@@ -62,37 +62,37 @@
     
             <h2>Crear Cuenta</h2>
     
-                <form action="#" method="post">
+                <form action="#" method="post" id="formregistro">
                     <div class="contenedor_input">
     
-                        <input class="input_correo" id="nombre" type="mail" required autocomplete="off">
+                        <input class="input_correo" id="nombre" name="nombre" type="text" required autocomplete="off">
                         <label for="">nombre</label>
     
                     </div>
                     <div class="contenedor_input">
     
-                        <input class="input_correo" id="apellido" type="mail" required autocomplete="off">
+                        <input class="input_correo" id="apellido" name="apellido" type="text" required autocomplete="off">
                         <label for="">apellido</label>
     
                     </div>
     
                     <div class="contenedor_input">
     
-                        <input class="input_correo" id="correo" type="mail" required autocomplete="off">
+                        <input class="input_correo" id="correo" name="correo" type="mail" required autocomplete="off">
                         <label for="">Email</label>
     
                     </div>
     
                     <div class="contenedor_input">
     
-                        <input class="input_nombre" id="usuario" type="text" required autocomplete="off">
+                        <input class="input_nombre" id="usuario" name="usuario" type="text" required autocomplete="off">
                         <label for="">Nombre Usuario</label>
     
                     </div>
                     
                     <div class="contenedor_input">
     
-                        <input class="input_contraseña" id="contraseña" type="password" required autocomplete="off">
+                        <input class="input_contraseña" id="contraseña" name="Contraseña" type="password" required autocomplete="off">
                         <label for="">Contraseña</label>
     
                     </div>
@@ -108,10 +108,7 @@
                         <p>tienes una cuenta? <a onclick="cambio_iniciarsesion()" class="registrar_link">Iniciar sesion</a></p>
                     </div>
                     
-                    <button type="button" class="button" onclick="Registrarse()" >Registrar</button>
-    
-                    
-    
+                    <button type="submit" class="button">Registrar</button>
                 </form>
                 <script src="login.js"></script>
             </div>
@@ -119,7 +116,7 @@
         </div>
         
     </section>
-    <script src="/Controladores/ControllerUsuario.js"></script>
+    <script src="../Controladores/ControllerUsuario.js"></script>
     
 </body>
 </html>

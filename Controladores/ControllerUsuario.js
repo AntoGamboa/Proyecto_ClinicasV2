@@ -1,44 +1,29 @@
-const registraruser= function (accion)
+let Enviarformulario= document.getElementById('formregistro');
+Enviarformulario.addEventListener('submit',function(e)
 {
-    let nombre = document.getElementById('nombre').value;
-    let apellido = document.getElementById('apellido').value;
-    let correo = document.getElementById('correo').value;
-    let usuario = document.getElementById('usuario').value;
-    let password = document.getElementById('contraseña').value;
-
-    let formdata= new FormData();
-    
-    formdata.append("accion",accion);
-    formdata.append("nombre",nombre);
-    formdata.append("apellido",apellido);
-    formdata.append("correo",correo);
-    formdata.append("usuario",usuario);
-    formdata.append("contraseña",password);
-    
-    fetch("../Modelos/modelUsuarios.php",
-        {
-            method: "POST",
-            body: formdata
-        }
-    )
-    .then(function (response)
+    e.preventDefault();
+    console.log("me diste click")
+    let formData= new FormData(Enviarformulario);
+    formData.append("accion","crearregistro");
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/modelUsuarios.php',
     {
-        if(response.ok)
+        method:'POST',
+        body:formData
+    })
+    .then(resp => 
+    {
+        if(resp.ok)
         {
-            alert("registro exitoso");
+            console.log("comunicacion Exitosa");
         }
-        else
+       return resp.json()
+
+    })
+    .then(data => 
         {
-            console.log("Tremendo error mi pana");
-        }
-    }
-    
-    
-    )
-    
-}
-const Registrarse = function ()
-{
-    registraruser("CrearRegistro");
-}
+            console.log(data);
+        })
+    .catch(error => console.error("error: ", error.message));
+   
+});
 
