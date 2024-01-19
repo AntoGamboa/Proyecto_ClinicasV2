@@ -22,7 +22,7 @@
     flex-direction: row;
     align-items:center;
     justify-content: left;
-    background-image: linear-gradient(70deg, rgba(44, 139, 255, 0.86) 50%, transparent 60%), url("13-clinica-médica.jpg");
+    background-image: linear-gradient(70deg, rgba(44, 139, 255, 0.86) 50%, transparent 60%), url("/Vistas/recursos/img/13-clinica-médica.jpg");
 }
 
 .seccion1 .seccion1_textcont{

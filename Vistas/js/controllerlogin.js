@@ -1,3 +1,5 @@
+
+
 function cambio_registrar() {
   var elemento = document.querySelector(".loginregister_container");
 
@@ -25,7 +27,9 @@ function cambio_registrar() {
   nav.classList.add("oscuro");
 }
 
+
 function cambio_iniciarsesion() {
+
   var elemento = document.querySelector(".loginregister_container");
   elemento.classList.remove("oscuro");
 
@@ -50,23 +54,13 @@ function cambio_iniciarsesion() {
   var nav = document.querySelector(".barranav");
 
   nav.classList.remove("oscuro");
+
 }
 
 var inputs = document.getElementsByTagName("input");
 
 for (var i = 0; i < inputs.length; i++) {
-  inputs[i].addEventListener("input", function (event) {
-    console.log(event.target.value);
-  });
-}
-
-var nav = document.querySelector(".menunav");
-var menunav = document.querySelector(".barranav img");
-
-menunav.addEventListener("click", function () {
-  if (nav.classList.contains("activo")) {
-    nav.classList.remove("activo");
-  } else {
-    nav.classList.add("activo");
-  }
+inputs[i].addEventListener("input", function (event) {
+  console.log(event.target.value);
 });
+}
