@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="css/medicoform.css">
     <link rel="stylesheet" href="css/barranav.css">
 </head>
 <body>
@@ -71,33 +71,157 @@
     
             <div class="formregistrocont">
 
-                
-                <form action="#" method="post" id="formregistro">
-                    <div class="contenedor_input">
-            
-                        <input class="input_nombremedico" id="nombre" name="nombre" type="text" required autocomplete="off">
-                        <label for="">Nombre</label>
-            
-                    </div>
-                    <div class="contenedor_input">
-            
-                        <input class="input_apellidomedico" id="apellido" name="apellido" type="text" required autocomplete="off">
-                        <label for="">Apellido</label>
-            
-                    </div>
-            
-                    <div class="contenedor_input">
-            
-                        <input class="input_cedulamedico" id="cedula" name="cedula" type="text" required autocomplete="off">
-                        <label for="">cedula</label>
-            
-                    </div>
-            
-                </form>
+                <div class="formmedicocont active">
 
-                <button type="submit" class="button">Registrar</button>
+                
+                    <form action="#" method="post" id="formregistro">
+                        <div class="contenedor_input">
+                
+                            <input class="input_nombremedico" id="nombre" name="nombre" type="text" required autocomplete="off">
+                            <label for="">Nombre</label>
+                
+                        </div>
+                        <div class="contenedor_input">
+                
+                            <input class="input_apellidomedico" id="apellido" name="apellido" type="text" required autocomplete="off">
+                            <label for="">Apellido</label>
+                
+                        </div>
+                
+                        <div class="contenedor_input">
+                
+                            <input class="input_cedulamedico" id="cedula" name="cedula" type="text" required autocomplete="off">
+                            <label for="">cedula</label>
+                
+                        </div>
+                
+                    </form>
+
+                    <button type="submit" class="button" onclick="abrirespecialidades()">Continuar</button>
+
+                </div>
+
+                    
+
+                <div class="seleccionespecialidadcont ">
+
+                    <div class="inputcontespe">
+
+                        <input type="text" class="searchbar">
+
+                        <div>Seleccione Especialidad/es</div>
+
+                    </div>
+
+                    
+
+                
+                    <div class="especialidadescont">
+
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+                            <div class="especialidadcont">
+                                <div>internista</div>
+                            </div>
+    
+                    </div>
+
+                    
+                    <div class="buttonformcont">
+
+                        <button type="submit" class="button" onclick="cerrarrespecialidades()">Atras</button>
+                        <button type="submit" class="button" onclick="abrirespecialidades()">Adelante</button>
+
+                    </div>
+                    
+    
+                </div>
+    
+                <div class="confirmacioncont">
+    
+                    <div class="buttonformcont">
+
+                        <button type="submit" class="button" onclick="cerrarrespecialidades()">Cancelar</button>
+    
+    
+                        <button type="submit" class="button">Registrar</button>
+
+                    </div>
+    
+                </div>
+
+                
 
             </div>
+
+            
             
             
             
@@ -111,6 +235,7 @@
 
     <script src="js/controllernav.js"></script>
     <script src="js/controllerform.js"></script>
+    <script src="js/controllermedicoform.js"></script>
     
 </body>
 </html>

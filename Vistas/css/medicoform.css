@@ -14,22 +14,22 @@
 }
 
 .buttonregister {
-  width: 100px;
-  height: 50px;
-  background: rgb(91, 168, 213);
-  font-family: Arial, Helvetica, sans-serif;
-  margin-top: -10px;
-  margin-left: -10px;
-  border: none;
-  position: absolute;
-  cursor: pointer;
-  font-size: 15px;
-  color: aliceblue;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
+    width: 100px;
+    height: 50px;
+    background: rgb(91, 168, 213);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: -10px;
+    margin-left: -10px;
+    border: none;
+    position: absolute;
+    cursor: pointer;
+    font-size: 15px;
+    color: aliceblue;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
 .selectcont{
@@ -52,9 +52,9 @@
 }
 
 .formcont{
-  background-color: rgb(0, 26, 58);
+  background-color: rgb(0, 26, 58);;
   max-height: 55vh;
-  min-height: 315px;
+  min-height: 500px;
   min-width: 800px;
   box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
   max-width: 600px;
@@ -73,9 +73,10 @@
 
 
 .formregistrocont{
+    margin-top: 20px;
   transition: opacity 0.1s;
   display: flex;
-  gap: 65px;
+  gap: 25px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -194,6 +195,119 @@ th{
   position: sticky;
   
   border-radius: inherit;
+}
+
+
+
+.formmedicocont{
+    margin-top: -20px;
+    opacity: 0;
+    visibility: none;
+    pointer-events: none;
+    
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.1s;
+}
+
+.formmedicocont.active{
+
+    opacity: 1;
+    visibility:visible;
+    pointer-events: all;
+
+}
+
+.seleccionespecialidadcont{
+    margin-top: 3%;
+    opacity: 0;
+    visibility: none;
+    pointer-events: none;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 50px;
+    transition: opacity 0.1s;
+    
+}
+
+.seleccionespecialidadcont.active{
+
+    opacity: 1;
+    visibility:visible;
+    pointer-events: all;
+     
+}
+
+
+.especialidadescont{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+    grid-gap: 50px;
+    height: 250px;
+    
+    overflow-y: scroll;
+    
+}
+
+.especialidadcont{
+    width: 100px;
+    height: 50px;
+    background: rgb(32, 172, 248);
+    font-family: Arial, Helvetica, sans-serif;
+    
+    margin-left: -10px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: aliceblue;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+.inputcontespe{
+    display: flex;
+    gap: 30px;
+    color: white;
+}
+
+
+
+.confirmacioncont{
+    opacity: 0;
+    visibility: none;
+    pointer-events: none;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    transition: opacity 0.1s;
+}
+
+.confirmacioncont.active{
+    opacity: 1;
+    visibility:visible;
+    pointer-events: all;
+    
+}
+
+
+.buttonformcont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding-top: 20px;
+    
+    
 }
 
 
