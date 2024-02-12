@@ -24,6 +24,8 @@ function cambiotabla(){
 
 
 
+
+
 const tablaDatos = document.getElementById('tabla_datos');
 
 tablaDatos.addEventListener('click', function(event) {
@@ -37,3 +39,4 @@ tablaDatos.addEventListener('click', function(event) {
     inputnombre.value = nombreElemento.textContent;
 
 });
+
