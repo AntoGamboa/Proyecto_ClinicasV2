@@ -29,18 +29,18 @@
             <div class="login_box active">
     
                 <h2>Iniciar Sesion</h2>
-                <form>
+                <form id="formLogin">
     
                     <div class="contenedor_input">
     
-                        <input class="input_correo" type="mail" required autocomplete="off">
+                        <input class="input_correo" name="correo" type="mail" required autocomplete="off">
                         <label for="">Email</label>
     
                     </div>
                     
                     <div class="contenedor_input">
     
-                        <input class="input_contraseña" type="password" required autocomplete="off">
+                        <input class="input_contraseña" name="Contraseña" type="password" required autocomplete="off">
                         <label for="">Contraseña</label>
     
                     </div>
@@ -48,11 +48,7 @@
                     <div class="button_registrar">
                         <p>No tienes una cuenta? <a onclick="cambio_registrar()" class="registrar_link">Registrate</a></p>
                     </div>
-    
-                    <button type="button" class="button" >Iniciar Sesion</button>
-    
-                    
-    
+                    <button type="submit" class="button" >Iniciar Sesion</button>
                 </form>
     
             </div>
