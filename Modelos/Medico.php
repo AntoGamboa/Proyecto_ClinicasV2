@@ -1,5 +1,7 @@
 <?php
+    header('Access-Control-Allow-Origin: *');
     require_once('/XAMP/htdocs/Proyecto_ClinicasV2/Conexion/conexion.php');
+
     class Medico extends conexion
     {
         private $nombre;
@@ -22,6 +24,7 @@
             try{
                 $query='INSERT INTO medico(cedulaMedico,nombreMedico,apellidoMedico) VALUES(?,?,?);';
                 $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido));
+                $mensaje="registro exitoso";
             }catch(Exception $e){
                 if($e->getCode() === '23000'){
                     $mensaje='Ya exite un medico con esa cedula';
@@ -35,7 +38,7 @@
         {
             $mensaje='';
             try{
-                $query='SELECT * FROM medico';
+                $query='SELECT cedulaMedico as cedula,nombreMedico as nombre,apellidoMedico as apellido FROM medico';
                 $stmt=$this->getConexion()->prepare($query);
                 $stmt->execute();
                 return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));

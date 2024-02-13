@@ -1,238 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
 
-    <link rel="stylesheet" href="css/medicoform.css">
-    <link rel="stylesheet" href="css/barranav.css">
-</head>
-<body>
+		<link rel="stylesheet" href="css/medicoform.css">
+		<link rel="stylesheet" href="css/barranav.css">
+	</head>
+	<body>
 
-    <div class="menunav">
-        <ul>
-            <li><a href="mainpage.html">Main Page</a></li>
-            <li><a href="">bbb</a></li>
-            <li><a href="">cccc</a></li>
-            <li><a href="login.html">Iniciar sesion</a></li>
-        </ul>
-    </div>
-    <nav class="barranav">
-        <div>logo</div>
-        <img src="" alt="placeholder">
-    </nav>
-    
+		<div class="menunav">
+			<ul>
+				<li><a href="mainpage.html">Main Page</a></li>
+				<li><a href="">bbb</a></li>
+				<li><a href="">cccc</a></li>
+				<li><a href="login.html">Iniciar sesion</a></li>
+			</ul>
+		</div>
+		<nav class="barranav">
+			<div>logo</div>
+			<img src="" alt="placeholder">
+		</nav>
 
-    <section class="sectioncont">
 
-        <div class="formcont select">
+		<section class="sectioncont">
 
-            <div class="buttoncont">
-                        
-                <div class="buttonregister" onclick="cambiotabla()">Registrar</div> 
-                
-            </div>
-        
-            <div class="selectcont active">
-        
-                <div class="searchbarcont">
-        
-                    <input type="text" class="searchbar">
-        
-                </div>
-        
-                <div class="tablacont">
-            
-                    <table id="tabla" class="tabla" > 
-                        
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    <th>Cedula</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-            
-                            <tbody id="tabla_datos">
-                                <!-- aqui se agregaran los datos -->
-                                
-                                
-                            </tbody>
-            
-                    </table>
-            
-                </div>
-        
-            </div>
-        
-    
-            <div class="formregistrocont">
+			<div class="formcont select">
 
-                <div class="formmedicocont active">
+				<div class="buttoncont">
 
-                
-                    <form action="#" method="post" id="formregistro">
-                        <div class="contenedor_input">
-                
-                            <input class="input_nombremedico" id="nombre" name="nombre" type="text" required autocomplete="off">
-                            <label for="">Nombre</label>
-                
-                        </div>
-                        <div class="contenedor_input">
-                
-                            <input class="input_apellidomedico" id="apellido" name="apellido" type="text" required autocomplete="off">
-                            <label for="">Apellido</label>
-                
-                        </div>
-                
-                        <div class="contenedor_input">
-                
-                            <input class="input_cedulamedico" id="cedula" name="cedula" type="text" required autocomplete="off">
-                            <label for="">cedula</label>
-                
-                        </div>
-                
-                    </form>
+					<div class="buttonregister" onclick="cambiotabla()">Registrar</div>
+				</div>
 
-                    <button type="submit" class="button" onclick="abrirespecialidades()">Continuar</button>
+				<div class="selectcont active">
 
-                </div>
+					<div class="searchbarcont">
 
-                    
+						<input type="text" class="searchbar">
 
-                <div class="seleccionespecialidadcont ">
+					</div>
 
-                    <div class="inputcontespe">
+					<div class="tablacont">
 
-                        <input type="text" class="searchbar">
+						<table id="tabla" class="tabla">
 
-                        <div>Seleccione Especialidad/es</div>
+							<thead>
+								<tr>
+									<th>ID</th>
+									<th>Nombre</th>
+									<th>Apellido</th>
+									<th>Cedula</th>
+									<th></th>
+								</tr>
+							</thead>
 
-                    </div>
-                
-                    <div class="especialidadescont">
+							<tbody id="tabla_datos">
+								<!-- aqui se agregaran los datos -->
 
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-                            <div class="especialidadcont">
-                                <div>internista</div>
-                            </div>
-    
-                    </div>
 
-                    
-                    <div class="buttonformcont">
+							</tbody>
 
-                        <button type="submit" class="button" onclick="cerrarrespecialidades()">Atras</button>
-                        <button type="submit" class="button" onclick="abrirespecialidades()">Adelante</button>
+						</table>
 
-                    </div>
-                    
-    
-                </div>
-    
-                <div class="confirmacioncont">
-    
-                    <div class="buttonformcont">
+					</div>
 
-                        <button type="submit" class="button" onclick="cerrarrespecialidades()">Cancelar</button>
-    
-    
-                        <button type="submit" class="button">Registrar</button>
+				</div>
 
-                    </div>
-    
-                </div>
 
-                
+				<form action="#" method="post" id="formregistromedico"
+					class="formregistrocont">
+					<div class="formmedicocont active">
+						<div>
+							<div class="contenedor_input">
+								<input class="input_nombremedico" id="nombre"
+									name="nombre" type="text" required
+									autocomplete="off">
+								<label for="">Nombre</label>
+							</div>
+							<div class="contenedor_input">
+								<input class="input_apellidomedico"
+									id="apellido" name="apellido" type="text"
+									required autocomplete="off">
+								<label for="">Apellido</label>
 
-            </div>
+							</div>
 
-            
-            
-            
-            
-        </div>
-    </section>
+							<div class="contenedor_input">
 
-    
+								<input class="input_cedulamedico" id="cedula"
+									name="cedula" type="text" required
+									autocomplete="off">
+								<label for="">cedula</label>
 
-    
-    
+							</div>
+						</div>
 
-    <script src="js/controllernav.js"></script>
-    <script src="js/controllerform.js"></script>
-    <script src="js/controllermedicoform.js"></script>
-    
-</body>
+						<button type="button" class="button" onclick="abrirespecialidades();">Continuar</button>
+					</div>
+					<div class="seleccionespecialidadcont ">
+
+						<div class="inputcontespe">
+
+							<input type="text" class="searchbar">
+
+							<div>Seleccione Especialidad/es</div>
+
+						</div>
+
+						<div class="especialidadescont">
+
+							<div class="especialidadcont">
+								<div>internista</div>
+							</div>
+							<div class="especialidadcont">
+								<div>internista</div>
+							</div>
+							<div class="especialidadcont">
+								<div>internista</div>
+							</div>
+
+						</div>
+
+
+						<div class="buttonformcont">
+
+							<button type="button" class="button"
+								onclick="cerrarrespecialidades()">Atras</button>
+							<button type="button" class="button"
+								onclick="abrirespecialidades()">Adelante</button>
+						</div>
+
+
+					</div>
+
+					<div class="confirmacioncont">
+
+						<div class="buttonformcont">
+
+							<button type="button" class="button"
+								onclick="cerrarrespecialidades()">Cancelar</button>
+							<button type="submit" class="button">Registrar</button>
+						</div>
+
+					</div>
+
+
+
+				</form>
+
+
+			</div>
+		</section>
+
+
+
+
+
+		<script src="/Controladores/ControllerMedico.js"></script>
+		<script src="js/controllernav.js"></script>
+		<script src="js/controllerform.js"></script>
+		<script src="js/controllermedicoform.js"></script>
+
+	</body>
 </html>
