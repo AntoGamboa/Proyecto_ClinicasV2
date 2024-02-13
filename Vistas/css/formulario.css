@@ -63,7 +63,7 @@
 
 .formcont.select{
   background-color: rgb(57, 146, 255);
-  min-height: 80vh;
+  min-height: 700px;
   min-width: 800px;
   box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
   max-width: 600px;
