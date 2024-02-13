@@ -1,8 +1,12 @@
+const seleccioncont = document.querySelector(".seleccionespecialidadcont");
+const confirmarcont = document.querySelector(".confirmacioncont");
+const formregistro = document.querySelector(".formmedicocont");
+
+
+
 function abrirespecialidades(){
 
-    const seleccioncont = document.querySelector(".seleccionespecialidadcont");
-    const confirmarcont = document.querySelector(".confirmacioncont");
-    const formregistro = document.querySelector(".formmedicocont");
+    
     if(seleccioncont.classList.contains("active")){
         
 
@@ -28,9 +32,7 @@ function abrirespecialidades(){
 
 function cerrarrespecialidades(){
 
-    const seleccioncont = document.querySelector(".seleccionespecialidadcont");
-    const confirmarcont = document.querySelector(".confirmacioncont");
-    const formregistro = document.querySelector(".formmedicocont");
+    
 
 
     if(seleccioncont.classList.contains("active")){
