@@ -22,10 +22,6 @@ function cambiotabla(){
    
 }
 
-
-
-
-
 const tablaDatos = document.getElementById('tabla_datos');
 
 tablaDatos.addEventListener('click', function(event) {
