@@ -1,6 +1,6 @@
 <?php
     header('Access-Control-Allow-Origin: *');
-    require_once("/XAMP/htdocs/Proyecto_Clinicasv2/Conexion/conexion.php");
+    require_once("../Conexion/conexion.php");
     class Usuarios extends conexion
     {
         private $nombre;

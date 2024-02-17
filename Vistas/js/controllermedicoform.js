@@ -51,3 +51,29 @@ function cerrarrespecialidades(){
     
 
 }
+
+
+const especialidades = document.querySelectorAll(".especialidadcont");
+
+
+for (let i = 0; i < especialidades.length; i++) {
+
+    const especialidad = especialidades[i].getElementsByTagName("div")[0];
+    const nombre = especialidad.innerHTML;
+  
+    especialidades[i].addEventListener('click', function(event) {
+
+        if(especialidades[i].classList.contains("selected")){
+
+            
+            especialidades[i].classList.remove("selected");
+            
+        }else{
+
+            especialidades[i].classList.add("selected");
+            alert("Has seleccionado " + nombre);
+        }
+
+     
+    });
+  }

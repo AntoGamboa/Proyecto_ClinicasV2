@@ -13,9 +13,7 @@
             }
             catch(Exception $e)
             {
-                echo $e->getCode();
                 echo $e->getMessage();
-                echo $e->getLine();
             }
            
             

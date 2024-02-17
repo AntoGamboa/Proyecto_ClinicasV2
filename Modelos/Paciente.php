@@ -1,7 +1,7 @@
 <?php
      header('Access-Control-Allow-Origin: *');
      header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-     require_once("/XAMP/htdocs/Proyecto_Clinicasv2/Conexion/conexion.php");
+     require_once("../Conexion/conexion.php");
      class Paciente extends conexion
      {
         private $cedula;
