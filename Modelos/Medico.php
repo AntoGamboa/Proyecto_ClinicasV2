@@ -1,6 +1,6 @@
 <?php
     header('Access-Control-Allow-Origin: *');
-    require_once('/XAMP/htdocs/Proyecto_ClinicasV2/Conexion/conexion.php');
+    require_once('../Conexion/conexion.php');
 
     class Medico extends conexion
     {
@@ -37,20 +37,29 @@
         public function readAll()
         {
             $mensaje='';
+            
             try{
+
                 $query='SELECT cedulaMedico as cedula,nombreMedico as nombre,apellidoMedico as apellido FROM medico';
                 $stmt=$this->getConexion()->prepare($query);
                 $stmt->execute();
                 return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
+
             }catch(Exception $e)
             {
+
                 $mensaje='ocurrio un error inesperado';
                 return json_encode(['mensaje'=>$mensaje]);
+
             }
         }
     }
+
+
+
     $Medico= new Medico();
     $accion=$_POST['accion'];
+    
     if($accion === 'create')
     {
         echo $Medico->create($_POST['nombre'],$_POST['apellido'],$_POST['cedula']);

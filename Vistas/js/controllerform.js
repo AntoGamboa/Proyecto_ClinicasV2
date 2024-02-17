@@ -22,17 +22,10 @@ function cambiotabla(){
    
 }
 
-const tablaDatos = document.getElementById('tabla_datos');
 
-tablaDatos.addEventListener('click', function(event) {
 
-    const target = event.target;
 
-    const fila = target.closest('tr');
-    
-    const nombreElemento = fila.querySelector('.nombre');
-    var inputnombre = document.getElementById('nombre');
-    inputnombre.value = nombreElemento.textContent;
 
-});
+
+
 

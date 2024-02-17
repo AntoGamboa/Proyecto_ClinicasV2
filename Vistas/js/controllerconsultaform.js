@@ -23,17 +23,74 @@ function cambiotabla(){
 }
 
 
+const tablaDatos = document.getElementsByTagName("tr");
 
-const tablaDatos = document.getElementById('tabla_datos');
+for (let i = 0; i < tablaDatos.length; i++) {
 
-tablaDatos.addEventListener('click', function(event) {
+  const fila = tablaDatos[i];
+  const nombre = fila.querySelectorAll("td")[0];
 
-    const target = event.target;
+  fila.addEventListener('click', function(event) {
 
-    const fila = target.closest('tr');
-    
-    const nombreElemento = fila.querySelector('.nombre');
-    var inputnombre = document.getElementById('nombre');
-    inputnombre.value = nombreElemento.textContent;
+    if (fila.classList.contains("selected")) {
+
+      fila.classList.remove("selected");
+
+    } else {
+
+      fila.classList.add("selected");
+      alert("Has seleccionado " + nombre.innerHTML);
+
+    }
+
+  });
+
+}
+
+
+
+const especialidades = document.querySelectorAll(".especialidadcont");
+
+
+for (let i = 0; i < especialidades.length; i++) {
+
+    const especialidad = especialidades[i].getElementsByTagName("div")[0];
+    const nombre = especialidad.innerHTML;
+  
+    especialidades[i].addEventListener('click', function(event) {
+
+        if(especialidades[i].classList.contains("selected")){
+
+            
+            especialidades[i].classList.remove("selected");
+            
+        }else{
+
+            especialidades[i].classList.add("selected");
+            alert("Has seleccionado " + nombre);
+        }
+
+     
+    });
+}
+
+
+var inputs = document.getElementsByTagName("input");
+
+const tabla = document.getElementById("tabla_datos");
+
+for (var i = 0; i < inputs.length; i++) {
+
+inputs[i].addEventListener("input", function (event) {
+
+  console.log(event.target.value);
+  tabla.innerHTML ="";
+
+
 
 });
+
+}
+
+
+
