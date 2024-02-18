@@ -1,15 +1,13 @@
+let EnviarFormulario = document.getElementById('formregistroAlergia');
+
 document.addEventListener('DOMContentLoaded',e =>{
-
-   
-
-
     let formdata = new FormData();
-    formdata.append("accion","readAll");
-    fetch('../Modelos/.php',{
-        method:'POST',
-        body:formdata
+    formdata.append('accion','readAll');
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+    method:'POST',
+    body:formdata
     })
-    .then(response => response.json())
+    .then(resp=> resp.json())
     .then(data => {
 
         console.log(data);
@@ -18,8 +16,6 @@ document.addEventListener('DOMContentLoaded',e =>{
         
         data.forEach(alergia => {
             
-            alert("hola");
-
             const newrow = document.createElement('tr');
 
             newrow.innerHTML = `
@@ -35,5 +31,19 @@ document.addEventListener('DOMContentLoaded',e =>{
 
         });
     })
+
+});
+
+console.log(EnviarFormulario);
+EnviarFormulario.addEventListener('submit',e => {
+    let formdata = new FormData(EnviarFormulario);
     
+    formdata.append('accion','create');
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+        method:'POST',
+        body:formdata
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+
 });
