@@ -4,30 +4,27 @@ const formMedicoregistro = document.querySelector(".formmedicocont");
 
 
 
-function abrirespecialidades(){
+function cambiotabla(){
 
-    
-    if(seleccioncont.classList.contains("active")){
-        
+    if(pacienttablecont.classList.contains("active")){
 
-        seleccioncont.classList.remove("active");
-        confirmarcont.classList.add("active");
-    }
-    else if (confirmarcont.classList.contains("active")){
 
-        formMedicoregistro.classList.add("active");
-        seleccioncont.classList.remove("active");
-        confirmarcont.classList.remove("active");
+      buttoncambio.innerHTML = "Cancelar"
+      pacienttablecont.classList.remove("active");
+      pacientformcont.classList.add("active");
+      formcont.classList.remove("registro");
 
     }
-    else if (formMedicoregistro.classList.contains("active")){
-
-        seleccioncont.classList.add("active");
-        confirmarcont.classList.remove("active");
-        formMedicoregistro.classList.remove("active");
+    else{
+      
+      buttoncambio.innerHTML = "Registrar";
+      
+      pacienttablecont.classList.add("active");
+      pacientformcont.classList.remove("active");
+      formcont.classList.add("registro");
 
     }
-
+   
 }
 
 function cerrarrespecialidades(){

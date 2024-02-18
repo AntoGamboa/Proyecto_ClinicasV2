@@ -1,25 +1,73 @@
 var pacienttablecont = document.querySelector(".pacientselectcont");
 var pacientformcont = document.querySelector(".pacientform");
 var formcont = document.querySelector(".pacientformcont");
+const buttoncambio = document.querySelector(".buttonregister");
+
+const botonregistro = document.querySelector(".pacientform button")
+
+var seleccion = false;
 
 function cambiotabla(){
 
     if(pacienttablecont.classList.contains("active")){
 
-        pacienttablecont.classList.remove("active");
-        pacientformcont.classList.add("active");
-        formcont.classList.remove("registro");
+
+      buttoncambio.innerHTML = "Cancelar"
+      pacienttablecont.classList.remove("active");
+      pacientformcont.classList.add("active");
+      formcont.classList.remove("registro");
+
 
     }
     else{
 
-        
-        pacienttablecont.classList.add("active");
-        pacientformcont.classList.remove("active");
-        formcont.classList.add("registro");
+      buttoncambio.innerHTML = "Registrar";
+      
+      pacienttablecont.classList.add("active");
+      pacientformcont.classList.remove("active");
+      pacientformcont.reset();
+      formcont.classList.add("registro");
+
+      botonregistro.innerHTML = "Registrar"
 
     }
    
+}
+
+function cambiotablaeditar(variables){
+
+  if(pacienttablecont.classList.contains("active")){
+
+
+    buttoncambio.innerHTML = "Cancelar"
+    pacienttablecont.classList.remove("active");
+    pacientformcont.classList.add("active");
+    formcont.classList.remove("registro");
+
+    
+    botonregistro.innerHTML = "Modificar"
+    
+    
+    pacientformcont.querySelector(".input_nombre").value = variables[0].innerHTML;
+    pacientformcont.querySelector(".input_apellido").value = variables[1].innerHTML;
+    pacientformcont.querySelector(".input_cedula").value = variables[2].innerHTML;
+    pacientformcont.querySelector(".input_telefono").value = variables[3].innerHTML;
+    pacientformcont.querySelector(".input_telefonoemergencia").value = variables[0].innerHTML;
+    
+
+  }
+  else{
+    
+    buttoncambio.innerHTML = "Registrar";
+    
+    pacienttablecont.classList.add("active");
+    pacientformcont.classList.remove("active");
+    formcont.classList.add("registro");
+    
+    
+
+  }
+ 
 }
 
 
@@ -35,11 +83,13 @@ for (let i = 0; i < tablaDatos.length; i++) {
     if (fila.classList.contains("selected")) {
 
       fila.classList.remove("selected");
+      seleccion = false;
 
-    } else {
+    }else if(seleccion != true ) {
 
       fila.classList.add("selected");
-      alert("Has seleccionado " + nombre.innerHTML);
+
+      seleccion = true;
 
     }
 
@@ -67,7 +117,7 @@ for (let i = 0; i < especialidades.length; i++) {
         }else{
 
             especialidades[i].classList.add("selected");
-            alert("Has seleccionado " + nombre);
+            
         }
 
      
@@ -75,9 +125,47 @@ for (let i = 0; i < especialidades.length; i++) {
 }
 
 
-var inputs = document.getElementsByTagName("input");
+var inputs = document.querySelector(".searchbarcont input");
 
 const tabla = document.getElementById("tabla_datos");
+
+tabla.addEventListener('click', function(event) {
+
+  const target = event.target;
+  event.stopPropagation();
+
+  
+  
+  if (target.classList.contains('delete-button')) {
+
+     
+      const fila = target.closest('tr');
+      const idElemento = fila.querySelector('.id');
+     
+
+      
+      if (confirm('¿Estás seguro que quieres eliminar este registro?')) {
+          
+          
+        fila.remove();
+  
+          
+      } else {
+      
+      
+      }
+      
+      
+  }else if (target.classList.contains('edit-button')) {
+
+    const fila = target.closest('tr');
+    var variables = fila.querySelectorAll("td");
+
+    cambiotablaeditar(variables);
+       
+    }
+
+});
 
 for (var i = 0; i < inputs.length; i++) {
 
@@ -91,6 +179,10 @@ inputs[i].addEventListener("input", function (event) {
 });
 
 }
+
+
+
+
 
 
 
