@@ -1,7 +1,7 @@
 <?php 
     header('Access-Control-Allow-Origin: *');
     header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-    require_once('/Applications/XAMPP/xamppfiles/htdocs/Proyecto_ClinicasV2-main/Conexion/conexion.php');
+    require_once('/Applications/XAMPP/xamppfiles/htdocs/Proyecto_ClinicasV2/Conexion/conexion.php');
 
     class Alergia extends conexion
     {

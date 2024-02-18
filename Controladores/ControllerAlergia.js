@@ -3,7 +3,7 @@ let EnviarFormulario = document.getElementById('formregistroAlergia');
 document.addEventListener('DOMContentLoaded',e =>{
     let formdata = new FormData();
     formdata.append('accion','readAll');
-    fetch('https://localhost/Proyecto_ClinicasV2-main/Modelos/Alergia.php',{
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
     method:'POST',
     body:formdata
     })
@@ -16,8 +16,6 @@ document.addEventListener('DOMContentLoaded',e =>{
         
         data.forEach(alergia => {
             
-            alert("hola");
-
             const newrow = document.createElement('tr');
 
             newrow.innerHTML = `
@@ -41,7 +39,7 @@ EnviarFormulario.addEventListener('submit',e => {
     let formdata = new FormData(EnviarFormulario);
     
     formdata.append('accion','create');
-    fetch('https://localhost/Proyecto_ClinicasV2-main/Modelos/Alergia.php',{
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
         method:'POST',
         body:formdata
     })

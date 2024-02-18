@@ -3,7 +3,7 @@ let EnviarFormulario = document.getElementById('formregistro');
 document.addEventListener('DOMContentLoaded',e =>{
     let formdata = new FormData();
     formdata.append('accion','readAll');
-    fetch('https://localhost/Proyecto_ClinicasV2-main/Modelos/Patologia.php',{
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
     method:'POST',
     body:formdata
     })
@@ -41,7 +41,7 @@ EnviarFormulario.addEventListener('submit',e => {
     let formdata = new FormData(EnviarFormulario);
     
     formdata.append('accion','create');
-    fetch('https://localhost/Proyecto_ClinicasV2-main/Modelos/Patologia.php',{
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
         method:'POST',
         body:formdata
     })
