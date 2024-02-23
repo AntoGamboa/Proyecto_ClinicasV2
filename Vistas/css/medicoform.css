@@ -109,7 +109,7 @@
 
 .contenedor_input input:focus ~ label,
 .contenedor_input input:valid ~ label {
-  transform: translateY(-20px);
+  transform: translateY(-10px);
 }
 
 .contenedor_input label {
