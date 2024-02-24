@@ -56,6 +56,18 @@
                 json_encode(['mensaje'=>$mensaje]);
             }
         }
+        public function update($idPatologia,$nombrePatologia)
+        {
+            $query = 'UPDATE patologia SET nombrePatologia=?,idPatologia=? where idPatologia=? ;';
+            $this->getConexion()->prepare($query)->execute(array($idPatologia,$nombrePatologia));
+            return json_encode(['mensaje'=>'Actualizacion exitosa']);
+        }
+        public function delete($idPatologia)
+        {
+             $query = 'UPDATE patologia SET estado=0 WHERE idPatologia=?;';
+             $this->getConexion()->prepare($query)->execute(array($idPatologia));
+             return json_encode(['mensaje'=>'Eliminacion exitosa']);
+        }
     }
 
     $Patologia = new Patologia();

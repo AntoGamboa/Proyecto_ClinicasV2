@@ -1,6 +1,6 @@
 <?php
     header('Access-Control-Allow-Origin: *');
-    require_once('../Conexion/conexion.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/Conexion/conexion.php');
 
     class Medico extends conexion
     {
@@ -52,6 +52,17 @@
                 return json_encode(['mensaje'=>$mensaje]);
 
             }
+        }
+        public function update($nombre,$apellido,$cedula)
+        {
+            $query = 'UPDATE medico SET cedulaMedico=?,nombreMedico=?,apellidoMedico=? WHERE cedulaMedico=?;';
+            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido));
+            return json_encode(['mensaje'=>'registro exitoso']); 
+        }
+        public function delete($cedula){
+            $query = 'UPDATE medico SET estado=0 WHERE cedulaMedico=?;';
+            $this->getConexion()->prepare($query)->execute(array($cedula));
+            return json_encode(['mensaje'=>'registro exitoso']); 
         }
     }
 

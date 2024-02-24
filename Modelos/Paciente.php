@@ -1,7 +1,7 @@
 <?php
      header('Access-Control-Allow-Origin: *');
      header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-     require_once("../Conexion/conexion.php");
+     require_once($_SERVER['DOCUMENT_ROOT']."./Conexion/conexion.php");
      class Paciente extends conexion
      {
         private $cedula;
@@ -56,6 +56,18 @@
             }
             
         }
+        public function update($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia)
+        {
+            $query='UPDATE paciente SET cedulaPaciente=?,nombrePaciente=?,apellidoPaciente=?,tlfonoPaciente=?,tlfonoEmergencia=? WHERE cedulaPaciente=?;';
+            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia));
+            echo json_encode(['mensaje'=>'actualizacion exitosa']);
+        }
+        public function delete($cedula)
+        {
+            $query='UPDATE paciente SET estado = 0 WHERE cedulaPaciente=?;';
+            $this->getConexion()->prepare($query)->execute(array($cedula));
+            echo json_encode(['mensaje'=>'Eliminacion exitosa']);
+        }
      }
      $Paciente = new paciente();
      @$accion=$_POST["accion"]; 
@@ -63,6 +75,7 @@
      if($accion === 'create')
      {
         echo $Paciente->Create($_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['telefono'],$_POST['telefonoemergencia']);
+
      }
      if($accion === "readAll")
      {

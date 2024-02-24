@@ -1,7 +1,7 @@
 <?php 
     header('Access-Control-Allow-Origin: *');
     header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-    require_once('/Applications/XAMPP/xamppfiles/htdocs/Proyecto_ClinicasV2/Conexion/conexion.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/Proyecto_ClinicasV2/Conexion/conexion.php');
 
     class Alergia extends conexion
     {
@@ -53,6 +53,18 @@
                 $mensaje = 'Ha ocurrido un error durante la carga de los datos';
                 json_encode(['mensaje'=>$mensaje]);
             }
+        }
+        public function update($idAlergia,$nombre)
+        {
+            $query='UPDATE alergia SET idAlergia=?,nombreAlergia=? WHERE idAlergia=?';
+            $this->getConexion()->prepare($query)->execute(array($idAlergia,$nombre));
+            json_encode(['mensaje'=>'Actualizacion exitosa']);
+        }
+        public function delete($idAlergia)
+        {
+            $query='UPDATE alergia SET estado=0, WHERE idAlergia=?';
+            $this->getConexion()->prepare($query)->execute(array($idAlergia));
+            json_encode(['mensaje'=>'Eliminacion exitosa']);
         }
 
 
