@@ -1,6 +1,6 @@
 <?php
     header('Access-Control-Allow-Origin: *');
-    require_once($_SERVER['DOCUMENT_ROOT'].'/Conexion/conexion.php');
+    require_once($_SERVER['DOCUMENT_ROOT'].'/Proyecto_ClinicasV2/Conexion/conexion.php');
 
     class Medico extends conexion
     {

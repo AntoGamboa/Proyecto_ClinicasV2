@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded',e =>{
 
     let formdata = new FormData();
     formdata.append("accion","readAll");
-    fetch('../Modelos/Medico.php',{
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Medico.php',{
         method:'POST',
         body:formdata
     })
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded',e =>{
             <td>${medico.apellido}</td>
             <td>
                 <button  type="button" class="edit-button" >Editar</button>
-                <button  type="button" class="delete-button">Eliminar</button>
+                <button  type="button" class="delete-button" data-idmedico="${medico.cedula}">Eliminar</button>
             </td>
             `;
 
