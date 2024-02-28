@@ -40,7 +40,7 @@
             
             try{
 
-                $query='SELECT cedulaMedico as cedula,nombreMedico as nombre,apellidoMedico as apellido FROM medico';
+                $query='SELECT cedulaMedico as cedula,nombreMedico as nombre,apellidoMedico as apellido FROM medico where estado = 1';
                 $stmt=$this->getConexion()->prepare($query);
                 $stmt->execute();
                 return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
@@ -62,7 +62,7 @@
         public function delete($cedula){
             $query = 'UPDATE medico SET estado=0 WHERE cedulaMedico=?;';
             $this->getConexion()->prepare($query)->execute(array($cedula));
-            return json_encode(['mensaje'=>'registro exitoso']); 
+            return json_encode(['mensaje'=>'Eliminacion exitosa']); 
         }
     }
 
@@ -78,6 +78,11 @@
     if($accion === 'readAll')
     {
         echo $Medico->readAll();
+    }
+    if($accion === 'eliminar')
+    {
+         $cedula=$_POST['cedula'];
+        echo $Medico->delete($cedula);
     }
 
 ?>

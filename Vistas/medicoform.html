@@ -53,11 +53,9 @@
 									<th></th>
 								</tr>
 							</thead>
-
 							<tbody id="tabla_datos">
 								<!-- aqui se agregaran los datos -->
-
-
+								
 							</tbody>
 
 						</table>
@@ -155,14 +153,24 @@
 			</div>
 		</section>
 
-
+		<template id="templatedatosmedicos">
+			<tr id="">
+				<td id="cedula">practica</td>
+				<td id="nombre"> practica</td>
+				<td id="apellido">practica</td>
+				<td>
+					<button type="button" class="edit-button">Editar</button>
+					<button type="button" class="delete-button" >Eliminar</button>
+				</td>
+			</tr>
+		</template>
 
 
 		<script src="js/controllermedicoform.js"></script>
 
 		<script src="../Controladores/ControllerMedico.js"></script>
 		<script src="js/controllernav.js"></script>
-		
-		
+
+
 	</body>
 </html>
