@@ -2,6 +2,7 @@ let EnviarFormulario = document.getElementById('formregistromedico');
 let template = document.getElementById('templatedatosmedicos').content;
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
+let rutaMedicos='https://localhost/Proyecto_ClinicasV2/Modelos/Medico.php';
 
 document.addEventListener('click',e => {
     if(e.target.matches('.delete-button'))
@@ -11,7 +12,7 @@ document.addEventListener('click',e => {
             let formdata = new FormData()
             formdata.append('accion','eliminar')
             formdata.append('cedula',e.target.dataset.cedula)
-            fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Medico.php',{
+            fetch(rutaMedicos,{
                 method: 'POST',
                 body: formdata
             }).then(resp => resp.json())
@@ -25,12 +26,13 @@ document.addEventListener('click',e => {
 
 document.addEventListener('DOMContentLoaded',e =>{
     cargarTabla()
+    cargarEspecialidades()
 });
 EnviarFormulario.addEventListener('submit',e => {
     e.preventDefault();
     let formdata = new FormData(EnviarFormulario);
     formdata.append('accion','create');
-    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Medico.php',{
+    fetch(rutaMedicos,{
         method:'POST',
         body:formdata
     })
@@ -41,7 +43,7 @@ EnviarFormulario.addEventListener('submit',e => {
 const cargarTabla = ()=>{
     let formdata = new FormData();
     formdata.append("accion","readAll");
-    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Medico.php',{
+    fetch(rutaMedicos,{
         method:'POST',
         body:formdata
     })
@@ -59,5 +61,18 @@ const cargarTabla = ()=>{
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);
-    })
-}
+    });}
+
+    const cargarEspecialidades = () =>{
+        let formdata = new FormData();
+        formdata.append("accion","readAll");
+        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Especialidad.php',{
+            method:'POST',
+            body:formdata
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            console.log(data)
+        });
+            
+    };
