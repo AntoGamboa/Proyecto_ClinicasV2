@@ -1,37 +1,30 @@
-let EnviarFormulario = document.getElementById('formregistroAlergia');
+let EnviarFormulario = document.getElementById('formregistro');
+let template = document.getElementById('templateDatosAlergias').content;
+let fragment = document.createDocumentFragment();
+let tabla_datos = document.getElementById('tabla_datos');
+
+document.addEventListener('click',e => {
+    if(e.target.matches('.delete-button'))
+    {
+       let resultado = window.confirm("Esta seguro de eliminar este registro");
+       if(resultado==true){
+            let formdata = new FormData();
+            formdata.append('accion','delete')
+            formdata.append('idAlergia',e.target.dataset.idAlergia)
+            fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+                method: 'POST',
+                body: formdata
+            }).then(resp => resp.json())
+            .then(data => {alert(data.mensaje) 
+                cargarTabla();
+            })
+        
+        }
+    }
+}); 
 
 document.addEventListener('DOMContentLoaded',e =>{
-    let formdata = new FormData();
-    formdata.append('accion','readAll');
-    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
-    method:'POST',
-    body:formdata
-    })
-    .then(resp=> resp.json())
-    .then(data => {
-
-        console.log(data);
-
-        const dataTableBody = document.getElementById('tabla_datos');
-        
-        data.forEach(alergia => {
-            
-            const newrow = document.createElement('tr');
-
-            newrow.innerHTML = `
-            <td>${alergia.id}</td>
-            <td>${alergia.nombre}</td>
-            <td>
-                <button  type="button" class="edit-button" >Editar</button>
-                <button  type="button" class="delete-button">Eliminar</button>
-            </td>
-            `;
-
-            dataTableBody.appendChild(newrow);
-
-        });
-    })
-
+    cargarTabla()
 });
 
 console.log(EnviarFormulario);
@@ -47,3 +40,28 @@ EnviarFormulario.addEventListener('submit',e => {
     .then(data => console.log(data))
 
 });
+
+const cargarTabla = ()=>{
+    let formdata = new FormData();
+    formdata.append("accion","readAll");
+    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+        method:'POST',
+        body:formdata
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        console.log(data);
+
+        const dataTableBody = document.getElementById('tabla_datos');
+        tabla_datos.textContent = '';
+        data.forEach(alergia => {
+            let clone = template.cloneNode(true);
+            clone.getElementById('id').textContent = alergia.codigo;
+            clone.getElementById('nombre').textContent = alergia.nombre;
+           
+            fragment.appendChild(clone);
+        });
+        tabla_datos.appendChild(fragment);
+    })
+};
