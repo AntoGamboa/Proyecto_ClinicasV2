@@ -142,40 +142,11 @@ var inputs = document.querySelector("input");
 const tabla = document.getElementById("tabla_datos");
 
 tabla.addEventListener('click', function(event) {
-
-  const target = event.target;
-  event.stopPropagation();
-
-  
-  
-  if (target.classList.contains('delete-button')) {
-
-     
-      const fila = target.closest('tr');
-      const idElemento = fila.querySelector('.id');
-     
-
-      
-      if (confirm('¿Estás seguro que quieres eliminar este registro?')) {
-          
-          
-        fila.remove();
-  
-          
-      } else {
-      
-      
-      }
-      
-      
-  }else if (target.classList.contains('edit-button')) {
-
+    const target = event.target;
+    if (target.classList.contains('edit-button')) {
     const fila = target.closest('tr');
     var variables = fila.querySelectorAll("td");
-
-    cambiotablaeditar(variables);
-       
-    }
+    cambiotablaeditar(variables);}
 
 });
 

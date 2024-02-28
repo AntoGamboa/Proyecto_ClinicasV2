@@ -55,18 +55,6 @@
 							</thead>
 							<tbody id="tabla_datos">
 								<!-- aqui se agregaran los datos -->
-
-								<tr>
-                                    <td>Nombre</td>
-                                    <td>aaaaa</td>
-                                    <td>aaaaaaaa</td>
-                                    <td>aaaaa</td>
-                                    <td>
-                                        <button  type="button" class="edit-button" >Editar</button>
-                                        <button  type="button" class="delete-button">Eliminar</button>
-                                    </td>
-                                </tr>
-								
 							</tbody>
 
 						</table>
@@ -78,6 +66,7 @@
 
 				<form action="#" method="post" id="formregistromedico"
 					class="formregistrocont">
+					<input type="hidden" name="accion" value="create">
 					<div class="formmedicocont active">
 						<div>
 							<div class="contenedor_input">
@@ -146,33 +135,26 @@
 					</div>
 
 					<div class="confirmacioncont">
-
 						<div class="buttonformcont">
-
 							<button type="button" class="button"
 								onclick="cerrarrespecialidades()">Cancelar</button>
-							<button type="submit" class="button">Registrar</button>
+							<button type="submit" class="button btnRegistrar" >Registrar</button>
 						</div>
-
 					</div>
-
-
-
 				</form>
-
-
 			</div>
 		</section>
 
 		<template id="templatedatosmedicos">
-			<tr id="">
+			<tr class="trpaver">
 				<td id="cedula">practica</td>
 				<td id="nombre"> practica</td>
 				<td id="apellido">practica</td>
 				<td>
-					<button type="button" class="edit-button">Editar</button>
 					<button type="button" class="delete-button" >Eliminar</button>
+					<button  type="button" class="edit-button" >Editar</button>
 				</td>
+				
 			</tr>
 		</template>
 

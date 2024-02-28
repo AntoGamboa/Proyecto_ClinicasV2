@@ -19,8 +19,10 @@ document.addEventListener('click',e => {
             .then(data => {alert(data.mensaje) 
                 cargarTabla();
             })
+         
         
         }
+        
     }
 });
 
@@ -31,14 +33,18 @@ document.addEventListener('DOMContentLoaded',e =>{
 EnviarFormulario.addEventListener('submit',e => {
     e.preventDefault();
     let formdata = new FormData(EnviarFormulario);
-    formdata.append('accion','create');
-    fetch(rutaMedicos,{
-        method:'POST',
-        body:formdata
-    })
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-
+    if(formdata.get('accion') == 'create'){
+       alert('seleccionaste registrar puto >:V');
+        
+        fetch(rutaMedicos,{
+            method:'POST',
+            body:formdata
+        })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+    }
+    cargarTabla();
+    
 });
 const cargarTabla = ()=>{
     let formdata = new FormData();
@@ -56,8 +62,7 @@ const cargarTabla = ()=>{
             clone.getElementById('cedula').textContent = medico.cedula;
             clone.getElementById('nombre').textContent = medico.nombre;
             clone.getElementById('apellido').textContent = medico.apellido;
-            clone.querySelector('.edit-button').dataset.cedula=medico.cedula;
-            clone.querySelector('.delete-button').dataset.cedula=medico.cedula;
+            clone.querySelector('.delete-button').dataset.cedula = medico.cedula;
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);
