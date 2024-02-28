@@ -103,6 +103,83 @@ function cerrarrespecialidades(){
 }
 
 
+function cambiotablaeditar(variables){
+
+    if(tablecont.classList.contains("active")){
+  
+        buttoncambio.innerHTML = "Cancelar";
+
+        tablecont.classList.remove("active");
+        formregistro.classList.add("active");
+        formcont.classList.remove("select");
+  
+      
+        
+      
+      
+        formcont.querySelector(".input_nombremedico").value = variables[0].innerHTML;
+        formcont.querySelector(".input_apellidomedico").value = variables[1].innerHTML;
+        formcont.querySelector(".input_cedulamedico").value = variables[2].innerHTML;
+  
+    }
+    else{
+      
+      buttoncambio.innerHTML = "Registrar";
+      
+      tablecont.classList.add("active");
+      formcont.classList.remove("active");
+      formcont.classList.add("registro");
+      
+      
+  
+    }
+   
+}
+
+
+var inputs = document.querySelector("input");
+
+const tabla = document.getElementById("tabla_datos");
+
+tabla.addEventListener('click', function(event) {
+
+  const target = event.target;
+  event.stopPropagation();
+
+  
+  
+  if (target.classList.contains('delete-button')) {
+
+     
+      const fila = target.closest('tr');
+      const idElemento = fila.querySelector('.id');
+     
+
+      
+      if (confirm('¿Estás seguro que quieres eliminar este registro?')) {
+          
+          
+        fila.remove();
+  
+          
+      } else {
+      
+      
+      }
+      
+      
+  }else if (target.classList.contains('edit-button')) {
+
+    const fila = target.closest('tr');
+    var variables = fila.querySelectorAll("td");
+
+    cambiotablaeditar(variables);
+       
+    }
+
+});
+
+
 const especialidades = document.querySelectorAll(".especialidadcont");
 
 
