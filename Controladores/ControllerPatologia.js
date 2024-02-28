@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded',e =>{
 
 console.log(EnviarFormulario);
 EnviarFormulario.addEventListener('submit',e => {
+    e.preventDefault();
     let formdata = new FormData(EnviarFormulario);
     
     formdata.append('accion','create');
@@ -52,9 +53,7 @@ const cargarTabla = ()=>{
     })
     .then(response => response.json())
     .then(data => {
-
         console.log(data);
-
         const dataTableBody = document.getElementById('tabla_datos');
         tabla_datos.textContent = '';
         data.forEach(patologia => {
@@ -62,7 +61,6 @@ const cargarTabla = ()=>{
             clone.getElementById('idPatologia').textContent = patologia.codigo;
             clone.getElementById('nombre').textContent = patologia.nombre;
             clone.querySelector('.delete-button').dataset.codigo = patologia.codigo;
-           
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);
