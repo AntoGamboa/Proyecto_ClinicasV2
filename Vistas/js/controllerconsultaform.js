@@ -7,19 +7,28 @@ const botonregistro = document.querySelector(".pacientform button")
 
 var seleccion = false;
 
+var variablespaciente = []; //en esta variable se guardan los datos del paciente seleccionado
+
+var funcion = "registrar_consulta"; //aqui se determina que funcion va a realizar el submit, registrar_paciente, registrar_consulta y modificar
+
 function cambiotabla(){
 
     if(pacienttablecont.classList.contains("active")){
 
+      //abrir form
 
       buttoncambio.innerHTML = "Cancelar"
       pacienttablecont.classList.remove("active");
       pacientformcont.classList.add("active");
       formcont.classList.remove("registro");
 
+      funcion= "registrar_paciente";
+
 
     }
     else{
+
+      //cerrar form
 
       buttoncambio.innerHTML = "Registrar";
       
@@ -29,6 +38,8 @@ function cambiotabla(){
       formcont.classList.add("registro");
 
       botonregistro.innerHTML = "Registrar"
+
+      funcion = "registrar_consulta";
 
     }
    
@@ -45,7 +56,9 @@ function cambiotablaeditar(variables){
     formcont.classList.remove("registro");
 
     
-    botonregistro.innerHTML = "Modificar"
+    botonregistro.innerHTML = "Modificar";
+
+    funcion = "modificar";
     
     
     pacientformcont.querySelector(".input_nombre").value = variables[0].innerHTML;
@@ -88,6 +101,22 @@ for (let i = 0; i < tablaDatos.length; i++) {
     }else if(seleccion != true ) {
 
       fila.classList.add("selected");
+
+      variablespaciente = [];
+
+      var celdas = fila.getElementsByTagName("td");
+
+      ;
+
+      variablespaciente = [
+        { nombre: celdas[0].innerHTML },
+        { apellido: celdas[1].innerHTML },
+        { cedula: celdas[2].innerHTML },
+        { telefono: celdas[3].innerHTML },
+        { telefono_emergencia: celdas[4].innerHTML }
+      ];
+
+      console.log(variablespaciente);
 
       seleccion = true;
 
