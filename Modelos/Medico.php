@@ -60,8 +60,8 @@
             return json_encode(['mensaje'=>'registro exitoso']); 
         }
         public function delete($cedula){
-            $query = 'UPDATE medico SET estado=0 WHERE cedulaMedico=?;';
-            $this->getConexion()->prepare($query)->execute(array($cedula));
+            $query = 'UPDATE medico SET estado=? WHERE cedulaMedico=?;';
+            $this->getConexion()->prepare($query)->execute(array(0,$cedula));
             return json_encode(['mensaje'=>'Eliminacion exitosa']); 
         }
     }
