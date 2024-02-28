@@ -53,10 +53,10 @@
 
             }
         }
-        public function update($nombre,$apellido,$cedula)
+        public function update($nombre,$apellido,$cedula,$cedulaSeleccionada)
         {
             $query = 'UPDATE medico SET cedulaMedico=?,nombreMedico=?,apellidoMedico=? WHERE cedulaMedico=?;';
-            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido));
+            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$cedulaSeleccionada));
             return json_encode(['mensaje'=>'registro exitoso']); 
         }
         public function delete($cedula){
@@ -83,6 +83,10 @@
     {
          $cedula=$_POST['cedula'];
         echo $Medico->delete($cedula);
+    }
+    if($accion === 'update')
+    {
+        echo $Medico->update($_POST['nombre'],$_POST['apellido'],$_POST['cedula'],$_POST['cedulaSeleccionada']);
     }
 
 ?>

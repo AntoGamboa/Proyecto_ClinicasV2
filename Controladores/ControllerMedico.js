@@ -3,6 +3,38 @@ let template = document.getElementById('templatedatosmedicos').content;
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
 let rutaMedicos='https://localhost/Proyecto_ClinicasV2/Modelos/Medico.php';
+let cedulaSeleccionada = '';
+
+EnviarFormulario.addEventListener('submit',e => {
+    e.preventDefault();
+    let formdata = new FormData(EnviarFormulario);
+    if(formdata.get('accion') === 'create'){        
+        fetch(rutaMedicos,{
+            method:'POST',
+            body:formdata
+        })
+        .then(resp => resp.json())
+        .then(data =>{ 
+            alert(data.mensaje)
+            cargarTabla();
+            cambiotabla();
+        });
+    }
+    else if(formdata.get('accion')=== 'update')
+    {
+        formdata.append('cedulaSeleccionada',cedulaSeleccionada)
+        fetch(rutaMedicos,{
+            method:'POST',
+            body:formdata
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            alert(data.mensaje)
+            cargarTabla();
+            cambiotabla();
+        })   
+    }
+});
 
 document.addEventListener('click',e => {
     if(e.target.matches('.delete-button'))
@@ -18,11 +50,13 @@ document.addEventListener('click',e => {
             }).then(resp => resp.json())
             .then(data => {alert(data.mensaje) 
                 cargarTabla();
+                
             })
-         
-        
         }
-        
+    }
+    if(e.target.matches('.edit-button'))
+    {
+        cedulaSeleccionada=e.target.dataset.cedula;
     }
 });
 
@@ -30,22 +64,8 @@ document.addEventListener('DOMContentLoaded',e =>{
     cargarTabla()
     cargarEspecialidades()
 });
-EnviarFormulario.addEventListener('submit',e => {
-    e.preventDefault();
-    let formdata = new FormData(EnviarFormulario);
-    if(formdata.get('accion') == 'create'){
-       alert('seleccionaste registrar puto >:V');
-        
-        fetch(rutaMedicos,{
-            method:'POST',
-            body:formdata
-        })
-        .then(resp => resp.json())
-        .then(data => console.log(data))
-    }
-    cargarTabla();
-    
-});
+
+
 const cargarTabla = ()=>{
     let formdata = new FormData();
     formdata.append("accion","readAll");
@@ -63,6 +83,7 @@ const cargarTabla = ()=>{
             clone.getElementById('nombre').textContent = medico.nombre;
             clone.getElementById('apellido').textContent = medico.apellido;
             clone.querySelector('.delete-button').dataset.cedula = medico.cedula;
+            clone.querySelector('.edit-button').dataset.cedula = medico.cedula;
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);

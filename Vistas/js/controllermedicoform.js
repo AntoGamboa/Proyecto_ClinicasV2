@@ -19,7 +19,7 @@ const especialidades = document.querySelectorAll(".especialidadcont");
 
 const tabla = document.getElementById("tabla_datos");
 
-var funcion = 1;
+let accionForm = document.getElementById('accionFormulario');
 
 
 function cambiotabla(){
@@ -29,12 +29,10 @@ function cambiotabla(){
     if(tablecont.classList.contains("active")){
 
         buttoncambio.innerHTML = "Cancelar";
-
+        accionForm.value = 'create';
         tablecont.classList.remove("active");
         formregistro.classList.add("active");
         formcont.classList.remove("select");
-
-
     }
     else{
 
@@ -53,7 +51,7 @@ function cambiotabla(){
         seleccioncont.classList.remove("active");
         confirmarcont.classList.remove("active");
         
-        funcion = 1;
+        
 
     }
    
@@ -132,19 +130,12 @@ function cambiotablaeditar(variables){
         tablecont.classList.remove("active");
         formregistro.classList.add("active");
         formcont.classList.remove("select");
-
         botoneditar.style.display = 'flex';
         botonregistro.style.display = 'none';
-
-        funcion = 2;
-  
-      
-        
-      
-      
-        formcont.querySelector(".input_nombremedico").value = variables[0].innerHTML;
-        formcont.querySelector(".input_apellidomedico").value = variables[1].innerHTML;
-        formcont.querySelector(".input_cedulamedico").value = variables[2].innerHTML;
+        accionForm.value = 'update';
+        formcont.querySelector(".input_nombremedico").value = variables[1].innerHTML;
+        formcont.querySelector(".input_apellidomedico").value = variables[2].innerHTML;
+        formcont.querySelector(".input_cedulamedico").value = variables[0].innerHTML;
   
     }
     else{
