@@ -70,47 +70,6 @@
                                         <button  type="button" class="delete-button">Eliminar</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>d</td>
-                                    <td>aaaaa</td>
-                                    <td>aaaaaaaa</td>
-                                    <td>aaaaa</td>
-                                    <td>
-                                        <button  type="button" class="edit-button" >Editar</button>
-                                        <button  type="button" class="delete-button">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>c</td>
-                                    <td>aaaaa</td>
-                                    <td>aaaaaaaa</td>
-                                    <td>aaaaa</td>
-                                    <td>
-                                        <button  type="button" class="edit-button" >Editar</button>
-                                        <button  type="button" class="delete-button">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>a</td>
-                                    <td>aaaaa</td>
-                                    <td>aaaaaaaa</td>
-                                    <td>aaaaa</td>
-                                    <td>
-                                        <button  type="button" class="edit-button" >Editar</button>
-                                        <button  type="button" class="delete-button">Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>b</td>
-                                    <td>aaaaa</td>
-                                    <td>aaaaaaaa</td>
-                                    <td>aaaaa</td>
-                                    <td>
-                                        <button  type="button" class="edit-button" >Editar</button>
-                                        <button  type="button" class="delete-button">Eliminar</button>
-                                    </td>
-                                </tr>
-                                
                             </tbody>
             
                     </table>
@@ -120,6 +79,14 @@
             </div>
 
             <form action="" class="pacientform" id="formPaciente">
+                <input type="hidden" id="accionFormulario" name="accion" value="create">
+
+                <div class="contenedor_input">
+
+                    <input class="input_cedula" id="cedula" name="cedula" type="text" required autocomplete="off">
+                    <label for="">Cedula</label>
+
+                </div>
 
                 <div class="contenedor_input">
     
@@ -131,14 +98,6 @@
 
                     <input class="input_apellido" id="apellido" name="apellido" type="text" required autocomplete="off">
                     <label for="">Apellido</label>
-
-                </div>
-
-
-                <div class="contenedor_input">
-
-                    <input class="input_cedula" id="cedula" name="cedula" type="text" required autocomplete="off">
-                    <label for="">Cedula</label>
 
                 </div>
                 
@@ -156,7 +115,8 @@
 
                 </div>
 
-                <button type="submit" class="button">Registrar</button>
+                <button type="submit" value="registro" class="button btnRegistrar">Registrar</button>
+                <button type="submit" value="modificar" style="display: none;" class="button btnEditar"> Modificar</button>
 
                 
             </form>
@@ -178,12 +138,31 @@
                 
             </form>
 
-            <button type="submit" class="button">Registrar</button>
+            <button type="submit" class="button ">Registrar</button>
+            
             
         </div>
     </section>
 
-    <script src="/Controladores/ControllerPaciente.js"></script>
+    <template>
+        <template id="templateDatosPaciente">
+            <tr>
+                <td id="cedula">Insercion</td>
+                <td id="nombre">Insercion</td>
+                <td id="apellido">Insercion</td>
+                <td id="telefono">Insercion</td>
+                <td id="telefonoEmergencia">Insercion</td>
+                <td>
+                    <button  type="button" class="edit-button" >Editar</button>
+                    <button  type="button" class="delete-button">Eliminar</button>
+                </td>
+            </tr>
+    
+    
+    </template>
+
+
+    <script src="../Controladores/ControllerPaciente.js"></script>
     <script src="js/controllernav.js"></script>
     <script src="js/controllerconsultaform.js"></script>
 </body>

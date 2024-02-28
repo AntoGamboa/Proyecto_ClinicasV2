@@ -56,10 +56,10 @@
             }
             
         }
-        public function update($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia)
+        public function update($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia,$cedulaSeleccionada)
         {
             $query='UPDATE paciente SET cedulaPaciente=?,nombrePaciente=?,apellidoPaciente=?,tlfonoPaciente=?,tlfonoEmergencia=? WHERE cedulaPaciente=?;';
-            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia));
+            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia,$cedulaSeleccionada));
             echo json_encode(['mensaje'=>'actualizacion exitosa']);
         }
         public function delete($cedula)
@@ -81,4 +81,15 @@
      {
         echo $Paciente->readAll();
      }
+     if($accion === "eliminar")
+     {
+        $cedula = $_POST['cedula'];
+        echo $Paciente->delete($cedula);      
+     }
+     if ($accion === "update") 
+     {
+        echo $Paciente->update($_POST['cedula'],$_POST['nombre'],$_POST['apellido'],
+        $_POST['telefono'],$_POST['telefonemergencia'],$_POST['cedulaSeleccionada']);
+     }
+
 ?>
