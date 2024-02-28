@@ -1,10 +1,9 @@
 let formPaciente = document.getElementById('formPaciente');
-let template = document.getElementById('templateDatosPaciente');
+let templateDatosPaciente = document.getElementById('templateDatosPaciente').content;
 let fragment = document.createDocumentFragment();
-let tabla_datos = document.getElementById('tabla_datos');
 let rutaPaciente ='https://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
 let cedulaSeleccionada = '';
-
+console.log('hola');
 document.addEventListener('click',e => {
     if(e.target.matches('.delete-button'))
     {
@@ -22,6 +21,10 @@ document.addEventListener('click',e => {
             })
         
         }
+    }
+    if(e.target.matches('.edit-button'))
+    {
+        cedulaSeleccionada=e.target.dataset.cedula;
     }
 }); 
 
@@ -62,6 +65,7 @@ formPaciente.addEventListener('submit', e =>{
 });
 
 const cargarTabla = ()=>{
+
     let formdata = new FormData();
     formdata.append("accion","readAll");
     fetch(rutaPaciente,{
@@ -73,10 +77,10 @@ const cargarTabla = ()=>{
 
         console.log(data);
 
-        const dataTableBody = document.getElementById('tabla_datos');
-        tabla_datos.textContent = '';
+        let dataTableBody = document.getElementById('tabla_datos');
+        dataTableBody.textContent = '';
         data.forEach(paciente => {
-            let clone = template.cloneNode(true);
+            let clone = templateDatosPaciente.cloneNode(true);
             clone.getElementById('cedula').textContent = paciente.cedula;
             clone.getElementById('nombre').textContent = paciente.nombre;
             clone.getElementById('apellido').textContent = paciente.apellido;
@@ -88,6 +92,6 @@ const cargarTabla = ()=>{
            
             fragment.appendChild(clone);
         });
-        tabla_datos.appendChild(fragment);
+        dataTableBody.appendChild(fragment);
     })
  };

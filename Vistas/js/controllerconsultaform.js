@@ -4,6 +4,7 @@ var formcont = document.querySelector(".pacientformcont");
 const buttoncambio = document.querySelector(".buttonregister");
 
 const botonregistro = document.querySelector(".pacientform button")
+let accionform= document.getElementById('accionFormulario');
 
 var seleccion = false;
 
@@ -13,6 +14,7 @@ function cambiotabla(){
 
 
       buttoncambio.innerHTML = "Cancelar"
+      accionform.value='create';
       pacienttablecont.classList.remove("active");
       pacientformcont.classList.add("active");
       formcont.classList.remove("registro");
@@ -40,6 +42,7 @@ function cambiotablaeditar(variables){
 
 
     buttoncambio.innerHTML = "Cancelar"
+    accionform.value='update';
     pacienttablecont.classList.remove("active");
     pacientformcont.classList.add("active");
     formcont.classList.remove("registro");
@@ -47,12 +50,12 @@ function cambiotablaeditar(variables){
     
     botonregistro.innerHTML = "Modificar"
     
-    
-    pacientformcont.querySelector(".input_nombre").value = variables[0].innerHTML;
-    pacientformcont.querySelector(".input_apellido").value = variables[1].innerHTML;
-    pacientformcont.querySelector(".input_cedula").value = variables[2].innerHTML;
+    pacientformcont.querySelector(".input_cedula").value = variables[0].innerHTML;
+    pacientformcont.querySelector(".input_nombre").value = variables[1].innerHTML;
+    pacientformcont.querySelector(".input_apellido").value = variables[2].innerHTML;
+   
     pacientformcont.querySelector(".input_telefono").value = variables[3].innerHTML;
-    pacientformcont.querySelector(".input_telefonoemergencia").value = variables[0].innerHTML;
+    pacientformcont.querySelector(".input_telefonoemergencia").value = variables[4].innerHTML;
     
 
   }
@@ -132,31 +135,7 @@ const tabla = document.getElementById("tabla_datos");
 tabla.addEventListener('click', function(event) {
 
   const target = event.target;
-  event.stopPropagation();
-
-  
-  
-  if (target.classList.contains('delete-button')) {
-
-     
-      const fila = target.closest('tr');
-      const idElemento = fila.querySelector('.id');
-     
-
-      
-      if (confirm('¿Estás seguro que quieres eliminar este registro?')) {
-          
-          
-        fila.remove();
-  
-          
-      } else {
-      
-      
-      }
-      
-      
-  }else if (target.classList.contains('edit-button')) {
+ if (target.classList.contains('edit-button')) {
 
     const fila = target.closest('tr');
     var variables = fila.querySelectorAll("td");

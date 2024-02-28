@@ -1,7 +1,7 @@
 <?php
      header('Access-Control-Allow-Origin: *');
      header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
-     require_once($_SERVER['DOCUMENT_ROOT']."./Conexion/conexion.php");
+     require_once($_SERVER['DOCUMENT_ROOT']."/Proyecto_ClinicasV2/Conexion/conexion.php");
      class Paciente extends conexion
      {
         private $cedula;
@@ -45,7 +45,7 @@
         {
             
             try{
-                $query= 'SELECT cedulaPaciente AS Cedula, nombrePaciente AS Nombre,apellidoPaciente AS Apellido,tlfonoPaciente AS TelefonoPrincipal, tlfonoEmergencia AS TelefonoEmergencia FROM paciente;';
+                $query= 'SELECT cedulaPaciente AS cedula, nombrePaciente AS nombre,apellidoPaciente AS apellido,tlfonoPaciente AS telefono, tlfonoEmergencia AS telefonoEmergencia FROM paciente;';
                 $stmt = $this->getConexion()->prepare($query);
                 $stmt->execute();
                 return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
@@ -88,8 +88,9 @@
      }
      if ($accion === "update") 
      {
-        echo $Paciente->update($_POST['cedula'],$_POST['nombre'],$_POST['apellido'],
-        $_POST['telefono'],$_POST['telefonemergencia'],$_POST['cedulaSeleccionada']);
+
+        echo $Paciente->update($_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['telefono'],$_POST['telefonoemergencia'],$_POST['cedulaSeleccionada']);
+
      }
 
 ?>

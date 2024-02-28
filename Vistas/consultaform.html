@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta</title>
-
     <link rel="stylesheet" href="css/consultaform.css">
     <link rel="stylesheet" href="css/barranav.css">
-</head>
+    
 </head>
 <body>
-
+   
     <div class="menunav">
         <ul>
             <li><a href="mainpage.html">Main Page</a></li>
@@ -50,9 +49,10 @@
                         
                             <thead>
                                 <tr>
+                                    <th>Cedula</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
-                                    <th>Cedula</th>
+                                    
                                     <th>Telefono</th>
                                     <th>Telefono emergencia</th>
                                 </tr>
@@ -60,16 +60,7 @@
             
                             <tbody id="tabla_datos">
                                 <!-- aqui se agregaran los datos -->
-                                <tr>
-                                    <td>Nombre</td>
-                                    <td>aaaaa</td>
-                                    <td>aaaaaaaa</td>
-                                    <td>aaaaa</td>
-                                    <td>
-                                        <button  type="button" class="edit-button" >Editar</button>
-                                        <button  type="button" class="delete-button">Eliminar</button>
-                                    </td>
-                                </tr>
+                               
                             </tbody>
             
                     </table>
@@ -77,7 +68,7 @@
                 </div>
 
             </div>
-
+           
             <form action="" class="pacientform" id="formPaciente">
                 <input type="hidden" id="accionFormulario" name="accion" value="create">
 
@@ -143,27 +134,27 @@
             
         </div>
     </section>
-
-    <template>
-        <template id="templateDatosPaciente">
-            <tr>
-                <td id="cedula">Insercion</td>
-                <td id="nombre">Insercion</td>
-                <td id="apellido">Insercion</td>
-                <td id="telefono">Insercion</td>
-                <td id="telefonoEmergencia">Insercion</td>
-                <td>
-                    <button  type="button" class="edit-button" >Editar</button>
-                    <button  type="button" class="delete-button">Eliminar</button>
-                </td>
-            </tr>
-    
-    
+ 
+   
+    <template id="templateDatosPaciente">
+        <tr>
+            <td id="cedula">Insercion</td>
+            <td id="nombre">Insercion</td>
+            <td id="apellido">Insercion</td>
+            <td id="telefono">Insercion</td>
+            <td id="telefonoEmergencia">Insercion</td>
+            <td>
+                <button  type="button" class="edit-button" >Editar</button>
+                <button  type="button" class="delete-button">Eliminar</button>
+            </td>
+        </tr>
     </template>
-
-
-    <script src="../Controladores/ControllerPaciente.js"></script>
+    
     <script src="js/controllernav.js"></script>
     <script src="js/controllerconsultaform.js"></script>
+    <script src="../Controladores/ControllerPaciente.js"></script>
+    
+    
+    
 </body>
 </html>
