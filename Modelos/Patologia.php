@@ -46,7 +46,7 @@
         {   
             $mensaje = '';
             try {
-                $query = 'SELECT idPatologia as codigo, nombrePatologia as nombre FROM patologia;';
+                $query = 'SELECT idPatologia as codigo, nombrePatologia as nombre FROM patologia where estado = 1;';
                 $stmt = $this->getConexion()->prepare($query);
                 $stmt->execute();
                 return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
@@ -64,7 +64,7 @@
         }
         public function delete($idPatologia)
         {
-             $query = 'UPDATE patologia SET estado= 0 WHERE idPatologia=?;';
+             $query = 'UPDATE patologia SET estado = 0 WHERE idPatologia=?;';
              $this->getConexion()->prepare($query)->execute(array($idPatologia));
              return json_encode(['mensaje'=>'Eliminacion exitosa']);
         }
@@ -81,10 +81,10 @@
     {
         echo $Patologia->readAll();
     }
-    if ($accion === 'delete') 
+    if ($accion === 'eliminar') 
     {
-        $id = $_POST['idPatologia'];
-        echo $Patologia->delete($id);
+        $idPatologia = $_POST['idPatologia'];
+        echo $Patologia->delete($idPatologia);
     }
     
 ?>
