@@ -10,7 +10,7 @@ document.addEventListener('click',e => {
        if(resultado==true){
             let formdata = new FormData();
             formdata.append('accion','delete')
-            formdata.append('idAlergia',e.target.dataset.codigo)
+            formdata.append('id',e.target.dataset.codigo)
             fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
                 method: 'POST',
                 body: formdata
@@ -24,21 +24,39 @@ document.addEventListener('click',e => {
 }); 
 
 document.addEventListener('DOMContentLoaded',e =>{
-    cargarTabla()
+    cargarTabla();
 });
 
 console.log(EnviarFormulario);
 EnviarFormulario.addEventListener('submit',e => {
     let formdata = new FormData(EnviarFormulario);
     
-    formdata.append('accion','create');
-    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
-        method:'POST',
-        body:formdata
-    })
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-
+    if(formdata.get('accion') === 'create'){        
+        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+            method:'POST',
+            body:formdata
+        })
+        .then(resp => resp.json())
+        .then(data =>{ 
+            alert(data.mensaje)
+            cargarTabla();
+            cambiotabla();
+        });
+    }
+    else if(formdata.get('accion')=== 'update')
+    {
+        formdata.append('cedulaSeleccionada',cedulaSeleccionada)
+        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+            method:'POST',
+            body:formdata
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            alert(data.mensaje)
+            cargarTabla();
+            cambiotabla();
+        })   
+    }
 });
 
 const cargarTabla = ()=>{

@@ -44,7 +44,7 @@
         {   
             $mensaje = '';
             try {
-                $query = 'SELECT idAlergia as codigo, nombreAlergia as nombre FROM alergia;';
+                $query = 'SELECT idAlergia as codigo, nombreAlergia as nombre FROM alergia where estado = 1;';
                 $stmt = $this->getConexion()->prepare($query);
                 $stmt->execute();
                 return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
@@ -54,10 +54,10 @@
                 json_encode(['mensaje'=>$mensaje]);
             }
         }
-        public function update($idAlergia,$nombre)
+        public function update($idAlergia,$nombre,$idSeleccionado)
         {
             $query='UPDATE alergia SET idAlergia=?,nombreAlergia=? WHERE idAlergia=?';
-            $this->getConexion()->prepare($query)->execute(array($idAlergia,$nombre));
+            $this->getConexion()->prepare($query)->execute(array($idAlergia,$nombre,$idSeleccionado));
             json_encode(['mensaje'=>'Actualizacion exitosa']);
         }
         public function delete($idAlergia)
@@ -81,12 +81,13 @@
      {
         echo $Alergia->readAll();
     }
-    if ($accion === 'update') {
-        echo $Alergia->update($_POST['idAlergia'],$_POST['nombre']);
-    }
     if ($accion === 'delete') 
     {
-        $idAlergia= $_POST['idAlergia'];
+        $idAlergia= $_POST['id'];
         echo $Alergia->delete($idAlergia);
+    }
+    if ($accion === 'update') 
+    {
+    echo $Alergia->update($_POST['idAlergia'],$_POST['nombre'],$_POST['idSeleccionado']);
     }
 ?>

@@ -56,10 +56,10 @@
                 json_encode(['mensaje'=>$mensaje]);
             }
         }
-        public function update($idPatologia,$nombrePatologia)
+        public function update($idPatologia,$nombrePatologia,$idSeleccionado)
         {
             $query = 'UPDATE patologia SET nombrePatologia=?,idPatologia=? where idPatologia=? ;';
-            $this->getConexion()->prepare($query)->execute(array($idPatologia,$nombrePatologia));
+            $this->getConexion()->prepare($query)->execute(array($idPatologia,$nombrePatologia,$idSeleccionado));
             return json_encode(['mensaje'=>'Actualizacion exitosa']);
         }
         public function delete($idPatologia)
@@ -85,6 +85,10 @@
     {
         $idPatologia = $_POST['idPatologia'];
         echo $Patologia->delete($idPatologia);
+    }
+    if ($accion === 'update') 
+    {
+        echo $Patologia->update($_POST['patologia'],$_POST['nombre'],$_POST['idSeleccionado']);
     }
     
 ?>

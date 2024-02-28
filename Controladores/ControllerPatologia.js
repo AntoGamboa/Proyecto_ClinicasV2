@@ -2,6 +2,7 @@ let EnviarFormulario = document.getElementById('formregistro');
 let template = document.getElementById('templateDatosPatologia').content;
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
+let idSeleccionado = ''
 
 
 document.addEventListener('click',e => {
@@ -33,14 +34,32 @@ EnviarFormulario.addEventListener('submit',e => {
     e.preventDefault();
     let formdata = new FormData(EnviarFormulario);
     
-    formdata.append('accion','create');
-    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
-        method:'POST',
-        body:formdata
-    })
-    .then(resp => resp.json())
-    .then(data => console.log(data))
-
+    if(formdata.get('accion') === 'create'){        
+        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
+            method:'POST',
+            body:formdata
+        })
+        .then(resp => resp.json())
+        .then(data =>{ 
+            alert(data.mensaje)
+            cargarTabla();
+            cambiotabla();
+        });
+    }
+    else if(formdata.get('accion')=== 'update')
+    {
+        formdata.append('idSeleccionado',idSeleccionado)
+        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
+            method:'POST',
+            body:formdata
+        })
+        .then(resp => resp.json())
+        .then(data => {
+            alert(data.mensaje)
+            cargarTabla();
+            cambiotabla();
+        })   
+    }
 });
 
 
