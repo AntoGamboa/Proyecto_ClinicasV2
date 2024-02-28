@@ -62,7 +62,7 @@
         }
         public function delete($idAlergia)
         {
-            $query='UPDATE alergia SET estado=0, WHERE idAlergia=?';
+            $query='UPDATE alergia SET estado=0 WHERE idAlergia=?';
             $this->getConexion()->prepare($query)->execute(array($idAlergia));
             json_encode(['mensaje'=>'Eliminacion exitosa']);
         }
@@ -75,10 +75,18 @@
 
     if($accion === 'create')
     {
-        echo $Alergia->create($_POST['alergia'],$_POST['nombre']);
+        echo $Alergia->create($_POST['idAlergia'],$_POST['nombre']);
     }
     if ($accion === 'readAll')
      {
         echo $Alergia->readAll();
+    }
+    if ($accion === 'update') {
+        echo $Alergia->update($_POST['idAlergia'],$_POST['nombre']);
+    }
+    if ($accion === 'delete') 
+    {
+        $idAlergia= $_POST['idAlergia'];
+        echo $Alergia->delete($idAlergia);
     }
 ?>
