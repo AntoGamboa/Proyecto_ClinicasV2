@@ -3,7 +3,9 @@ const confirmarcont = document.querySelector(".confirmacioncont");
 
 const buttoncambio = document.querySelector(".buttonregister");
 
-const botonregistro = document.querySelector(".formregistrocont button")
+const botonregistro = document.querySelector(".formregistrocont .btnRegistrar")
+
+const botoneditar = document.querySelector(".formregistrocont .btneditar")
 
 const formcont = document.querySelector(".formcont");
 
@@ -13,10 +15,16 @@ const formregistro = document.querySelector(".formregistrocont");
 
 const formMedicoregistro = document.querySelector(".formmedicocont");
 
+const especialidades = document.querySelectorAll(".especialidadcont");
 
+const tabla = document.getElementById("tabla_datos");
+
+var funcion = 1;
 
 
 function cambiotabla(){
+
+    //abrir form
 
     if(tablecont.classList.contains("active")){
 
@@ -29,12 +37,23 @@ function cambiotabla(){
 
     }
     else{
+
+    //cerrar form
       
-      buttoncambio.innerHTML = "Registrar";
-      
-      tablecont.classList.add("active");
+        buttoncambio.innerHTML = "Registrar";
+        
+        tablecont.classList.add("active");
         formregistro.classList.remove("active");
         formcont.classList.add("select");
+        formregistro.reset();
+        botoneditar.style.display = 'none';
+        botonregistro.style.display = 'flex';
+
+        formMedicoregistro.classList.add("active");
+        seleccioncont.classList.remove("active");
+        confirmarcont.classList.remove("active");
+        
+        funcion = 1;
 
     }
    
@@ -43,6 +62,8 @@ function cambiotabla(){
 
 
 function abrirespecialidades(){
+
+    //validaciones
 
     let inputnombre = document.querySelector(".formregistrocont .input_nombremedico")
     let inputapellido = document.querySelector(".formregistrocont .input_apellidomedico")
@@ -53,9 +74,6 @@ function abrirespecialidades(){
         alert("Por favor llene todos los campos");
         return;
     }
-
-
-
     
     if(seleccioncont.classList.contains("active")){
         
@@ -105,6 +123,8 @@ function cerrarrespecialidades(){
 
 function cambiotablaeditar(variables){
 
+    //abrir editar
+
     if(tablecont.classList.contains("active")){
   
         buttoncambio.innerHTML = "Cancelar";
@@ -112,6 +132,11 @@ function cambiotablaeditar(variables){
         tablecont.classList.remove("active");
         formregistro.classList.add("active");
         formcont.classList.remove("select");
+
+        botoneditar.style.display = 'flex';
+        botonregistro.style.display = 'none';
+
+        funcion = 2;
   
       
         
@@ -124,11 +149,7 @@ function cambiotablaeditar(variables){
     }
     else{
       
-      buttoncambio.innerHTML = "Registrar";
       
-      tablecont.classList.add("active");
-      formcont.classList.remove("active");
-      formcont.classList.add("registro");
       
       
   
@@ -136,10 +157,41 @@ function cambiotablaeditar(variables){
    
 }
 
+function asignarespecialidades(cedula){
+
+
+    let formdata = new FormData();
+    formdata.append("accion","readAll");
+    fetch('../Modelos/especialidad.php',{
+
+        method:'POST',
+        body:formdata
+
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        console.log(data);
+
+        especialidades.forEach(element => {
+            data.forEach(especialidad)
+            if(element.innerHTML == especialidades){
+
+                element.classList.add("selected")
+            }
+        
+        });
+
+       
+    })
+    
+}
+
+
 
 var inputs = document.querySelector("input");
 
-const tabla = document.getElementById("tabla_datos");
+
 
 tabla.addEventListener('click', function(event) {
     const target = event.target;
@@ -151,7 +203,37 @@ tabla.addEventListener('click', function(event) {
 });
 
 
-const especialidades = document.querySelectorAll(".especialidadcont");
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    let formdata = new FormData();
+    formdata.append("accion","readAll");
+    fetch('../Modelos/especialidad.php',{
+
+        method:'POST',
+        body:formdata
+
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        console.log(data);
+
+        
+            data.forEach(especialidad)
+
+
+            
+            
+        
+    });
+
+       
+   
+
+    
+})
 
 
 for (let i = 0; i < especialidades.length; i++) {
