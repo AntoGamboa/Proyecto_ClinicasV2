@@ -55,6 +55,17 @@
 							</thead>
 							<tbody id="tabla_datos">
 								<!-- aqui se agregaran los datos -->
+
+								<tr class="trpaver">
+									<td id="cedula">practica</td>
+									<td id="nombre"> practica</td>
+									<td id="apellido">practica</td>
+									<td>
+										<button type="button" class="delete-button" >Eliminar</button>
+										<button  type="button" class="edit-button" >Editar</button>
+									</td>
+									
+								</tr>
 							</tbody>
 
 						</table>
@@ -138,7 +149,10 @@
 						<div class="buttonformcont">
 							<button type="button" class="button"
 								onclick="cerrarrespecialidades()">Cancelar</button>
-							<button type="submit" class="button btnRegistrar" >Registrar</button>
+
+							<button type="submit" value="registro"  class="button btnRegistrar" >Registrar</button>
+							<button type="submit" value="modificar" style="display: none" class="button btneditar" >Modificar</button>
+
 						</div>
 					</div>
 				</form>
