@@ -64,7 +64,7 @@
         }
         public function delete($idPatologia)
         {
-             $query = 'UPDATE patologia SET estado=0 WHERE idPatologia=?;';
+             $query = 'UPDATE patologia SET estado= 0 WHERE idPatologia=?;';
              $this->getConexion()->prepare($query)->execute(array($idPatologia));
              return json_encode(['mensaje'=>'Eliminacion exitosa']);
         }
@@ -80,6 +80,11 @@
     if ($accion ==='readAll')
     {
         echo $Patologia->readAll();
+    }
+    if ($accion === 'delete') 
+    {
+        $id = $_POST['idPatologia'];
+        echo $Patologia->delete($id);
     }
     
 ?>

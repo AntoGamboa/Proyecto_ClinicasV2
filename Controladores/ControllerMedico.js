@@ -16,7 +16,7 @@ document.addEventListener('click',e => {
                 method: 'POST',
                 body: formdata
             }).then(resp => resp.json())
-            .then(data => {alert(data.mensaje) 
+            .then(data => {alert(data.mensaje)  
                 cargarTabla();
             })
          
