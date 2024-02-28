@@ -47,6 +47,7 @@
             return json_encode($stmt->fetch(PDO::FETCH_OBJ));
         
         }
+        
     }
     $objUsuario=new Usuarios();
     $accion=$_POST["accion"];
@@ -55,7 +56,6 @@
         try
         {
             if($accion === 'crearregistro'){
-                
                 $nombre = $_POST["nombre"];
                 $apellido = $_POST["apellido"];
                 $correo = $_POST["correo"];

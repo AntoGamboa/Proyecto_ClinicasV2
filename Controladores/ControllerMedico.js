@@ -47,9 +47,6 @@ const cargarTabla = ()=>{
     })
     .then(response => response.json())
     .then(data => {
-
-        console.log(data);
-
         const dataTableBody = document.getElementById('tabla_datos');
         tabla_datos.textContent = '';
         data.forEach(medico => {
