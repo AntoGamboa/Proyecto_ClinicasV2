@@ -10,8 +10,8 @@ document.addEventListener('click',e => {
        let resultado = window.confirm("Esta seguro de eliminar este registro");
        if(resultado==true){
             let formdata = new FormData();
-            formdata.append('accion','delete')
-            formdata.append('idPatologia',e.target.dataset.idPatologia)
+            formdata.append('accion','eliminar')
+            formdata.append('idPatologia',e.target.dataset.codigo)
             fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
                 method: 'POST',
                 body: formdata
@@ -61,6 +61,7 @@ const cargarTabla = ()=>{
             let clone = template.cloneNode(true);
             clone.getElementById('idPatologia').textContent = patologia.codigo;
             clone.getElementById('nombre').textContent = patologia.nombre;
+            clone.querySelector('.delete-button').dataset.codigo = patologia.codigo;
            
             fragment.appendChild(clone);
         });

@@ -10,7 +10,7 @@ document.addEventListener('click',e => {
        if(resultado==true){
             let formdata = new FormData();
             formdata.append('accion','delete')
-            formdata.append('idAlergia',e.target.dataset.idAlergia)
+            formdata.append('idAlergia',e.target.dataset.codigo)
             fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
                 method: 'POST',
                 body: formdata
@@ -59,6 +59,7 @@ const cargarTabla = ()=>{
             let clone = template.cloneNode(true);
             clone.getElementById('id').textContent = alergia.codigo;
             clone.getElementById('nombre').textContent = alergia.nombre;
+            clone.querySelector('.delete-button').dataset.codigo = alergia.codigo;
            
             fragment.appendChild(clone);
         });
