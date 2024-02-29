@@ -1,7 +1,11 @@
-let EnviarFormulario = document.getElementById('formregistro');
+let EnviarFormulario = document.getElementById('formregistroAlergia');
 let template = document.getElementById('templateDatosAlergias').content;
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
+
+let rutaAlergia = 'https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php';
+
+let idSeleccionado = '';
 
 document.addEventListener('click',e => {
     if(e.target.matches('.delete-button'))
@@ -11,7 +15,7 @@ document.addEventListener('click',e => {
             let formdata = new FormData();
             formdata.append('accion','delete')
             formdata.append('id',e.target.dataset.codigo)
-            fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+            fetch(rutaAlergia,{
                 method: 'POST',
                 body: formdata
             }).then(resp => resp.json())
@@ -20,6 +24,10 @@ document.addEventListener('click',e => {
             })
         
         }
+    }
+    if(e.target.matches('.edit-button'))
+    {
+        idSeleccionado=e.target.dataset.codigo;
     }
 }); 
 
@@ -30,9 +38,10 @@ document.addEventListener('DOMContentLoaded',e =>{
 console.log(EnviarFormulario);
 EnviarFormulario.addEventListener('submit',e => {
     let formdata = new FormData(EnviarFormulario);
+    e.preventDefault();
     
     if(formdata.get('accion') === 'create'){        
-        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+        fetch(rutaAlergia,{
             method:'POST',
             body:formdata
         })
@@ -40,13 +49,13 @@ EnviarFormulario.addEventListener('submit',e => {
         .then(data =>{ 
             alert(data.mensaje)
             cargarTabla();
-            cambiotabla();
+            cambioTabla();
         });
     }
-    else if(formdata.get('accion')=== 'update')
+    else if(formdata.get('accion') === 'update')
     {
-        formdata.append('cedulaSeleccionada',cedulaSeleccionada)
-        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+        formdata.append('idSeleccionado',idSeleccionado)
+        fetch(rutaAlergia,{
             method:'POST',
             body:formdata
         })
@@ -54,7 +63,7 @@ EnviarFormulario.addEventListener('submit',e => {
         .then(data => {
             alert(data.mensaje)
             cargarTabla();
-            cambiotabla();
+            cambioTabla();
         })   
     }
 });
@@ -62,7 +71,7 @@ EnviarFormulario.addEventListener('submit',e => {
 const cargarTabla = ()=>{
     let formdata = new FormData();
     formdata.append("accion","readAll");
-    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php',{
+    fetch(rutaAlergia,{
         method:'POST',
         body:formdata
     })
@@ -78,6 +87,7 @@ const cargarTabla = ()=>{
             clone.getElementById('id').textContent = alergia.codigo;
             clone.getElementById('nombre').textContent = alergia.nombre;
             clone.querySelector('.delete-button').dataset.codigo = alergia.codigo;
+            clone.querySelector('.edit-button').dataset.codigo = alergia.codigo;
            
             fragment.appendChild(clone);
         });

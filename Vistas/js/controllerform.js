@@ -4,12 +4,17 @@ const formcont = document.querySelector(".formcont");
 const buttoncambio = document.querySelector(".buttonregister");
 
 const botonregistro = document.querySelector(".formregistrocont button")
+let accionForm = document.getElementById('accionFormulario');
+
+console.log(accionForm);
 
 function cambiotabla(){
 
     if(tablecont.classList.contains("active")){
 
         buttoncambio.innerHTML = "Cancelar";
+        
+        accionForm.value = 'create';
 
         tablecont.classList.remove("active");
         formregistro.classList.add("active");
@@ -34,6 +39,8 @@ function cambiotablaeditar(variables){
     if(tablecont.classList.contains("active")){
   
         buttoncambio.innerHTML = "Cancelar";
+
+        accionForm.value= 'update';
 
         tablecont.classList.remove("active");
         formregistro.classList.add("active");

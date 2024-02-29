@@ -58,13 +58,13 @@
         {
             $query='UPDATE alergia SET idAlergia=?,nombreAlergia=? WHERE idAlergia=?';
             $this->getConexion()->prepare($query)->execute(array($idAlergia,$nombre,$idSeleccionado));
-            json_encode(['mensaje'=>'Actualizacion exitosa']);
+            return json_encode(['mensaje'=>'Actualizacion exitosa']);
         }
         public function delete($idAlergia)
         {
             $query='UPDATE alergia SET estado=0 WHERE idAlergia=?';
             $this->getConexion()->prepare($query)->execute(array($idAlergia));
-            json_encode(['mensaje'=>'Eliminacion exitosa']);
+            return json_encode(['mensaje'=>'Eliminacion exitosa']);
         }
 
 
