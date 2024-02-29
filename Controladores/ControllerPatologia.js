@@ -2,7 +2,8 @@ let EnviarFormulario = document.getElementById('formregistro');
 let template = document.getElementById('templateDatosPatologia').content;
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
-let idSeleccionado = ''
+rutaPatologia= 'https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
+let idSeleccionado = '';
 
 
 document.addEventListener('click',e => {
@@ -13,20 +14,26 @@ document.addEventListener('click',e => {
             let formdata = new FormData();
             formdata.append('accion','eliminar')
             formdata.append('idPatologia',e.target.dataset.codigo)
-            fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
+            fetch(rutaPatologia,{
                 method: 'POST',
                 body: formdata
             }).then(resp => resp.json())
             .then(data => {alert(data.mensaje) 
                 cargarTabla();
+
             })
         
+        }
+
+        if(e.target.matches('.edit-button'))
+        {
+            idSeleccionado=e.target.dataset.codigo;
         }
     }
 }); 
 
 document.addEventListener('DOMContentLoaded',e =>{
-    cargarTabla()
+    cargarTabla();
 });
 
 console.log(EnviarFormulario);
@@ -35,7 +42,7 @@ EnviarFormulario.addEventListener('submit',e => {
     let formdata = new FormData(EnviarFormulario);
     
     if(formdata.get('accion') === 'create'){        
-        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
+        fetch(rutaPatologia,{
             method:'POST',
             body:formdata
         })
@@ -46,10 +53,10 @@ EnviarFormulario.addEventListener('submit',e => {
             cambiotabla();
         });
     }
-    else if(formdata.get('accion')=== 'update')
+    else if(formdata.get('accion') === 'update')
     {
         formdata.append('idSeleccionado',idSeleccionado)
-        fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
+        fetch(rutaPatologia,{
             method:'POST',
             body:formdata
         })
@@ -66,7 +73,7 @@ EnviarFormulario.addEventListener('submit',e => {
 const cargarTabla = ()=>{
     let formdata = new FormData();
     formdata.append("accion","readAll");
-    fetch('https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php',{
+    fetch(rutaPatologia,{
         method:'POST',
         body:formdata
     })
@@ -79,7 +86,10 @@ const cargarTabla = ()=>{
             let clone = template.cloneNode(true);
             clone.getElementById('idPatologia').textContent = patologia.codigo;
             clone.getElementById('nombre').textContent = patologia.nombre;
+
             clone.querySelector('.delete-button').dataset.codigo = patologia.codigo;
+            clone.querySelector('.edit-button').dataset.codigo = patologia.codigo;
+
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);

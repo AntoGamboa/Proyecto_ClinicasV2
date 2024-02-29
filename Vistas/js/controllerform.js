@@ -42,6 +42,8 @@ function cambiotablaeditar(variables){
 
         accionForm.value= 'update';
 
+        console.log(accionForm.value);
+
         tablecont.classList.remove("active");
         formregistro.classList.add("active");
         formcont.classList.remove("select");
