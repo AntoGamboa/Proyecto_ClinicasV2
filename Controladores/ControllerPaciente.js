@@ -1,9 +1,11 @@
+
 let formPaciente = document.getElementById('formPaciente');
 let templateDatosPaciente = document.getElementById('templateDatosPaciente').content;
+
 let fragment = document.createDocumentFragment();
 let rutaPaciente ='https://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
 let cedulaSeleccionada = '';
-console.log('hola');
+
 document.addEventListener('click',e => {
     if(e.target.matches('.delete-button'))
     {
