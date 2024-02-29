@@ -60,7 +60,7 @@
         {
             $query = 'UPDATE patologia SET nombrePatologia=?,idPatologia=? where idPatologia=? ;';
             $this->getConexion()->prepare($query)->execute(array($idPatologia,$nombrePatologia,$idSeleccionado));
-            return json_encode(['mensaje'=>'Actualizacion exitosa']);
+            echo json_encode(['mensaje'=>'Actualizacion exitosa']);
         }
         public function delete($idPatologia)
         {
