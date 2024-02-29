@@ -33,11 +33,13 @@
 .pacientselectcont{
     opacity: 0;
     visibility: none;
+    pointer-events: none;
     
 }
 
 .pacientselectcont.active {
     opacity: 1;
+    pointer-events: all;
     
 }
 
@@ -59,7 +61,7 @@
 
 .pacientformcont.registro{
     background-color: rgb(57, 146, 255);
-    min-height: 80vh;
+    min-height: 680px;
     min-width: 600px;
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
     max-width: 600px;
@@ -134,7 +136,7 @@
 }
 
 .input_detalles {
-  width: 225%;
+  width: 100%;
   min-height: 100%;
   max-height: 100%;
   margin-top: 80px;
@@ -149,6 +151,7 @@
     margin-top: 5%;
     min-width: 600px;
     max-width: 600px;
+    min-height: 600px;
     position: absolute;
     transition: opacity 0.1s ease;
 }
@@ -159,6 +162,7 @@
 
 .tablausuarios{
     margin-top: 10px;
+    min-height: 590px;
     max-height: 590px;
     color: white;
     overflow-y: scroll; 
@@ -167,7 +171,7 @@
 
 
 th, td {
-    padding: .8rem 1rem;
+    padding: .8rem 1.5rem;
     text-align: left;
     
     
@@ -206,13 +210,15 @@ th{
 
 
 .consultform{
-    display: grid;
-    grid-template-columns: 250px 250px;
-    grid-gap: 0px;
-    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+    width: 500px; 
     height: 500px;
     margin-top: 30px;
-    margin-left: 3%;
+    margin-left: 20px;
 }
 
 
