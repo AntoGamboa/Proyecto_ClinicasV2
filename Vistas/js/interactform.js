@@ -12,6 +12,8 @@ function cambiotabla(){
 
     if(tablecont.classList.contains("active")){
 
+      //abrir form
+
         buttoncambio.innerHTML = "Cancelar";
         
         accionForm.value = 'create';
@@ -23,6 +25,8 @@ function cambiotabla(){
 
     }
     else{
+
+      //cerrar form
       
       buttoncambio.innerHTML = "Registrar";
       
@@ -37,6 +41,9 @@ function cambiotabla(){
 function cambiotablaeditar(variables){
 
     if(tablecont.classList.contains("active")){
+
+
+      //abre form en modo editar
   
         buttoncambio.innerHTML = "Cancelar";
 

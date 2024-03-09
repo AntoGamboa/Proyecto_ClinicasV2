@@ -10,6 +10,8 @@ function cambiotabla(){
 
     if(tablecont.classList.contains("active")){
 
+      //abrir form
+
         buttoncambio.innerHTML = "Cancelar";
 
         tablecont.classList.remove("active");
@@ -19,6 +21,8 @@ function cambiotabla(){
 
     }
     else{
+
+      //cerrar form
       
       buttoncambio.innerHTML = "Registrar";
       
@@ -33,6 +37,8 @@ function cambiotabla(){
 function cambiotablaeditar(variables){
 
     if(tablecont.classList.contains("active")){
+
+      //abrir form modo editar
   
         tablecont.classList.remove("active");
         formModificar.classList.add("active");
@@ -53,6 +59,8 @@ function cambiotablaeditar(variables){
     }
    
 }
+
+//eventos botones eliminar y editar
 
 var inputs = document.querySelector("input");
 
