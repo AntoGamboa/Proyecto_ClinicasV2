@@ -1,5 +1,7 @@
 
 
+//abre el modo registrar
+
 function cambio_registrar() {
   var elemento = document.querySelector(".loginregister_container");
 
@@ -27,6 +29,8 @@ function cambio_registrar() {
   nav.classList.add("oscuro");
 }
 
+
+//abre modo iniciar sesion
 
 function cambio_iniciarsesion() {
 
@@ -56,6 +60,8 @@ function cambio_iniciarsesion() {
   nav.classList.remove("oscuro");
 
 }
+
+//codigo para validaciones
 
 var inputs = document.getElementsByTagName("input");
 
