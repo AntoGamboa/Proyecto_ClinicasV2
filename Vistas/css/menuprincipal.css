@@ -15,10 +15,42 @@
 }
 
 .sectionuser{
-    width: 90%;
+    width: 100%;
+    height: 200px;
     
-    background: linear-gradient(45deg, rgba(179, 213, 255, 0.813) 0%, rgb(231, 231, 231) 100%);
-    padding: 130px;
+    background: linear-gradient(45deg, rgba(211, 231, 255, 0.813) 0%, rgb(231, 231, 231) 100%);
+    
+}
+.usercont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-right: 400px;
+    margin-top: 40px;
+    color: rgba(0, 115, 255, 0.813);
+}
+
+.imguser{
+    padding: 60px;
+    background-color: rgba(233, 243, 255, 0.813);
+    background-image: url(../recursos/img/computer-icons-user-profile-head-ico-download-e2a2cb46bb62fe3f3cd00e0414dd13d6.png);
+    background-position: center;
+    background-size: contain;
+    border-radius: 50%;
+    
+}
+
+.username{
+    font-size: 18px;
+    font-weight: 900;
+}
+.infouser{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 20px;
 }
 
 .sectionbuttons{
@@ -27,6 +59,7 @@
     align-items: center;
     justify-content: center;
     align-items: center;
+    margin-left: 80px;
 }
 
 .buttonscont{

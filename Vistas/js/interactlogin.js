@@ -24,9 +24,13 @@ function cambio_registrar() {
   loginbox.classList.remove("active");
   registerbox.classList.add("active");
 
-  var nav = document.querySelector(".barranav");
 
-  nav.classList.add("oscuro");
+
+
+  let body = document.body;
+  body.classList.toggle("dark-mode");
+  
+  
 }
 
 
@@ -55,9 +59,12 @@ function cambio_iniciarsesion() {
   loginbox.classList.add("active");
   registerbox.classList.remove("active");
 
-  var nav = document.querySelector(".barranav");
+  
 
-  nav.classList.remove("oscuro");
+  let body = document.body;
+  body.classList.toggle("dark-mode");
+  
+  
 
 }
 
