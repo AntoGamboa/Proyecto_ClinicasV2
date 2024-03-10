@@ -2,11 +2,11 @@
 :root{
     --color-barra-lateral:rgb(255,255,255);
 
-    --color-texto:rgb(0,0,0);
+    --color-texto:rgb(0, 145, 255);
     --color-texto-menu:rgb(134,136,144);
 
     --color-menu-hover:rgb(238,238,238);
-    --color-menu-hover-texto:rgb(0,0,0);
+    --color-menu-hover-texto:rgb(0, 145, 255);
 
     --color-boton:rgb(0, 145, 255);
     --color-boton-texto:rgb(255,255,255);
@@ -130,7 +130,7 @@
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    
     border: none;
     border-radius: 10px;
     background-color: var(--color-boton);
@@ -139,7 +139,7 @@
 }
 .barra-lateral .boton ion-icon{
     min-width: 50px;
-    font-size: 25px;
+    font-size: 27px;
     
    
 }
@@ -189,7 +189,7 @@
 }
 .barra-lateral .navegacion ion-icon{
     min-width: 50px;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 /*-----------------> Linea*/
