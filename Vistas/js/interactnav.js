@@ -8,21 +8,29 @@ const menu = document.querySelector(".menu");
 const boton = document.querySelector(".boton");
 
 menu.addEventListener("click",()=>{
+
     barraLateral.classList.toggle("max-barra-lateral");
+
     if(barraLateral.classList.contains("max-barra-lateral")){
+
         menu.children[0].style.display = "none";
         menu.children[1].style.display = "block";
+
     }
     else{
+
         menu.children[0].style.display = "block";
         menu.children[1].style.display = "none";
+
     }
     if(window.innerWidth<=320){
+
         barraLateral.classList.add("mini-barra-lateral");
         main.classList.add("min-main");
         spans.forEach((span)=>{
             span.classList.add("oculto");
         })
+        
     }
 });
 
@@ -37,3 +45,32 @@ cloud.addEventListener("click",()=>{
         span.classList.toggle("oculto");
     });
 });
+
+
+//crear botones
+
+
+function crearbotonesnav(){
+
+
+    //funcion prueba para actualizar botones de el nav
+    return;
+
+    const templatebotonnav = document.getElementById("templatebotonnav").content;
+    const barranav = document.querySelector(".navbar .barra-lateral .navegacion ul");
+ 
+    const clontemplate = templatebotonnav.cloneNode(true);
+
+    clontemplate.querySelector("span").textContent = "aaa";
+
+    clontemplate.querySelector("ion-icon").clonspan.name = "home-outline";
+
+    barranav.appendChild(clontemplate);
+
+}
+    
+
+    
+
+
+
