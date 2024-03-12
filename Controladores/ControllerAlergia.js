@@ -3,6 +3,7 @@ let template = document.getElementById('templateDatosAlergias').content;
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
 
+
 let rutaAlergia = 'https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php';
 
 let idSeleccionado = '';
@@ -33,6 +34,7 @@ document.addEventListener('click',e => {
 
 document.addEventListener('DOMContentLoaded',e =>{
     cargarTabla();
+    crearbotonesnav();
 });
 
 console.log(EnviarFormulario);
@@ -91,6 +93,8 @@ const cargarTabla = ()=>{
            
             fragment.appendChild(clone);
         });
+
         tabla_datos.appendChild(fragment);
+
     })
 };

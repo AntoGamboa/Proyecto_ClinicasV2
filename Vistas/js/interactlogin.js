@@ -59,8 +59,6 @@ function cambio_iniciarsesion() {
   loginbox.classList.add("active");
   registerbox.classList.remove("active");
 
-  
-
   let body = document.body;
   body.classList.toggle("dark-mode");
   
