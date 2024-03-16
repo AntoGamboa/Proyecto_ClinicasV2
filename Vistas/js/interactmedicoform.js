@@ -33,6 +33,7 @@ function cambiotabla(){
         tablecont.classList.remove("active");
         formregistro.classList.add("active");
         formcont.classList.remove("select");
+        formMedicoregistro.classList.add("active");
     }
     else{
 
@@ -47,7 +48,7 @@ function cambiotabla(){
         botoneditar.style.display = 'none';
         botonregistro.style.display = 'flex';
 
-        formMedicoregistro.classList.add("active");
+        formMedicoregistro.classList.remove("active");
         seleccioncont.classList.remove("active");
         confirmarcont.classList.remove("active");
         
@@ -130,6 +131,7 @@ function cambiotablaeditar(variables){
         tablecont.classList.remove("active");
         formregistro.classList.add("active");
         formcont.classList.remove("select");
+        formMedicoregistro.classList.add("active");
         botoneditar.style.display = 'flex';
         botonregistro.style.display = 'none';
         accionForm.value = 'update';
