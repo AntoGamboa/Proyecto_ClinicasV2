@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/listaconsultas.css">
+    <link rel="stylesheet" href="css/barranav.css">
+</head>
+<body>
+    <div class="navbar">
+    
+        <div class="menu">
+            <ion-icon name="menu-outline"></ion-icon>
+            <ion-icon name="close-outline"></ion-icon>
+        </div>
+
+        <div class="barra-lateral mini-barra-lateral">
+            <div>
+                <div class="nombre-pagina">
+                    <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                    <span class="spannav oculto">Historia Clinica</span>
+                </div>
+                <button class="boton">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    <span class="spannav oculto">Menu Principal</span>
+                </button>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a id="inbox" href="mainpage.html">
+                            <ion-icon name="home-outline"></ion-icon>
+                            <span class="spannav oculto">Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="inbox" href="login.html">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <span class="spannav oculto">Iniciar Sesion</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </nav>
+
+            <div>
+                <div class="linea"></div>
+
+            
+        
+            
+
+            </div>
+
+        <div>
+
+    </div>
+
+    </div>
+
+    <section class="detallescont activo">
+
+        <ion-icon class="closebutton" name="close-outline"></ion-icon>
+
+        <div class="detallesconsulta">
+
+            <div class="encabezadoconsulta">
+                
+                <div class="fechaconsulta">Fecha 15/03/2024</div>
+
+                <div class="infomedico">
+                    <div>Doctor:</div>
+                    <div class="nombremedico">pedro Perez</div>
+                    <div class="cedulamedico">11487963</div>
+                </div>
+
+                <div class="infopaciente">
+                    <Div>Paciente:</Div>
+                    <div class="nombrepaciente">Maria Lopez</div>
+                    <div class="cedulapaciente">35847562</div>
+                    <div class="edadpaciente">17 años</div>
+                </div>
+
+
+            </div>
+
+            <div class="linea"></div>
+
+            <div class="descripcionconsulta">
+                Durante la consulta médica, María López expresó que había experimentado dolores de cabeza más frecuentes y fuertes en las últimas semanas, junto con fatiga y dificultad para concentrarse. Tras una exploración física que no reveló hallazgos anormales significativos, el médico sugirió la posibilidad de migrañas crónicas y recomendó realizar exámenes adicionales, como un análisis de sangre y una resonancia magnética, para confirmar el diagnóstico y descartar otras causas. Se discutió el uso de medicamentos específicos para tratar las migrañas, se proporcionaron pautas de uso y se acordó seguir una segunda consulta para revisar los resultados de los exámenes y ajustar el plan de tratamiento si fuera necesario.
+            </div>
+        </div>
+
+        
+
+    </section>
+
+    <section class="sectioncont">
+
+        <div class="formcont select">
+        
+            <div class="selectcont active">
+        
+                <div class="searchbarcont">
+        
+                    <input type="text" class="searchbar">
+        
+                </div>
+        
+                <div class="tablacont">
+            
+                    <table id="tabla" class="tabla" > 
+                        
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Fecha</th>
+                                    <th>Paciente</th>
+                                    <th>Cedula</th>
+                                   
+                                </tr>
+                            </thead>
+            
+                            <tbody id="tabla_datos">
+                                <!-- aqui se agregaran los datos -->
+                                <tr>
+                                    <td id="id">Insercion</td>
+                                    <td id="fecha">Insercion</td>
+                                    <td id="paciente">Insercion</td>
+                                    <td id="cedula">Insercion</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                        <button  type="button" class="edit-button" >Editar</button>
+                                        <button  type="button" class="delete-button">Eliminar</button>
+                                    </td>
+                                </tr>
+                                
+                                
+                                
+                            </tbody>
+            
+                    </table>
+            
+                </div>
+        
+            </div>
+
+            <div class="formregistrocont">
+
+                <div class="buttoncont">
+
+					<div class="buttonregister" onclick="cambiotabla()">Cancelar</div>
+				</div>
+
+                <form action="" method="post" id="formregistro" class="formregistro">
+                    <input type="hidden" id="accionFormulario" name="accion" value="create">
+
+                    <div class="contenedor_input">
+            
+                        <input class="input_Cedulapaciente" id="Cedulapaciente" name="Cedulapaciente" type="text" required autocomplete="off">
+                        <label for="">Cedula Paciente</label>
+            
+                    </div>
+
+                    <div class="contenedor_input">
+            
+                        <input class="input_ceduladoctor" id="ceduladoctor" name="ceduladoctor" type="text" required autocomplete="off">
+                        <label for="">Cedula Doctor</label>
+            
+                    </div>
+
+                    
+
+                    <div class="contenedor_detalles">
+
+                        <label for="">Detalles</label>
+            
+                        <textarea class="input_detalles" id="nombre" name="nombre" type="text" required autocomplete="off"></textarea>
+                        
+            
+                    </div>
+
+                    
+
+                    <button type="submit" class="button">Registrar</button>
+                </form>
+            </div>
+        
+        </div>
+    </section>
+
+    <template id="templateDatosConsultas">
+        <tr>
+            <td id="id">Insercion</td>
+            <td id="fecha">Insercion</td>
+            <td id="paciente">Insercion</td>
+            <td id="cedula">Insercion</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                <button  type="button" class="edit-button" >Editar</button>
+                <button  type="button" class="delete-button">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+
+    <template id="templatebotonnav">
+        <li>
+            <a id="inbox" href="">
+                <ion-icon name=""></ion-icon>
+                <span class="spannav oculto"></span>
+            </a>
+        </li>
+    </template>
+
+    <template id="templatedetallesconsulta">
+        <div class="detallesconsulta">
+
+            <div class="encabezadoconsulta">
+                
+                <div class="fechaconsulta"></div>
+
+                <div class="infomedico">
+                    <div>Doctor:</div>
+                    <div class="nombremedico"></div>
+                    <div class="cedulamedico"></div>
+                </div>
+
+                <div class="infopaciente">
+                    <Div>Paciente:</Div>
+                    <div class="nombrepaciente"></div>
+                    <div class="cedulapaciente"></div>
+                    <div class="edadpaciente"></div>
+                </div>
+
+
+            </div>
+
+            <div class="linea"></div>
+
+            <div class="descripcionconsulta">
+               
+            </div>
+        </div>
+    </template>
+
+
+
+    
+    
+    <script src="../Controladores/ControllerConsulta.js"></script>
+    <script src="js/interactnav.js"></script>
+    <script src="js/listaconsultas.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+    
+</body>
+</html>
