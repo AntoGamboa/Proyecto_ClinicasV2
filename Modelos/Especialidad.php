@@ -21,9 +21,10 @@
             try{
                 $query='INSERT INTO especialidad(idEspecialidad,nombreEspecialidad) values (?,?)';
                 $this->getConexion()->prepare($query)->execute(array($idEspecialidad,$nombreEspecialidad));
+                $mensaje = 'Registro exitoso';
             }catch(Exception $e){
                 if($e->getCode() === '23000'){
-                    $mensaje='Ya exite una Especialidad con ese Codigo';
+                    $mensaje='El medico ya tiene esta especialidad';
                 }
             }finally
             {
@@ -33,21 +34,21 @@
         }
         public function readAll()
         {
-            $query='SELECT idEspecialidad AS codigo,nombreEspecialidad AS nombre FROM especialidad ';
+            $query='SELECT idEspecialidad AS codigo,nombreEspecialidad AS nombre FROM especialidad WHERE estado = 1 ';
             $stmt=$this->getConexion()->prepare($query);
             $stmt->execute();
             return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
         }
-        public function update($idEspecialidad,$nombreEspecialidad)
+        public function update($idEspecialidad,$nombreEspecialidad,$codigoSeleccionado)
         {
             $query='UPDATE especialidad set idEspecialidad=?, nombreEspecialidad=? WHERE idEspecialidad=?';
-            $this->getConexion()->prepare($query)->execute(array($idEspecialidad,$nombreEspecialidad));
+            $this->getConexion()->prepare($query)->execute(array($idEspecialidad,$nombreEspecialidad,$codigoSeleccionado));
             return json_encode(['mensaje'=> 'Actualizacion exitosa']);
 
         }
         public function delete($idEspecialidad){
             $query = 'UPDATE especialidad SET estado=? WHERE idEspecialidad=?;';
-            $this->getConexion()->prepare($query)->execute(array($idEspecialidad,0));
+            $this->getConexion()->prepare($query)->execute(array(0,$idEspecialidad));
             return json_encode(['mensaje'=>'Eliminacion exitosa']); 
         }
     }
@@ -65,9 +66,15 @@
     {
         echo $especialidad->readAll();
     }
+    if ($accion === 'update') 
+    {
+       echo $especialidad->update($_POST['codigo'],$_POST['nombre'],$_POST['codigoSeleccionado']);
+    }
     if($accion === 'eliminar')
     {
-        echo $especialidad->delete($_POST['codigo']);
+        $codigo = $_POST['codigo'];
+        echo $especialidad->delete($codigo);
     }
+
 
 ?>

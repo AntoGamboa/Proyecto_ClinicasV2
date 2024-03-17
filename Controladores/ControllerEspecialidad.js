@@ -1,40 +1,97 @@
-document.addEventListener('DOMContentLoaded',e =>{
+const formEspecialidad = document.getElementById('formregistro');
+const tablaDatos = document.getElementById('tabla_datos');
+const templateEspecialidades = document.getElementById('templateEspecialidades').content;
+const fragmento = document.createDocumentFragment();
 
-   
+let codigoSeleccionado = '';
+
+const ruta = 'https://localhost/Proyecto_ClinicasV2/Modelos/Especialidad.php';
 
 
-    let formdata = new FormData();
-    formdata.append("accion","readAll");
-    fetch('../Modelos/.php',{
-        method:'POST',
-        body:formdata
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        console.log(data);
-
-        const dataTableBody = document.getElementById('tabla_datos');
+formEspecialidad.addEventListener('submit',e =>
+{
+    e.preventDefault();
+    const formData = new FormData(formEspecialidad);
+    if (formData.get('accion') === 'create')
+    {
+        fetch(ruta,{method:'POST', body: formData})
+        .then(resp => resp.json())
+        .then(data  => { 
+            alert(data.mensaje)
+            cargarEspecialidad();
+            cambiotabla();
+         })
+        .catch(data => alert(data.mensaje))
+    }
+    else if (formData.get('accion') === 'update')
+    {
+        formData.append('codigoSeleccionado',codigoSeleccionado);
         
-        data.forEach(especialidad => {
-            
-            alert("hola");
+        fetch(ruta,{method:'POST',body: formData})
+        .then(resp => resp.json())
+        .then(data => {
+            alert(data.mensaje)
+            cargarEspecialidad();
+            cambiotabla();
+        })
+    }
+   
+})
 
-            const newrow = document.createElement('tr');
+document.addEventListener('click', e =>
+{
+    if (e.target.matches('.delete-button')) 
+    {
+    console.log(e.target.dataset.codigo);
+    let resultado = window.confirm('¿ Desea eliminar este registro de la tabla ?');
+        if (resultado) 
+        {
+            let formData = new FormData();
+            formData.append('accion','eliminar');
+            formData.append('codigo', e.target.dataset.codigo)
+        
+            fetch(ruta,{method:'POST', body:formData})
+            .then(resp => resp.json())
+            .then(data => {
+                alert(data.mensaje)
+                cargarEspecialidad();
+            })    
+        }
+    }
+    if (e.target.matches('.edit-button')) 
+    {
+        codigoSeleccionado = e.target.dataset.codigo;    
+    }
+})
 
-            newrow.innerHTML = `
-            <td>${especialidad.id}</td>
-            <td>${especialidad.nombre}</td>
-            
-            <td>
-                <button  type="button" class="edit-button" >Editar</button>
-                <button  type="button" class="delete-button">Eliminar</button>
-            </td>
-            `;
+document.addEventListener('DOMContentLoaded',() =>
+{
+    cargarEspecialidad();
+})
 
-            dataTableBody.appendChild(newrow);
 
+const cargarEspecialidad = () => 
+{
+    const formData = new FormData()
+    formData.append('accion','readAll')
+
+    fetch( ruta ,{method:'POST',body: formData})
+    .then(resp => resp.json())
+    .then(data =>{
+        console.log(data);
+        tablaDatos.textContent = '';
+        data.forEach(Especialidad => 
+        {
+            const clone = templateEspecialidades.cloneNode(true);
+            clone.getElementById('codigo').textContent = Especialidad.codigo;
+            clone.getElementById('nombre').textContent = Especialidad.nombre;
+            clone.querySelector('.delete-button').dataset.codigo = Especialidad.codigo;
+            clone.querySelector('.edit-button').dataset.codigo = Especialidad.codigo;
+
+            fragmento.appendChild(clone);
         });
-    })
-    
-});
+
+        tablaDatos.appendChild(fragmento);
+    });
+
+}
