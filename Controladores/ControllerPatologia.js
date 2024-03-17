@@ -1,8 +1,8 @@
-let EnviarFormulario = document.getElementById('formregistro');
-let template = document.getElementById('templateDatosPatologia').content;
-let fragment = document.createDocumentFragment();
-let tabla_datos = document.getElementById('tabla_datos');
-rutaPatologia= 'https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
+const EnviarFormulario = document.getElementById('formregistro');
+const template = document.getElementById('templateDatosPatologia').content;
+const fragment = document.createDocumentFragment();
+const tabla_datos = document.getElementById('tabla_datos');
+const rutaPatologia= 'https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
 let idSeleccionado = '';
 
 
@@ -24,11 +24,10 @@ document.addEventListener('click',e => {
             })
         
         }
-
-        if(e.target.matches('.edit-button'))
-        {
-            idSeleccionado=e.target.dataset.codigo;
-        }
+    }
+    if(e.target.matches('.edit-button'))
+    {
+        idSeleccionado=e.target.dataset.codigo;
     }
 }); 
 
@@ -83,7 +82,7 @@ const cargarTabla = ()=>{
         const dataTableBody = document.getElementById('tabla_datos');
         tabla_datos.textContent = '';
         data.forEach(patologia => {
-            let clone = template.cloneNode(true);
+            const clone = template.cloneNode(true);
             clone.getElementById('idPatologia').textContent = patologia.codigo;
             clone.getElementById('nombre').textContent = patologia.nombre;
 

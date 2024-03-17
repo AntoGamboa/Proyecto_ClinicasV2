@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
     <link rel="stylesheet" href="css/formulario.css">
     <link rel="stylesheet" href="css/barranav.css">
 </head>
@@ -66,9 +65,6 @@
 
     </div>
 
-    
-
-    
     <section class="sectioncont">
 
         <div class="formcont select">
@@ -117,24 +113,36 @@
 
                 
                 <form action="#" method="post" id="formregistro">
+                    <!-- Disparador del evento de cambio de formulario, de crear a editar -->
                     <input type="hidden" id='accionFormulario' name="accion" value="create">
+
                     <div class="contenedor_input">
-            
-                        <input class="input_nombreespecialidad" id="nombre" name="nombre" type="text" required autocomplete="off">
-                        <label for="">Nombre</label>
-            
+                        <input class="input_nombre" id="codigo" name="codigo" type="text" required autocomplete="off" >
+                        <label for="">Codigo</label>
                     </div>
+
+                    <div class="contenedor_input">
+                        <input class="input_nombre" id="nombre" name="nombre" type="text" required autocomplete="off">
+                        <label for="">Nombre especialidad</label>
+                    </div>
+
+                    <button type="submit" class="button">Registrar</button>
                     
                 </form>
-            
-                <button type="submit" class="button">Registrar</button>
-
-            </div>
-            
-            
-            
+            </div> 
         </div>
     </section>
+
+    <template id="templateEspecialidades">
+        <tr>
+            <td id="codigo">practica</td>
+            <td id="nombre"> practica</td>
+            <td>
+                <button type="button" class="delete-button" >Eliminar</button>
+                <button  type="button" class="edit-button" >Editar</button>
+            </td>
+        </tr>
+    </template>      
 
     
 
@@ -143,6 +151,7 @@
 
     <script src="js/interactnav.js"></script>
     <script src="js/interactform.js"></script>
+    <script src="../Controladores/ControllerEspecialidad.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     
