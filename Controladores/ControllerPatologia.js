@@ -94,3 +94,4 @@ const cargarTabla = ()=>{
         tabla_datos.appendChild(fragment);
     })
  };
+ 
