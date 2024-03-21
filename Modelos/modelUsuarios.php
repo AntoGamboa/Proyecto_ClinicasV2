@@ -53,7 +53,7 @@
                     session_set_cookie_params($ttl);
                     session_start();
                     $_SESSION['NombreCompleto'] = $user->nombre . ' ' . $user->apellido;
-                    $_SESSION['usuario'] = $user->nombre;
+                    $_SESSION['usuario'] = $user->usuario;
                     echo json_encode($user);
                }
             }catch(Exception $e)

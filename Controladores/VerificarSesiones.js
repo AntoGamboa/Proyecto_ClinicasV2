@@ -1,14 +1,15 @@
-document.addEventListener('DOMContentLoaded',e =>{
+document.addEventListener('DOMContentLoaded', e =>{
     verificarSession();
 
 })
-const verificarSession = async() =>
+const verificarSession = () =>
  {
-    await fetch('https://localhost/Proyecto_ClinicasV2/MiddleWare/autenticacion.php',{
-        method:'GET'
-    }).then(resp => resp.json)
+     fetch('http://localhost/Proyecto_ClinicasV2/MiddleWare/autenticacion.php')
+    .then(resp => resp.json())
     .then(data =>{
-        if(!data.Sucess)
+        console.log(data);
+        
+        if(!data.Success)
         {
             window.location.href = "http://localhost/Proyecto_ClinicasV2/vistas/login.html"
         }

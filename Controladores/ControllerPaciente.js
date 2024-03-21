@@ -3,7 +3,7 @@ let formPaciente = document.getElementById('formPaciente');
 let templateDatosPaciente = document.getElementById('templateDatosPaciente').content;
 
 let fragment = document.createDocumentFragment();
-let rutaPaciente ='https://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
+let rutaPaciente ='http://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
 let cedulaSeleccionada = '';
 
 document.addEventListener('click',e => {

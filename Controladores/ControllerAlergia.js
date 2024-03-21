@@ -4,7 +4,7 @@ let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
 
 
-let rutaAlergia = 'https://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php';
+let rutaAlergia = 'http://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php';
 
 let idSeleccionado = '';
 

@@ -2,7 +2,7 @@ let EnviarFormulario = document.getElementById('formregistromedico');
 let template = document.getElementById('templatedatosmedicos').content;
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
-let rutaMedicos='https://localhost/Proyecto_ClinicasV2/Modelos/Medico.php';
+let rutaMedicos='http://localhost/Proyecto_ClinicasV2/Modelos/Medico.php';
 let cedulaSeleccionada = '';
 
 EnviarFormulario.addEventListener('submit',e => {
