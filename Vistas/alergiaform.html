@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alergias</title>
 
     <link rel="stylesheet" href="css/formulario.css">
     <link rel="stylesheet" href="css/barranav.css">
@@ -118,15 +118,20 @@
 
                     <div class="contenedor_input">
             
-                        <input class="input_nombre" id="idAlergia" name="idAlergia" type="text" required autocomplete="off">
+                        <input class="input_nombre" id="idAlergia" name="idAlergia" type="text" 
+                        pattern="^\d{2,5}$" 
+                        title="El codigo debe tener minimo 2 numeros y maximo 5"  required autocomplete="off">
                         <label for="">codigo</label>
             
                     </div>
 
                     <div class="contenedor_input">
             
-                        <input class="input_nombre" id="nombre" name="nombre" type="text" required autocomplete="off">
-                        <label for="">Nombre</label>
+                        <input class="input_nombre" id="nombre" name="nombre" type="text"
+                        pattern= "^[a-zA-ZÀ-ÿ\s]{2,40}$" 
+                        title="El nombre de la Alergia solo debe contener letras y debe tener minimo 2 caracteres "
+                        required autocomplete="off">
+                        <label for="">Nombre Alergia</label>
             
                     </div>
 
@@ -157,9 +162,6 @@
         </li>
     </template>
 
-
-
-    
     <script src="../Controladores/ControllerAlergia.js"></script>
     <script src="js/interactnav.js"></script>
     <script src="js/interactform.js"></script>

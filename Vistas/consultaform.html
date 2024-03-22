@@ -117,34 +117,49 @@
 
                 <div class="contenedor_input">
 
-                    <input class="input_cedula" id="cedula" name="cedula" type="text" required autocomplete="off">
+                    <input class="input_cedula" id="cedula" name="cedula" type="text" 
+                    pattern="([VE]-)?[0-9]{8}"
+                    title="La cedula debe poseer 8 caracteres y deben ser numeros" 
+                    required autocomplete="off">
                     <label for="">Cedula</label>
 
                 </div>
 
                 <div class="contenedor_input">
     
-                    <input class="input_nombre" id="nombre" name="nombre" type="text" required autocomplete="off">
+                    <input class="input_nombre" id="nombre" name="nombre"
+                     type="text" pattern= "^[a-zA-ZÀ-ÿ\s]{2,40}$"
+                     title="El Nombre solo puede contener letras" 
+                     required autocomplete="off">
                     <label for="">Nombre</label>
 
                 </div>
                 <div class="contenedor_input">
 
-                    <input class="input_apellido" id="apellido" name="apellido" type="text" required autocomplete="off">
+                    <input class="input_apellido" id="apellido" name="apellido" type="text"
+                     pattern= "^[a-zA-ZÀ-ÿ\s]{4,40}$" 
+                     title="El Apellido puede contener letras"
+                      required autocomplete="off">
                     <label for="">Apellido</label>
 
                 </div>
                 
                 <div class="contenedor_input">
 
-                    <input class="input_telefono" id="telefono" name="telefono" type="text" required autocomplete="off">
+                    <input class="input_telefono" id="telefono" name="telefono" 
+                    type="text" pattern="^\d{11}$" 
+                    title="El Telefono debe tener 11 caracteres y no puede exceder los 11 caracteres" 
+                    required autocomplete="off">
                     <label for="">Telefono</label>
 
                 </div>
 
                 <div class="contenedor_input">
 
-                    <input class="input_telefonoemergencia" id="telefonoemergencia" name="telefonoemergencia" type="text" required autocomplete="off">
+                    <input class="input_telefonoemergencia" id="telefonoemergencia" name="telefonoemergencia" 
+                    type="text" pattern="^\d{11}$" 
+                    title="El Telefono debe tener 11 caracteres y no puede exceder los 11 caracteres"
+                    required autocomplete="off">
                     <label for="">Telefono Emergencia</label>
 
                 </div>
@@ -195,6 +210,7 @@
         </tr>
     </template>
 
+      
     <script src="js/interactnav.js"></script>
     <script src="js/interactconsultaform.js"></script>
     <script src="../Controladores/ControllerPaciente.js"></script>
