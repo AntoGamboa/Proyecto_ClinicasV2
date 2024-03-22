@@ -68,10 +68,17 @@ function cambio_iniciarsesion() {
 
 //codigo para validaciones
 
-var inputs = document.getElementsByTagName("input");
+const inputs = document.querySelectorAll('input');
 
-for (var i = 0; i < inputs.length; i++) {
-inputs[i].addEventListener("input", function (event) {
-  console.log(event.target.value);
-});
+function validarInput(event) {
+  const valor = event.target.value;
+  const caracteresEspeciales = /[!@#$%^&*()+\=\[\]{};':"\\|<>\/?]+/;
+  
+  if (caracteresEspeciales.test(valor)) {
+    event.target.value = valor.replace(caracteresEspeciales, '');
+  }
 }
+
+inputs.forEach(input => {
+  input.addEventListener('input', validarInput);
+});
