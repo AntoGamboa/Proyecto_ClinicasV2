@@ -1,68 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/barranav.css">
+
 </head>
 <body>
-    <div class="navbar">
     
-        <div class="menu">
-            <ion-icon name="menu-outline"></ion-icon>
-            <ion-icon name="close-outline"></ion-icon>
-        </div>
-
-        <div class="barra-lateral mini-barra-lateral">
-            <div>
-                <div class="nombre-pagina">
-                    <ion-icon id="cloud" name="cloud-outline"></ion-icon>
-                    <span class="spannav oculto">Historia Clinica</span>
-                </div>
-                <button class="boton">
-                    <ion-icon name="document-text-outline"></ion-icon>
-                    <span class="spannav oculto">Menu Principal</span>
-                </button>
-            </div>
-
-            <nav class="navegacion">
-                <ul>
-                    <li>
-                        <a id="inbox" href="mainpage.html">
-                            <ion-icon name="home-outline"></ion-icon>
-                            <span class="spannav oculto">Inicio</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a id="inbox" href="login.html">
-                            <ion-icon name="person-outline"></ion-icon>
-                            <span class="spannav oculto">Iniciar Sesion</span>
-                        </a>
-                    </li>
-                    
-                    
-                </ul>
-            </nav>
-
-            <div>
-                <div class="linea"></div>
-
-            
-        
-            
-
-            </div>
-
-        <div>
-
-    </div>
-            
-    
-        
-
-    </div>
 
     <section class="loginregister_container">
 
@@ -91,6 +38,13 @@
                     <div class="button_registrar">
                         <p>No tienes una cuenta? <a onclick="cambio_registrar()" class="registrar_link">Registrate</a></p>
                     </div>
+
+                    <div class="button_masinfo">
+                        
+                        <p><a href="mainpage.html" class="registrar_link">Mas Informacion</a></p>
+                        
+                    </div>
+                    
                     <button type="submit" class="button" >Iniciar Sesion</button>
                 </form>
     
@@ -104,13 +58,13 @@
                 <form action="#" method="post" id="formregistro">
                     <div class="contenedor_input">
     
-                        <input class="input_correo" id="nombre" name="nombre" type="text" required autocomplete="off">
+                        <input title="Ingresa un Nombre válido (solo letras, máximo 10 caracteres)" class="input_correo" id="nombre" name="nombre" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}" >
                         <label for="">Nombre</label>
     
                     </div>
                     <div class="contenedor_input">
     
-                        <input class="input_correo" id="apellido" name="apellido" type="text" required autocomplete="off">
+                        <input title="Ingresa un Apellido válido (solo letras, máximo 10 caracteres)" class="input_correo" id="apellido" name="apellido" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}">
                         <label for="">Apellido</label>
     
                     </div>
@@ -124,7 +78,7 @@
     
                     <div class="contenedor_input">
     
-                        <input class="input_nombre" id="usuario" name="usuario" type="text" required autocomplete="off">
+                        <input  class="input_nombre" id="usuario" name="usuario" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}">
                         <label for="">Nombre Usuario</label>
     
                     </div>
@@ -146,6 +100,7 @@
                     <div class="button_iniciarsesion">
                         <p>tienes una cuenta? <a onclick="cambio_iniciarsesion()" class="registrar_link">Iniciar sesion</a></p>
                     </div>
+
                     
                     <button type="submit" class="button">Registrar</button>
                 </form>

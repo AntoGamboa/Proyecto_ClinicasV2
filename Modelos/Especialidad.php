@@ -10,7 +10,6 @@
         public function setIdEspecialidad($idEspecialidad) { $this->idEspecialidad = $idEspecialidad; }
         public function getNombreEspecialidad() { return $this->nombreEspecialidad; } 
         public function setNombreEspecialidad($nombreEspecialidad) { $this->nombreEspecialidad = $nombreEspecialidad; }
-
         public function __construct()
         {
             parent::__construct();
@@ -56,8 +55,6 @@
 
     $especialidad= new Especialidad();
     $accion=$_POST['accion'];
-    
-    
     if($accion === 'create')
     {
         echo $especialidad->create($_POST['codigo'],$_POST['nombre']);

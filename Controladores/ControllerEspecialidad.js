@@ -5,7 +5,7 @@ const fragmento = document.createDocumentFragment();
 
 let codigoSeleccionado = '';
 
-const ruta = 'https://localhost/Proyecto_ClinicasV2/Modelos/Especialidad.php';
+const ruta = 'http://localhost/Proyecto_ClinicasV2/Modelos/Especialidad.php';
 
 
 formEspecialidad.addEventListener('submit',e =>

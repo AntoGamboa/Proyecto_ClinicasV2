@@ -2,7 +2,7 @@ const EnviarFormulario = document.getElementById('formregistro');
 const template = document.getElementById('templateDatosPatologia').content;
 const fragment = document.createDocumentFragment();
 const tabla_datos = document.getElementById('tabla_datos');
-const rutaPatologia= 'https://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
+const rutaPatologia= 'http://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
 let idSeleccionado = '';
 
 
@@ -94,3 +94,4 @@ const cargarTabla = ()=>{
         tabla_datos.appendChild(fragment);
     })
  };
+ 

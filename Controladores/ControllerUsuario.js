@@ -1,5 +1,5 @@
-let vista = 'https://localhost/Proyecto_ClinicasV2/Vistas/medicoform.html';
-let rutapromesa='https://localhost/Proyecto_ClinicasV2/Modelos/modelUsuarios.php';
+let vista = 'http://localhost/Proyecto_ClinicasV2/Vistas/medicoform.html';
+let rutapromesa='http://localhost/Proyecto_ClinicasV2/Modelos/modelUsuarios.php';
 let Enviarformulario= document.getElementById('formregistro');
 let formLogin= document.getElementById('formLogin');
 
@@ -13,10 +13,7 @@ Enviarformulario.addEventListener('submit',function(e)
         method:'POST',
         body:formData
     })
-    .then(resp => 
-    {
-       return resp.json()
-    })
+    .then(resp => resp.json())
     .then(data =>{
             console.log(data);
     })
@@ -34,15 +31,11 @@ formLogin.addEventListener('submit', e => {
     })
     .then( resp =>resp.json())
     .then(data => {
-       if(data === false)
+        console.log(data);
+       if(data.Success != false)
        {
-            alert('Error usuario o contraseña invalida')
+            window.location.href = "http://localhost/Proyecto_ClinicasV2/vistas/consultas.html"
        }
-       else{
-            alert(`Bienvenido al Sistema ${data.nombre}`)
-            location.replace(vista);
-       }
-
     });
 });
 

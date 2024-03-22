@@ -47,7 +47,7 @@
   width: 1000px;
   border-top: 3.5px solid rgb(22, 145, 216);
   border-bottom: 3.5px solid rgb(22, 145, 216);
-  margin-left: 60px;
+  
   min-height: 600px;
   padding-bottom: 40px;
   color: rgb(22, 145, 216);
@@ -172,4 +172,21 @@
 .button_iniciarsesion a {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.button_masinfo{
+
+  margin-top: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgb(22, 145, 216);
+
+}
+.button_masinfo a{
+
+  margin-top: 10px;
+  text-decoration: underline;
+  cursor: pointer;
+  color: rgb(22, 145, 216);
+
 }
