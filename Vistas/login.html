@@ -58,13 +58,13 @@
                 <form action="#" method="post" id="formregistro">
                     <div class="contenedor_input">
     
-                        <input class="input_correo" id="nombre" name="nombre" type="text" required autocomplete="off">
+                        <input title="Ingresa un Nombre válido (solo letras, máximo 10 caracteres)" class="input_correo" id="nombre" name="nombre" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}" >
                         <label for="">Nombre</label>
     
                     </div>
                     <div class="contenedor_input">
     
-                        <input class="input_correo" id="apellido" name="apellido" type="text" required autocomplete="off">
+                        <input title="Ingresa un Apellido válido (solo letras, máximo 10 caracteres)" class="input_correo" id="apellido" name="apellido" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}">
                         <label for="">Apellido</label>
     
                     </div>
@@ -78,7 +78,7 @@
     
                     <div class="contenedor_input">
     
-                        <input class="input_nombre" id="usuario" name="usuario" type="text" required autocomplete="off">
+                        <input  class="input_nombre" id="usuario" name="usuario" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}">
                         <label for="">Nombre Usuario</label>
     
                     </div>

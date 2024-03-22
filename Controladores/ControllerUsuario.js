@@ -31,7 +31,11 @@ formLogin.addEventListener('submit', e => {
     })
     .then( resp =>resp.json())
     .then(data => {
-       console.log(data);
+        console.log(data);
+       if(data.Success != false)
+       {
+            window.location.href = "http://localhost/Proyecto_ClinicasV2/vistas/consultas.html"
+       }
     });
 });
 

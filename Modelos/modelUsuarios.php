@@ -40,13 +40,14 @@
         public function logearse($correo,$password)
         {   
             try{
-                $query = ' SELECT * from usuarios where correo = ? and passuser = ?';
+                $query = ' SELECT * from usuarios where (correo = ? or usuario=?) and passuser = ?';
                 $stmt=$this->getConexion()->prepare($query);
-                $stmt->execute(array($correo,$password));
+                $stmt->execute(array($correo,$correo,$password));
                 $user=$stmt->fetch(pdo::FETCH_OBJ);
                if($user==false)
                {
-                    echo json_encode(['Error' => 'Usuario o contraseña invalidos']);
+                    echo json_encode(['Error' => 'Usuario o contraseña invalidos',
+                                        'Success' => false ]);
                }else
                {
                     $ttl = 60*60*24;

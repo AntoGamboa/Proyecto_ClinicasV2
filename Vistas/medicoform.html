@@ -126,20 +126,29 @@
 
 								<input class="input_cedulamedico" id="cedula"
 									name="cedula" type="text" required
-									autocomplete="off">
+									autocomplete="off"
+									title="Ingresa una Cedula válida (solo numeros, máximo 15 caracteres)"
+									pattern="[0-9]{0,15}"
+									>
 								<label for="">Cedula</label>
 
 							</div>
 							<div class="contenedor_input">
 								<input class="input_nombremedico" id="nombre"
 									name="nombre" type="text" required
-									autocomplete="off">
+									autocomplete="off"
+									title="Ingresa un Nombre válido (solo letras, máximo 10 caracteres)"
+									pattern="[a-zA-ZñÑ]{0,10}"
+									>
 								<label for="">Nombre</label>
 							</div>
 							<div class="contenedor_input">
 								<input class="input_apellidomedico"
 									id="apellido" name="apellido" type="text"
-									required autocomplete="off">
+									required autocomplete="off"
+									title="Ingresa un Apellido válido (solo letras, máximo 10 caracteres)"
+									pattern="[a-zA-ZñÑ]{0,10}"
+									>
 								<label for="">Apellido</label>
 
 							</div>
