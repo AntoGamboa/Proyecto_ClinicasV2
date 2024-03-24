@@ -78,123 +78,119 @@
                 
             </div>
 
-            <div class="pacientselectcont active">
+            <div class="formpages">
 
-                <div class="searchbarcont">
-    
-                    <input type="text" class="searchbar">
-    
-                </div>
 
-                <div class="tablausuarios">
+                <div class="pacientpage">
+
+                    <div class="pacientselectcont active">
+
+                        <div class="searchbarcont">
             
-                    <table id="tabla" class="tabla" > 
+                            <input type="text" class="searchbar">
+            
+                        </div>
+        
+                        <div class="tablausuarios">
+                    
+                            <table id="tabla" class="tabla" > 
+                                
+                                    <thead>
+                                        <tr>
+                                            <th>Cedula</th>
+                                            <th>Nombre</th>
+                                            <th>Apellido</th>
+                                            
+                                            <th>Telefono</th>
+                                            <th>Telefono emergencia</th>
+                                        </tr>
+                                    </thead>
+                    
+                                    <tbody id="tabla_datos">
+                                        <!-- aqui se agregaran los datos -->
+        
+                                    </tbody>
+                    
+                            </table>
+                    
+                        </div>
+        
+                    </div>
+                   
+                    <form action="" class="pacientform" id="formPaciente">
+                        <input type="hidden" id="accionFormulario" name="accion" value="create">
+        
+                        <div class="contenedor_input">
+        
+                            <input class="input_cedula" id="cedula" name="cedula" type="text" required autocomplete="off">
+                            <label for="">Cedula</label>
+        
+                        </div>
+        
+                        <div class="contenedor_input">
+            
+                            <input class="input_nombre" id="nombre" name="nombre" type="text" required autocomplete="off">
+                            <label for="">Nombre</label>
+        
+                        </div>
+                        <div class="contenedor_input">
+        
+                            <input class="input_apellido" id="apellido" name="apellido" type="text" required autocomplete="off">
+                            <label for="">Apellido</label>
+        
+                        </div>
                         
-                            <thead>
-                                <tr>
-                                    <th>Cedula</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
-                                    
-                                    <th>Telefono</th>
-                                    <th>Telefono emergencia</th>
-                                </tr>
-                            </thead>
-            
-                            <tbody id="tabla_datos">
-                                <!-- aqui se agregaran los datos -->
-
-                            </tbody>
-            
-                    </table>
-            
-                </div>
-
-            </div>
-           
-            <form action="" class="pacientform" id="formPaciente">
-                <input type="hidden" id="accionFormulario" name="accion" value="create">
-
-                <div class="contenedor_input">
-
-                    <input class="input_cedula" id="cedula" name="cedula" type="text" 
-                    pattern="([VE]-)?[0-9]{8}"
-                    title="La cedula debe poseer 8 caracteres y deben ser numeros" 
-                    required autocomplete="off">
-                    <label for="">Cedula</label>
+                        <div class="contenedor_input">
+        
+                            <input class="input_telefono" id="telefono" name="telefono" type="text" required autocomplete="off">
+                            <label for="">Telefono</label>
+        
+                        </div>
+        
+                        <div class="contenedor_input">
+        
+                            <input class="input_telefonoemergencia" id="telefonoemergencia" name="telefonoemergencia" type="text" required autocomplete="off">
+                            <label for="">Telefono Emergencia</label>
+        
+                        </div>
+        
+                        <button type="submit" value="registro" class="button btnRegistrar">Registrar</button>
+                       
+        
+                        
+                    </form>
 
                 </div>
-
-                <div class="contenedor_input">
+                
     
-                    <input class="input_nombre" id="nombre" name="nombre"
-                     type="text" pattern= "^[a-zA-ZÀ-ÿ\s]{2,40}$"
-                     title="El Nombre solo puede contener letras" 
-                     required autocomplete="off">
-                    <label for="">Nombre</label>
-
+                <div class="consultformcont">
+                    <form action="" class="consultform" id="formregistroconsulta">
+        
+                        
+                        <div class="contenedor_input detalles">
+        
+                            <textarea class="input_detalles" id="detalles" name="detalles" type="text" required autocomplete="off"></textarea>
+                            <label for="">Detalles</label>
+        
+                        </div>
+        
+                        <button type="submit" class="button">Registrar</button>
+        
+                        
+                    </form>
+        
+        
+                    
+        
+                    
+                    
                 </div>
-                <div class="contenedor_input">
-
-                    <input class="input_apellido" id="apellido" name="apellido" type="text"
-                     pattern= "^[a-zA-ZÀ-ÿ\s]{4,40}$" 
-                     title="El Apellido puede contener letras"
-                      required autocomplete="off">
-                    <label for="">Apellido</label>
-
-                </div>
-                
-                <div class="contenedor_input">
-
-                    <input class="input_telefono" id="telefono" name="telefono" 
-                    type="text" pattern="^\d{11}$" 
-                    title="El Telefono debe tener 11 caracteres y no puede exceder los 11 caracteres" 
-                    required autocomplete="off">
-                    <label for="">Telefono</label>
-
-                </div>
-
-                <div class="contenedor_input">
-
-                    <input class="input_telefonoemergencia" id="telefonoemergencia" name="telefonoemergencia" 
-                    type="text" pattern="^\d{11}$" 
-                    title="El Telefono debe tener 11 caracteres y no puede exceder los 11 caracteres"
-                    required autocomplete="off">
-                    <label for="">Telefono Emergencia</label>
-
-                </div>
-
-                <button type="submit" value="registro" class="button btnRegistrar">Registrar</button>
-               
-
-                
-            </form>
+            </div>
 
         </div>
 
 
-        <div class="consultformcont">
-            <form action="" class="consultform" id="formregistroconsulta">
-
-                
-                <div class="contenedor_input detalles">
-
-                    <textarea class="input_detalles" id="detalles" name="detalles" type="text" required autocomplete="off"></textarea>
-                    <label for="">Detalles</label>
-
-                </div>
-
-                <button type="submit" class="button">Registrar</button>
-
-                
-            </form>
-
-
-            
-
-            
-            
-        </div>
+        
     </section>
     <template id="templateDatosPaciente">
          <tr>

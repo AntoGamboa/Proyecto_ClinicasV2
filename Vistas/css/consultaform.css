@@ -8,9 +8,18 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding-top: 7%;
-    width: 20%;
-    margin-left: 550px;
+    min-width: 100vh;
+    min-height: 100vh;
+    margin-left: 120px;
+    background: linear-gradient(
+      to right,
+      rgb(255, 255, 255) 10%,
+      rgba(255, 255, 255, 0.912) 80%,
+      rgba(74, 189, 255, 0.235) 100%
+    ),
+    url("../recursos/img/historia.jpg"); 
+    background-position: center;
+    background-size: cover;
     
 }
 
@@ -56,22 +65,46 @@
 .pacientformcont{
     background-color: rgb(0, 26, 58);
     min-height: 69vh;
+    max-height: 69vh;
     min-width: 550px;
+    max-width: 550px;
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
     max-width: 600px;
     transition: background-color 0.1s ease, min-height 0.2s ease;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    overflow: hidden;
+    
 }
 
 .pacientformcont.registro{
     background-color: rgb(24, 116, 227);
     min-height: 680px;
+    
     min-width: 550px;
+    max-width: 550px;
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
     max-width: 600px;
     border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+
+.formpages{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    
+    margin-left: 80%;
+}
+
+.pacientpage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 60px;
 }
 
 
@@ -84,9 +117,10 @@
     grid-gap: 5px;
     width: 600px; 
     height: 500px;
-    margin-top: 40px;
-    margin-left: 5%;
+    position: absolute;
     transition: opacity 0.1s;
+    margin-left: 10%;
+    margin-bottom: 10%;
     
 }
 
@@ -126,15 +160,15 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
-  }
+}
 
-  .pacientformcont .button{
+.pacientformcont .button{
     margin-top: 50px;
-  }
+}
 
 .contenedor_input.detalles {
   position: relative;
-  border-bottom: 2px solid rgb(255, 255, 255);
+  border-bottom: none;
 }
 
 .contenedor_input.detalles .input_detalles:focus ~ label,
@@ -149,17 +183,16 @@
   margin-top: 80px;
   border: none;
   border-bottom: 2px solid rgb(57, 146, 255); 
-  background-color: white; 
+  background-color: transparent; 
   resize: none;
 }
 
 
 .pacientselectcont{
-    margin-top: 5%;
-    min-width: 550px;
-    max-width: 550px;
-    min-height: 600px;
-    position: absolute;
+    
+    min-width: 575px;
+    max-width: 575px;
+    
     transition: opacity 0.1s ease;
 }
 
@@ -173,6 +206,7 @@
     max-height: 590px;
     color: white;
     overflow-y: scroll; 
+    min-width: 100%;
     
 }
 
@@ -182,7 +216,7 @@ th, td {
     text-align: left;
     
     
-    overflow: scroll;
+    
 }
 
 tr.selected{
@@ -206,7 +240,6 @@ th{
     
     min-height: 80vh;
     min-width: 500px;
-    margin-left: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -278,151 +311,3 @@ th{
     padding-bottom: 10px;
 }
 
-@media (min-width: 1500px) {
-
-    .formcontainer{
-        margin-left: 44%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        padding-top: 5%;
-    }
-    
-    .buttonregister {
-        width: 100px;
-        height: 50px;
-        background: rgb(91, 168, 213);
-        font-family: Arial, Helvetica, sans-serif;
-        margin-top: -10px;
-        margin-left: -10px;
-        border: none;
-        position: absolute;
-        cursor: pointer;
-        font-size: 15px;
-        color: aliceblue;
-        font-weight: 500;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
-    }
-    
-    
-    
-    
-    
-    
-    .pacientformcont{
-        background-color: rgb(0, 26, 58);;
-        min-height: 69vh;
-        min-width: 600px;
-        box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
-        max-width: 600px;
-        transition: background-color 0.1s ease, min-height 0.2s ease;
-    }
-    
-    .pacientformcont.registro{
-        background-color: rgb(57, 146, 255);
-        min-height: 680px;
-        min-width: 600px;
-        box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
-        max-width: 600px;
-    }
-    
-    
-    
-    
-    
-    .pacientform{
-        display: grid;
-        grid-template-columns: 260px 260px;
-        grid-gap: 5px;
-        width: 600px; 
-        height: 500px;
-        margin-top: 40px;
-        margin-left: 10%;
-        transition: opacity 0.1s;
-        
-    }
-    
-    
-    
-    .button{
-        width: 90%;
-        height: 50px;
-        background: rgb(91, 168, 213);
-        font-family: Arial, Helvetica, sans-serif;
-        margin-top: -30px;
-        margin-left: -10px;
-        border: none;
-        cursor: pointer;
-        font-size: 15px;
-        color: aliceblue;
-        font-weight: 500;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
-    }
-    
-    
-    
-    
-    .pacientselectcont{
-        margin-top: 5%;
-        min-width: 600px;
-        max-width: 600px;
-        min-height: 600px;
-        position: absolute;
-        transition: opacity 0.1s ease;
-    }
-    
-    .searchbarcont{
-        margin-left: 20px;
-    }
-    
-    .tablausuarios{
-        margin-top: 10px;
-        min-height: 590px;
-        max-height: 590px;
-        color: white;
-        overflow-y: scroll; 
-        
-    }
-    
-    
-    
-    
-    
-    
-    .consultformcont{
-        
-        min-height: 80vh;
-        min-width: 500px;
-        margin-left: 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-    
-    }
-    
-    
-    
-    .consultform{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 150px;
-        width: 500px; 
-        height: 500px;
-        margin-top: 30px;
-        margin-left: 20px;
-    }
-    
-    
-    
-    
-}
