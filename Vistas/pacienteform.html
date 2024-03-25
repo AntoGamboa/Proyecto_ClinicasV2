@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta</title>
-    <link rel="stylesheet" href="css/consultaform.css">
+    <link rel="stylesheet" href="css/pacienteform.css">
     <link rel="stylesheet" href="css/barranav.css">
     <script src="../Controladores/VerificarSesiones.js" ></script>
 
@@ -72,6 +72,12 @@
 
         <div class="pacientformcont registro">
 
+            <div class="buttoncont">
+                    
+                <div class="buttonregister" onclick="cambiotabla()">Registrar</div> 
+                
+            </div>
+
             
 
             <div class="formpages paciente">
@@ -104,17 +110,19 @@
                     
                                     <tbody id="tabla_datos">
                                         <!-- aqui se agregaran los datos -->
-                                        <tr>
-                                            <td id="cedula">Insercion</td>
-                                            <td id="nombre">Insercion</td>
-                                            <td id="apellido">Insercion</td>
-                                            <td id="telefono">Insercion</td>
-                                            <td id="telefonoEmergencia">Insercion</td>
-                                            <td>
-                                                <button  type="button" class="edit-button" >Editar</button>
-                                                <button  type="button" class="delete-button">Eliminar</button>
-                                            </td>
-                                        </tr>
+                                        
+                                            <tr>
+                                               <td id="cedula">Insercion</td>
+                                               <td id="nombre">Insercion</td>
+                                               <td id="apellido">Insercion</td>
+                                               <td id="telefono">Insercion</td>
+                                               <td id="telefonoEmergencia">Insercion</td>
+                                               <td>
+                                                   <button  type="button" class="edit-button" >Editar</button>
+                                                   <button  type="button" class="delete-button">Eliminar</button>
+                                               </td>
+                                           </tr>
+                                       
         
                                     </tbody>
                     
@@ -124,14 +132,9 @@
         
                     </div>
                    
-                    <form action="" class="pacientform" id="formPaciente">
+                    <form action="" class="pacientform" id="datosformPaciente">
                         <input type="hidden" id="accionFormulario" name="accion" value="create">
 
-                        <div class="buttoncont">
-                    
-                            <div class="buttonregister" onclick="cambiotabla()">Registrar</div> 
-                            
-                        </div>
         
                         <div class="contenedor_input">
         
@@ -167,7 +170,8 @@
         
                         </div>
         
-                        <button type="submit" value="registro" class="button btnRegistrar">Registrar</button>
+                        <button type="button" class="button"
+                            onclick="avanzar()">Adelante</button>
 
 
                         
@@ -178,82 +182,49 @@
 
                 </div>
 
-                <div class="seleccionpatologiacont active">
+                <div class="seleccionalergiacont active">
 
                     <div class="inputcontespe">
 
                         <input type="text" class="searchbar">
 
-                        <div>Seleccione Las Patologias que presenta el paciente</div>
+                        <div>Seleccione Las Alergias que posee el paciente</div>
 
                     </div>
 
-                    <div class="patologiascont">
+                    <div class="alergiascont">
 
-                        <div class="patologiacont">
+                        <div class="alergiacont">
                             <div>internista</div>
                         </div>
-                        <div class="patologiacont">
+                        <div class="alergiacont">
                             <div>patologo</div>
                         </div>
-                        <div class="patologiacont">
+                        <div class="alergiacont">
                             <div>dermatologo</div>
                         </div>
-                        <div class="patologiacont">
+                        <div class="alergiacont">
                             <div>otorrinolaringolo</div>
                         </div>
 
                     </div>
 
 
-                    <div class="buttonformcont">
+                    <form action="" id="formPaciente" class="buttonformcont">
+
+                        
 
                         <button type="button" class="button"
                             onclick="retroceder()">Atras</button>
-                        <button type="button" class="button"
-                            onclick="avanzar()">Adelante</button>
-                    </div>
+                        
+                        <button type="submit" onvalue="registro" class="button btnRegistrar">Registrar</button>
+                        
+                    </form>
 
 
                 </div>
                 
     
-                <div class="consultformcont">
-
-                    
-                    <form action="" class="consultform" id="formregistroconsulta">
-
-                        
-                        <div>Proporcione los detalles de la consulta</div>
-                        
-                        <div class="contenedor_input detalles">
-
-                            
-        
-                            <textarea class="input_detalles" id="detalles" name="detalles" type="text" required autocomplete="off"></textarea>
-                            <label for="">Detalles</label>
-        
-                        </div>
-
-                        <div class="buttonformcont">
-
-                            <button type="button" class="button"
-                            onclick="retroceder()">Atras</button>
-                            <button type="submit" class="button">Registrar</button>
-                            
-                        </div>
-        
-                        
-        
-                        
-                    </form>
-        
-        
-                    
-        
-                    
-                    
-                </div>
             </div>
 
         </div>
@@ -277,7 +248,7 @@
 
       
     <script src="js/interactnav.js"></script>
-    <script src="js/interactconsultaform.js"></script>
+    <script src="js/interactpacienteform.js"></script>
     <script src="../Controladores/ControllerPaciente.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

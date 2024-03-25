@@ -36,8 +36,26 @@ document.addEventListener('DOMContentLoaded',e =>{
 });
 
 formPaciente.addEventListener('submit', e =>{
+
     e.preventDefault();
-    let formdata = new FormData(formPaciente);
+
+    let contador = 1;
+
+    //obtenemos los datos del formulario del paciente
+
+    const datosformpaciente = document.getElementById("datosformpaciente");
+
+    let formdata = new FormData(datosformpaciente);
+
+    alergias.forEach(alergia => {
+
+        //itera el aray de alergias obtenido desde el formulario y los agregamos al formdata
+        
+        formdata.append('alergia' + contador, alergia)
+        contador++;
+
+    });
+
     if(formdata.get('accion') === 'create'){        
         fetch(rutaPaciente,{
             method:'POST',

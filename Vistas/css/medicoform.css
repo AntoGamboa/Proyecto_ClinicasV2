@@ -20,6 +20,7 @@
     url("../recursos/img/medicos-2.jpg"); 
   background-position: center;
   background-size: cover;
+  margin-left: 70px;
 }
 
 .buttonregister {
@@ -279,7 +280,7 @@ th{
     height: 50px;
     background: rgb(32, 172, 248);
     font-family: Arial, Helvetica, sans-serif;
-    
+    border-radius: 12px;
     margin-left: -10px;
     border: none;
     cursor: pointer;
@@ -293,7 +294,7 @@ th{
 }
 
 .especialidadcont.selected{
-  background: rgb(0, 60, 72);
+  background: rgb(0, 2, 40);
 }
 
 .inputcontespe{

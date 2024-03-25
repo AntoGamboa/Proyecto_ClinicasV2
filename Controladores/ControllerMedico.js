@@ -6,6 +6,7 @@ let rutaMedicos='http://localhost/Proyecto_ClinicasV2/Modelos/Medico.php';
 let cedulaSeleccionada = '';
 
 EnviarFormulario.addEventListener('submit',e => {
+    
     e.preventDefault();
     let formdata = new FormData(EnviarFormulario);
     if(formdata.get('accion') === 'create'){        
