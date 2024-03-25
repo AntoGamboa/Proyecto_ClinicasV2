@@ -3,14 +3,14 @@ var pacientformcont = document.querySelector(".pacientform");
 var formcont = document.querySelector(".pacientformcont");
 const buttoncambio = document.querySelector(".buttonregister");
 
-const botonregistro = document.querySelector(".pacientform button");
+const botonregistro = document.querySelector(".button.btnRegistrar");
 let accionform= document.getElementById('accionFormulario');
 
 const paginasform = document.querySelector(".formpages");
 
 var seleccion = false;
 
-var patologias = [];
+var alergias = [];
 
 
 
@@ -51,10 +51,11 @@ function cambiotabla(){
         paginasform.classList.remove(paginasform.classList.item(1));
       }
 
-      reiniciarseleccion();
-      patologias = [];
       paginasform.classList.add("paciente");
 
+      alergias = [];
+
+      reiniciarseleccion();
       seleccion= false;
 
     }
@@ -107,15 +108,15 @@ function avanzar(){
   if(paginasform.classList.contains("paciente")){
 
     paginasform.classList.toggle("paciente");
-    paginasform.classList.toggle("patologia");
+    paginasform.classList.toggle("alergia");
     
 
   }
-  else if(paginasform.classList.contains("patologia")  && patologias.length > 0){
+  else if(paginasform.classList.contains("alergia")  && alergias.length > 0){
 
 
-    paginasform.classList.toggle("patologia");
-    paginasform.classList.toggle("detalles");
+    paginasform.classList.toggle("alergia");
+    
 
     
 
@@ -128,73 +129,14 @@ function avanzar(){
 
 function retroceder(){
 
-  if(paginasform.classList.contains("detalles")){
+  if(paginasform.classList.contains("alergia")){
 
-    paginasform.classList.toggle("detalles");
-    paginasform.classList.toggle("patologia");
-    
-
-  }
-  else if(paginasform.classList.contains("patologia")){
-
-    paginasform.classList.toggle("patologia");
+    paginasform.classList.toggle("alergia");
     paginasform.classList.toggle("paciente");
-    cambiotabla();
 
     
-    
-
   }
 
-
-}
-
-
-
-
-
-
-
-
-const tablaDatos = document.getElementsByTagName("tr");
-
-for (let i = 0; i < tablaDatos.length; i++) {
-
-  const fila = tablaDatos[i];
-  const nombre = fila.querySelectorAll("td")[0];
-
-  fila.addEventListener('click', function(event) {
-
-    if(event.target.classList.contains("edit-button") || event.target.classList.contains("delete-button")){
-
-      
-
-        
-
-    }else{
-
-      if (fila.classList.contains("selected")) {
-
-        fila.classList.remove("selected");
-        seleccion = false;
-  
-      }else if(seleccion != true ) {
-  
-        variablespaciente = [];
-  
-        cambiotabla();
-        avanzar();
-  
-        seleccion = true;
-  
-      }
-
-      
-    }
-
-    
-
-  });
 
 }
 
@@ -202,43 +144,52 @@ for (let i = 0; i < tablaDatos.length; i++) {
 //reinicia selecciones
 
 function reiniciarseleccion(){
-  patologiascont.forEach(patologia =>{
+    alergiascont.forEach(alergia =>{
 
-      if(patologia.classList.contains("selected")){
-          patologia.classList.remove("selected");
-      }
+        if(alergia.classList.contains("selected")){
+            alergia.classList.remove("selected");
+        }
 
-  });
+    });
 }
 
 
 
-const patologiascont = document.querySelectorAll(".patologiacont");
 
-for (let i = 0; i < patologiascont.length; i++) {
+
+
+
+
+
+
+
+const alergiascont = document.querySelectorAll(".alergiacont");
+
+for (let i = 0; i < alergiascont.length; i++) {
   
-    patologiascont[i].addEventListener('click', function(event) {
+    alergiascont[i].addEventListener('click', function(event) {
 
-      
+        if(alergiascont[i].classList.contains("selected")){
 
-        if(patologiascont[i].classList.contains("selected")){
+            alergiascont[i].classList.remove("selected");
 
-          patologiascont[i].classList.remove("selected");
+            const borrar = alergias.indexOf( alergiascont[i].innerHTML)
 
-          const borrar = patologias.indexOf( patologiascont[i].innerHTML)
+            if (borrar !== -1) {
+              alergias.splice(borrar, 1);
+            }
 
-          if (borrar !== -1) {
-            patologias.splice(borrar, 1);
-          }
+            
 
+            
         }else{
 
-            patologiascont[i].classList.add("selected");
-            patologias.push(patologiascont[i].innerHTML);
+            alergiascont[i].classList.add("selected");
+            alergias.push(alergiascont[i].innerHTML);
             
             
         }
-      
+
      
     });
 }

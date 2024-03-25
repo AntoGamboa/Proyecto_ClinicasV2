@@ -1,5 +1,4 @@
 const seleccioncont = document.querySelector(".seleccionespecialidadcont");
-const confirmarcont = document.querySelector(".confirmacioncont");
 
 const buttoncambio = document.querySelector(".buttonregister");
 
@@ -12,14 +11,20 @@ const formcont = document.querySelector(".formcont");
 const tablecont = document.querySelector(".selectcont");
 const formregistro = document.querySelector(".formregistrocont");
 
-
 const formMedicoregistro = document.querySelector(".formmedicocont");
-
-const especialidades = document.querySelectorAll(".especialidadcont");
 
 const tabla = document.getElementById("tabla_datos");
 
 let accionForm = document.getElementById('accionFormulario');
+
+
+var especialidades = []; //aqui van las especialidades por medico que se van a enviar o modificar
+
+
+var especialidadesbasededatos //aqui van las que se extraen de la base de datos
+
+
+
 
 
 function cambiotabla(){
@@ -50,8 +55,11 @@ function cambiotabla(){
 
         formMedicoregistro.classList.remove("active");
         seleccioncont.classList.remove("active");
-        confirmarcont.classList.remove("active");
         
+        reiniciarseleccion();
+
+        especialidades = [];
+
         
 
     }
@@ -80,17 +88,9 @@ function abrirespecialidades(){
         seleccioncont.classList.remove("active");
         confirmarcont.classList.add("active");
     }
-    else if (confirmarcont.classList.contains("active")){
-
-        formMedicoregistro.classList.add("active");
-        seleccioncont.classList.remove("active");
-        confirmarcont.classList.remove("active");
-
-    }
     else if (formMedicoregistro.classList.contains("active")){
 
         seleccioncont.classList.add("active");
-        confirmarcont.classList.remove("active");
         formMedicoregistro.classList.remove("active");
 
     }
@@ -150,35 +150,7 @@ function cambiotablaeditar(variables){
    
 }
 
-function asignarespecialidades(cedula){
 
-
-    let formdata = new FormData();
-    formdata.append("accion","readAll");
-    fetch('../Modelos/especialidad.php',{
-
-        method:'POST',
-        body:formdata
-
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        console.log(data);
-
-        especialidades.forEach(element => {
-            data.forEach(especialidad)
-            if(element.innerHTML == especialidades){
-
-                element.classList.add("selected")
-            }
-        
-        });
-
-       
-    })
-    
-}
 
 
 
@@ -229,24 +201,82 @@ document.addEventListener("DOMContentLoaded", function(){
 })
 
 
-for (let i = 0; i < especialidades.length; i++) {
+//reinicia selecciones
 
-    const especialidad = especialidades[i].getElementsByTagName("div")[0];
-    const nombre = especialidad.innerHTML;
+function reiniciarseleccion(){
+    especialidadescont.forEach(especialidad =>{
+
+        if(especialidad.classList.contains("selected")){
+            especialidad.classList.remove("selected");
+        }
+
+    });
+}
+
+
+const especialidadescont = document.querySelectorAll(".especialidadcont");
+
+
+for (let i = 0; i < especialidadescont.length; i++) {
   
-    especialidades[i].addEventListener('click', function(event) {
+    especialidadescont[i].addEventListener('click', function(event) {
 
-        if(especialidades[i].classList.contains("selected")){
+        if(especialidadescont[i].classList.contains("selected")){
+
+            especialidadescont[i].classList.remove("selected");
+
+            const borrar = especialidades.indexOf( especialidadescont[i].innerHTML)
+
+            if (borrar !== -1) {
+              especialidades.splice(borrar, 1);
+            }
 
             
-            especialidades[i].classList.remove("selected");
+
+            
+
             
         }else{
 
-            especialidades[i].classList.add("selected");
-            alert("Has seleccionado " + nombre);
+            especialidadescont[i].classList.add("selected");
+            especialidades.push(especialidadescont[i].innerHTML);
+    
+            
+            
         }
 
      
     });
-  }
+}
+
+function asignarespecialidades(cedula){
+
+
+    let formdata = new FormData();
+    formdata.append("accion","readAll");
+    formdata.append("cedula",cedula);
+    fetch('../Modelos/especialidad.php',{
+
+        method:'POST',
+        body:formdata
+
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        console.log(data);
+
+        especialidadescont.forEach(element => {
+            data.forEach(especialidad)
+            if(element.innerHTML == especialidadescont){
+
+                element.classList.add("selected")
+            }
+        
+        });
+
+       
+    })
+    
+}
+

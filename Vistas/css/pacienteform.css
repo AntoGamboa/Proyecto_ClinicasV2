@@ -10,7 +10,7 @@
     justify-content: center;
     min-width: 100vh;
     min-height: 100vh;
-    margin-left: 90px;
+    margin-left: 120px;
     background: linear-gradient(
       to right,
       rgb(255, 255, 255) 10%,
@@ -21,12 +21,6 @@
     background-position: center;
     background-size: cover;
     
-}
-
-.buttoncont{
-    position: absolute;
-    margin-left: -28%;
-    margin-top: -30px;
 }
 
 .buttonregister {
@@ -56,6 +50,7 @@
 }
 
 .pacientselectcont.active {
+    margin-top: 60px;
     opacity: 1;
     pointer-events: all;
     
@@ -100,27 +95,23 @@
     justify-content: center;
     align-items: center;
     gap: 100px;
-    margin-left: 130%;
-    transition: transform ease 0.2s, margin-top ease 0.2s ;
+    margin-left: 88%;
+    transition: transform ease 0.2s;
 }
 
 
-.formpages.patologia{
-    
+.formpages.alergia{
+   
     transform: translateX(-800px);
-    margin-top: -40px;
 }
 
-.formpages.detalles{
-    margin-top: -40px;
-    transform: translateX(-1500px);
-}
 
 .pacientpage{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+    
     
 }
 
@@ -137,7 +128,7 @@
     position: absolute;
     transition: opacity 0.1s;
     margin-left: 10%;
-    margin-bottom: 10%;
+    
     
 }
 
@@ -199,7 +190,6 @@
   max-height: 100%;
   margin-top: 80px;
   border: none;
-  color: white;
   border-bottom: 2px solid rgb(57, 146, 255); 
   background-color: transparent; 
   resize: none;
@@ -268,17 +258,7 @@ th{
 
 
 
-.consultform{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 500px; 
-    height: 500px;
-    margin-top: 80px;
-    margin-left: 100px;
-}
+
 
 
 .text_container {
@@ -335,8 +315,8 @@ th{
 
 
 
-.seleccionpatologiacont{
-    
+.seleccionalergiacont{
+    margin-top: 3%;
     opacity: 0;
     visibility: none;
     pointer-events: none;
@@ -348,7 +328,7 @@ th{
     
 }
 
-.seleccionpatologiacont.active{
+.seleccionalergiacont.active{
 
     opacity: 1;
     visibility:visible;
@@ -357,7 +337,7 @@ th{
 }
 
 
-.patologiascont{
+.alergiascont{
     display: grid;
     padding: 0 30px;
     grid-template-columns: 100px 100px 100px 100px;
@@ -369,7 +349,7 @@ th{
     
 }
 
-.patologiacont{
+.alergiacont{
   min-width: 100px;
   width: 120px;
     height: 50px;
@@ -388,7 +368,7 @@ th{
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
 }
 
-.patologiacont.selected{
+.alergiacont.selected{
   background: rgb(0, 2, 40);
 }
 
