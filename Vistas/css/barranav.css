@@ -269,6 +269,54 @@ main.min-main{
     margin-left: 80px;
 }
 
+.tdbuttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+.edit-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    background-color: rgb(0, 47, 105);
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+
+.edit-button ion-icon{
+    color: rgb(255, 255, 255);
+    font-size: 23px;
+    pointer-events: none;
+
+}
+
+.delete-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    background-color: rgb(255, 49, 49);
+    border-radius: 5px;
+    cursor: pointer;
+    
+
+}
+
+.delete-button ion-icon{
+    color: rgb(255, 255, 255);
+    font-size: 23px;
+    pointer-events: none;
+
+}
+
+
 
 
 /*------------------> Responsive*/
