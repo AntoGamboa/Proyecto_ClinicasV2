@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/barranav.css">
+
+</head>
+<body>
+
+    <div class="navbar">
+    
+        <div class="menu">
+            <ion-icon name="menu-outline"></ion-icon>
+            <ion-icon name="close-outline"></ion-icon>
+        </div>
+
+        <div class="barra-lateral mini-barra-lateral dark-mode">
+            <div>
+                <div class="nombre-pagina">
+                    <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                    <span class="spannav oculto">Historia Clinica</span>
+                </div>
+                <button class="boton">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    <span class="spannav oculto">Menu Principal</span>
+                </button>
+            </div>
+
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a id="inbox" href="mainpage.html">
+                            <ion-icon name="home-outline"></ion-icon>
+                            <span class="spannav oculto">Inicio</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a id="inbox" href="login.html">
+                            <ion-icon name="person-outline"></ion-icon>
+                            <span class="spannav oculto">Iniciar Sesion</span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+            </nav>
+
+            <div>
+                <div class="linea"></div>
+
+            
+        
+            
+
+            </div>
+
+        <div>
+
+    </div>
+            
+    
+        
+
+    </div>
+    
+
+    <section class="loginregister_container oscuro">
+
+        
+        <div class="contenedor_box" style="color: white;">
+    
+            
+    
+    
+            <div class="register_box active">
+    
+            <h2>Crear Cuenta</h2>
+    
+                <form action="#" method="post" id="formregistro">
+
+
+                    
+                    <div class="contenedor_input">
+    
+                        <input title="Ingresa un Nombre válido (solo letras, máximo 10 caracteres)" class="input_correo" id="nombre" name="nombre" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}" >
+                        <label for="">Nombre</label>
+    
+                    </div>
+                    <div class="contenedor_input">
+    
+                        <input title="Ingresa un Apellido válido (solo letras, máximo 10 caracteres)" class="input_correo" id="apellido" name="apellido" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}">
+                        <label for="">Apellido</label>
+    
+                    </div>
+    
+                    <div class="contenedor_input">
+    
+                        <input class="input_correo" id="correo" name="correo" type="mail" required autocomplete="off">
+                        <label for="">Email</label>
+    
+                    </div>
+    
+                    <div class="contenedor_input">
+    
+                        <input  class="input_nombre" id="usuario" name="usuario" type="text" required autocomplete="off" pattern="[a-zA-ZñÑ]{0,10}">
+                        <label for="">Nombre Usuario</label>
+    
+                    </div>
+                    
+                    <div class="contenedor_input">
+    
+                        <input class="input_contraseña" id="contraseña" name="Contraseña" type="password" required autocomplete="off">
+                        <label for="">Contraseña</label>
+    
+                    </div>
+    
+                    <div class="contenedor_input">
+    
+                        <input class="input_contraseña2" type="password" required autocomplete="off">
+                        <label for="">Repetir Contraseña</label>
+    
+                    </div>
+
+                    
+                    <button type="submit" class="button">Registrar</button>
+                </form>
+                
+            </div>
+    
+        </div>
+        
+    </section>
+    <script src="js/interactlogin.js"></script>
+    <script src="js/interactnav.js"></script>
+    <script src="../Controladores/ControllerUsuario.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</body>
+</html>

@@ -13,6 +13,22 @@ var seleccion = false;
 var alergias = [];
 
 
+//comprueba la sesion y te devuelve al menu si no es compatible
+
+/*
+
+const sesion = verificarSession();
+
+if(sesion.permisos == 3){
+
+  window.location.href = "http://localhost/Proyecto_ClinicasV2/vistas/menuprincipal.html"
+
+}
+
+*/
+
+
+
 
 var funcion = "registrar_consulta"; //aqui se determina que funcion va a realizar el submit, registrar_paciente, registrar_consulta y modificar
 
@@ -152,6 +168,8 @@ function reiniciarseleccion(){
 
     });
 }
+
+
 
 
 

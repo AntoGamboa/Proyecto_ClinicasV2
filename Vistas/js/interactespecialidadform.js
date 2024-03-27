@@ -1,3 +1,16 @@
+
+
+/*
+const sesion = verificarSession();
+
+if(sesion.permisos != 1){
+
+    window.location.href = "http://localhost/Proyecto_ClinicasV2/vistas/menuprincipal.html"
+  
+}
+
+*/
+
 function subirform(){
 
     var nombre = document.querySelector(".input_nombreespecialidad");
