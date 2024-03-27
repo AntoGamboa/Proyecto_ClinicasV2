@@ -18,17 +18,23 @@
         {
             parent::__construct();
         }
-        public function create($nombre,$apellido,$cedula)
+        public function create($nombre,$apellido,$cedula,$especialidades)
         {
             $mensaje='';
+            
             try{
+                
+      
                 $query='INSERT INTO medico(cedulaMedico,nombreMedico,apellidoMedico) VALUES(?,?,?);';
                 $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido));
-                $mensaje="registro exitoso";
-            }catch(Exception $e){
-                if($e->getCode() === '23000'){
-                    $mensaje='Ya exite un medico con esa cedula';
+
+                $queryPivot='INSERT INTO medicoxespecialidad(idEspecialidad,cedulaMedico) Values(?,?)'; 
+                foreach(json_decode($especialidades) as $especialidad){
+                    $this->getConexion()->prepare($queryPivot)->execute(array($especialidad,$cedula));
                 }
+                $mensaje='Registro Exitoso';
+            }catch(Exception $e){
+                $mensaje=$e->getMessage();
             }finally
             {
                 return json_encode(['mensaje'=>$mensaje]);
@@ -40,10 +46,7 @@
             
             try{
 
-                $query='SELECT cedulaMedico as cedula,nombreMedico as nombre,apellidoMedico as apellido FROM medico where estado = 1';
-                $stmt=$this->getConexion()->prepare($query);
-                $stmt->execute();
-                return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
+                return json_encode($this->espMedico());
 
             }catch(Exception $e)
             {
@@ -64,6 +67,15 @@
             $this->getConexion()->prepare($query)->execute(array(0,$cedula));
             return json_encode(['mensaje'=>'Eliminacion exitosa']); 
         }
+        private function espMedico()
+        {
+            $stringEspeciliadades = '';
+            $query='SELECT m.cedulaMedico AS cedula, m.nombreMedico AS nombre,m.apellidoMedico AS apellido, GROUP_CONCAT(e.nombreEspecialidad SEPARATOR ",") AS especialidad FROM medicoxespecialidad mxe INNER JOIN medico m ON m.cedulaMedico=mxe.cedulaMedico INNER JOIN especialidad e ON e.idEspecialidad = mxe.idEspecialidad  WHERE m.estado=1 GROUP BY m.cedulaMedico ORDER BY m.cedulaMedico;';
+            $stmt=$this->getConexion()->prepare($query);
+            $stmt->execute();
+            $arrayEspe = $stmt->fetchAll(pdo::FETCH_OBJ);
+            return $arrayEspe;
+        }
     }
 
 
@@ -72,8 +84,8 @@
     $accion=$_POST['accion'];
     
     if($accion === 'create')
-    {
-        echo $Medico->create($_POST['nombre'],$_POST['apellido'],$_POST['cedula']);
+    {   
+        echo $Medico->create($_POST['nombre'],$_POST['apellido'],$_POST['cedula'], $_POST['especialidades']);
     }
     if($accion === 'readAll')
     {

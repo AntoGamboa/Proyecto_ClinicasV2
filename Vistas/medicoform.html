@@ -92,6 +92,7 @@
 									<th>Cedula</th>
 									<th>Nombre</th>
 									<th>Apellido</th>
+									<th>Especialidad</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -170,18 +171,8 @@
 
 						<div class="especialidadescont">
 
-							<div class="especialidadcont">
-								<div>internista</div>
-							</div>
-							<div class="especialidadcont">
-								<div>patologo</div>
-							</div>
-							<div class="especialidadcont">
-								<div>dermatologo</div>
-							</div>
-							<div class="especialidadcont">
-								<div>otorrinolaringolo</div>
-							</div>
+							
+							
 
 						</div>
 
@@ -201,12 +192,18 @@
 				</form>
 			</div>
 		</section>
+		<template id="TemplateDivEspecialidad">
+			<button type="button" class="especialidadcont">
+				internista
+			</button>
+		</template>
 
 		<template id="templatedatosmedicos">
 			<tr class="trpaver">
 				<td id="cedula">practica</td>
 				<td id="nombre"> practica</td>
 				<td id="apellido">practica</td>
+				<td id="especialidad">valor</td>
 				<td class="tdbuttons" >
 					<button  type="button" class="edit-button" ><ion-icon name="pencil-outline"></ion-icon></button>
 					<button  type="button" class="delete-button"><ion-icon name="close-outline"></ion-icon></button>
