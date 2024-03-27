@@ -2,7 +2,6 @@
 let rutaMedicos='http://localhost/Proyecto_ClinicasV2/Modelos/Medico.php';
 let rutaEspecialidades = 'http://localhost/Proyecto_ClinicasV2/Modelos/Especialidad.php';
 
-
 /*Formulario de registro de medicos */
 let EnviarFormulario = document.getElementById('formregistromedico');
 
@@ -10,8 +9,6 @@ let EnviarFormulario = document.getElementById('formregistromedico');
 let template = document.getElementById('templatedatosmedicos').content;
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
-
-
 
 /*Variables donde se trabaja la parte especialidad */
 let FormEspecialidades = document.getElementById('SeleccionarEspecialiad');
@@ -42,6 +39,7 @@ EnviarFormulario.addEventListener('submit',e => {
     else if(formdata.get('accion')=== 'update')
     {
         formdata.append('cedulaSeleccionada',cedulaSeleccionada)
+        formdata.append('especialidades',JSON.stringify(EspecialidadEscogidaForm))
         fetch(rutaMedicos,{
             method:'POST',
             body:formdata
@@ -76,6 +74,7 @@ document.addEventListener('click',e => {
     if(e.target.matches('.edit-button'))
     {
         cedulaSeleccionada=e.target.dataset.cedula;
+        espMedSelect();
     }
     if(e.target.matches('.especialidadcont'))
     {
@@ -87,18 +86,25 @@ document.addEventListener('click',e => {
         {
             EspecialidadEscogidaForm.push(e.target.dataset.codigo);
         }
-        console.log(EspecialidadEscogidaForm);
-        
-
-       
+        console.log(EspecialidadEscogidaForm);       
+    }
+    if(e.target.dataset.estado === "Cancelar")
+    {
+        EspecialidadEscogidaForm=[];
     }
 });
 
 
+
+
+/* cargar datos al estar lista la pagina*/
 document.addEventListener('DOMContentLoaded',e =>{
     cargarTabla()
     cargarEspecialidades()
 });
+
+
+/* Funciones de ayuda*/
 const cargarTabla = ()=>{
     let formdata = new FormData();
     formdata.append("accion","readAll");
@@ -108,8 +114,8 @@ const cargarTabla = ()=>{
     })
     .then(response => response.json())
     .then(data => {
+        
         console.log(data);
-        const dataTableBody = document.getElementById('tabla_datos');
         tabla_datos.textContent = '';
         data.forEach(medico => {
             let clone = template.cloneNode(true);
@@ -124,7 +130,6 @@ const cargarTabla = ()=>{
         });
         tabla_datos.appendChild(fragment);
     });}
-
     const cargarEspecialidades = () =>{
         let formdata = new FormData();
         formdata.append("accion","readAll");
@@ -146,3 +151,21 @@ const cargarTabla = ()=>{
         });
             
     };
+const espMedSelect = () =>{
+    let formdata = new FormData();
+    formdata.append('accion','readEspMedSelect')
+    formdata.append('cedulaSeleccionada',cedulaSeleccionada)
+    fetch(rutaMedicos,{
+        method:'POST',
+        body:formdata
+    })
+    .then(resp => resp.json())
+    .then(data =>{
+        EspecialidadEscogidaForm = [];
+        data.forEach(item =>{
+            EspecialidadEscogidaForm.push(item.codigo)
+        });
+        console.log(EspecialidadEscogidaForm);
+    });
+
+};

@@ -45,6 +45,7 @@ function cambiotabla(){
     if(tablecont.classList.contains("active")){
 
         buttoncambio.innerHTML = "Cancelar";
+        buttoncambio.dataset.estado = "";
         accionForm.value = 'create';
         tablecont.classList.remove("active");
         formregistro.classList.add("active");
@@ -56,7 +57,7 @@ function cambiotabla(){
     //cerrar form
       
         buttoncambio.innerHTML = "Registrar";
-        
+        buttoncambio.dataset.estado = "Cancelar";
         tablecont.classList.add("active");
         formregistro.classList.remove("active");
         formcont.classList.add("select");
