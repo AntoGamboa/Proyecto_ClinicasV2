@@ -56,6 +56,7 @@ function crearbotonesnav(){
     //funcion prueba para actualizar botones de el nav
     return;
 
+    
     const templatebotonnav = document.getElementById("templatebotonnav").content;
     const barranav = document.querySelector(".navbar .barra-lateral .navegacion ul");
  

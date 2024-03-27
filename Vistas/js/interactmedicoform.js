@@ -24,6 +24,17 @@ var especialidades = []; //aqui van las especialidades por medico que se van a e
 var especialidadesbasededatos //aqui van las que se extraen de la base de datos
 
 
+/*
+
+const sesion = verificarSession();
+
+if(sesion.permisos != 1){
+
+    window.location.href = "http://localhost/Proyecto_ClinicasV2/vistas/menuprincipal.html"
+  
+}
+
+*/
 
 
 

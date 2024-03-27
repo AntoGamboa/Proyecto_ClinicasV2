@@ -16,6 +16,25 @@ var patologias = [];
 
 var funcion = "registrar_consulta"; //aqui se determina que funcion va a realizar el submit, registrar_paciente, registrar_consulta y modificar
 
+
+
+
+//comprueba la sesion y te devuelve al menu si no es compatible
+
+/*
+
+const sesion = verificarSession();
+
+if(sesion.permisos != 2){
+
+  window.location.href = "http://localhost/Proyecto_ClinicasV2/vistas/menuprincipal.html"
+
+}
+
+*/
+
+
+
 function cambiotabla(){
 
     if(pacienttablecont.classList.contains("active")){

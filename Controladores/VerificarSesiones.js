@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', e =>{
     verificarSession();
 
 })
+
 const verificarSession = () =>
  {
      fetch('http://localhost/Proyecto_ClinicasV2/MiddleWare/autenticacion.php')
@@ -11,6 +12,13 @@ const verificarSession = () =>
         if(!data.Success)
         {
             window.location.href = "http://localhost/Proyecto_ClinicasV2/vistas/login.html"
+            
+        }
+        else if(data.Success){
+
+            //retorna info de seccion si es true att ricardo
+
+            return data;
         }
     })
  };
