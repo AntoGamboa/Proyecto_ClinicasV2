@@ -4,6 +4,7 @@ const fragment = document.createDocumentFragment();
 const tabla_datos = document.getElementById('tabla_datos');
 const rutaPatologia= 'http://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
 let idSeleccionado = '';
+var patologias = [];
 
 
 document.addEventListener('click',e => {
@@ -93,5 +94,56 @@ const cargarTabla = ()=>{
         });
         tabla_datos.appendChild(fragment);
     })
- };
+};
+
+const filtrartablapatologias = (busqueda)=>{
+    
+        const dataTableBody = document.getElementById('tabla_datos');
+
+        tabla_datos.textContent = '';
+
+        patologias.forEach(patologia => {
+
+            if(patologia.nombre === busqueda){
+                
+                const clone = template.cloneNode(true);
+                clone.getElementById('idPatologia').textContent = patologia.codigo;
+                clone.getElementById('nombre').textContent = patologia.nombre;
+    
+                clone.querySelector('.delete-button').dataset.codigo = patologia.codigo;
+                clone.querySelector('.edit-button').dataset.codigo = patologia.codigo;
+    
+                fragment.appendChild(clone);
+
+
+            }
+            
+
+
+        });
+        tabla_datos.appendChild(fragment);
+    
+};
+
+
+
+
+
+const inputs = document.querySelector(".searchbarcont input");
+const botonbusqueda = document.querySelector(".searchbarcont button")
+
+
+botonbusqueda.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+
+    if(busqueda == ''){
+      patologias = [];
+      cargartabla();
+    }else{
+      let busqueda = inputs.textContent;
+      filtrartablapatologias(busqueda);
+
+    }
+})
  

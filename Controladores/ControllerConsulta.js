@@ -60,6 +60,34 @@ const cargarTabla = ()=>{
         tabla_datos.appendChild(fragment);
 });}
 
+
+const filtrartabla = (busqueda)=>{
+    let formdata = new FormData();
+    formdata.append("accion","readAll");
+    fetch(rutaMedicos,{
+        method:'POST',
+        body:formdata
+    })
+    .then(response => response.json())
+    .then(data => {
+        const dataTableBody = document.getElementById('tabla_datos');
+        tabla_datos.textContent = '';
+        data.forEach(medico => {
+
+            if(medico.nombre === busqueda){
+                let clone = template.cloneNode(true);
+                clone.getElementById('cedula').textContent = medico.cedula;
+                clone.getElementById('nombre').textContent = medico.nombre;
+                clone.getElementById('apellido').textContent = medico.apellido;
+                clone.querySelector('.delete-button').dataset.cedula = medico.cedula;
+                clone.querySelector('.edit-button').dataset.cedula = medico.cedula;
+                fragment.appendChild(clone);
+            }
+            
+        });
+        tabla_datos.appendChild(fragment);
+});}
+
 EnviarFormulario.addEventListener('submit',e => {
     e.preventDefault();
     let formdata = new FormData(EnviarFormulario);

@@ -116,3 +116,26 @@ function cambiotablaeditar(variables){
     }
    
 }
+
+
+const inputs = document.querySelector(".searchbarcont input");
+const botonbusqueda = document.querySelector(".searchbarcont button");
+
+
+
+
+
+
+botonbusqueda.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+    if(busqueda == ''){
+        
+        cargarTabla();
+      }else{
+        let busqueda = inputs.textContent;
+        filtrartabla(busqueda);
+  
+      }
+
+})
