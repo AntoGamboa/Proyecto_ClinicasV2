@@ -294,7 +294,7 @@ function asignarespecialidades(cedula){
 
 
 
-const inputs = document.querySelector(".searchbarcont input");
+const inputSearch = document.querySelector(".searchbarcont input");
 const botonbusqueda = document.querySelector(".searchbarcont button")
 const botonbusquedaespecialidades = document.querySelector(".inputcontespe .searchbarespecialidades")
 
@@ -305,11 +305,11 @@ const botonbusquedaespecialidades = document.querySelector(".inputcontespe .sear
 
 botonbusqueda.addEventListener('click', ()=>{
 
-    let busqueda = inputs.textContent;
+    let busqueda = inputSearch.textContent;
     if(busqueda == ''){
         cargarTabla();
       }else{
-        let busqueda = inputs.textContent;
+        let busqueda = inputSearch.textContent;
         filtrartabla(busqueda);
   
       }
@@ -322,12 +322,12 @@ botonbusqueda.addEventListener('click', ()=>{
 
 botonbusquedaespecialidades.addEventListener('click', ()=>{
 
-    let busqueda = inputs.textContent;
+    let busqueda = inputSearch.textContent;
     if(busqueda == ''){
         especialidadesbasededatos = [];
         cargarEspecialidades();
       }else{
-        let busqueda = inputs.textContent;
+        let busqueda = inputSearch.textContent;
         filtrartablaespecialidades(busqueda);
   
       }
