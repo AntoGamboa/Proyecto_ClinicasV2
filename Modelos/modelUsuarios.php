@@ -29,12 +29,12 @@
             parent::__construct();
         }
         
-        public function CrearRegistro($nombre, $apellido, $correo, $usuario, $password)
+        public function CrearRegistro($nombre, $apellido, $correo, $usuario, $password,$nacimiento)
         {
             $query= <<<eot
-                INSERT INTO usuarios(nombre,apellido,correo,usuario,passuser) values (?,?,?,?,?);
+                INSERT INTO usuarios(nombre,apellido,correo,fe_nacimiento,usuario,passuser) values (?,?,?,?,?,?);
             eot;
-            $this->getConexion()->prepare($query)->execute(array($nombre, $apellido, $correo, $usuario, $password));
+            $this->getConexion()->prepare($query)->execute(array($nombre, $apellido, $correo,$nacimiento,$usuario, $password));
 
         }
         public function logearse($correo,$password)
@@ -75,11 +75,12 @@
             $correo = $_POST["correo"];
             $usuario = $_POST["usuario"];
             $password = $_POST["Contraseña"];
+            $nacimiento = $_POST["nacimiento"];
             if(empty($nombre)||empty($apellido)||empty($correo)||empty($usuario)||empty($correo))
             {
                 echo json_encode(["mensaje" => "Existen campos vacios"]);
             } else{
-                $objUsuario->CrearRegistro($nombre , $apellido ,$correo, $usuario, $password); 
+                $objUsuario->CrearRegistro($nombre , $apellido ,$correo, $usuario, $password,$nacimiento); 
                 echo json_encode(["mensaje" => "Registro exitoso"]);
             }     
         }

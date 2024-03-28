@@ -72,7 +72,7 @@ const inputs = document.querySelectorAll('input');
 
 function validarInput(event) {
   const valor = event.target.value;
-  const caracteresEspeciales = /[!@#$%^&*()+\=\[\]{};':"\\|<>\/?]+/;
+  const caracteresEspeciales = /[!#$%^&*()+\=\[\]{};':"\\|<>\/?]+/;
   
   if (caracteresEspeciales.test(valor)) {
     event.target.value = valor.replace(caracteresEspeciales, '');

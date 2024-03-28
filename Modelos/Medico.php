@@ -18,13 +18,13 @@
         {
             parent::__construct();
         }
-        public function create($nombre,$apellido,$cedula,$especialidades)
+        public function create($nombre,$apellido,$cedula,$especialidades,$nacimiento)
         {
             $mensaje='';
             
             try{
-                $query='INSERT INTO medico(cedulaMedico,nombreMedico,apellidoMedico) VALUES(?,?,?);';
-                $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido));
+                $query='INSERT INTO medico(cedulaMedico,nombreMedico,fe_nacimiento,apellidoMedico) VALUES(?,?,?,?);';
+                $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$nacimiento,$apellido));
                 
                 
 
@@ -61,10 +61,10 @@
                 return json_encode(['mensaje'=>$mensaje]);
             }
         }
-        public function update($nombre,$apellido,$cedula,$cedulaSeleccionada,$especialidades)
+        public function update($nombre,$apellido,$cedula,$nacimiento,$cedulaSeleccionada,$especialidades)
         {
-            $query = 'UPDATE medico SET cedulaMedico=?,nombreMedico=?,apellidoMedico=? WHERE cedulaMedico=?;';
-            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$cedulaSeleccionada));
+            $query = 'UPDATE medico SET cedulaMedico=?,nombreMedico=?,apellidoMedico=?,fe_nacimiento=? WHERE cedulaMedico=?;';
+            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$nacimiento,$cedulaSeleccionada));
             /*Esta solucion no me convence pero fue lo que se me ocurrio para solventar Tengo pensado volver todo esto una transaccion 
                 lo que no se es como hacer para agregar mas elemento a la tabla del pivote(la de n:n) que esta relacionada con un elemento
                 si se figan actualizo los datos del medico borro sus especialidades y las vuelvo a insertar
@@ -87,10 +87,10 @@
         private function Datosmedico()
         {
             $query='SELECT m.cedulaMedico AS cedula, m.nombreMedico AS nombre,m.apellidoMedico AS apellido, 
-            IFNULL(GROUP_CONCAT(e.nombreEspecialidad SEPARATOR ", "), "Médico General") AS especialidad 
+            IFNULL(GROUP_CONCAT(e.nombreEspecialidad SEPARATOR ", "), "Médico General") AS especialidad,m.fe_nacimiento AS nacimiento
             FROM medicoxespecialidad mxe
-            right JOIN medico m ON m.cedulaMedico=mxe.cedulaMedico 
-            left JOIN especialidad e ON e.idEspecialidad = mxe.idEspecialidad 
+            RIGHT JOIN medico m ON m.cedulaMedico=mxe.cedulaMedico 
+            LEFT JOIN especialidad e ON e.idEspecialidad = mxe.idEspecialidad 
             WHERE m.estado=1 GROUP BY m.cedulaMedico;';
             $stmt=$this->getConexion()->prepare($query);
             $stmt->execute();
@@ -106,7 +106,7 @@
     
     if($accion === 'create')
     {   
-        echo $Medico->create($_POST['nombre'],$_POST['apellido'],$_POST['cedula'], $_POST['especialidades']);
+        echo $Medico->create($_POST['nombre'],$_POST['apellido'],$_POST['cedula'], $_POST['especialidades'],$_POST['nacimiento']);
     }
     if($accion === 'readAll')
     {
@@ -119,7 +119,7 @@
     }
     if($accion === 'update')
     {
-        echo $Medico->update($_POST['nombre'],$_POST['apellido'],$_POST['cedula'],$_POST['cedulaSeleccionada'],$_POST['especialidades']);
+        echo $Medico->update($_POST['nombre'],$_POST['apellido'],$_POST['cedula'],$_POST['nacimiento'],$_POST['cedulaSeleccionada'],$_POST['especialidades']);
     }
     if($accion === 'readEspMedSelect')
     {

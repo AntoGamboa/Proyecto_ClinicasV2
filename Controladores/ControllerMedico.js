@@ -75,6 +75,10 @@ document.addEventListener('click',e => {
     {
         cedulaSeleccionada=e.target.dataset.cedula;
         espMedSelect();
+        let datedad = document.getElementById('inputnacimiento');
+        let nacimiento = new Date(e.target.dataset.nacimiento);
+        console.log(nacimiento)
+        datedad.value = nacimiento.toISOString().slice(0,10);
     }
     if(e.target.matches('.especialidadcont'))
     {
@@ -114,18 +118,20 @@ const cargarTabla = ()=>{
     })
     .then(response => response.json())
     .then(data => {
-        
         console.log(data);
         tabla_datos.textContent = '';
         data.forEach(medico => {
             let clone = template.cloneNode(true);
+            let nacimiento = new Date(medico.nacimiento) ;
+            let fechaActual = new Date();
             clone.getElementById('cedula').textContent = medico.cedula;
             clone.getElementById('nombre').textContent = medico.nombre;
             clone.getElementById('apellido').textContent = medico.apellido;
             clone.getElementById('especialidad').textContent=medico.especialidad;
+            clone.getElementById('nacimiento').textContent =`${fechaActual.getFullYear()-nacimiento.getFullYear()} años`;
             clone.querySelector('.delete-button').dataset.cedula = medico.cedula;
             clone.querySelector('.edit-button').dataset.cedula = medico.cedula;
-
+            clone.querySelector('.edit-button').dataset.nacimiento = medico.nacimiento;
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);
@@ -186,8 +192,6 @@ const cargarEspecialidades = () =>{
 
 
 const filtrartablaspecialidades = (busqueda) =>{
-    
-       
         especialidadesbasededatos.forEach(especialidad =>{
 
             if(especialidad.nombre === busqueda){
@@ -198,7 +202,6 @@ const filtrartablaspecialidades = (busqueda) =>{
                 fragment.appendChild(clone);
 
             }
-            
         });
         DivContEspecialidades.appendChild(fragment);
 
