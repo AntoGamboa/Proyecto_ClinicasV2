@@ -82,6 +82,8 @@ const cargarTabla = ()=>{
 
         console.log(data);
 
+        alergias = data;
+
         const dataTableBody = document.getElementById('tabla_datos');
         tabla_datos.textContent = '';
         data.forEach(alergia => {
@@ -97,4 +99,30 @@ const cargarTabla = ()=>{
         tabla_datos.appendChild(fragment);
 
     })
+};
+
+const filtrartabla =(busqueda)=>{
+
+    
+
+        const dataTableBody = document.getElementById('tabla_datos');
+        tabla_datos.textContent = '';
+        data.forEach(alergia => {
+
+            if(alergia.nombre === busqueda){
+
+                let clone = template.cloneNode(true);
+                clone.getElementById('id').textContent = alergia.codigo;
+                clone.getElementById('nombre').textContent = alergia.nombre;
+                clone.querySelector('.delete-button').dataset.codigo = alergia.codigo;
+                clone.querySelector('.edit-button').dataset.codigo = alergia.codigo;
+               
+                fragment.appendChild(clone);
+            }
+            
+        });
+
+        tabla_datos.appendChild(fragment);
+
+
 };

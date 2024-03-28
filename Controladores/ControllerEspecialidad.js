@@ -7,6 +7,8 @@ let codigoSeleccionado = '';
 
 const ruta = 'http://localhost/Proyecto_ClinicasV2/Modelos/Especialidad.php';
 
+var especialidades=[];
+
 
 formEspecialidad.addEventListener('submit',e =>
 {
@@ -82,6 +84,8 @@ const cargarEspecialidad = () =>
         tablaDatos.textContent = '';
         data.forEach(Especialidad => 
         {
+
+            
             const clone = templateEspecialidades.cloneNode(true);
             clone.getElementById('codigo').textContent = Especialidad.codigo;
             clone.getElementById('nombre').textContent = Especialidad.nombre;
@@ -95,3 +99,48 @@ const cargarEspecialidad = () =>
     });
 
 }
+
+
+const filtrartablaespecialidad = (busqueda) => 
+{
+    
+    tablaDatos.textContent = '';
+    especialidades.forEach(Especialidad => 
+    {
+        if(especialidad.nombre === busqueda){
+
+            const clone = templateEspecialidades.cloneNode(true);
+            clone.getElementById('codigo').textContent = Especialidad.codigo;
+            clone.getElementById('nombre').textContent = Especialidad.nombre;
+            clone.querySelector('.delete-button').dataset.codigo = Especialidad.codigo;
+            clone.querySelector('.edit-button').dataset.codigo = Especialidad.codigo;
+
+            fragmento.appendChild(clone);
+        }
+        
+    });
+
+    tablaDatos.appendChild(fragmento);
+    
+
+}
+
+
+
+const inputs = document.querySelector(".searchbarcont input");
+const botonbusqueda = document.querySelector(".searchbarcont button")
+
+
+botonbusqueda.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+
+    if(busqueda == ''){
+      especialidad = [];
+      cargarEspecialidad();
+    }else{
+      let busqueda = inputs.textContent;
+      filtrartablaespecialidad(busqueda);
+
+    }
+})

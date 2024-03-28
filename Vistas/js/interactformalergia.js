@@ -6,6 +6,8 @@ const buttoncambio = document.querySelector(".buttonregister");
 
 const botonregistro = document.querySelector(".formregistrocont button")
 
+var alergias;
+
 function cambiotabla(){
 
     if(tablecont.classList.contains("active")){
@@ -116,3 +118,25 @@ inputs[i].addEventListener("input", function (event) {
 });
 
 }
+
+
+const inputs = document.querySelector(".searchbarcont input");
+const botonbusqueda = document.querySelector(".searchbarcont button")
+
+
+botonbusqueda.addEventListener('click', ()=>{
+
+    if(busqueda == ''){
+      alergias = [];
+      cargarTabla();
+    }else{
+      let busqueda = inputs.textContent;
+      filtrartabla(busqueda);
+
+    }
+
+    
+    
+
+
+})

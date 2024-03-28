@@ -213,7 +213,7 @@ for (let i = 0; i < alergiascont.length; i++) {
 }
 
 
-var inputs = document.querySelector(".searchbarcont input");
+
 
 const tabla = document.getElementById("tabla_datos");
 
@@ -231,18 +231,46 @@ tabla.addEventListener('click', function(event) {
 
 });
 
-for (var i = 0; i < inputs.length; i++) {
-
-inputs[i].addEventListener("input", function (event) {
-
-  console.log(event.target.value);
-  tabla.innerHTML ="";
+const inputs = document.querySelector(".searchbarcont input");
+const botonbusqueda = document.querySelector(".searchbarcont button")
+const botonbusquedaalergias = document.querySelector(".inputcontespe .searchbaralergias")
 
 
 
-});
 
-}
+
+
+botonbusqueda.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+    if(busqueda == ''){
+        
+        cargarTabla();
+      }else{
+        let busqueda = inputs.textContent;
+        filtrartabla(busqueda);
+  
+      }
+
+})
+
+
+
+
+
+botonbusquedaalergias.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+    if(busqueda == ''){
+        alergias = [];
+        cargaralergias();
+      }else{
+        let busqueda = inputs.textContent;
+        filtrartablaalergias(busqueda);
+  
+      }
+
+})
 
 
 

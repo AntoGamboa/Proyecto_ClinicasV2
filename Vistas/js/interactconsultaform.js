@@ -8,6 +8,8 @@ let accionform= document.getElementById('accionFormulario');
 
 const paginasform = document.querySelector(".formpages");
 
+
+
 var seleccion = false;
 
 var patologias = [];
@@ -263,7 +265,7 @@ for (let i = 0; i < patologiascont.length; i++) {
 }
 
 
-var inputs = document.querySelector(".searchbarcont input");
+
 
 const tabla = document.getElementById("tabla_datos");
 
@@ -281,18 +283,48 @@ tabla.addEventListener('click', function(event) {
 
 });
 
-for (var i = 0; i < inputs.length; i++) {
-
-inputs[i].addEventListener("input", function (event) {
-
-  console.log(event.target.value);
-  tabla.innerHTML ="";
+const inputs = document.querySelector(".searchbarcont input");
+const botonbusqueda = document.querySelector(".searchbarcont button")
+const botonbusquedapatologias = document.querySelector(".inputcontespe .searchbapatologias")
 
 
 
-});
 
-}
+
+
+botonbusqueda.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+    if(busqueda == ''){
+        
+        cargarTabla();
+      }else{
+        let busqueda = inputs.textContent;
+        filtrartabla(busqueda);
+  
+      }
+
+})
+
+
+
+
+
+botonbusquedapatologias.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+    if(busqueda == ''){
+        patologias = [];
+        cargarpatologias();
+      }else{
+        let busqueda = inputs.textContent;
+        filtrartablapatologias(busqueda);
+  
+      }
+
+})
+
+
 
 
 

@@ -292,3 +292,45 @@ function asignarespecialidades(cedula){
     
 }
 
+
+
+const inputs = document.querySelector(".searchbarcont input");
+const botonbusqueda = document.querySelector(".searchbarcont button")
+const botonbusquedaespecialidades = document.querySelector(".inputcontespe .searchbarespecialidades")
+
+
+
+
+
+
+botonbusqueda.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+    if(busqueda == ''){
+        cargarTabla();
+      }else{
+        let busqueda = inputs.textContent;
+        filtrartabla(busqueda);
+  
+      }
+
+})
+
+
+
+
+
+botonbusquedaespecialidades.addEventListener('click', ()=>{
+
+    let busqueda = inputs.textContent;
+    if(busqueda == ''){
+        especialidadesbasededatos = [];
+        cargarEspecialidades();
+      }else{
+        let busqueda = inputs.textContent;
+        filtrartablaespecialidades(busqueda);
+  
+      }
+
+})
+

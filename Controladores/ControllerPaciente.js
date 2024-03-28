@@ -115,3 +115,36 @@ const cargarTabla = ()=>{
         dataTableBody.appendChild(fragment);
     })
  };
+
+
+ const filtrarTabla = ()=>{
+
+    let formdata = new FormData();
+    formdata.append("accion","readAll");
+    fetch(rutaPaciente,{
+        method:'POST',
+        body:formdata
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        console.log(data);
+
+        let dataTableBody = document.getElementById('tabla_datos');
+        dataTableBody.textContent = '';
+        data.forEach(paciente => {
+            let clone = templateDatosPaciente.cloneNode(true);
+            clone.getElementById('cedula').textContent = paciente.cedula;
+            clone.getElementById('nombre').textContent = paciente.nombre;
+            clone.getElementById('apellido').textContent = paciente.apellido;
+            clone.getElementById('telefono').textContent = paciente.telefono;
+            clone.getElementById('telefonoEmergencia').textContent = paciente.telefonoEmergencia;
+
+            clone.querySelector('.delete-button').dataset.cedula = paciente.cedula;
+            clone.querySelector('.edit-button').dataset.cedula = paciente.cedula;
+           
+            fragment.appendChild(clone);
+        });
+        dataTableBody.appendChild(fragment);
+    })
+ };
