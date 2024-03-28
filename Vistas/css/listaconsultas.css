@@ -325,7 +325,7 @@ tbody td {
 
 th{
   min-width: 116px;
-  
+  border-bottom: 1px solid rgb(255, 255, 255); 
   border-radius: 20px;
   position: sticky;
   
