@@ -79,3 +79,12 @@
     text-decoration: none;
 
 }
+
+.buttonscont a ion-icon{
+    
+    font-size: 35px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+    
+
+}
