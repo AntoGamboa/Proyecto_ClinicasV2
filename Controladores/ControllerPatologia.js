@@ -4,6 +4,7 @@ const fragment = document.createDocumentFragment();
 const tabla_datos = document.getElementById('tabla_datos');
 const rutaPatologia= 'http://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
 let idSeleccionado = '';
+
 var patologias = [];
 
 
@@ -80,6 +81,9 @@ const cargarTabla = ()=>{
     .then(response => response.json())
     .then(data => {
         console.log(data);
+
+        patologias = data;
+
         const dataTableBody = document.getElementById('tabla_datos');
         tabla_datos.textContent = '';
         data.forEach(patologia => {
@@ -98,7 +102,6 @@ const cargarTabla = ()=>{
 
 const filtrartablapatologias = (busqueda)=>{
     
-        const dataTableBody = document.getElementById('tabla_datos');
 
         tabla_datos.textContent = '';
 
@@ -138,9 +141,12 @@ botonbusqueda.addEventListener('click', ()=>{
     let busqueda = inputs.textContent;
 
     if(busqueda == ''){
+
       patologias = [];
       cargartabla();
+
     }else{
+
       let busqueda = inputs.textContent;
       filtrartablapatologias(busqueda);
 
