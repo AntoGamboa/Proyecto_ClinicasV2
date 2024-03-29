@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  
 }
 
 .loginregister_container {
@@ -26,6 +27,7 @@
   background-size: cover;
 
   min-height: 100vh;
+  
 }
 
 .loginregister_container.oscuro {
@@ -48,7 +50,7 @@
   border-top: 3.5px solid rgb(22, 145, 216);
   border-bottom: 3.5px solid rgb(22, 145, 216);
   
-  min-height: 800px;
+  min-height: 600px;
   padding-bottom: 40px;
   color: rgb(22, 145, 216);
   display: flex;
@@ -61,27 +63,7 @@
   margin-right: 90px;
 }
 
-.login_box.active {
-  opacity: 1;
-  pointer-events: all;
-}
 
-.login_box {
-  opacity: 0;
-  pointer-events: none;
-  padding: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 40px;
-  margin-top: 50px;
-  position: relative;
-  width: 380px;
-  pointer-events: none;
-  transition: opacity 0.1s ease-in-out;
-  margin-right: 600px;
-}
 
 .register_box {
   opacity: 0;
@@ -91,9 +73,9 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 40px;
-  margin-top: 50px;
-  margin-left: 45%;
+  gap: 80px;
+  margin-top: 20px;
+  margin-left: 55%;
   position: relative;
   width: 400px;
   height: 100%;
@@ -104,6 +86,14 @@
 .register_box.active {
   opacity: 1;
   pointer-events: all;
+}
+
+.register_box.active form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .text_container {
@@ -117,17 +107,22 @@
 }
 
 .contenedor_input {
-  margin-top: 15px;
+  
   position: relative;
   width: 120%;
   height: 50%;
   border-bottom: 2px solid rgb(22, 145, 216);
-  margin: 40px 0;
+  
+}
+
+.input_fechanacimiento{
+  color: white;
+  margin-top: 8px;
 }
 
 .contenedor_input input:focus ~ label,
 .contenedor_input input:valid ~ label {
-  top: -8px;
+  top: -10px;
 }
 
 .contenedor_input label {
@@ -137,7 +132,7 @@
   transform: translateY(-60%);
   font-size: 15px;
   font-weight: 500;
-  transition: transform 0.3s;
+  transition: top 0.3s ease;
   pointer-events: none;
 }
 
@@ -148,19 +143,19 @@
   border: none;
   outline: none;
   font-size: 15px;
-
+  color: white;
   padding: 0 35px 0 5px;
   padding-bottom: 10px;
 }
 
 .button {
-  width: 60%;
+  width: 50%;
   height: 50px;
   background: rgb(91, 168, 213);
   font-family: Arial, Helvetica, sans-serif;
-  margin-top: 30px;
+  margin-top: 2px;
   border: none;
-
+  margin-right: 150px;
   cursor: pointer;
   font-size: 15px;
   color: aliceblue;
@@ -176,19 +171,5 @@
   cursor: pointer;
 }
 
-.button_masinfo{
 
-  margin-top: 10px;
-  text-decoration: underline;
-  cursor: pointer;
-  color: rgb(22, 145, 216);
-
-}
-.button_masinfo a{
-
-  margin-top: 10px;
-  text-decoration: underline;
-  cursor: pointer;
-  color: rgb(22, 145, 216);
-
-}
+  
