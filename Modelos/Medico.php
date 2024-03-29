@@ -25,10 +25,6 @@
             try{
                 $query='INSERT INTO medico(cedulaMedico,nombreMedico,fe_nacimiento,apellidoMedico) VALUES(?,?,?,?);';
                 $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$nacimiento,$apellido));
-                
-                
-
-
                 $queryPivot='INSERT INTO medicoxespecialidad(idEspecialidad,cedulaMedico) Values(?,?)'; 
                 foreach(json_decode($especialidades) as $especialidad){
                     $this->getConexion()->prepare($queryPivot)->execute(array($especialidad,$cedula));

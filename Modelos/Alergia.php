@@ -39,7 +39,6 @@
                 return json_encode(['mensaje'=>$mensaje]);
             }
         }
-
         public function readAll()
         {   
             $mensaje = '';

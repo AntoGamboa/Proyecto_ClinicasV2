@@ -1,9 +1,16 @@
 
+let rutaPaciente ='http://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
+let rutaAlergia = 'http://localhost/Proyecto_ClinicasV2/Modelos/Alergia.php';
+
 let formPaciente = document.getElementById('formPaciente');
+let divAlergias = document.querySelector('.alergiascont');
+
 let templateDatosPaciente = document.getElementById('templateDatosPaciente').content;
+let templateAlergias = document.getElementById('templateAlergias').content;
 
 let fragment = document.createDocumentFragment();
-let rutaPaciente ='http://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
+
+let alergiaEscogidaForm = [];
 let cedulaSeleccionada = '';
 
 document.addEventListener('click',e => {
@@ -27,36 +34,46 @@ document.addEventListener('click',e => {
     if(e.target.matches('.edit-button'))
     {
         cedulaSeleccionada=e.target.dataset.cedula;
+        AlerPaciteUpdate();
+        let datedad = document.getElementById('inputnacimiento');
+        let nacimiento = new Date(e.target.dataset.nacimiento);
+        console.log(nacimiento)
+        datedad.value = nacimiento.toISOString().slice(0,10);
+
+    }
+    if(e.target.matches('.alergiacont'))
+    {
+        let resultado = alergiaEscogidaForm.find(item => item == e.target.dataset.codigo );
+        if(resultado !== undefined)
+        {
+            alergiaEscogidaForm = alergiaEscogidaForm.filter(item => item !== resultado);
+        }else
+        {
+            alergiaEscogidaForm.push(e.target.dataset.codigo);
+        }
+        console.log(alergiaEscogidaForm);    
+    }
+    if(e.target.dataset.estado === "Cancelar")
+    {
+        alergiaEscogidaForm=[];
     }
 }); 
 
 
 document.addEventListener('DOMContentLoaded',e =>{
     cargarTabla();
+    cargarAlergias();
 });
 
 formPaciente.addEventListener('submit', e =>{
 
     e.preventDefault();
-
-    let contador = 1;
-
     //obtenemos los datos del formulario del paciente
 
-    const datosformpaciente = document.getElementById("datosformpaciente");
-
+    const datosformpaciente = document.getElementById("datosformPaciente");
     let formdata = new FormData(datosformpaciente);
-
-    alergias.forEach(alergia => {
-
-        //itera el aray de alergias obtenido desde el formulario y los agregamos al formdata
-        
-        formdata.append('alergia' + contador, alergia)
-        contador++;
-
-    });
-
     if(formdata.get('accion') === 'create'){        
+        formdata.append('alergias',JSON.stringify(alergiaEscogidaForm));
         fetch(rutaPaciente,{
             method:'POST',
             body:formdata
@@ -66,11 +83,14 @@ formPaciente.addEventListener('submit', e =>{
             alert(data.mensaje)
             cargarTabla();
             cambiotabla();
+            alergiaEscogidaForm=[];
+            
         });
     }
     else if(formdata.get('accion') === 'update')
     {
         formdata.append('cedulaSeleccionada',cedulaSeleccionada)
+        formdata.append('alergias',JSON.stringify(alergiaEscogidaForm))
         fetch(rutaPaciente,{
             method:'POST',
             body:formdata
@@ -80,9 +100,29 @@ formPaciente.addEventListener('submit', e =>{
             alert(data.mensaje)
             cargarTabla();
             cambiotabla();
+            alergiaEscogidaForm=[];
         })   
     }
 });
+
+const cargarAlergias = () =>{
+    let formdata = new FormData();
+    formdata.append('accion','readAll')
+    fetch(rutaAlergia,{
+        method:'POST',
+        body:formdata
+    }).then(resp => resp.json())
+    .then(data=>{
+
+        data.forEach( aler =>{
+            let clone = templateAlergias.cloneNode(true);
+            clone.querySelector('.alergiacont').textContent = aler.nombre;
+            clone.querySelector('.alergiacont').dataset.codigo = aler.codigo;
+            fragment.appendChild(clone);
+        });
+        divAlergias.appendChild(fragment);
+    })
+};
 
 const cargarTabla = ()=>{
 
@@ -98,24 +138,44 @@ const cargarTabla = ()=>{
         console.log(data);
 
         let dataTableBody = document.getElementById('tabla_datos');
+        
         dataTableBody.textContent = '';
         data.forEach(paciente => {
+            let nacimiento = new Date(paciente.nacimiento);
+            let currDate = new Date();
             let clone = templateDatosPaciente.cloneNode(true);
             clone.getElementById('cedula').textContent = paciente.cedula;
             clone.getElementById('nombre').textContent = paciente.nombre;
             clone.getElementById('apellido').textContent = paciente.apellido;
+            clone.getElementById('edad').textContent = `${currDate.getFullYear() - nacimiento.getFullYear()} años`;
             clone.getElementById('telefono').textContent = paciente.telefono;
-            clone.getElementById('telefonoEmergencia').textContent = paciente.telefonoEmergencia;
-
+            clone.getElementById('telefonoEmergencia').textContent = paciente.telefonoE;
+            clone.getElementById('alergias').textContent=paciente.alergias;
             clone.querySelector('.delete-button').dataset.cedula = paciente.cedula;
             clone.querySelector('.edit-button').dataset.cedula = paciente.cedula;
+            clone.querySelector('.edit-button').dataset.nacimiento = paciente.nacimiento;
+
            
             fragment.appendChild(clone);
         });
         dataTableBody.appendChild(fragment);
     })
  };
-
+const AlerPaciteUpdate = ()=>{
+    let formdata = new FormData();
+    formdata.append('accion','readAlerpaciente');
+    formdata.append('cedulaSeleccionada',cedulaSeleccionada);
+    fetch(rutaPaciente,{
+        method:'POST',
+        body:formdata
+    }).then(resp=>resp.json())
+    .then(data =>{
+       data.forEach(item =>{
+            alergiaEscogidaForm.push(item.idAlergia);
+       })
+        console.log(alergiaEscogidaForm);
+    })
+};
 
  const filtrarTabla = ()=>{
 

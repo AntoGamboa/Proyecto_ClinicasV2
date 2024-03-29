@@ -104,9 +104,10 @@
                                             <th>Cedula</th>
                                             <th>Nombre</th>
                                             <th>Apellido</th>
-                                            
-                                            <th>Telefono</th>
-                                            <th>Telefono emergencia</th>
+                                            <th>Edad</th>
+                                            <th>Tlf</th>
+                                            <th>Tlf Emergencia</th>
+                                            <th>Alergias</th>
                                         </tr>
                                     </thead>
                     
@@ -158,6 +159,8 @@
         
                         </div>
                         
+                        <input type="date" name="nacimiento" id="inputnacimiento">
+                        
                         <div class="contenedor_input">
         
                             <input class="input_telefono" id="telefono" name="telefono" type="text" required autocomplete="off">
@@ -196,18 +199,7 @@
 
                     <div class="alergiascont">
 
-                        <div class="alergiacont">
-                            <div>internista</div>
-                        </div>
-                        <div class="alergiacont">
-                            <div>patologo</div>
-                        </div>
-                        <div class="alergiacont">
-                            <div>dermatologo</div>
-                        </div>
-                        <div class="alergiacont">
-                            <div>otorrinolaringolo</div>
-                        </div>
+                       
 
                     </div>
 
@@ -234,13 +226,20 @@
 
         
     </section>
+    <template id="templateAlergias">
+        <button type="button" class="alergiacont" >
+            internista
+        </button >
+    </template>
     <template id="templateDatosPaciente">
          <tr>
             <td id="cedula">Insercion</td>
             <td id="nombre">Insercion</td>
             <td id="apellido">Insercion</td>
+            <td id="edad"></td>
             <td id="telefono">Insercion</td>
             <td id="telefonoEmergencia">Insercion</td>
+            <td id="alergias"></td>
             <td class="tdbuttons" >
                 <button  type="button" class="edit-button" ><ion-icon name="pencil-outline"></ion-icon></button>
                 <button  type="button" class="delete-button"><ion-icon name="close-outline"></ion-icon></button>

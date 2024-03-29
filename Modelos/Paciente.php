@@ -23,12 +23,17 @@
         {
             parent::__construct();
         }
-        public function Create($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia)
+        public function Create($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia,$nacimiento,$alergias)
         {
             $mensaje='';
             try{
-                $query= 'INSERT INTO paciente(cedulaPaciente,nombrePaciente,apellidoPaciente,tlfonoPaciente,tlfonoEmergencia) VALUES(?,?,?,?,?);';
-                $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia));
+                $query= 'INSERT INTO paciente(cedulaPaciente,nombrePaciente,apellidoPaciente,fe_nacimiento,tlfonoPaciente,tlfonoEmergencia) VALUES(?,?,?,?,?,?);';
+                $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$nacimiento,$tlfnoPaciente,$tlfnoEmergencia));
+                $querypivot = 'INSERT INTO alergiaxpaciente(cedulaPaciente,idAlergia) values(?,?)';
+                foreach(json_decode($alergias) as $alergia)
+                {
+                    $this->getConexion()->prepare($querypivot)->execute(array($cedula,$alergia));
+                }
                 $mensaje='Registro exitoso';
             }
             catch(Exception $e)
@@ -41,11 +46,24 @@
                 return json_encode(["mensaje"=>$mensaje]);            
             }
         }
+        public function readAlerpaciente($cedulaSeleccionada){
+            $query='SELECT idAlergia FROM alergiaxpaciente WHERE cedulaPaciente=?';
+            $stmt = $this->getConexion()->prepare($query);
+            $stmt->execute(array($cedulaSeleccionada));
+            return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
+        }
         public function readAll()
         {
             
             try{
-                $query= 'SELECT cedulaPaciente AS cedula, nombrePaciente AS nombre,apellidoPaciente AS apellido,tlfonoPaciente AS telefono, tlfonoEmergencia AS telefonoEmergencia FROM paciente;';
+                $query= '
+                    SELECT p.cedulaPaciente AS cedula ,p.nombrePaciente AS nombre ,p.apellidoPaciente AS apellido ,p.fe_nacimiento AS nacimiento
+                    ,p.tlfonoPaciente AS telefono,p.tlfonoEmergencia AS telefonoE,
+                    IFNULL(GROUP_CONCAT(a.nombreAlergia SEPARATOR", "),"Sin alergias") AS alergias
+                    FROM alergiaxpaciente axp 
+                    RIGHT JOIN paciente p ON p.cedulaPaciente=axp.cedulaPaciente 
+                    LEFT  JOIN alergia  a ON a.idAlergia = axp.idAlergia
+                    GROUP BY p.cedulaPaciente;';
                 $stmt = $this->getConexion()->prepare($query);
                 $stmt->execute();
                 return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
@@ -56,10 +74,17 @@
             }
             
         }
-        public function update($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia,$cedulaSeleccionada)
+        public function update($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia,$cedulaSeleccionada,$nacimiento,$alergias)
         {
-            $query='UPDATE paciente SET cedulaPaciente=?,nombrePaciente=?,apellidoPaciente=?,tlfonoPaciente=?,tlfonoEmergencia=? WHERE cedulaPaciente=?;';
-            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$tlfnoPaciente,$tlfnoEmergencia,$cedulaSeleccionada));
+            $query='UPDATE paciente SET cedulaPaciente=?,nombrePaciente=?,apellidoPaciente=?,fe_nacimiento=?,tlfonoPaciente=?,tlfonoEmergencia=? WHERE cedulaPaciente=?;';
+            $this->getConexion()->prepare($query)->execute(array($cedula,$nombre,$apellido,$nacimiento,$tlfnoPaciente,$tlfnoEmergencia,$cedulaSeleccionada));
+            $queryDel='DELETE FROM alergiaxpaciente WHERE cedulaPaciente = ?';
+            $this->getConexion()->prepare($queryDel)->execute(array($cedulaSeleccionada));
+            $querypivot = 'INSERT INTO alergiaxpaciente(cedulaPaciente,idAlergia) values(?,?)';
+            foreach(json_decode($alergias) as $alergia)
+            {
+                $this->getConexion()->prepare($querypivot)->execute(array($cedula,$alergia));
+            }
             echo json_encode(['mensaje'=>'actualizacion exitosa']);
         }
         public function delete($cedula)
@@ -70,12 +95,14 @@
         }
      }
      $Paciente = new paciente();
-     @$accion=$_POST["accion"]; 
+     $accion=$_POST["accion"]; 
      
      if($accion === 'create')
      {
-        echo $Paciente->Create($_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['telefono'],$_POST['telefonoemergencia']);
-
+        
+       
+        echo $Paciente->Create($_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['telefono'],$_POST['telefonoemergencia'],$_POST['nacimiento'],$_POST['alergias']);
+        
      }
      if($accion === "readAll")
      {
@@ -87,10 +114,13 @@
         echo $Paciente->delete($cedula);      
      }
      if ($accion === "update") 
-     {
+    {
 
-        echo $Paciente->update($_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['telefono'],$_POST['telefonoemergencia'],$_POST['cedulaSeleccionada']);
-
-     }
+        echo $Paciente->update($_POST['cedula'],$_POST['nombre'],$_POST['apellido'],$_POST['telefono'],$_POST['telefonoemergencia'],$_POST['cedulaSeleccionada'],$_POST['nacimiento'],$_POST['alergias']);
+    }
+    if($accion === "readAlerpaciente")
+    {
+        echo $Paciente->readAlerpaciente($_POST['cedulaSeleccionada']);
+    }
 
 ?>

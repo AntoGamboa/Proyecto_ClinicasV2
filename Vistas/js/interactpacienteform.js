@@ -39,6 +39,7 @@ function cambiotabla(){
       //abrir form
 
       buttoncambio.innerHTML = "Cancelar"
+      buttoncambio.dataset.estado = "";
       accionform.value='create';
       pacienttablecont.classList.remove("active");
       pacientformcont.classList.add("active");
@@ -53,7 +54,7 @@ function cambiotabla(){
       //cerrar form
 
       buttoncambio.innerHTML = "Registrar";
-      
+      buttoncambio.dataset.estado = "Cancelar";
       pacienttablecont.classList.add("active");
       pacientformcont.classList.remove("active");
       pacientformcont.reset();
@@ -98,8 +99,8 @@ function cambiotablaeditar(variables){
     pacientformcont.querySelector(".input_nombre").value = variables[1].innerHTML;
     pacientformcont.querySelector(".input_apellido").value = variables[2].innerHTML;
    
-    pacientformcont.querySelector(".input_telefono").value = variables[3].innerHTML;
-    pacientformcont.querySelector(".input_telefonoemergencia").value = variables[4].innerHTML;
+    pacientformcont.querySelector(".input_telefono").value = variables[4].innerHTML;
+    pacientformcont.querySelector(".input_telefonoemergencia").value = variables[5].innerHTML;
     
 
   }
