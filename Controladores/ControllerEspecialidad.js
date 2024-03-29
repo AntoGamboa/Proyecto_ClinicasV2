@@ -81,6 +81,9 @@ const cargarEspecialidad = () =>
     .then(resp => resp.json())
     .then(data =>{
         console.log(data);
+
+        especialidades = data;
+
         tablaDatos.textContent = '';
         data.forEach(Especialidad => 
         {
@@ -133,14 +136,13 @@ const botonbusqueda = document.querySelector(".searchbarcont button")
 
 botonbusqueda.addEventListener('click', ()=>{
 
-    let busqueda = inputs.textContent;
 
     if(busqueda == ''){
-      especialidad = [];
+      especialidades = [];
       cargarEspecialidad();
     }else{
       let busqueda = inputs.textContent;
       filtrartablaespecialidad(busqueda);
 
     }
-})
+});
