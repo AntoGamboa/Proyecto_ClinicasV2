@@ -105,6 +105,8 @@ formPaciente.addEventListener('submit', e =>{
     }
 });
 
+
+
 const cargarAlergias = () =>{
     let formdata = new FormData();
     formdata.append('accion','readAll')
@@ -113,6 +115,10 @@ const cargarAlergias = () =>{
         body:formdata
     }).then(resp => resp.json())
     .then(data=>{
+
+        alergias= data;
+
+        divAlergias.textContent = '';
 
         data.forEach( aler =>{
             let clone = templateAlergias.cloneNode(true);
@@ -177,7 +183,7 @@ const AlerPaciteUpdate = ()=>{
     })
 };
 
- const filtrarTabla = ()=>{
+const filtrarTabla = (busqueda)=>{
 
     let formdata = new FormData();
     formdata.append("accion","readAll");
@@ -193,18 +199,45 @@ const AlerPaciteUpdate = ()=>{
         let dataTableBody = document.getElementById('tabla_datos');
         dataTableBody.textContent = '';
         data.forEach(paciente => {
-            let clone = templateDatosPaciente.cloneNode(true);
-            clone.getElementById('cedula').textContent = paciente.cedula;
-            clone.getElementById('nombre').textContent = paciente.nombre;
-            clone.getElementById('apellido').textContent = paciente.apellido;
-            clone.getElementById('telefono').textContent = paciente.telefono;
-            clone.getElementById('telefonoEmergencia').textContent = paciente.telefonoEmergencia;
 
-            clone.querySelector('.delete-button').dataset.cedula = paciente.cedula;
-            clone.querySelector('.edit-button').dataset.cedula = paciente.cedula;
-           
-            fragment.appendChild(clone);
+            if(paciente.cedula === busqueda){
+
+                let clone = templateDatosPaciente.cloneNode(true);
+                clone.getElementById('cedula').textContent = paciente.cedula;
+                clone.getElementById('nombre').textContent = paciente.nombre;
+                clone.getElementById('apellido').textContent = paciente.apellido;
+                clone.getElementById('telefono').textContent = paciente.telefono;
+                clone.getElementById('telefonoEmergencia').textContent = paciente.telefonoEmergencia;
+
+                clone.querySelector('.delete-button').dataset.cedula = paciente.cedula;
+                clone.querySelector('.edit-button').dataset.cedula = paciente.cedula;
+                
+                fragment.appendChild(clone);
+            }
+            
         });
         dataTableBody.appendChild(fragment);
     })
- };
+};
+
+
+const filtrartablaalergias = (busqueda)=>{
+
+    divAlergias.textContent = '';
+
+    alergias.forEach( aler =>{
+
+        if(aler.nombre === busqueda){
+
+            let clone = templateAlergias.cloneNode(true);
+            clone.querySelector('.alergiacont').textContent = aler.nombre;
+            clone.querySelector('.alergiacont').dataset.codigo = aler.codigo;
+            fragment.appendChild(clone);
+
+        }
+        
+    });
+    divAlergias.appendChild(fragment);
+
+    
+};

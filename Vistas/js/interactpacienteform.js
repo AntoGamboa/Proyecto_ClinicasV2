@@ -192,19 +192,13 @@ for (let i = 0; i < alergiascont.length; i++) {
 
             alergiascont[i].classList.remove("selected");
 
-            const borrar = alergias.indexOf( alergiascont[i].innerHTML)
 
-            if (borrar !== -1) {
-              alergias.splice(borrar, 1);
-            }
-
-            
 
             
         }else{
 
             alergiascont[i].classList.add("selected");
-            alergias.push(alergiascont[i].innerHTML);
+            
             
             
         }
@@ -234,7 +228,10 @@ tabla.addEventListener('click', function(event) {
 
 const inputs = document.querySelector(".searchbarcont input");
 const botonbusqueda = document.querySelector(".searchbarcont button")
-const botonbusquedaalergias = document.querySelector(".inputcontespe .searchbaralergias")
+
+
+const inputsbusquedaalergia = document.querySelector(".seleccionalergiacont .searchbarcont input");
+const botonbusquedaalergias = document.querySelector(".seleccionalergiacont .inputcontespe .buttonbuscaralergias")
 
 
 
@@ -243,15 +240,19 @@ const botonbusquedaalergias = document.querySelector(".inputcontespe .searchbara
 
 botonbusqueda.addEventListener('click', ()=>{
 
-    let busqueda = inputs.textContent;
-    if(busqueda == ''){
-        
-        cargarTabla();
-      }else{
-        let busqueda = inputs.textContent;
-        filtrartabla(busqueda);
   
-      }
+
+  let busqueda = inputs.value;
+  
+
+  if(busqueda == ''){
+      
+    cargarTabla();
+  }else{
+    
+    filtrarTabla(busqueda);
+
+  }
 
 })
 
@@ -261,15 +262,24 @@ botonbusqueda.addEventListener('click', ()=>{
 
 botonbusquedaalergias.addEventListener('click', ()=>{
 
-    let busqueda = inputs.textContent;
-    if(busqueda == ''){
-        alergias = [];
-        cargaralergias();
-      }else{
-        let busqueda = inputs.textContent;
-        filtrartablaalergias(busqueda);
   
-      }
+
+  let busqueda = inputsbusquedaalergia.value;
+  
+
+  if(busqueda == ''){
+
+
+    alergias = [];
+    cargaralergias();
+
+    
+  }else{
+
+    let busqueda = inputs.textContent;
+    filtrartablaalergias(busqueda);
+
+  }
 
 })
 
