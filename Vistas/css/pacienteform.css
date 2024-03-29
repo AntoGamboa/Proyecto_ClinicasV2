@@ -10,7 +10,7 @@
     justify-content: center;
     min-width: 100vh;
     min-height: 100vh;
-    margin-left: 120px;
+    margin-left:60px;
     background: linear-gradient(
       to right,
       rgb(255, 255, 255) 10%,
@@ -24,6 +24,7 @@
 }
 
 .buttonregister {
+    z-index: 10000;
     width: 100px;
     height: 50px;
     background: rgb(16, 167, 255);
@@ -67,8 +68,8 @@
     background-color: rgb(0, 26, 58);
     min-height: 69vh;
     max-height: 69vh;
-    min-width: 810px;
-    max-width: 810px;
+    min-width: 950px;
+    max-width: 950px;
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
     max-width: 600px;
     transition: background-color 0.1s ease, min-height 0.2s ease;
@@ -81,8 +82,8 @@
     background-color: rgb(24, 116, 227);
     min-height: 680px;
     
-    min-width: 810px;
-    max-width: 810px;
+    min-width: 950px;
+    max-width: 950px;
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
     max-width: 600px;
     border-radius: 20px;
@@ -94,8 +95,8 @@
     align-items: center;
     justify-content: center;
     align-items: center;
-    gap: 100px;
-    margin-left: 88%;
+    gap: 190px;
+    margin-left: 70%;
     transition: transform ease 0.2s;
 }
 
@@ -127,8 +128,8 @@
     height: 500px;
     position: absolute;
     transition: opacity 0.1s;
-    margin-left: 10%;
-    margin-top: -70px;
+    margin-left: 17.5%;
+    margin-top: -80px;
     
     
 }
@@ -169,6 +170,10 @@
     justify-content: center;
     align-items: center;
     box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.5);
+}
+
+.pacientform .button{
+    margin-left: 120px;
 }
 
 .pacientformcont .button{
@@ -216,7 +221,7 @@
     max-height: 590px;
     color: white;
     overflow-y: scroll; 
-    min-width: 100%;
+    min-width: 117%;
     
 }
 
@@ -249,7 +254,7 @@ th{
 .consultformcont{
     
     min-height: 80vh;
-    min-width: 500px;
+    min-width: 800px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -318,7 +323,7 @@ th{
 
 
 .seleccionalergiacont{
-    margin-top: -60px;
+    margin-top: -80px;
     opacity: 0;
     visibility: none;
     pointer-events: none;
@@ -327,7 +332,7 @@ th{
     flex-direction: column;
     gap: 50px;
     transition: opacity 0.1s;
-    
+    margin-left: -10px;
 }
 
 .seleccionalergiacont.active{
