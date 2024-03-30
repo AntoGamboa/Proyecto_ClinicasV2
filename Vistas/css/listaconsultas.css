@@ -322,6 +322,12 @@ tbody td {
   
 }
 
+table {
+  margin-top: 10px;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 
 th{
   min-width: 116px;
