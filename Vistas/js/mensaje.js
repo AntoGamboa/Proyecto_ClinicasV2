@@ -20,6 +20,9 @@ botoncerrar.addEventListener("click", ()=>{
 
     var contenedor = document.querySelector(".mensajecont");
 
+    
+
     contenedor.classList.toggle("activo");
 
-})
+});
+

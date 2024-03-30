@@ -110,7 +110,7 @@ const filtrartablaespecialidad = (busqueda) =>
     tablaDatos.textContent = '';
     especialidades.forEach(Especialidad => 
     {
-        if(especialidad.nombre === busqueda){
+        if(especialidad.nombre.includes(busqueda)){
 
             const clone = templateEspecialidades.cloneNode(true);
             clone.getElementById('codigo').textContent = Especialidad.codigo;

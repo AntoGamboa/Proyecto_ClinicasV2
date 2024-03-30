@@ -109,7 +109,7 @@ const filtrartabla =(busqueda)=>{
     tabla_datos.textContent = '';
     data.forEach(alergia => {
 
-        if(alergia.nombre === busqueda){
+        if(alergia.nombre.includes(busqueda)){
 
             let clone = template.cloneNode(true);
             clone.getElementById('id').textContent = alergia.codigo;
