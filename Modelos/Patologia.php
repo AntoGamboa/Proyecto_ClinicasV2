@@ -59,7 +59,7 @@
         public function update($idPatologia,$nombrePatologia,$idSeleccionado)
         {
             $query = 'UPDATE patologia SET nombrePatologia=?,idPatologia=? where idPatologia=? ;';
-            $this->getConexion()->prepare($query)->execute(array($idPatologia,$nombrePatologia,$idSeleccionado));
+            $this->getConexion()->prepare($query)->execute(array($nombrePatologia,$idPatologia,$idSeleccionado));
             echo json_encode(['mensaje'=>'Actualizacion exitosa']);
         }
         public function delete($idPatologia)

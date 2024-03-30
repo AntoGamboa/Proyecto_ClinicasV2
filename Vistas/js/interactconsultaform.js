@@ -16,7 +16,6 @@ var patologias = [];
 
 var patologias_a_ingresar_enbd = [];
 
-alert("holaaa");
 
 
 

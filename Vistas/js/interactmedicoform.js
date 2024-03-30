@@ -185,6 +185,8 @@ tabla.addEventListener('click', function(event) {
 //reinicia selecciones
 
 function reiniciarseleccion(){
+    const especialidadescont = document.querySelectorAll(".especialidadcont");
+
     especialidadescont.forEach(especialidad =>{
 
         if(especialidad.classList.contains("selected")){

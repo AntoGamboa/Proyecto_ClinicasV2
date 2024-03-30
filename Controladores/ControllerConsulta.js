@@ -1,8 +1,10 @@
-let EnviarFormulario = document.getElementById('formregistroconsulta');
-let template = document.getElementById('templatedetallesconsulta').content;
+let rutaPacientes='http://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
+
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
-let ruta='';
+let templateDataPac = document.getElementById('templateDatosPaciente').content;
+
+
 let cedulaSeleccionada = '';
 
 
@@ -33,28 +35,31 @@ document.addEventListener('click',e => {
 
 document.addEventListener('DOMContentLoaded',e =>{
     cargarTabla()
-    cargarEspecialidades()
+   
 });
 
 
 const cargarTabla = ()=>{
     let formdata = new FormData();
     formdata.append("accion","readAll");
-    fetch(rutaMedicos,{
+    fetch(rutaPacientes,{
         method:'POST',
         body:formdata
     })
     .then(response => response.json())
     .then(data => {
-        const dataTableBody = document.getElementById('tabla_datos');
         tabla_datos.textContent = '';
-        data.forEach(medico => {
-            let clone = template.cloneNode(true);
-            clone.getElementById('cedula').textContent = medico.cedula;
-            clone.getElementById('nombre').textContent = medico.nombre;
-            clone.getElementById('apellido').textContent = medico.apellido;
-            clone.querySelector('.delete-button').dataset.cedula = medico.cedula;
-            clone.querySelector('.edit-button').dataset.cedula = medico.cedula;
+        data.forEach(paciente => {
+            let clone = templateDataPac.cloneNode(true);
+            let nacimiento = new Date(paciente.nacimiento) ;
+            let fechaActual = new Date();
+            clone.getElementById('cedula').textContent = paciente.cedula;
+            clone.getElementById('nombre').textContent = paciente.nombre;
+            clone.getElementById('apellido').textContent = paciente.apellido;
+            clone.getElementById('edad').textContent = `${fechaActual.getFullYear()-nacimiento.getFullYear()} años`;
+            clone.getElementById('alergias').textContent = paciente.alergias;
+            clone.querySelector('.delete-button').dataset.cedula = paciente.cedula;
+            clone.querySelector('.edit-button').dataset.cedula = paciente.cedula;
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);
