@@ -180,32 +180,38 @@ function reiniciarseleccion(){
 
 
 
+function asignareventosalergias(){
 
+  const alergiascont = document.querySelectorAll(".alergiacont");
 
-const alergiascont = document.querySelectorAll(".alergiacont");
-
-for (let i = 0; i < alergiascont.length; i++) {
   
-    alergiascont[i].addEventListener('click', function(event) {
 
-        if(alergiascont[i].classList.contains("selected")){
+  for (let i = 0; i < alergiascont.length; i++) {
+    
+      alergiascont[i].addEventListener('click', function(event) {
 
-            alergiascont[i].classList.remove("selected");
+          if(alergiascont[i].classList.contains("selected")){
+
+              alergiascont[i].classList.remove("selected");
 
 
 
-            
-        }else{
+              
+          }else{
 
-            alergiascont[i].classList.add("selected");
-            
-            
-            
-        }
+              alergiascont[i].classList.add("selected");
+              
+              
+              
+          }
 
-     
-    });
+      
+      });
+  }
+
 }
+
+
 
 
 
@@ -230,7 +236,7 @@ const inputs = document.querySelector(".searchbarcont input");
 const botonbusqueda = document.querySelector(".searchbarcont button")
 
 
-const inputsbusquedaalergia = document.querySelector(".seleccionalergiacont .searchbarcont input");
+const inputsbusquedaalergia = document.querySelector(".seleccionalergiacont .inputcontespe .searchbaralergias");
 const botonbusquedaalergias = document.querySelector(".seleccionalergiacont .inputcontespe .buttonbuscaralergias")
 
 
@@ -265,6 +271,8 @@ botonbusquedaalergias.addEventListener('click', ()=>{
   
 
   let busqueda = inputsbusquedaalergia.value;
+
+  
   
 
   if(busqueda == ''){
@@ -276,7 +284,7 @@ botonbusquedaalergias.addEventListener('click', ()=>{
     
   }else{
 
-    let busqueda = inputs.textContent;
+
     filtrartablaalergias(busqueda);
 
   }

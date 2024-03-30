@@ -290,8 +290,10 @@ tabla.addEventListener('click', function(event) {
 
 });
 
-const inputs = document.querySelector(".searchbarcont input");
+const inputbusqueda = document.querySelector(".searchbarcont input");
 const botonbusqueda = document.querySelector(".searchbarcont .buttonbuscar")
+
+const inputbusquedapatologias = document.querySelector(".seleccionpatologiacont .inputcontespe .searchbarpatologias")
 const botonbusquedapatologias = document.querySelector(".seleccionpatologiacont .inputcontespe .buttonbuscarpatologia")
 
 
@@ -303,7 +305,7 @@ botonbusqueda.addEventListener('click', ()=>{
 
   
 
-    let busqueda = inputs.textContent;
+    let busqueda = inputbusqueda.value;
     if(busqueda == ''){
 
       
@@ -311,7 +313,7 @@ botonbusqueda.addEventListener('click', ()=>{
         
 
       }else{
-        let busqueda = inputs.textContent;
+        let busqueda = inputbusqueda.value;
         filtrartabla(busqueda);
         
   
@@ -327,14 +329,14 @@ botonbusquedapatologias.addEventListener('click', ()=>{
 
   
 
-    let busqueda = inputs.textContent;
+    let busqueda = inputbusquedapatologias.value;
     if(busqueda == ''){
         patologias = [];
         cargarpatologias();
         
 
       }else{
-        let busqueda = inputs.textContent;
+        let busqueda = inputbusquedapatologias.textContent;
         filtrartablapatologias(busqueda);
         
   

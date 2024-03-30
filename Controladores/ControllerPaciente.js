@@ -61,6 +61,8 @@ document.addEventListener('click',e => {
 
 
 document.addEventListener('DOMContentLoaded',e =>{
+
+    
     cargarTabla();
     cargarAlergias();
 });
@@ -116,7 +118,8 @@ const cargarAlergias = () =>{
     }).then(resp => resp.json())
     .then(data=>{
 
-        alergias= data;
+        alergias = data;
+       
 
         divAlergias.textContent = '';
 
@@ -127,6 +130,8 @@ const cargarAlergias = () =>{
             fragment.appendChild(clone);
         });
         divAlergias.appendChild(fragment);
+
+        asignareventosalergias();
     })
 };
 
@@ -225,9 +230,12 @@ const filtrartablaalergias = (busqueda)=>{
 
     divAlergias.textContent = '';
 
+    
+
     alergias.forEach( aler =>{
 
-        if(aler.nombre === busqueda){
+
+        if(aler.nombre.includes(busqueda)){
 
             let clone = templateAlergias.cloneNode(true);
             clone.querySelector('.alergiacont').textContent = aler.nombre;
@@ -241,3 +249,4 @@ const filtrartablaalergias = (busqueda)=>{
 
     
 };
+hola1
