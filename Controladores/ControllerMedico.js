@@ -119,6 +119,9 @@ const cargarTabla = ()=>{
     .then(response => response.json())
     .then(data => {
         console.log(data);
+
+        
+
         tabla_datos.textContent = '';
         data.forEach(medico => {
             let clone = template.cloneNode(true);
@@ -178,6 +181,9 @@ const cargarEspecialidades = () =>{
     .then(resp => resp.json())
     .then(data => {
         console.log(data)
+
+        especialidadesbasededatos = data;
+
         data.forEach(item =>{
             let clone = TemplateDivEspecialidad.cloneNode(true);
             clone.querySelector('.especialidadcont').textContent = item.nombre;
@@ -186,26 +192,35 @@ const cargarEspecialidades = () =>{
         });
         DivContEspecialidades.appendChild(fragment);
 
+        asignareventosespecilidades();
+
     });
         
 };
 
 
 const filtrartablaspecialidades = (busqueda) =>{
-        especialidadesbasededatos.forEach(especialidad =>{
 
-            if(especialidad.nombre === busqueda){
+    DivContEspecialidades.textContent = '';
 
-                let clone = TemplateDivEspecialidad.cloneNode(true);
-                clone.querySelector('.especialidadcont').textContent = item.nombre;
-                clone.querySelector('.especialidadcont').dataset.codigo = item.codigo;
-                fragment.appendChild(clone);
+    especialidadesbasededatos.forEach(especialidad =>{
 
-            }
-        });
-        DivContEspecialidades.appendChild(fragment);
 
-    
+
+        if(especialidad.nombre.includes(busqueda)){
+
+            alert("entre");
+
+            let clone = TemplateDivEspecialidad.cloneNode(true);
+            clone.querySelector('.especialidadcont').textContent = especialidad.nombre;
+            clone.querySelector('.especialidadcont').dataset.codigo = especialidad.codigo;
+            fragment.appendChild(clone);
+
+        }
+    });
+    DivContEspecialidades.appendChild(fragment);
+
+    asignareventosespecilidades();
         
 };
 

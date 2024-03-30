@@ -182,37 +182,6 @@ tabla.addEventListener('click', function(event) {
 
 
 
-document.addEventListener("DOMContentLoaded", function(){
-
-    let formdata = new FormData();
-    formdata.append("accion","readAll");
-    fetch('../Modelos/especialidad.php',{
-
-        method:'POST',
-        body:formdata
-
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        console.log(data);
-
-        
-            data.forEach(especialidad)
-
-
-            
-            
-        
-    });
-
-       
-   
-
-    
-})
-
-
 //reinicia selecciones
 
 function reiniciarseleccion(){
@@ -226,70 +195,32 @@ function reiniciarseleccion(){
 }
 
 
-const especialidadescont = document.querySelectorAll(".especialidadcont");
+function asignareventosespecilidades(){
 
+    const especialidadescont = document.querySelectorAll(".especialidadcont");
 
-for (let i = 0; i < especialidadescont.length; i++) {
-  
-    especialidadescont[i].addEventListener('click', function(event) {
-
-        if(especialidadescont[i].classList.contains("selected")){
-
-            especialidadescont[i].classList.remove("selected");
-
-            const borrar = especialidades.indexOf( especialidadescont[i].innerHTML)
-
-            if (borrar !== -1) {
-              especialidades.splice(borrar, 1);
-            }
-
-            
-
-            
-
-            
-        }else{
-
-            especialidadescont[i].classList.add("selected");
-            especialidades.push(especialidadescont[i].innerHTML);
     
-            
-            
+
+        for (let i = 0; i < especialidadescont.length; i++) {
+
+            especialidadescont[i].addEventListener('click', function(event) {
+
+                if(especialidadescont[i].classList.contains("selected")){
+
+                    especialidadescont[i].classList.remove("selected");
+
+                    
+                }else{
+
+                    especialidadescont[i].classList.add("selected");
+                    
+                    
+                    
+                }
+
+                
+            });
         }
-
-     
-    });
-}
-
-function asignarespecialidades(cedula){
-
-
-    let formdata = new FormData();
-    formdata.append("accion","readAll");
-    formdata.append("cedula",cedula);
-    fetch('../Modelos/especialidad.php',{
-
-        method:'POST',
-        body:formdata
-
-    })
-    .then(response => response.json())
-    .then(data => {
-
-        console.log(data);
-
-        especialidadescont.forEach(element => {
-            data.forEach(especialidad)
-            if(element.innerHTML == especialidadescont){
-
-                element.classList.add("selected")
-            }
-        
-        });
-
-       
-    })
-    
 }
 
 
@@ -297,7 +228,7 @@ function asignarespecialidades(cedula){
 const inputSearch = document.querySelector(".searchbarcont .searchbar");
 const botonbusqueda = document.querySelector(".searchbarcont button");
 
-const inputSearchespecialidades = document.querySelector(".seleccionespecialidadcont .searchbarcont .searchbar");
+const inputSearchespecialidades = document.querySelector(".seleccionespecialidadcont .inputcontespe .searchbarespecialidades");
 const botonbusquedaespecialidades = document.querySelector(".seleccionespecialidadcont .inputcontespe .buttonbuscarespecialidades")
 
 
@@ -341,7 +272,7 @@ botonbusquedaespecialidades.addEventListener('click', ()=>{
       }else{
 
         
-        filtrartablaespecialidades(busqueda);
+        filtrartablaspecialidades(busqueda);
   
       }
 
