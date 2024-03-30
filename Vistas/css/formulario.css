@@ -171,6 +171,7 @@
 }
 
 .searchbarcont{
+  margin-top: 20px;
   margin-left: 20px;
 }
 
@@ -183,6 +184,12 @@
   overflow-y: scroll; 
   overflow-x: hidden; 
   
+}
+
+table {
+ 
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 

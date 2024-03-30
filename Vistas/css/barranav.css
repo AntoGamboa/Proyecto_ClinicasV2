@@ -351,6 +351,16 @@ main.min-main{
     border-radius: 5px ;
 }
 
+.titulopagina{
+    position: absolute;
+    margin-top: 0px;
+    margin-left: 84vw;
+    color: rgb(0, 145, 255);;
+    padding: 20px;
+    
+   
+}
+
 
 
 
