@@ -139,6 +139,14 @@ function avanzar(){
 
 
     paginasform.classList.toggle("patologia");
+    paginasform.classList.toggle("medico");
+
+    
+
+  }else if(paginasform.classList.contains("medico") ){
+
+
+    paginasform.classList.toggle("medico");
     paginasform.classList.toggle("detalles");
 
     
@@ -155,7 +163,16 @@ function retroceder(){
   if(paginasform.classList.contains("detalles")){
 
     paginasform.classList.toggle("detalles");
+    paginasform.classList.toggle("medico");
+    
+
+  }else if(paginasform.classList.contains("medico")){
+
+    paginasform.classList.toggle("medico");
     paginasform.classList.toggle("patologia");
+   
+
+    
     
 
   }

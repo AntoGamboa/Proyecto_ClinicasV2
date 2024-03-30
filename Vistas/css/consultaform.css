@@ -125,21 +125,27 @@
     align-items: center;
     justify-content: center;
     align-items: center;
-    gap: 100px;
-    margin-left: 130%;
+    gap: 200px;
+    margin-left: 193%;
     transition: transform ease 0.2s, margin-top ease 0.2s ;
 }
 
 
 .formpages.patologia{
     
-    transform: translateX(-800px);
+    transform: translateX(-900px);
+    margin-top: -40px;
+}
+
+.formpages.medico{
+    
+    transform: translateX(-1650px);
     margin-top: -40px;
 }
 
 .formpages.detalles{
     margin-top: -40px;
-    transform: translateX(-1500px);
+    transform: translateX(-2530px);
 }
 
 .pacientpage{
@@ -452,6 +458,58 @@ th{
     display: flex;
     gap: 30px;
     color: white;
+}
+
+
+.medicoconsultacont{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 600px;
+    max-width: 600px;
+    min-height: 200px;
+   color: white;
+    
+}
+
+.medicoconsultacont .datosmedico{
+    
+    display: grid;
+    grid-template-columns: 260px 260px;
+    grid-gap: 5px;
+    
+}
+
+.medicoconsultacont .buttonbuscar{
+    width: 80px;
+  height: 30px;
+  background: rgb(16, 167, 255);
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0;
+  margin-left: 240px;
+  margin-top: -30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  color: aliceblue;
+  font-weight: 500;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.5);
+  
+    
+     
+ }
+
+.medicoconsultacont .buttonformcont{
+   margin-left: 140px;
+   margin-top: -50px;
+   
+    
+}
+
+.medicoconsultacont .contenedor_input input{
+    color: white;
+    
 }
 
 .inputimc{
