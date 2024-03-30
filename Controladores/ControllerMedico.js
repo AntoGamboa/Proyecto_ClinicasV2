@@ -154,7 +154,7 @@ const filtrartabla = (busqueda)=>{
         tabla_datos.textContent = '';
         data.forEach(medico => {
 
-            if(medico.nombre === busqueda){
+            if(medico.nombre.includes(busqueda)){
                 let clone = template.cloneNode(true);
                 clone.getElementById('cedula').textContent = medico.cedula;
                 clone.getElementById('nombre').textContent = medico.nombre;

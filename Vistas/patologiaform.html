@@ -7,10 +7,27 @@
 
     <link rel="stylesheet" href="css/formulario.css">
     <link rel="stylesheet" href="css/barranav.css">
+    <link rel="stylesheet" href="css/mensaje.css">
     <script src="../Controladores/VerificarSesiones.js" ></script>
 
 </head>
 <body>
+
+
+    <section class="mensajecont">
+
+
+        <div class="mensaje">
+
+            <h2 class="titulomensaje"></h2>
+
+            <div class="contenidomensaje"></div>
+
+            <button>Aceptar</button>
+
+        </div>
+
+    </section>
 
     <div class="navbar">
     
@@ -34,15 +51,9 @@
             <nav class="navegacion">
                 <ul>
                     <li>
-                        <a id="inbox" href="mainpage.html">
-                            <ion-icon name="home-outline"></ion-icon>
-                            <span class="spannav oculto">Inicio</span>
-                        </a>
-                    </li>
-                    <li>
                         <a id="inbox" href="login.html">
-                            <ion-icon name="person-outline"></ion-icon>
-                            <span class="spannav oculto">Iniciar Sesion</span>
+                            <ion-icon name="close-sharp"></ion-icon>
+                            <span class="spannav oculto">Cerrar Sesion</span>
                         </a>
                     </li>
                     
@@ -168,6 +179,7 @@
     <script src="js/interactform.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/mensaje.js"></script>
     
 </body>
 </html>

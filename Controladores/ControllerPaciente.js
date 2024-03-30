@@ -205,7 +205,7 @@ const filtrarTabla = (busqueda)=>{
         dataTableBody.textContent = '';
         data.forEach(paciente => {
 
-            if(paciente.cedula === busqueda){
+            if(paciente.cedula.includes(busqueda)){
 
                 let clone = templateDatosPaciente.cloneNode(true);
                 clone.getElementById('cedula').textContent = paciente.cedula;
@@ -247,6 +247,6 @@ const filtrartablaalergias = (busqueda)=>{
     });
     divAlergias.appendChild(fragment);
 
-    
+    asignareventosalergias();
 };
 hola1

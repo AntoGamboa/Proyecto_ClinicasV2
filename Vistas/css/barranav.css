@@ -137,6 +137,8 @@
     color: var(--color-boton-texto);
     cursor: pointer;
 }
+
+
 .barra-lateral .boton ion-icon{
     min-width: 50px;
     font-size: 27px;
@@ -183,6 +185,9 @@
     border-radius: 10px;
     color: var(--color-texto-menu);
 }
+
+
+
 .barra-lateral .navegacion a:hover{
     background-color: var(--color-menu-hover);
     color: var(--color-menu-hover-texto);
@@ -258,6 +263,11 @@
 #inbox{
     background-color: var(--color-menu-hover);
     color: var(--color-menu-hover-texto);
+}
+
+.barra-lateral .navegacion .cerrarsesion{
+    
+    font-size: 80px;
 }
 
 main{

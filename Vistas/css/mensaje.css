@@ -9,9 +9,11 @@
 .mensajecont{
     opacity: 0;
     pointer-events: none;
+    position: absolute;
 }
 
 .mensajecont.activo{
+    z-index: 10000000;
     position: absolute;
     min-width: 100vw;
     min-height: 100vh;
@@ -20,6 +22,7 @@
     justify-content: center;
     opacity: 1;
     pointer-events: all;
+    background-color: rgba(240, 248, 255, 0.875);
     
 }
 

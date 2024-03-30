@@ -107,7 +107,7 @@ const filtrartablapatologias = (busqueda)=>{
 
         patologias.forEach(patologia => {
 
-            if(patologia.nombre === busqueda){
+            if(patologia.nombre.includes(busqueda)){
                 
                 const clone = template.cloneNode(true);
                 clone.getElementById('idPatologia').textContent = patologia.codigo;
