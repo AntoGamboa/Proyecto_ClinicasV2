@@ -8,6 +8,8 @@ let divAlergias = document.querySelector('.alergiascont');
 let templateDatosPaciente = document.getElementById('templateDatosPaciente').content;
 let templateAlergias = document.getElementById('templateAlergias').content;
 
+alert("aaa")
+
 let fragment = document.createDocumentFragment();
 
 let alergiaEscogidaForm = [];

@@ -223,9 +223,9 @@
 
 .input_detalles {
   width: 100%;
-  min-height: 100%;
+  min-height: 150%;
   max-height: 100%;
-  margin-top: 80px;
+  margin-top: 20px;
   border: none;
   color: white;
   border-bottom: 2px solid rgb(57, 146, 255); 
@@ -336,6 +336,14 @@ th{
     border-bottom: 2px solid rgb(22, 145, 216);
     margin: 40px 0;
 }
+
+
+
+.contenedor_input.detalles {
+    
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
   
 .contenedor_input input:focus ~ label,
 .contenedor_input input:valid ~ label {
@@ -433,6 +441,29 @@ th{
     display: flex;
     gap: 30px;
     color: white;
+}
+
+.inputimc{
+
+    max-width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+
+}
+
+.inputimc .contenedor_input{
+
+    height: 80px;
+
+}
+
+.inputimc input{
+
+    color: white;
+
 }
 
 
