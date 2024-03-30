@@ -23,6 +23,8 @@
     
 }
 
+
+
 .buttoncont{
     position: absolute;
     margin-left: -180px;
@@ -243,9 +245,18 @@
 }
 
 .searchbarcont{
-    margin-left: 20px;
+    margin-left: -20px;
     margin-top: 20px;
     margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchbarcont div{
+    margin-left: 20px;
+    color: white;
+    margin-left: 20px;
 }
 
 .tablausuarios{

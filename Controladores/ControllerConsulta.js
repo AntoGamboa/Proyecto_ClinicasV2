@@ -63,6 +63,11 @@ const cargarTabla = ()=>{
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);
+
+        //asigna el evento sin comerse la asincronia
+        asignareventosfilaspacientes();
+
+        
 });}
 
 
@@ -91,6 +96,8 @@ const filtrartabla = (busqueda)=>{
             
         });
         tabla_datos.appendChild(fragment);
+
+        
 });}
 
 EnviarFormulario.addEventListener('submit',e => {

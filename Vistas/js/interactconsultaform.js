@@ -179,56 +179,62 @@ function retroceder(){
 
 //este codigo es el que guarda los datos del paciente seleccionado y avanza el formulario
 
+function asignareventosfilaspacientes(){
 
-const tablaDatos = document.getElementsByTagName("tr");
+  const tablaDatos = document.getElementsByTagName("tr");
 
-for (let i = 0; i < tablaDatos.length; i++) {
-
-  const fila = tablaDatos[i];
-  const nombre = fila.querySelectorAll("td")[0];
-
-  if(tablaDatos[i].querySelector('th')){
-
-  }else{
-
-    fila.addEventListener('click', function(event) {
-
-      if(event.target.classList.contains("edit-button") || event.target.classList.contains("delete-button")){
-
-        
-
+  for (let i = 0; i < tablaDatos.length; i++) {
+  
+    const fila = tablaDatos[i];
+    const nombre = fila.querySelectorAll("td")[0];
+  
+    if(tablaDatos[i].querySelector('th')){
+  
+    }else{
+  
+      fila.addEventListener('click', function(event) {
+  
+        if(event.target.classList.contains("edit-button") || event.target.classList.contains("delete-button")){
+  
           
-
-      }else{
-
-        if (fila.classList.contains("selected")) {
-
-          fila.classList.remove("selected");
-          seleccion = false;
-    
-        }else if(seleccion != true ) {
-
-          //aqui se pueden extraer los datos
-    
-          variablespaciente = [];
-    
-          cambiotabla();
-          avanzar();
-    
-          seleccion = true;
-    
-        }
-
-        
-      }
-
+  
+            
+  
+        }else{
+  
+          if (fila.classList.contains("selected")) {
+  
+            fila.classList.remove("selected");
+            seleccion = false;
       
-
-    });
-
+          }else if(seleccion != true ) {
+  
+            //aqui se pueden extraer los datos
+      
+            variablespaciente = [];
+      
+            cambiotabla();
+            avanzar();
+      
+            seleccion = true;
+      
+          }
+  
+          
+        }
+  
+        
+  
+      });
+  
+    }
+  
   }
 
 }
+
+
+
 
 
 //reinicia selecciones
