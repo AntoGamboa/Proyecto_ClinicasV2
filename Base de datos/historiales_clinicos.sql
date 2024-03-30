@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-03-2024 a las 20:39:26
+-- Tiempo de generación: 30-03-2024 a las 22:23:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -52,16 +52,15 @@ CREATE TABLE `alergiaxpaciente` (
   `idAlergia` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `antecedente`
+-- Volcado de datos para la tabla `alergiaxpaciente`
 --
 
-CREATE TABLE `antecedente` (
-  `idConsulta` varchar(12) NOT NULL,
-  `idFamiliar` varchar(45) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `alergiaxpaciente` (`cedulaPaciente`, `idAlergia`) VALUES
+('33289144', 1),
+('33289144', 0),
+('14175704', 0),
+('14175704', 1);
 
 -- --------------------------------------------------------
 
@@ -70,12 +69,11 @@ CREATE TABLE `antecedente` (
 --
 
 CREATE TABLE `consulta` (
-  `idConsulta` varchar(15) NOT NULL,
-  `fechaConsulta` date NOT NULL,
   `cedulaMedico` varchar(12) NOT NULL,
   `descripcion` varchar(255) NOT NULL,
   `cedulaPaciente` varchar(12) NOT NULL,
-  `idExamen` varchar(20) NOT NULL
+  `id_consulta` int(11) NOT NULL,
+  `fechaConsulta` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -114,17 +112,6 @@ CREATE TABLE `examen` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `familiar`
---
-
-CREATE TABLE `familiar` (
-  `idFamiliar` varchar(45) NOT NULL,
-  `nombreFamiliar` varchar(32) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `imc`
 --
 
@@ -149,6 +136,14 @@ CREATE TABLE `medico` (
   `fe_nacimiento` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `medico`
+--
+
+INSERT INTO `medico` (`cedulaMedico`, `nombreMedico`, `apellidoMedico`, `estado`, `fe_nacimiento`) VALUES
+('14175704', 'angelica', 'godoy', 1, '1980-02-13 00:00:00'),
+('30405189', 'antonio', 'gamboa', 1, '2003-02-28 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -159,6 +154,14 @@ CREATE TABLE `medicoxespecialidad` (
   `idEspecialidad` varchar(15) NOT NULL,
   `cedulaMedico` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `medicoxespecialidad`
+--
+
+INSERT INTO `medicoxespecialidad` (`idEspecialidad`, `cedulaMedico`) VALUES
+('04', '14175704'),
+('car01', '14175704');
 
 -- --------------------------------------------------------
 
@@ -175,6 +178,15 @@ CREATE TABLE `paciente` (
   `fe_nacimiento` datetime NOT NULL,
   `estado` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `paciente`
+--
+
+INSERT INTO `paciente` (`cedulaPaciente`, `nombrePaciente`, `apellidoPaciente`, `tlfonoPaciente`, `tlfonoEmergencia`, `fe_nacimiento`, `estado`) VALUES
+('14175704', 'jesus', 'gamboa', '04145652690', '04145652690', '2008-08-12 00:00:00', 1),
+('30405189', 'antonio', 'gamboa', '04145227670', '04145640990', '2003-02-28 00:00:00', 1),
+('33289144', 'angelica', 'godoy', '04145652690', '04145227670', '1980-02-13 00:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -193,6 +205,9 @@ CREATE TABLE `patologia` (
 --
 
 INSERT INTO `patologia` (`idPatologia`, `nombrePatologia`, `estado`) VALUES
+('01', 'Hipertension', 1),
+('02', 'Diabetes', 1),
+('03', 'Neumonia', 1),
 ('pat01', 'Gonorrea', 0);
 
 -- --------------------------------------------------------
@@ -202,10 +217,8 @@ INSERT INTO `patologia` (`idPatologia`, `nombrePatologia`, `estado`) VALUES
 --
 
 CREATE TABLE `patologiaxconsulta` (
-  `idConsulta` varchar(15) NOT NULL,
   `idPatologia` varchar(45) NOT NULL,
-  `descripcion` varchar(255) DEFAULT 'Descripcion no agregada',
-  `patologiaHereditaria` tinyint(1) NOT NULL
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -242,8 +255,15 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(15) NOT NULL,
   `passuser` varchar(45) DEFAULT NULL,
   `Fecha_registro` date DEFAULT curdate(),
-  `fe_nacimiento` datetime NOT NULL
+  `fe_nacimiento` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `nombre`, `apellido`, `correo`, `usuario`, `passuser`, `Fecha_registro`, `fe_nacimiento`) VALUES
+(20, 1, 'antonio', 'gamboa', 'antonio@hotmail.com', 'freelight', '123456', '2024-03-28', '2003-02-28');
 
 --
 -- Índices para tablas volcadas
@@ -263,18 +283,10 @@ ALTER TABLE `alergiaxpaciente`
   ADD KEY `idAlergia` (`idAlergia`);
 
 --
--- Indices de la tabla `antecedente`
---
-ALTER TABLE `antecedente`
-  ADD KEY `idConsulta` (`idConsulta`),
-  ADD KEY `idFamiliar` (`idFamiliar`);
-
---
 -- Indices de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  ADD PRIMARY KEY (`idConsulta`),
-  ADD KEY `idExamen` (`idExamen`),
+  ADD PRIMARY KEY (`id_consulta`),
   ADD KEY `cedulaPaciente` (`cedulaPaciente`),
   ADD KEY `cedulaMedico` (`cedulaMedico`);
 
@@ -289,12 +301,6 @@ ALTER TABLE `especialidad`
 --
 ALTER TABLE `examen`
   ADD PRIMARY KEY (`idExamen`);
-
---
--- Indices de la tabla `familiar`
---
-ALTER TABLE `familiar`
-  ADD PRIMARY KEY (`idFamiliar`);
 
 --
 -- Indices de la tabla `imc`
@@ -333,7 +339,7 @@ ALTER TABLE `patologia`
 --
 ALTER TABLE `patologiaxconsulta`
   ADD KEY `idPatologia` (`idPatologia`),
-  ADD KEY `idConsulta` (`idConsulta`);
+  ADD KEY `id_consulta` (`id_consulta`);
 
 --
 -- Indices de la tabla `roles`
@@ -355,6 +361,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `consulta`
+--
+ALTER TABLE `consulta`
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
@@ -364,7 +376,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
@@ -378,20 +390,10 @@ ALTER TABLE `alergiaxpaciente`
   ADD CONSTRAINT `alergiaxpaciente_ibfk_2` FOREIGN KEY (`idAlergia`) REFERENCES `alergia` (`idAlergia`);
 
 --
--- Filtros para la tabla `antecedente`
---
-ALTER TABLE `antecedente`
-  ADD CONSTRAINT `antecedente_ibfk_1` FOREIGN KEY (`idConsulta`) REFERENCES `consulta` (`idConsulta`),
-  ADD CONSTRAINT `antecedente_ibfk_2` FOREIGN KEY (`idFamiliar`) REFERENCES `familiar` (`idFamiliar`);
-
---
 -- Filtros para la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  ADD CONSTRAINT `consulta_ibfk_1` FOREIGN KEY (`idExamen`) REFERENCES `examen` (`idExamen`),
   ADD CONSTRAINT `consulta_ibfk_2` FOREIGN KEY (`cedulaPaciente`) REFERENCES `paciente` (`cedulaPaciente`),
-  ADD CONSTRAINT `consulta_ibfk_3` FOREIGN KEY (`idExamen`) REFERENCES `examen` (`idExamen`),
-  ADD CONSTRAINT `consulta_ibfk_4` FOREIGN KEY (`cedulaPaciente`) REFERENCES `paciente` (`cedulaPaciente`),
   ADD CONSTRAINT `consulta_ibfk_5` FOREIGN KEY (`cedulaMedico`) REFERENCES `medico` (`cedulaMedico`);
 
 --
@@ -413,8 +415,7 @@ ALTER TABLE `medicoxespecialidad`
 --
 ALTER TABLE `patologiaxconsulta`
   ADD CONSTRAINT `patologiaxconsulta_ibfk_1` FOREIGN KEY (`idPatologia`) REFERENCES `patologia` (`idPatologia`),
-  ADD CONSTRAINT `patologiaxconsulta_ibfk_2` FOREIGN KEY (`idConsulta`) REFERENCES `consulta` (`idConsulta`),
-  ADD CONSTRAINT `patologiaxconsulta_ibfk_3` FOREIGN KEY (`idConsulta`) REFERENCES `consulta` (`idConsulta`);
+  ADD CONSTRAINT `patologiaxconsulta_ibfk_2` FOREIGN KEY (`id_consulta`) REFERENCES `consulta` (`id_consulta`);
 
 --
 -- Filtros para la tabla `usuarios`

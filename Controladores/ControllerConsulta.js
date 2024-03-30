@@ -1,8 +1,14 @@
 let rutaPacientes='http://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
+const rutaPatologia= 'http://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
 
+
+let templatePatologias=document.getElementById('templatepatologias').content;
+let divPatologiaCont =document.querySelector('.patologiascont');
 let fragment = document.createDocumentFragment();
 let tabla_datos = document.getElementById('tabla_datos');
 let templateDataPac = document.getElementById('templateDatosPaciente').content;
+
+let PatologiasSeleccionadas = [];
 
 
 let cedulaSeleccionada = '';
@@ -30,12 +36,28 @@ document.addEventListener('click',e => {
     {
         cedulaSeleccionada=e.target.dataset.cedula;
     }
+    if(e.target.matches('.patologiacont'))
+    {
+        let resultado = PatologiasSeleccionadas.find(item => item == e.target.dataset.codigo );
+        if(resultado !== undefined)
+        {
+            PatologiasSeleccionadas = PatologiasSeleccionadas.filter(item => item !== resultado);
+        }else
+        {
+            PatologiasSeleccionadas.push(e.target.dataset.codigo);
+        }
+
+
+
+        console.log(PatologiasSeleccionadas);
+        console.log(cedulaSeleccionada);
+    }
 });
 
 
 document.addEventListener('DOMContentLoaded',e =>{
     cargarTabla()
-   
+   cargarPatologias()
 });
 
 
@@ -69,6 +91,23 @@ const cargarTabla = ()=>{
 
         
 });}
+const cargarPatologias = () => {
+    let formdata = new FormData();
+    formdata.append('accion','readAll');
+    fetch(rutaPatologia,{
+        method:'POST',
+        body:formdata
+    }).then(resp=>resp.json())
+    .then(data=>{
+        data.forEach(item =>{
+            let clone = templatePatologias.cloneNode(true);
+            clone.getElementById('Patologia').textContent = item.nombre;
+            clone.getElementById('Patologia').dataset.codigo = item.codigo;
+            fragment.appendChild(clone);
+        });
+        divPatologiaCont.appendChild(fragment);
+    })
+};
 
 
 const filtrartabla = (busqueda)=>{
