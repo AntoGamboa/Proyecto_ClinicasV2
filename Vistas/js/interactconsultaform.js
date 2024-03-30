@@ -14,7 +14,9 @@ var seleccion = false;
 
 var patologias = [];
 
-var patologias_a_ingresar_enbd;
+var patologias_a_ingresar_enbd = [];
+
+alert("holaaa");
 
 
 
@@ -134,7 +136,7 @@ function avanzar(){
     
 
   }
-  else if(paginasform.classList.contains("patologia")  && patologias.length > 0){
+  else if(paginasform.classList.contains("patologia") ){
 
 
     paginasform.classList.toggle("patologia");
