@@ -187,7 +187,8 @@
 .tablacont{
   width: 800px;
   margin-top: 10px;
-  max-height: 590px;
+  min-height: 545px;
+  max-height: 545px;
   color: white;
   overflow-y: scroll; 
   overflow-x: hidden; 

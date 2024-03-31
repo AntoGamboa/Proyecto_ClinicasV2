@@ -13,18 +13,7 @@ const detallesConsulta = document.querySelector('.detallescont .detallesconsulta
 const search = document.querySelector('.sectioncont .searchbarcont');
 const input = document.querySelector('.sectioncont .searchbar');
 
-document.addEventListener('click', (e) =>{
-    
-    if (e.target.matches('.buttonbuscar')) {
-        if (search.querySelector('.searchbar').value !== '') {
-            buscarTabla(search.querySelector('.searchbar').value);
-        }else{
-            cargarTabla();
-        }
-        
-    }
 
-});
 
 document.addEventListener('DOMContentLoaded', () =>{
 
@@ -33,6 +22,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 })
 
 const cargarTabla = () =>{
+
+    
+
     const formdata = new FormData();
     formdata.append("accion","readTabla");
     fetch(rutaConsulta,{
@@ -59,6 +51,9 @@ const cargarTabla = () =>{
 }
 
 const buscarTabla = (cedula) =>{
+
+   
+
     const formdata = new FormData();
     formdata.append('accion','buscar');
     formdata.append('cedula', cedula);

@@ -7,18 +7,9 @@ const formregistro = document.querySelector(".formregistrocont");
 
 const tabla = document.getElementById("tabla_datos");
 
-const overlaydetalles = document.querySelector(".detallescont");
-
-const cerrardetalles = document.querySelector(".detallescont ion-icon");
 
 
-//cerrar detalles
 
-cerrardetalles.addEventListener('click', ()=>{
-
-    overlaydetalles.classList.toggle("activo")
-
-})
 
 tabla.addEventListener('click', function(event) {
     const target = event.target;
@@ -30,14 +21,14 @@ tabla.addEventListener('click', function(event) {
 });
 
 
-//evento para abrir detalles
+//evento para abrir historia
 
 const tablaDatos = document.getElementsByTagName("tr");
 
 for (let i = 0; i < tablaDatos.length; i++) {
 
   const fila = tablaDatos[i];
-  const nombre = fila.querySelectorAll("td")[0];
+  
 
   fila.addEventListener('click', function(event) {
 
@@ -49,9 +40,9 @@ for (let i = 0; i < tablaDatos.length; i++) {
     }
     else{
 
-        //agregar datos
+        //crea el evento que abre el pdf aqui hermanosky
 
-       overlaydetalles.classList.toggle("activo");
+       
 
     }
 
@@ -118,24 +109,50 @@ function cambiotablaeditar(variables){
 }
 
 
-const inputs = document.querySelector(".searchbarcont input");
+//eventos para filtrar
+
+
+const inputbusqueda = document.querySelector(".searchbarcont input");
 const botonbusqueda = document.querySelector(".searchbarcont button");
 
+inputbusqueda.addEventListener("keydown", function(event) {
+  if (event.key === "Enter" || event.keyCode === 13) {
+    
+    event.preventDefault(); 
 
-
-
-
-
-/*botonbusqueda.addEventListener('click', ()=>{
-
-    let busqueda = inputs.textContent;
+    let busqueda = inputbusqueda.value;
     if(busqueda == ''){
+
+      
         
         cargarTabla();
       }else{
-        let busqueda = inputs.textContent;
-        filtrartabla(busqueda);
+        
+        buscarTabla(busqueda);
+
+        
+  
+      }
+  }
+});
+
+
+
+
+botonbusqueda.addEventListener('click', ()=>{
+
+    let busqueda = inputbusqueda.value;
+    if(busqueda == ''){
+
+      
+        
+        cargarTabla();
+      }else{
+        
+        buscarTabla(busqueda);
+
+        
   
       }
 
-}) */
+})
