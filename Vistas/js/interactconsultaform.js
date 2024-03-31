@@ -2,20 +2,13 @@ var pacienttablecont = document.querySelector(".pacientselectcont");
 var pacientformcont = document.querySelector(".pacientform");
 var formcont = document.querySelector(".pacientformcont");
 const buttoncambio = document.querySelector(".buttonregister");
-
 const botonregistro = document.querySelector(".pacientform button");
 let accionform= document.getElementById('accionFormulario');
-
 const paginasform = document.querySelector(".formpages");
-
-
-
 var seleccion = false;
-
 var patologias = [];
-
 var patologias_a_ingresar_enbd = [];
-
+let CedulaPAciSelec = 'ola';
 
 
 
@@ -204,50 +197,28 @@ function asignareventosfilaspacientes(){
   
     const fila = tablaDatos[i];
     const nombre = fila.querySelectorAll("td")[0];
-  
     if(tablaDatos[i].querySelector('th')){
-  
     }else{
-  
       fila.addEventListener('click', function(event) {
-  
         if(event.target.classList.contains("edit-button") || event.target.classList.contains("delete-button")){
-  
-          
-  
-            
-  
         }else{
-  
           if (fila.classList.contains("selected")) {
-  
             fila.classList.remove("selected");
             seleccion = false;
-      
           }else if(seleccion != true ) {
-  
             //aqui se pueden extraer los datos
-      
+            
             variablespaciente = [];
-      
             cambiotabla();
             avanzar();
-      
+            CedulaPAciSelec= fila.dataset.cedula;
+            console.log(CedulaPAciSelec);
             seleccion = true;
-      
-          }
-  
-          
+          } 
         }
-  
-        
-  
       });
-  
     }
-  
   }
-
 }
 
 
@@ -375,12 +346,3 @@ botonbusquedapatologias.addEventListener('click', ()=>{
       }
 
 })
-
-
-
-
-
-
-
-
-

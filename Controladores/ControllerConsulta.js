@@ -1,6 +1,7 @@
 let rutaPacientes='http://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
-const rutaPatologia= 'http://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
-
+let rutaPatologia = 'http://localhost/Proyecto_ClinicasV2/Modelos/Patologia.php';
+let rutaMedicos = 'http://localhost/Proyecto_ClinicasV2/Modelos/Medico.php';
+let rutaConsulta = 'http://localhost/Proyecto_ClinicasV2/Modelos/Consulta.php';
 
 let templatePatologias=document.getElementById('templatepatologias').content;
 let divPatologiaCont =document.querySelector('.patologiascont');
@@ -9,10 +10,9 @@ let tabla_datos = document.getElementById('tabla_datos');
 let templateDataPac = document.getElementById('templateDatosPaciente').content;
 
 let PatologiasSeleccionadas = [];
-
-
+let EnviarFormulario = document.getElementById('formregistroconsulta');
 let cedulaSeleccionada = '';
-
+let cedulamedicoConsulta='';
 
 document.addEventListener('click',e => {
     if(e.target.matches('.delete-button'))
@@ -46,16 +46,20 @@ document.addEventListener('click',e => {
         {
             PatologiasSeleccionadas.push(e.target.dataset.codigo);
         }
-
-
-
         console.log(PatologiasSeleccionadas);
         console.log(cedulaSeleccionada);
     }
+    if(e.target.matches('.buttonbuscar'))
+    {
+        let cedulaBuscada = document.getElementById('cedulamedico').value;
+        FindMedico(cedulaBuscada);
+    }
+    
 });
 
 
 document.addEventListener('DOMContentLoaded',e =>{
+   
     cargarTabla()
    cargarPatologias()
 });
@@ -82,14 +86,13 @@ const cargarTabla = ()=>{
             clone.getElementById('alergias').textContent = paciente.alergias;
             clone.querySelector('.delete-button').dataset.cedula = paciente.cedula;
             clone.querySelector('.edit-button').dataset.cedula = paciente.cedula;
+            clone.getElementById('trDatosPaciente').dataset.cedula=paciente.cedula;
             fragment.appendChild(clone);
         });
         tabla_datos.appendChild(fragment);
-
         //asigna el evento sin comerse la asincronia
         asignareventosfilaspacientes();
-
-        
+        PatologiasSeleccionadas=[];
 });}
 const cargarPatologias = () => {
     let formdata = new FormData();
@@ -108,7 +111,27 @@ const cargarPatologias = () => {
         divPatologiaCont.appendChild(fragment);
     })
 };
-
+const FindMedico = cedulaBuscada =>{
+    let formdata = new FormData();
+    formdata.append('accion','find')
+    formdata.append('cedulaBuscada',cedulaBuscada)
+    fetch(rutaMedicos,{
+        method:"POST",
+        body:formdata
+    }).then(resp => resp.json())
+    .then(data =>{
+        console.log(data);
+        let nacimiento = new Date(data.nacimiento);
+        let fechaActual = new Date();
+        cedulamedicoConsulta=data.cedula;
+        document.getElementById('cedulamedico').value=data.cedula;
+        document.getElementById('nombreMedico').value=data.nombre;
+        document.getElementById('apellidoMedico').value=data.apellido;
+        document.getElementById('especialidad').value=data.especialidad;
+        document.getElementById('edadMedico').value=`${fechaActual.getFullYear()-nacimiento.getFullYear()}`;
+        cedulamedicoConsulta=data.cedula;
+    })
+};
 
 const filtrartabla = (busqueda)=>{
     let formdata = new FormData();
@@ -142,8 +165,12 @@ const filtrartabla = (busqueda)=>{
 EnviarFormulario.addEventListener('submit',e => {
     e.preventDefault();
     let formdata = new FormData(EnviarFormulario);
+    formdata.append('patologias',JSON.stringify(PatologiasSeleccionadas));
+    formdata.append('cedulaPaciente',CedulaPAciSelec);
+    formdata.append('cedulaMedico',cedulamedicoConsulta);
+    formdata.append('accion','create')
     if(formdata.get('accion') === 'create'){        
-        fetch(ruta,{
+        fetch(rutaConsulta,{
             method:'POST',
             body:formdata
         })
@@ -166,13 +193,10 @@ EnviarFormulario.addEventListener('submit',e => {
             alert(data.mensaje)
             cargarTabla();
             cambiotabla();
+            
         })   
     }
 });
-
-
-
-
 
 tabla.addEventListener('click', function(event) {
     const target = event.target;

@@ -7,7 +7,7 @@
         {
             parent::__construct();
         }
-        public function create($cedulaMedico,$cedulaPaciente,$descripcion,$patologias)
+        public function create($cedulaMedico,$cedulaPaciente,$descripcion,$patologias,$peso,$estatura)
         {
             $mensaje= '';
             try
@@ -24,6 +24,8 @@
                 {
                     $this->getConexion()->prepare($queryPivot)->execute(array($LastIndex,$patologia));
                 }
+                $queryImc = 'INSERT INTO imc(cedulaPaciente,pesoPaciente,estaturaPaciente) VALUES(?,?,?)';
+                $this->getConexion()->prepare($queryImc)->execute(array($cedulaPaciente,$peso,$estatura));
                 $mensaje='Registro exitoso';
             }catch(Exception $e)
             {
@@ -35,4 +37,10 @@
         }
 
     }
+    $Consulta = new Consulta();
+    $accion = $_POST['accion'];
+    if($accion === 'create'){
+        echo $Consulta->create($_POST['cedulaMedico'],$_POST['cedulaPaciente'],$_POST['descripcion'],$_POST['patologias'],$_POST['peso'],$_POST['estatura']);
+    }
+
 ?>

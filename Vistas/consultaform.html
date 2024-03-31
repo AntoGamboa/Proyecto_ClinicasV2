@@ -56,31 +56,15 @@
                             <span class="spannav oculto">Cerrar Sesion</span>
                         </a>
                     </li>
-                    
-                    
                 </ul>
             </nav>
 
             <div>
                 <div class="linea"></div>
-
-            
-        
-            
-
             </div>
-
         <div>
-
     </div>
-            
-    
-        
-
     </div>
-
-
-
     <section class="formcontainer">
 
         <div class="pacientformcont registro">
@@ -194,14 +178,7 @@
                         </div>
         
                         <button type="submit" value="registro" class="button btnRegistrar">Registrar</button>
-
-
-                        
-                       
-        
-                        
                     </form>
-
                 </div>
 
                 <div class="seleccionpatologiacont active">
@@ -240,18 +217,10 @@
                     
                     <div>Ingresar la cedula del medico</div>
 
-                    <button class="buttonbuscar" >Buscar</button>
+                    <button  type="button" class="buttonbuscar" >Buscar</button>
                     
                     <div class="datosmedico" id="datosmedico">
-
-                        
-                        
-
-
-                        
-
                         <div class="contenedor_input">
-    
                             <input class="input_cedulamedico" id="cedulamedico" name="cedulamedico" type="text" required autocomplete="off">
                             <label for="">Cedula Medico</label>
         
@@ -259,14 +228,14 @@
 
                         <div class="contenedor_input">
     
-                            <input class="input_nombre" id="nombre" name="nombre" type="text" required autocomplete="off">
+                            <input class="input_nombre" id="nombreMedico" name="nombre" type="text" required autocomplete="off">
                             <label for="">Nombre</label>
         
                         </div>
 
                         <div class="contenedor_input">
         
-                            <input class="input_apellido" id="apellido" name="apellido" type="text" required autocomplete="off">
+                            <input class="input_apellido" id="apellidoMedico" name="apellido" type="text" required autocomplete="off">
                             <label for="">Apellido</label>
         
                         </div>
@@ -278,33 +247,12 @@
                         </div>
                         <div class="contenedor_input">
         
-                            <input class="input_edad" id="edad" name="edad" type="text" required autocomplete="off">
+                            <input class="input_edad" id="edadMedico" name="edad" type="text" required autocomplete="off">
                             <label for="">Edad</label>
         
                         </div>
-
                         
-
-                        
-
-
-
-
-                        
-
-                        
-                        
-                        
-
-                        
-        
-                        
-        
-                        
-                    </div>
-        
-                    
-                    
+                    </div>                
                     <div class="buttonformcont">
 
                         <button type="button" class="button"
@@ -314,14 +262,9 @@
                         
                     </div>
                     
-                    
                 </div>
                 
-    
                 <div class="consultformcont">
-
-                    
-
                     
                     <form action="" class="consultform" id="formregistroconsulta">
 
@@ -330,38 +273,20 @@
 
 
                         <div class="inputimc">
-
                             <div class="contenedor_input">
-        
-                                <input class="input_cedulamedico" id="cedulamedico" name="cedulamedico" type="text" required autocomplete="off">
-                                <label for="">Cedula Medico</label>
-            
-                            </div>
-
-                            <div class="contenedor_input">
-        
                                 <input class="input_peso" id="peso" name="peso" type="text" required autocomplete="off">
                                 <label for="">Peso</label>
             
                             </div>
-    
                             <div class="contenedor_input">
             
-                                <input class="input_altura" id="altura" name="altura" type="text" required autocomplete="off">
+                                <input class="input_altura" id="altura" name="estatura" type="text" required autocomplete="off">
                                 <label for="">Altura</label>
             
                             </div>
-
-
                         </div>
-
-                        
-                        
                         <div class="contenedor_input detalles">
-
-                            
-        
-                            <textarea class="input_detalles" id="detalles" name="detalles" type="text" required autocomplete="off"></textarea>
+                            <textarea class="input_detalles" id="detalles" name="descripcion" type="text" required autocomplete="off"></textarea>
                             <label for="">Detalles</label>
         
                         </div>
@@ -372,25 +297,12 @@
                             onclick="retroceder()">Atras</button>
                             <button type="submit" class="button">Registrar</button>
                             
-                        </div>
-        
-                        
-        
-                        
+                        </div>>
                     </form>
-        
-                    
-                    
-        
-                    
                     
                 </div>
             </div>
-
-        </div>
-
-
-        
+        </div>        
     </section>
     <template id="templatepatologias">
         <button type="button" id="Patologia" class="patologiacont">
@@ -398,7 +310,7 @@
         </button>
     </template>
     <template id="templateDatosPaciente">
-         <tr>
+         <tr  id="trDatosPaciente" class="trpacienteclick">
             <td id="cedula">Insercion</td>
             <td id="nombre">Insercion</td>
             <td id="apellido">Insercion</td>
@@ -410,21 +322,11 @@
             </td>
         </tr>
     </template>
-
-    <template id="templatepatologia">
-        <div class="patologiacont">
-            <div class="nombrepatologia"></div>
-        </div>
-   </template>
-
-      
     <script src="js/interactnav.js"></script>
     <script src="js/interactconsultaform.js"></script>
     <script src="../Controladores/ControllerConsulta.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="js/mensaje.js"></script>
-
-    
 </body>
 </html>

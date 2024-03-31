@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-03-2024 a las 22:23:48
+-- Tiempo de generación: 31-03-2024 a las 05:14:54
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -76,6 +76,14 @@ CREATE TABLE `consulta` (
   `fechaConsulta` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `consulta`
+--
+
+INSERT INTO `consulta` (`cedulaMedico`, `descripcion`, `cedulaPaciente`, `id_consulta`, `fechaConsulta`) VALUES
+('30405189', 'casi le da un ataque por gordo', '30405189', 7, '2024-03-30 23:11:47'),
+('30405189', 'esta bien el panita', '14175704', 8, '2024-03-30 23:12:51');
+
 -- --------------------------------------------------------
 
 --
@@ -116,11 +124,19 @@ CREATE TABLE `examen` (
 --
 
 CREATE TABLE `imc` (
-  `idImc` varchar(15) NOT NULL,
   `pesoPaciente` decimal(5,2) NOT NULL,
   `estaturaPaciente` decimal(3,2) NOT NULL,
-  `cedulaPaciente` varchar(45) NOT NULL
+  `cedulaPaciente` varchar(45) NOT NULL,
+  `idimc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `imc`
+--
+
+INSERT INTO `imc` (`pesoPaciente`, `estaturaPaciente`, `cedulaPaciente`, `idimc`) VALUES
+(63.00, 1.72, '30405189', 3),
+(53.00, 1.70, '14175704', 4);
 
 -- --------------------------------------------------------
 
@@ -221,6 +237,13 @@ CREATE TABLE `patologiaxconsulta` (
   `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `patologiaxconsulta`
+--
+
+INSERT INTO `patologiaxconsulta` (`idPatologia`, `id_consulta`) VALUES
+('02', 7);
+
 -- --------------------------------------------------------
 
 --
@@ -306,7 +329,7 @@ ALTER TABLE `examen`
 -- Indices de la tabla `imc`
 --
 ALTER TABLE `imc`
-  ADD PRIMARY KEY (`idImc`),
+  ADD PRIMARY KEY (`idimc`),
   ADD KEY `cedulaPaciente` (`cedulaPaciente`);
 
 --
@@ -364,7 +387,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT de la tabla `imc`
+--
+ALTER TABLE `imc`
+  MODIFY `idimc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`

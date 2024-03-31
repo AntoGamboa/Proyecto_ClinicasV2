@@ -57,6 +57,19 @@
                 return json_encode(['mensaje'=>$mensaje]);
             }
         }
+        public function find($cedulaBucada)
+        {
+            $query='SELECT m.cedulaMedico AS cedula, m.nombreMedico AS nombre,m.apellidoMedico AS apellido, 
+            IFNULL(GROUP_CONCAT(e.nombreEspecialidad SEPARATOR ", "), "Médico General") AS especialidad,m.fe_nacimiento AS nacimiento
+            FROM medicoxespecialidad mxe
+            RIGHT JOIN medico m ON m.cedulaMedico=mxe.cedulaMedico 
+            LEFT JOIN especialidad e ON e.idEspecialidad = mxe.idEspecialidad 
+            WHERE m.estado=1 AND m.cedulaMedico=? GROUP BY m.cedulaMedico;';
+            $stmt=$this->getConexion()->prepare($query);
+            $stmt->execute(array($cedulaBucada));
+            return json_encode($stmt->fetch(pdo::FETCH_OBJ));
+            
+        }
         public function update($nombre,$apellido,$cedula,$nacimiento,$cedulaSeleccionada,$especialidades)
         {
             $query = 'UPDATE medico SET cedulaMedico=?,nombreMedico=?,apellidoMedico=?,fe_nacimiento=? WHERE cedulaMedico=?;';
@@ -120,6 +133,10 @@
     if($accion === 'readEspMedSelect')
     {
         echo $Medico->readEspMedSelect($_POST['cedulaSeleccionada']);
+    }
+    if($accion === 'find')
+    {
+        echo $Medico->find($_POST['cedulaBuscada']);
     }
 
 ?>
