@@ -251,4 +251,3 @@ const filtrartablaalergias = (busqueda)=>{
 
     asignareventosalergias();
 };
-hola1
