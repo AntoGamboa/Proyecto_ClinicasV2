@@ -326,6 +326,17 @@ main.min-main{
 
 }
 
+.pdf-button{
+    display: flex;
+    place-content: center center;
+    padding: 5px;
+    margin: 0 .5rem;
+    border: none;
+    background-color: var(--color-linea);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 
 .searchbarcont button{

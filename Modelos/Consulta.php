@@ -35,15 +35,14 @@
                 return json_encode(['mensaje'=>$mensaje]);
             }   
         }
-        public function read() //Para el reporte
+        public function read($cedulaReporte) //Para el reporte
         {
             $mensaje = '';
             try {
                 $query ='SELECT p.cedulaPaciente AS cedulapaci,p.nombrePaciente AS nombrepaci,p.apellidoPaciente AS apellidopaci,p.fe_nacimiento 
                 AS nacimientopaci,
-                m.cedulaMedico AS cedulamedi,m.nombreMedico AS nombremedi,m.apellidoMedico AS apellidomedi,
-                IFNULL(GROUP_CONCAT(e.nombreEspecialidad SEPARATOR ", "),"Medico General" ) AS especialidad
-                ,c.descripcion,IFNULL(GROUP_CONCAT(pa.nombrePatologia SEPARATOR ", "),"Sin Patologias" ) AS patologia
+                m.cedulaMedico AS cedulamedi,m.nombreMedico AS nombremedi,m.apellidoMedico AS apellidomedi
+                ,c.descripcion,IFNULL(GROUP_CONCAT(pa.nombrePatologia SEPARATOR ", "),"Sin Patologias" ) AS patologia, c.fechaConsulta as fechaConsulta, p.tlfonoPaciente
                 FROM consulta c 
                 RIGHT JOIN paciente p ON p.cedulaPaciente = c.cedulaPaciente 
                 LEFT JOIN patologiaxconsulta pxc ON pxc.id_consulta = c.id_consulta
@@ -51,10 +50,11 @@
                 INNER JOIN medico m ON m.cedulaMedico = c.cedulaMedico
                 LEFT JOIN medicoxespecialidad mxe ON m.cedulaMedico = mxe.cedulaMedico
                 LEFT JOIN especialidad e ON  e.idEspecialidad = mxe.idEspecialidad
+                WHERE c.cedulaPaciente = ?
                 GROUP BY p.cedulaPaciente;'; 
 
                 $stmt = $this->getConexion()->prepare($query);
-                $stmt->execute();
+                $stmt->execute(array($cedulaReporte));
                 $mensaje = 'Carga exitosa';
                 return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
                 
@@ -112,7 +112,8 @@
         echo $Consulta->create($_POST['cedulaMedico'],$_POST['cedulaPaciente'],$_POST['descripcion'],$_POST['patologias'],$_POST['peso'],$_POST['estatura']);
     }
     if ($accion === 'read') {
-        echo $Consulta->read();
+        $cedulaReporte = $_POST['cedula'];
+        echo $Consulta->read($cedulaReporte);
     }
     if ($accion === 'readTabla') {
         echo $Consulta->readTabla();
