@@ -68,6 +68,7 @@
   max-width: 600px;
   transition: background-color 0.1s ease, min-height 0.2s ease;
   border-radius: 20px;
+  overflow: hidden;
 }
 
 .formcont.select{
@@ -90,18 +91,19 @@
   padding: 40px 0
 }
 
-.formregistro{
+.formregistrocont form{
   
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 260px));
-  grid-gap: 5px;
-  width: 600px;
-  height: 80px;
-  margin-bottom: 60px;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  transition: opacity 0.1s;
+  flex-direction: column;
+  gap: 40px;
+   
+}
+
+.formregistrocont .contenedor_input{
+  
+  margin: 0px;
    
 }
 
@@ -116,7 +118,7 @@
 
 .contenedor_input input:focus ~ label,
 .contenedor_input input:valid ~ label {
-  transform: translateY(-20px);
+  transform: translateY(-10px);
 }
 
 .contenedor_input label {
@@ -178,8 +180,8 @@
 .tablacont{
   width: 800px;
   margin-top: 30px;
-  max-height: 530px;
-  max-height: 530px;
+  min-height: 555px;
+  max-height: 555px;
   color: white;
   overflow-y: scroll; 
   overflow-x: hidden; 

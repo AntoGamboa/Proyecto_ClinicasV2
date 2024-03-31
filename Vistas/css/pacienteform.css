@@ -243,11 +243,11 @@
 
 .tablausuarios{
     margin-top: 10px;
-    min-height: 590px;
-    max-height: 590px;
+    min-height: 570px;
+    max-height: 570px;
     color: white;
     overflow-y: scroll; 
-    min-width: 117%;
+    min-width: 118.3%;
     
 }
 
