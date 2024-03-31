@@ -1,0 +1,145 @@
+.controller-principal{
+    display: none;
+    flex-direction: column;
+    place-content: center center;
+    width: 100vw;
+    height: 130vh;
+    margin: .5rem 0; 
+}
+
+.controller-sections{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background: grey;
+}
+
+.controller-sections :is(h1){
+    font-size: 3.5em;
+    margin: 1rem 0 .8rem 0;
+}
+
+.controller-sections :is(h2){
+    font-size: 1.9em;
+    letter-spacing: 3px;
+    margin: 1.5rem 0 1.2rem 0;
+}
+
+.container{
+    display: flex;
+    margin: 1rem 0;
+    padding: 0 20% 0 22% ;
+}
+
+
+.container :is(strong,p){
+    display: flex;
+    text-align: center;
+    margin: 0 .3rem;
+    font-size: 1.1em;
+}
+
+.container :is(p){ border-bottom: 3px groove black;}
+
+.container-2{
+    display: flex;
+    margin: 1rem 0;
+    padding: 0 20% 0 22% ;
+}
+
+.container-2 :is(strong,p){
+    display: flex;
+    margin: 0 .3rem;
+    font-size: 1.1em;
+}
+
+.container-2 :is(p){ border-bottom: 3px groove black;}
+
+.container-3 {
+    display: flex;
+    margin: 1rem 0;
+    padding: 0 20% 0 22%;
+}
+
+.container-3 :is(strong,p){
+    display: flex;
+    margin: 0 .3rem;
+    font-size: 1.1em;
+}
+
+.container-3 :is(p){ border-bottom: 3px groove black;}
+
+.container-4 {
+    display: flex;
+    margin: 1rem 0;
+    padding: 0 8% 0 5%;
+}
+
+.container-4 :is(strong,p){
+    display: flex;
+    margin: 0 .1rem;
+    font-size: 1.1em;
+}
+
+.container-4 :is(p){
+    letter-spacing: 2px; 
+    border-bottom: 3px groove black;
+}
+
+.container-5 {
+    display: flex;
+    text-align: center;
+    justify-content: center center;
+    margin: 1rem 0;
+    padding: 0 8% 0 15%;
+}
+
+.container-5 p {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0 .1rem;
+    font-size: 1.2em;
+    letter-spacing: 2px; 
+    border-bottom: 3px groove black;
+}
+
+.container-6{
+    display: flex;
+    margin: 1.5rem 0;
+    padding: 0 8% 0 8%;
+}
+
+.text-container{
+    width: 100%;
+    height: 200%;
+}
+
+.text-container :is(strong,p){
+    display: flex;
+    margin: 0 .1rem;
+    font-size: 1.1em;
+}
+
+.text-container :is(p){
+    letter-spacing: 2px; 
+    border-bottom: 3px groove black;
+}
+
+
+.text-container :is(strong){
+    font-size: 1.2rem;
+}
+
+.container-7{
+    display: flex;
+    margin: 1.5rem 0;
+    padding: 0 8% 0 8%;
+}
+
+.container-8{
+    display: flex;
+    margin: 1.5rem 0;
+    padding: 0 8% 0 8%;
+}

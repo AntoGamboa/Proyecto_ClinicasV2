@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/listaconsultas.css">
     <link rel="stylesheet" href="css/barranav.css">
     <link rel="stylesheet" href="css/mensaje.css">
+    <link rel="stylesheet" href="css/reporte.css">
     <script src="../Controladores/VerificarSesiones.js" ></script>
 
 </head>
@@ -123,6 +124,7 @@
                                     <td class="tdbuttons" >
                                         <button  type="button" class="edit-button" ><ion-icon name="pencil-outline"></ion-icon></button>
                                         <button  type="button" class="delete-button"><ion-icon name="close-outline"></ion-icon></button>
+                                        <button type="button" class="pdf-button">reporte</button>
                                     </td>
                                 </tr>
                                 
@@ -180,6 +182,75 @@
         </div>
     </section>
 
+    <!--                Parte Para el reporte tiene un display: NONE              -->
+
+    <div class="controller-principal">
+        <div class="controller-sections">
+            <h1>Historial clinico</h1>
+            <h2>Ficha de Identificacion: 29654651</h2>
+            <section class="container">
+                <strong>Nombres: <p id="nombreR"> pepito Jose</p></strong>
+                <strong>Apellidos: <p id="apellidoR">Perez Rodriguez</p></strong>
+                <strong> Edad: <p id="edadR">33</p></strong>
+                <strong>Sexo <p id="sexoR">Masculino</p></strong>
+            </section>
+            <section class="container-2">
+                <strong>Estado civil: <p id="EstadoR">Soltero</p></strong>
+                <strong>Ciudad: <p id="ciudadR">Barquisimeto</p></strong>
+                <strong>Ocupacion: <p id="ocupacionR">Universitario</p></strong>
+            </section>
+            <section class="container-3">
+                <strong>Direccion: 
+                    <p id="direccionR">carrera 3 entre calles 57 y 58</p>
+                </strong>
+                <strong> Numero de telefono: <p id="tlfono">04125659767</p></strong>
+            </section>
+
+            <section class="container-4">
+                <strong>Fecha, Hora y Quien elabora la Historia: 
+                    <p id="fechaR">
+                        Fecha: Jueves 28, de Marzo 2024, Hora: 7:30 p.m. 
+                        Nombre: Jose Castellanos 
+                    </p>
+                </strong>
+            </section>
+
+            <h2>Motivo de Consulta</h2>
+            <section class="container-5">
+               <p id="descripcionR">Dolor de estomago, nauseas y diarrea, le dolia mucho la barriga por comer no se que</p>
+            </section>
+
+            <h2>Antecedentes</h2>
+
+            <section class=" container-6">
+                <div class="text-container">
+                    <strong>Antecedentes HeredoFamiliares:
+                        <p>Diabetes</p>
+                    </strong>
+                </div>
+            </section>
+
+            <section class=" container-7">
+                <div class="text-container">
+                    <strong>Antecedentes Personales no Patologicos:
+                        <p>Diabetes</p>
+                    </strong>
+                </div>
+            </section>
+
+            <section class=" container-8">
+                <div class="text-container">
+                    <strong>Antecedentes HeredoFamiliares:
+                        <p>Diabetes</p>
+                    </strong>
+                </div>
+            </section>
+
+        </div>
+
+    </div>
+
+
     <template id="templateDatosConsultas">
         <tr>
             <td id="id">Insercion</td>
@@ -192,6 +263,7 @@
             <td class="tdbuttons" >
                 <button  type="button" class="edit-button" ><ion-icon name="pencil-outline"></ion-icon></button>
                 <button  type="button" class="delete-button"><ion-icon name="close-outline"></ion-icon></button>
+                <button type="button" class="pdf-button">reporte</button>
             </td>
         </tr>
     </template>
@@ -239,11 +311,16 @@
 
 
     
-    <script src="../Controladores/ControllerHistorias.js"></script>
+    <script src="../Controladores/ControllerHistorias.js" type="module"></script>
     <script src="js/interactnav.js"></script>
     <script src="js/listaconsultas.js"></script> 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
     <script src="js/mensaje.js"></script>
     
     
