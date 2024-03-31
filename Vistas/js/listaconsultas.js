@@ -126,7 +126,7 @@ const botonbusqueda = document.querySelector(".searchbarcont button");
 
 
 
-botonbusqueda.addEventListener('click', ()=>{
+/*botonbusqueda.addEventListener('click', ()=>{
 
     let busqueda = inputs.textContent;
     if(busqueda == ''){
@@ -138,4 +138,4 @@ botonbusqueda.addEventListener('click', ()=>{
   
       }
 
-})
+}) */
