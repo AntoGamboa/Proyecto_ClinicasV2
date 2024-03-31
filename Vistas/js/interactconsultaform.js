@@ -244,35 +244,35 @@ function reiniciarseleccion(){
 
 //este codigo inserta las patologias que se van a ingresar en la bd y las marca en la vista
 
-const patologiascont = document.querySelectorAll(".patologiacont");
+function asignareventospatologias(){
+  const patologiascont = document.querySelectorAll(".patologiacont");
 
-for (let i = 0; i < patologiascont.length; i++) {
+  for (let i = 0; i < patologiascont.length; i++) {
+    
+      patologiascont[i].addEventListener('click', function(event) {
   
-    patologiascont[i].addEventListener('click', function(event) {
-
-      
-
-        if(patologiascont[i].classList.contains("selected")){
-
-          patologiascont[i].classList.remove("selected");
-
-          const borrar = patologias_a_ingresar_enbd.indexOf( patologiascont[i].innerHTML)
-
-          if (borrar !== -1) {
-            patologias_a_ingresar_enbd.splice(borrar, 1);
-          }
-
-        }else{
-
+        
+  
+          if(patologiascont[i].classList.contains("selected")){
+  
+            patologiascont[i].classList.remove("selected");
+  
+  
+          }else{
+  
             patologiascont[i].classList.add("selected");
-            patologias_a_ingresar_enbd.push(patologiascont[i].innerHTML);
-            
-            
-        }
-      
-     
-    });
+              
+              
+              
+          }
+        
+       
+      });
+  }
+
 }
+
+
 
 
 
@@ -346,3 +346,4 @@ botonbusquedapatologias.addEventListener('click', ()=>{
       }
 
 })
+

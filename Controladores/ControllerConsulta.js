@@ -102,13 +102,18 @@ const cargarPatologias = () => {
         body:formdata
     }).then(resp=>resp.json())
     .then(data=>{
+
+        divPatologiaCont.textContent = '';
         data.forEach(item =>{
+            patologias = data;
             let clone = templatePatologias.cloneNode(true);
             clone.getElementById('Patologia').textContent = item.nombre;
             clone.getElementById('Patologia').dataset.codigo = item.codigo;
             fragment.appendChild(clone);
         });
         divPatologiaCont.appendChild(fragment);
+
+        asignareventospatologias();
     })
 };
 const FindMedico = cedulaBuscada =>{
@@ -133,34 +138,68 @@ const FindMedico = cedulaBuscada =>{
     })
 };
 
-const filtrartabla = (busqueda)=>{
+const filtrarTabla = (busqueda)=>{
     let formdata = new FormData();
     formdata.append("accion","readAll");
-    fetch(rutaMedicos,{
+    fetch(rutaPacientes,{
         method:'POST',
         body:formdata
     })
     .then(response => response.json())
     .then(data => {
-        const dataTableBody = document.getElementById('tabla_datos');
         tabla_datos.textContent = '';
-        data.forEach(medico => {
+        data.forEach(paciente => {
 
-            if(medico.nombre === busqueda){
-                let clone = template.cloneNode(true);
-                clone.getElementById('cedula').textContent = medico.cedula;
-                clone.getElementById('nombre').textContent = medico.nombre;
-                clone.getElementById('apellido').textContent = medico.apellido;
-                clone.querySelector('.delete-button').dataset.cedula = medico.cedula;
-                clone.querySelector('.edit-button').dataset.cedula = medico.cedula;
-                fragment.appendChild(clone);
-            }
+
+            if(paciente.cedula.contains(busqueda)){
+
             
+                let clone = templateDataPac.cloneNode(true);
+                let nacimiento = new Date(paciente.nacimiento) ;
+                let fechaActual = new Date();
+                clone.getElementById('cedula').textContent = paciente.cedula;
+                clone.getElementById('nombre').textContent = paciente.nombre;
+                clone.getElementById('apellido').textContent = paciente.apellido;
+                clone.getElementById('edad').textContent = `${fechaActual.getFullYear()-nacimiento.getFullYear()} años`;
+                clone.getElementById('alergias').textContent = paciente.alergias;
+                clone.querySelector('.delete-button').dataset.cedula = paciente.cedula;
+                clone.querySelector('.edit-button').dataset.cedula = paciente.cedula;
+                clone.getElementById('trDatosPaciente').dataset.cedula=paciente.cedula;
+                fragment.appendChild(clone);
+
+            }
         });
         tabla_datos.appendChild(fragment);
-
-        
+        //asigna el evento sin comerse la asincronia
+        asignareventosfilaspacientes();
+        PatologiasSeleccionadas=[];
 });}
+
+
+
+const filtrartablapatologias = (busqueda)=>{
+
+    divPatologiaCont.textContent = '';
+
+    
+
+    patologias.forEach( pato =>{
+
+
+        if(pato.nombre.includes(busqueda)){
+
+            let clone = templatePatologias.cloneNode(true);
+            clone.getElementById('Patologia').textContent = pato.nombre;
+            clone.getElementById('Patologia').dataset.codigo = pato.codigo;
+            fragment.appendChild(clone);
+
+        }
+        
+    });
+    divPatologiaCont.appendChild(fragment);
+
+    asignareventospatologias();
+};
 
 EnviarFormulario.addEventListener('submit',e => {
     e.preventDefault();
