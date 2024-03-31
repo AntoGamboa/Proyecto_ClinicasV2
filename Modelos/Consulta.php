@@ -35,6 +35,22 @@
                 return json_encode(['mensaje'=>$mensaje]);
             }   
         }
+        public function read()
+        {
+            $query ='SELECT p.cedulaPaciente AS cedulapaci,p.nombrePaciente AS nombrepaci,p.apellidoPaciente AS apellidopaci,p.fe_nacimiento 
+                    AS nacimientopaci,
+                    m.cedulaMedico AS cedulamedi,m.nombreMedico AS nombremedi,m.apellidoMedico AS apellidomedi,
+                    IFNULL(GROUP_CONCAT(e.nombreEspecialidad SEPARATOR ", "),"Medico General" ) AS especialidad
+                    ,c.descripcion,IFNULL(GROUP_CONCAT(pa.nombrePatologia SEPARATOR ", "),"Sin Patologias" ) AS patologia
+                    FROM consulta c 
+                    RIGHT JOIN paciente p ON p.cedulaPaciente = c.cedulaPaciente
+                    LEFT JOIN patologiaxconsulta pxc ON pxc.id_consulta = c.id_consulta
+                    LEFT JOIN patologia pa ON pa.idPatologia = pxc.idPatologia
+                    INNER JOIN medico m ON m.cedulaMedico = c.cedulaMedico
+                    LEFT JOIN medicoxespecialidad mxe ON m.cedulaMedico = mxe.cedulaMedico
+                    LEFT JOIN especialidad e ON  e.idEspecialidad = mxe.idEspecialidad
+                    GROUP BY p.cedulaPaciente;';
+        }
 
     }
     $Consulta = new Consulta();
