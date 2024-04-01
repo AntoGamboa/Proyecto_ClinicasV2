@@ -28,6 +28,7 @@
     width: 95%;
     height: 60%;
     margin-left: 60px;
+    border: 2px solid black;
 }
 
 
@@ -43,16 +44,28 @@
     color: white;
 }
 
+.container:nth-child(1){
+    flex-direction: column;
+    align-items: center;
+}
+
 .profile{
     background-color: rgb(255, 255, 255);
     width: 40%;
     height: 40%;
-    margin: 2rem 2rem;
-    border-radius: 30%;
+    margin: .5rem 2rem;
+    border-radius: 50%;
 }
 
+.profile img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+
 .container :is(h1){
-    margin: 2rem 2rem;
+    margin: .5rem 2rem;
 }
 
 .container-controller .container:nth-child(2){
@@ -107,8 +120,61 @@
     display: flex;
     flex-wrap: wrap;
     place-content: center center;
-    margin: 8% .5rem;
+    margin: 8% .4rem;
     width: 50%;
     height: 50%;
+}
+
+
+.container-reporte{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container-table{
+    display: flex;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    margin: .5rem 0;
+}
+
+.container-title{
+    width: 50%;
+    place-content: center;
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.2em;
+    letter-spacing: 3px;
+}
+
+table{
+    table-layout: fixed;
+    margin: 1rem 0;
+    text-align: center;
+    width: 80%;
+    height: 60%;
+    background-color: black;
+}
+
+thead{
+    height: 10%;
+    font-size: 1.2em;
+}
+
+th{
+    width: 15%;
+    background-color:aqua;
+    overflow-wrap: break-word;
+}
+
+td{
+    width: 15%;
+    height: 30px;
+    background-color: white;
+    overflow-wrap: break-word;
 }
 
