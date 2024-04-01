@@ -1,0 +1,89 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.container-controller{
+    display: flex;
+    justify-content: start;
+    background: cadetblue;
+    width: 80%;
+    height: 40%;
+}
+
+.section-principal .container-controller:nth-child(2){
+    display:flex;
+    margin: 0 0 1rem 0 ;
+    width: 95%;
+    height: 60%;
+}
+
+
+.container{
+    display: flex;
+    place-content: center center;
+    width: 50%;
+    height: 80%;
+    margin: 1rem 1rem;
+    background: yellow;
+}
+
+.profile{
+    background-color: tomato;
+    width: 40%;
+    height: 40%;
+    margin: 2rem 2rem;
+    border-radius: 30%;
+}
+
+.container :is(h1){
+    margin: 2rem 2rem;
+}
+
+.container-controller .container:nth-child(2){
+    display: flex;
+    place-content: center;
+    margin: 5% 1rem;
+    background-color: red;
+    width: 40%;
+    height: 60%;
+}
+
+.container:nth-child(2) .container-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+    height: 45%;
+    margin: 2rem 1rem;
+    background-color: aliceblue;
+}
+
+.container-buttons h2{
+    margin: .5rem;
+    font-size: 1rem;
+}
+
+.container-buttons .btn-reporteInci{
+    width: 6rem;
+}
+
+.container-Grafica{
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center center;
+    margin: 8% .5rem;
+    width: 50%;
+    height: 50%;
+}
+
