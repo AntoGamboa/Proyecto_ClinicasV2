@@ -1,6 +1,7 @@
 const tablecont = document.querySelector(".selectcont");
 const formregistro = document.querySelector(".formregistrocont");
 const formcont = document.querySelector(".formcont");
+const form = document.querySelector(".formcont form");
 const buttoncambio = document.querySelector(".buttonregister");
 
 const botonregistro = document.querySelector(".formregistrocont button")
@@ -29,7 +30,9 @@ function cambiotabla(){
       //cerrar form
       
       buttoncambio.innerHTML = "Registrar";
-      
+      botonregistro.innerHTML = "Registrar"
+      accionForm.value= 'create';
+      form.reset();
       tablecont.classList.add("active");
         formregistro.classList.remove("active");
         formcont.classList.add("select");
@@ -58,11 +61,14 @@ function cambiotablaeditar(variables){
       
         botonregistro.innerHTML = "Modificar"
       
-      
-      formcont.querySelector(".input_nombre").value = variables[0].innerHTML;
+     
+      formcont.querySelector(".input_nombre").value = variables[1].innerHTML;
+      formcont.querySelector(".input_id").value = variables[0].innerHTML;
   
     }
     else{
+
+
       
       buttoncambio.innerHTML = "Registrar";
       

@@ -84,13 +84,34 @@ function abrirespecialidades(){
 
     //validaciones
 
-    let inputnombre = document.querySelector(".formregistrocont .input_nombremedico")
-    let inputapellido = document.querySelector(".formregistrocont .input_apellidomedico")
+    let EnviarFormulario = document.getElementById('formregistromedico');
 
-    let inputcedula = document.querySelector(".formregistrocont .input_cedulamedico")
+    let formdata = new FormData(EnviarFormulario);
 
-    if (inputnombre.value === "" || inputapellido.value === "" || inputcedula.value === "") {
-        alert("Por favor llene todos los campos");
+    if (!(formdata.get('cedula') && formdata.get('cedula').length == 8 && /^[0-9]+$/.test(formdata.get('cedula')))) {
+
+        generarmensaje("alerta", "La cedula debe tener un formato valido, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('nombre')))) {
+
+        generarmensaje("alerta", "El nombre solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('apellido') && formdata.get('apellido').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('apellido')))) {
+
+        generarmensaje("alerta", "El apellido solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
+        return;
+
+    }
+
+    var fechaNacimiento = new Date(formdata.get('nacimiento'));
+
+    if (!(formdata.get('nacimiento') && new Date() > fechaNacimiento)) {
+
+        generarmensaje("alerta", "La fecha de nacimiento no puede ser superior a la fecha actual");
         return;
     }
     
@@ -194,6 +215,22 @@ function reiniciarseleccion(){
         }
 
     });
+
+    EspecialidadEscogidaForm = [];
+}
+
+function asignarseleccion(){
+    const especialidadescont = document.querySelectorAll(".especialidadcont");
+
+    especialidadescont.forEach(especialidad =>{
+
+        if(especialidad.classList.contains("selected")){
+            especialidad.classList.remove("selected");
+        }
+
+    });
+
+    EspecialidadEscogidaForm = [];
 }
 
 
@@ -241,10 +278,9 @@ const botonbusquedaespecialidades = document.querySelector(".seleccionespecialid
 botonbusqueda.addEventListener('click', ()=>{
 
 
+    var busqueda = inputSearch.value;
+
     
-
-    alert(inputSearch.value);
-
     if(busqueda == ''){
         cargarTabla();
       }else{
@@ -265,7 +301,7 @@ botonbusquedaespecialidades.addEventListener('click', ()=>{
 
     let busqueda = inputSearchespecialidades.value;
 
-    alert(busqueda);
+    
     if(busqueda == ''){
 
         especialidadesbasededatos = [];

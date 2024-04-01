@@ -10,20 +10,19 @@
     opacity: 0;
     pointer-events: none;
     position: absolute;
-}
-
-.mensajecont.activo{
-    z-index: 10000000;
-    position: absolute;
+    transition: opacity 0.2s ease;
     min-width: 100vw;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(240, 248, 255, 0.875);
+}
+
+.mensajecont.activo{
+    z-index: 10000000;
     opacity: 1;
     pointer-events: all;
-    background-color: rgba(240, 248, 255, 0.875);
-    
 }
 
 

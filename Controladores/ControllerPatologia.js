@@ -41,6 +41,19 @@ console.log(EnviarFormulario);
 EnviarFormulario.addEventListener('submit',e => {
     e.preventDefault();
     let formdata = new FormData(EnviarFormulario);
+
+    if (!(formdata.get('patologia') && formdata.get('patologia').length >= 2 && formdata.get('patologia').length <= 5 && /\d.*\d/.test(formdata.get('patologia')) && /^[a-zA-Z0-9]+$/.test(formdata.get('patologia')))) {
+
+        generarmensaje("alerta", "El codigo debe tener minimo 2 numeros y maximo 5, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 2 && /^[a-zA-Z]+$/.test(formdata.get('nombre')))) {
+
+        generarmensaje("alerta", "El nombre de la Patologia solo debe contener letras y debe tener minimo 2 caracteres, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
     
     if(formdata.get('accion') === 'create'){        
         fetch(rutaPatologia,{
@@ -107,7 +120,7 @@ const filtrartablapatologias = (busqueda)=>{
 
         patologias.forEach(patologia => {
 
-            if(patologia.nombre.includes(busqueda)){
+            if(patologia.nombre.toLowerCase().includes(busqueda.toLowerCase())){
                 
                 const clone = template.cloneNode(true);
                 clone.getElementById('idPatologia').textContent = patologia.codigo;
@@ -132,22 +145,22 @@ const filtrartablapatologias = (busqueda)=>{
 
 
 
-const inputs = document.querySelector(".searchbarcont input");
+const inputbusqueda = document.querySelector(".searchbarcont input");
 const botonbusqueda = document.querySelector(".searchbarcont button")
 
 
 botonbusqueda.addEventListener('click', ()=>{
 
-    let busqueda = inputs.textContent;
+    let busqueda = inputbusqueda.value;
+    
 
     if(busqueda == ''){
 
       patologias = [];
-      cargartabla();
+      cargarTabla();
 
     }else{
 
-      let busqueda = inputs.textContent;
       filtrartablapatologias(busqueda);
 
     }

@@ -13,7 +13,22 @@ var especialidades=[];
 formEspecialidad.addEventListener('submit',e =>
 {
     e.preventDefault();
+
     const formData = new FormData(formEspecialidad);
+
+    if (!(formData.get('codigo') && formData.get('codigo').length >= 2 && formData.get('codigo').length <= 5 && /\d.*\d/.test(formData.get('codigo')) && /^[a-zA-Z0-9]+$/.test(formData.get('codigo')))) {
+
+        generarmensaje("alerta", "El codigo debe tener minimo 2 numeros y maximo 5, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formData.get('nombre') && formData.get('nombre').length >= 2 && /^[a-zA-Z]+$/.test(formData.get('nombre')))) {
+
+        generarmensaje("alerta", "El nombre de la especialidad solo debe contener letras y debe tener minimo 2 caracteres, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
+
     if (formData.get('accion') === 'create')
     {
         fetch(ruta,{method:'POST', body: formData})
@@ -110,7 +125,7 @@ const filtrartablaespecialidad = (busqueda) =>
     tablaDatos.textContent = '';
     especialidades.forEach(Especialidad => 
     {
-        if(especialidad.nombre.includes(busqueda)){
+        if(Especialidad.nombre.toLowerCase().includes(busqueda.toLowerCase())){
 
             const clone = templateEspecialidades.cloneNode(true);
             clone.getElementById('codigo').textContent = Especialidad.codigo;
@@ -136,12 +151,13 @@ const botonbusqueda = document.querySelector(".searchbarcont button")
 
 botonbusqueda.addEventListener('click', ()=>{
 
+    let busqueda = inputs.value;
 
     if(busqueda == ''){
       especialidades = [];
       cargarEspecialidad();
     }else{
-      let busqueda = inputs.textContent;
+      
       filtrartablaespecialidad(busqueda);
 
     }

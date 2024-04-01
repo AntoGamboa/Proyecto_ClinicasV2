@@ -43,6 +43,19 @@ console.log(EnviarFormulario);
 EnviarFormulario.addEventListener('submit',e => {
     let formdata = new FormData(EnviarFormulario);
     e.preventDefault();
+
+    if (!(formdata.get('idAlergia') && formdata.get('idAlergia').length >= 2 && formdata.get('idAlergia').length <= 5 && /\d.*\d/.test(formdata.get('idAlergia')) && /^[a-zA-Z0-9]+$/.test(formdata.get('idAlergia')))) {
+
+        generarmensaje("alerta", "El codigo debe tener minimo 2 numeros y maximo 5, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 2 && /^[a-zA-Z]+$/.test(formdata.get('nombre')))) {
+
+        generarmensaje("alerta", "El nombre de la Alergia solo debe contener letras y debe tener minimo 2 caracteres, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
     
     if(formdata.get('accion') === 'create'){        
         fetch(rutaAlergia,{
@@ -107,9 +120,9 @@ const filtrartabla =(busqueda)=>{
 
     
     tabla_datos.textContent = '';
-    data.forEach(alergia => {
+    alergias.forEach(alergia => {
 
-        if(alergia.nombre.includes(busqueda)){
+        if(alergia.nombre.toLowerCase().includes(busqueda.toLowerCase())){
 
             let clone = template.cloneNode(true);
             clone.getElementById('id').textContent = alergia.codigo;

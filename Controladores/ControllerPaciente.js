@@ -8,7 +8,6 @@ let divAlergias = document.querySelector('.alergiascont');
 let templateDatosPaciente = document.getElementById('templateDatosPaciente').content;
 let templateAlergias = document.getElementById('templateAlergias').content;
 
-alert("aaa")
 
 let fragment = document.createDocumentFragment();
 
@@ -72,10 +71,57 @@ document.addEventListener('DOMContentLoaded',e =>{
 formPaciente.addEventListener('submit', e =>{
 
     e.preventDefault();
+    
     //obtenemos los datos del formulario del paciente
 
     const datosformpaciente = document.getElementById("datosformPaciente");
     let formdata = new FormData(datosformpaciente);
+
+    //validaciones
+
+    
+    if (!(formdata.get('cedula') && formdata.get('cedula').length == 8 && /^[0-9]+$/.test(formdata.get('cedula')))) {
+
+        generarmensaje("alerta", "La cedula debe tener un formato valido, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('nombre')))) {
+
+        generarmensaje("alerta", "El nombre solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('apellido') && formdata.get('apellido').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('apellido')))) {
+
+        generarmensaje("alerta", "El apellido solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
+        return;
+
+    }
+
+    var fechaNacimiento = new Date(formdata.get('nacimiento'));
+
+    if (!(formdata.get('nacimiento') && new Date() > fechaNacimiento)) {
+
+        generarmensaje("alerta", "La fecha de nacimiento no puede ser superior a la fecha actual");
+        return;
+    }
+    if (!(formdata.get('telefono') &&  formdata.get('telefono').length == 11   && /^[0-9]+$/.test(formdata.get('telefono')))) {
+
+        generarmensaje("alerta", "El telefono debe tener un formato valido, ejemplo 04245158962")
+        return;
+
+    }
+    if (!(formdata.get('telefonoemergencia') && formdata.get('telefonoemergencia').length == 11   && /^[0-9]+$/.test(formdata.get('telefonoemergencia')))) {
+
+        generarmensaje("alerta", "El telefono de emergencia debe tener un formato valido, ejemplo 04245158962")
+        return;
+
+    }
+
+    //fin validaciones
+
+
     if(formdata.get('accion') === 'create'){        
         formdata.append('alergias',JSON.stringify(alergiaEscogidaForm));
         fetch(rutaPaciente,{
@@ -237,7 +283,7 @@ const filtrartablaalergias = (busqueda)=>{
     alergias.forEach( aler =>{
 
 
-        if(aler.nombre.includes(busqueda)){
+        if(aler.nombre.toLowerCase().includes(busqueda.toLowerCase())){
 
             let clone = templateAlergias.cloneNode(true);
             clone.querySelector('.alergiacont').textContent = aler.nombre;

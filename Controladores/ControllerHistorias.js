@@ -108,7 +108,7 @@ const reporteHistoria = (cedula) =>{
                 callback: (PDF) => { 
                     PDF.save('Prueba1.pdf')
                 },
-                margin: [10, 3, 3, 3], //cuidao
+                margin: [10, 3, 3, 3], //cuidao xd
                 autoPaging: 'text',
                 html2canvas: {
                     allowTaint: true,
