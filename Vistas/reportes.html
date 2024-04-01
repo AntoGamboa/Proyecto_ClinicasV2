@@ -5,8 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seccion de Reportes</title>
     <link rel="stylesheet" href="./css/seccionReporte.css">
+    <link rel="stylesheet" href="css/barranav.css">
+    <link rel="stylesheet" href="css/mensaje.css">
+    <script src="../Controladores/VerificarSesiones.js" ></script>
 </head>
 <body>
+  <section class="mensajecont">
+
+
+    <div class="mensaje">
+
+        <h2 class="titulomensaje"></h2>
+
+        <div class="contenidomensaje"></div>
+
+        <button>Aceptar</button>
+
+    </div>
+
+</section>
+
+
+<div class="navbar">
+
+    <div class="menu">
+        <ion-icon name="menu-outline"></ion-icon>
+        <ion-icon name="close-outline"></ion-icon>
+    </div>
+
+    <div class="barra-lateral mini-barra-lateral">
+        <div>
+            <div class="nombre-pagina">
+                <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                <span class="spannav oculto">Historia Clinica</span>
+            </div>
+            <button class="boton">
+                <ion-icon name="document-text-outline"></ion-icon>
+                <span class="spannav oculto">Menu Principal</span>
+            </button>
+        </div>
+
+        <nav class="navegacion">
+            <ul>
+                <li>
+                    <a id="inbox" class="cerrarsesion" href="login.html">
+                        <ion-icon name="close-sharp"></ion-icon>
+                        <span class="spannav oculto">Cerrar Sesion</span>
+                    </a>
+                </li>
+
+                <li>
+                  <a id="inbox" class="cerrarsesion" href="reportes.html">
+                    <ion-icon name="reader-outline"></ion-icon>
+                      <span class="spannav oculto">Sección Reportes</span>
+                  </a>
+                </li>
+                
+                
+            </ul>
+        </nav>
+
+        <div>
+            <div class="linea"></div>
+
+        
+    
+        
+
+        </div>
+
+    <div>
+
+</div>
+        
+
+    
+
+</div>
+
+
+
+
     <section class="section-principal">
         <div class="container-controller">
             <div class="container">
@@ -22,7 +101,7 @@
                 </div>
                 <div class="container-buttons">
                     <h2>Segundo Reporte</h2>
-                    <button class="">Generar PDF</button>
+                    <button class="btn-segundoreporte">Generar PDF</button>
                 </div>
             </div>
         </div>
@@ -37,6 +116,12 @@
         </div>
 
     </section>
+
+    <script src="js/interactnav.js"></script>
+    <script src="js/interactform.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="js/mensaje.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 

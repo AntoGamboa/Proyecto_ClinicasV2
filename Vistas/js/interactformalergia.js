@@ -8,6 +8,7 @@ const botonregistro = document.querySelector(".formregistrocont button")
 
 var alergias;
 
+
 function cambiotabla(){
 
     if(tablecont.classList.contains("active")){
@@ -27,6 +28,8 @@ function cambiotabla(){
       //cerrar form
       
       buttoncambio.innerHTML = "Registrar";
+
+      alert("holaaa");
       
       tablecont.classList.add("active");
         formregistro.classList.remove("active");
@@ -48,6 +51,8 @@ function cambiotablaeditar(variables){
         
       
       formcont.querySelector(".input_nombre").value = variables[0].innerHTML;
+
+      formcont.querySelector(".input_nombrealergia").value = variables[1].innerHTML;
   
     }
     else{
@@ -99,6 +104,8 @@ tabla.addEventListener('click', function(event) {
 
     const fila = target.closest('tr');
     var variables = fila.querySelectorAll("td");
+
+    
 
     cambiotablaeditar(variables);
        

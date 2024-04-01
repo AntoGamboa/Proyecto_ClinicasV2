@@ -122,6 +122,51 @@ function cambiotablaeditar(variables){
 
 function avanzar(){
 
+  const datosformpaciente = document.getElementById("datosformPaciente");
+    let formdata = new FormData(datosformpaciente);
+
+    //validaciones
+
+    
+    if (!(formdata.get('cedula') && formdata.get('cedula').length == 8 && /^[0-9]+$/.test(formdata.get('cedula')))) {
+
+        generarmensaje("alerta", "La cedula debe tener un formato valido, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('nombre')))) {
+
+        generarmensaje("alerta", "El nombre solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('apellido') && formdata.get('apellido').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('apellido')))) {
+
+        generarmensaje("alerta", "El apellido solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
+        return;
+
+    }
+
+    var fechaNacimiento = new Date(formdata.get('nacimiento'));
+
+    if (!(formdata.get('nacimiento') && new Date() > fechaNacimiento)) {
+
+        generarmensaje("alerta", "La fecha de nacimiento no puede ser superior a la fecha actual");
+        return;
+    }
+    if (!(formdata.get('telefono') &&  formdata.get('telefono').length == 11   && /^[0-9]+$/.test(formdata.get('telefono')))) {
+
+        generarmensaje("alerta", "El telefono debe tener un formato valido, ejemplo 04245158962")
+        return;
+
+    }
+    if (!(formdata.get('telefonoemergencia') && formdata.get('telefonoemergencia').length == 11   && /^[0-9]+$/.test(formdata.get('telefonoemergencia')))) {
+
+        generarmensaje("alerta", "El telefono de emergencia debe tener un formato valido, ejemplo 04245158962")
+        return;
+
+    }
+
   if(paginasform.classList.contains("paciente")){
 
     paginasform.classList.toggle("paciente");
@@ -161,6 +206,9 @@ function retroceder(){
 //reinicia selecciones
 
 function reiniciarseleccion(){
+
+    const alergiascont = document.querySelectorAll(".alergiacont");
+
     alergiascont.forEach(alergia =>{
 
         if(alergia.classList.contains("selected")){
@@ -168,6 +216,24 @@ function reiniciarseleccion(){
         }
 
     });
+
+    alergiaEscogidaForm = [];
+}
+
+
+function asignarseleccion(){
+
+  const alergiascont = document.querySelectorAll(".alergiacont");
+
+  alergiascont.forEach(alergia =>{
+
+      if(alergia.classList.contains("selected")){
+          alergia.classList.remove("selected");
+      }
+
+  });
+
+  alergiaEscogidaForm = [];
 }
 
 
@@ -279,7 +345,7 @@ botonbusquedaalergias.addEventListener('click', ()=>{
 
 
     alergias = [];
-    cargaralergias();
+    cargarAlergias();
 
     
   }else{

@@ -328,13 +328,15 @@ main.min-main{
 
 .pdf-button{
     display: flex;
-    place-content: center center;
+    align-items: center;
+    justify-content: center;
     padding: 5px;
-    margin: 0 .5rem;
     border: none;
-    background-color: var(--color-linea);
+    background-color: rgb(255, 162, 0);
     border-radius: 5px;
     cursor: pointer;
+    font-size: 23px;
+    margin-left: 15px;
 }
 
 

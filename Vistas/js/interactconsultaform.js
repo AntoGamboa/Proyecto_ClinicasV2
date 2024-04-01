@@ -1,3 +1,4 @@
+
 var pacienttablecont = document.querySelector(".pacientselectcont");
 var pacientformcont = document.querySelector(".pacientform");
 var formcont = document.querySelector(".pacientformcont");
@@ -64,8 +65,8 @@ function cambiotabla(){
 
       funcion = "registrar_consulta";
 
-      while (paginasform.classList.length > 1) {
-        paginasform.classList.remove(paginasform.classList.item(1));
+      while (paginasform.classList.length > 2) {
+        paginasform.classList.remove(paginasform.classList.item(2));
       }
 
       reiniciarseleccion();
@@ -77,6 +78,8 @@ function cambiotabla(){
     }
    
 }
+
+
 
 function cambiotablaeditar(variables){
 
@@ -202,10 +205,7 @@ function asignareventosfilaspacientes(){
       fila.addEventListener('click', function(event) {
         if(event.target.classList.contains("edit-button") || event.target.classList.contains("delete-button")){
         }else{
-          if (fila.classList.contains("selected")) {
-            fila.classList.remove("selected");
-            seleccion = false;
-          }else if(seleccion != true ) {
+          
             //aqui se pueden extraer los datos
             
             variablespaciente = [];
@@ -214,7 +214,7 @@ function asignareventosfilaspacientes(){
             CedulaPAciSelec= fila.dataset.cedula;
             console.log(CedulaPAciSelec);
             seleccion = true;
-          } 
+          
         }
       });
     }
@@ -228,6 +228,9 @@ function asignareventosfilaspacientes(){
 //reinicia selecciones
 
 function reiniciarseleccion(){
+
+  const patologiascont = document.querySelectorAll(".patologiacont");
+
   patologiascont.forEach(patologia =>{
 
       if(patologia.classList.contains("selected")){
@@ -235,9 +238,29 @@ function reiniciarseleccion(){
 
       }
 
-      patologias_a_ingresar_enbd = [];
+     
 
   });
+
+  PatologiasSeleccionadas = [];
+}
+
+function asignarseleccion(){
+
+  const patologiascont = document.querySelectorAll(".patologiacont");
+
+  patologiascont.forEach(patologia =>{
+
+      if(patologia.classList.contains("selected")){
+          patologia.classList.remove("selected");
+
+      }
+
+     
+
+  });
+
+  PatologiasSeleccionadas = [];
 }
 
 
@@ -317,7 +340,7 @@ botonbusqueda.addEventListener('click', ()=>{
 
       }else{
         let busqueda = inputbusqueda.value;
-        filtrartabla(busqueda);
+        filtrarTabla(busqueda);
         
   
       }
@@ -335,15 +358,19 @@ botonbusquedapatologias.addEventListener('click', ()=>{
     let busqueda = inputbusquedapatologias.value;
     if(busqueda == ''){
         patologias = [];
-        cargarpatologias();
+        cargarPatologias();
         
 
       }else{
-        let busqueda = inputbusquedapatologias.textContent;
+        
         filtrartablapatologias(busqueda);
         
   
       }
 
 })
+
+asignareventosfilaspacientes();
+
+
 

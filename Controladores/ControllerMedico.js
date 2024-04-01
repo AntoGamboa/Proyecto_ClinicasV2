@@ -21,7 +21,39 @@ let EspecialidadEscogidaForm=[];
 EnviarFormulario.addEventListener('submit',e => {
     
     e.preventDefault();
+
+    let EnviarFormulario = document.getElementById('formregistromedico');
+
     let formdata = new FormData(EnviarFormulario);
+
+    if (!(formdata.get('cedula') && formdata.get('cedula').length == 8 && /^[0-9]+$/.test(formdata.get('cedula')))) {
+
+        generarmensaje("alerta", "La cedula debe tener un formato valido, ademas no debe contener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('nombre')))) {
+
+        generarmensaje("alerta", "El nombre solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
+        return;
+
+    }
+    if (!(formdata.get('apellido') && formdata.get('apellido').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('apellido')))) {
+
+        generarmensaje("alerta", "El apellido solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
+        return;
+
+    }
+
+    var fechaNacimiento = new Date(formdata.get('nacimiento'));
+
+    if (!(formdata.get('nacimiento') && new Date() > fechaNacimiento)) {
+
+        generarmensaje("alerta", "La fecha de nacimiento no puede ser superior a la fecha actual");
+        return;
+    }
+
+
     if(formdata.get('accion') === 'create'){  
         formdata.append('especialidades',JSON.stringify(EspecialidadEscogidaForm))      
         fetch(rutaMedicos,{
@@ -154,7 +186,7 @@ const filtrartabla = (busqueda)=>{
         tabla_datos.textContent = '';
         data.forEach(medico => {
 
-            if(medico.nombre.includes(busqueda)){
+            if(medico.cedula.includes(busqueda)){
                 let clone = template.cloneNode(true);
                 clone.getElementById('cedula').textContent = medico.cedula;
                 clone.getElementById('nombre').textContent = medico.nombre;
@@ -184,6 +216,8 @@ const cargarEspecialidades = () =>{
 
         especialidadesbasededatos = data;
 
+        DivContEspecialidades.textContent = '';
+
         data.forEach(item =>{
             let clone = TemplateDivEspecialidad.cloneNode(true);
             clone.querySelector('.especialidadcont').textContent = item.nombre;
@@ -207,9 +241,9 @@ const filtrartablaspecialidades = (busqueda) =>{
 
 
 
-        if(especialidad.nombre.includes(busqueda)){
+        if(especialidad.nombre.toLowerCase().includes(busqueda.toLowerCase())){
 
-            alert("entre");
+            
 
             let clone = TemplateDivEspecialidad.cloneNode(true);
             clone.querySelector('.especialidadcont').textContent = especialidad.nombre;
