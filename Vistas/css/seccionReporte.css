@@ -38,12 +38,17 @@
 }
 
 .profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: tomato;
-    width: 40%;
-    height: 40%;
+    width: 30%;
+    height: 70%;
     margin: 2rem 2rem;
-    border-radius: 30%;
+    border-radius: 50%;
 }
+
+
 
 .container :is(h1){
     margin: 2rem 2rem;
