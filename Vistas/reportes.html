@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seccion de Reportes</title>
+    <link rel="stylesheet" href="./css/seccionReporte.css">
+</head>
+<body>
+    <section class="section-principal">
+        <div class="container-controller">
+            <div class="container">
+                <div class="profile">
+
+                </div>
+                <h1>Reportes</h1>
+            </div>
+            <div class="container">
+                <div class="container-buttons">
+                    <h2>Reporte referente a incidencias</h2>
+                    <button class="btn-reporteInci">Generar PDF</button>
+                </div>
+                <div class="container-buttons">
+                    <h2>Segundo Reporte</h2>
+                    <button class="">Generar PDF</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-controller">
+            <div class="container-Grafica">
+                <canvas id="myChart" class="Grafica"></canvas>
+            </div>
+            <div class="container-Grafica">
+                <canvas id="myChart2" class="Grafica"></canvas>
+            </div>
+        </div>
+
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Diabetes', 'Hipertension', 'Hipotension', 'Cardiopatia '],
+            datasets: [{
+              label: 'Grafico de Patologias comunes entre los pacientes',
+              data: [12, 19, 3, 5],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const Grafica = new Chart(document.getElementById('myChart2'), {
+          type: 'bar',
+          data: {
+            labels: ['Traumatologia', 'Pediatria', 'Internista', ' Medicina General '],
+            datasets: [{
+              label: 'Grafico de Incidencias de los pacientes',
+              data: [12, 19, 3, 5],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+        const GraficaPastel = new Chart(document.getElementById(myChart3),
+        {
+          type: 'bar',
+          data: {
+            labels: ['Traumatologia', 'Pediatria', 'Internista', ' Medicina General '],
+            datasets: [{
+              label: 'Grafico de Incidencias de los pacientes',
+              data: [12, 19, 3, 5],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+
+
+      </script>
+</body>
+</html>
