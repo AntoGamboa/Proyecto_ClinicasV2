@@ -34,6 +34,7 @@ document.addEventListener('click',e => {
     }
     if(e.target.matches('.edit-button'))
     {
+        
         cedulaSeleccionada=e.target.dataset.cedula;
     }
     if(e.target.matches('.patologiacont'))
@@ -103,6 +104,8 @@ const cargarPatologias = () => {
     }).then(resp=>resp.json())
     .then(data=>{
 
+        patologias=data;
+
         divPatologiaCont.textContent = '';
         data.forEach(item =>{
             patologias = data;
@@ -151,7 +154,7 @@ const filtrarTabla = (busqueda)=>{
         data.forEach(paciente => {
 
 
-            if(paciente.cedula.contains(busqueda)){
+            if(paciente.cedula.includes(busqueda)){
 
             
                 let clone = templateDataPac.cloneNode(true);
@@ -181,12 +184,14 @@ const filtrartablapatologias = (busqueda)=>{
 
     divPatologiaCont.textContent = '';
 
-    
 
     patologias.forEach( pato =>{
 
+       
 
-        if(pato.nombre.includes(busqueda)){
+        if(pato.nombre.toLowerCase().includes(busqueda.toLowerCase())){
+
+            
 
             let clone = templatePatologias.cloneNode(true);
             clone.getElementById('Patologia').textContent = pato.nombre;
@@ -204,6 +209,28 @@ const filtrartablapatologias = (busqueda)=>{
 EnviarFormulario.addEventListener('submit',e => {
     e.preventDefault();
     let formdata = new FormData(EnviarFormulario);
+
+    console.log(EnviarFormulario)
+
+    if (!(formdata.get('peso') && /^\d+(\.\d+)?$/.test(formdata.get('peso')))) {
+
+        generarmensaje("alerta", "El peso debe ser un número válido en kilogramos, ejemplo 64.5")
+        return;
+
+    }
+    if (!(formdata.get('estatura') && /^\d+(\.\d+)?$/.test(formdata.get('estatura')))) {
+
+        generarmensaje("alerta", "La estatura debe ser un número válido en Metros, ejemplo 1.80")
+        return;
+
+    }
+    if (!(formdata.get('descripcion') && formdata.get('descripcion').length >= 1   && /^[a-zA-Z0-9]+$/.test(formdata.get('descripcion')))) {
+
+        generarmensaje("alerta", "La estatura debe ser un número válido en metros")
+        return;
+
+    }
+
     formdata.append('patologias',JSON.stringify(PatologiasSeleccionadas));
     formdata.append('cedulaPaciente',CedulaPAciSelec);
     formdata.append('cedulaMedico',cedulamedicoConsulta);
