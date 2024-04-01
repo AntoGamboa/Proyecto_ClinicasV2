@@ -104,6 +104,30 @@
                 $mensaje = 'Ocurrio un error en la carga';
             }
         }
+
+        public function readIncidencias()
+        {
+            $mensaje = '';
+
+            try {
+                $query = 'SELECT m.nombreMedico AS nombremedi,m.apellidoMedico AS apellidomedi,
+                IFNULL(GROUP_CONCAT(e.nombreEspecialidad SEPARATOR ", "),"Medico General" ) AS especialidad,
+                COUNT(p.cedulaPaciente) as cantidad, c.fechaConsulta as fecha
+                FROM consulta c 
+                RIGHT JOIN paciente p ON p.cedulaPaciente = c.cedulaPaciente 
+                LEFT JOIN patologiaxconsulta pxc ON pxc.id_consulta = c.id_consulta
+                LEFT JOIN patologia pa ON pa.idPatologia = pxc.idPatologia
+                INNER JOIN medico m ON m.cedulaMedico = c.cedulaMedico
+                LEFT JOIN medicoxespecialidad mxe ON m.cedulaMedico = mxe.cedulaMedico
+                LEFT JOIN especialidad e ON  e.idEspecialidad = mxe.idEspecialidad
+                GROUP BY e.nombreEspecialidad;';
+                $stmt = $this->getConexion()->prepare($query);
+                $stmt->execute();
+                return json_encode($stmt->fetchAll(PDO::FETCH_OBJ));
+            } catch (Exception $e) {
+               
+            }
+        }
     }
 
     $Consulta = new Consulta();
@@ -121,6 +145,9 @@
     if ($accion === 'buscar') {
         $cedulaBuscada = $_POST['cedula'];
         echo $Consulta->buscar($cedulaBuscada);
+    }
+    if ($accion === 'readIncidencias') {
+        echo $Consulta->readIncidencias();
     }
 
 ?>

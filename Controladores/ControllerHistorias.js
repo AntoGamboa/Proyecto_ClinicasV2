@@ -1,7 +1,5 @@
-/*          RUTAS DEL MODULO            */
-const rutaPaciente = 'http://localhost/Proyecto_ClinicasV2/Modelos/Paciente.php';
+/*          RUTA DEL MODULO            */
 const rutaConsulta = 'http://localhost/Proyecto_ClinicasV2/Modelos/Consulta.php';
-const rutaMedico = 'http://localhost/Proyecto_ClinicasV2/Modelos/Medico.php';
 
 /*      Templates        */
 

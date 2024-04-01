@@ -78,9 +78,6 @@
 
 </div>
         
-
-    
-
 </div>
 
 
@@ -90,7 +87,7 @@
         <div class="container-controller">
             <div class="container">
                 <div class="profile">
-                  
+                   <img src="recursos/img/Profile-Reporte.jpeg" alt="">
                 </div>
                 <h1>Reportes</h1>
             </div>
@@ -114,79 +111,53 @@
                 <canvas id="myChart2" class="Grafica"></canvas>
             </div>
         </div>
-
     </section>
+
+    <div class="container-reporte">
+      <div class="container-title">
+          <h1>Incidencias de Pacientes por Especialidad</h1>
+      </div>
+      <div class="container-table">
+          <table id="tabla">
+              <thead>
+                  <tr>
+                      <th>Doctor(a)</th>
+                      <th>Especialidad</th>
+                      <th>Cantidad de Pacientes</th>
+                      <th>Fecha</th>
+                      <th>Turno</th>
+
+                  </tr>
+              </thead>
+              <tbody id="tbody">
+                  <tr>
+                      <td id="nombreM">Marcos Rivas</td>
+                      <td id="especialidadM">Traumatologo</td>
+                      <td id="cantP">5</td>
+                      <td id="fecha">07/11/2024</td>
+                      <td id="turno">Mañana</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+ 
+
+
 
     <script src="js/interactnav.js"></script>
     <script src="js/interactform.js"></script>
+    <script src="/Controladores/ControllerReportes.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script src="js/mensaje.js"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Diabetes', 'Hipertension', 'Hipotension', 'Cardiopatia '],
-            datasets: [{
-              label: 'Grafico de Patologias comunes entre los pacientes',
-              data: [12, 19, 3, 5],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-
-        const Grafica = new Chart(document.getElementById('myChart2'), {
-          type: 'bar',
-          data: {
-            labels: ['Traumatologia', 'Pediatria', 'Internista', ' Medicina General '],
-            datasets: [{
-              label: 'Grafico de Incidencias de los pacientes',
-              data: [12, 19, 3, 5],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-
-        const GraficaPastel = new Chart(document.getElementById(myChart3),
-        {
-          type: 'bar',
-          data: {
-            labels: ['Traumatologia', 'Pediatria', 'Internista', ' Medicina General '],
-            datasets: [{
-              label: 'Grafico de Incidencias de los pacientes',
-              data: [12, 19, 3, 5],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-
-
-      </script>
+    <script src="/Vistas/js/graficas.js"></script>
 </body>
 </html>
