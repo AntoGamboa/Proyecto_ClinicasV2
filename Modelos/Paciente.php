@@ -63,6 +63,7 @@
                     FROM alergiaxpaciente axp 
                     RIGHT JOIN paciente p ON p.cedulaPaciente=axp.cedulaPaciente 
                     LEFT  JOIN alergia  a ON a.idAlergia = axp.idAlergia
+                    WHERE p.estado = 1
                     GROUP BY p.cedulaPaciente;';
                 $stmt = $this->getConexion()->prepare($query);
                 $stmt->execute();
