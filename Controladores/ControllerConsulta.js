@@ -224,9 +224,9 @@ EnviarFormulario.addEventListener('submit',e => {
         return;
 
     }
-    if (!(formdata.get('descripcion') && formdata.get('descripcion').length >= 1   && /^[a-zA-Z0-9]+$/.test(formdata.get('descripcion')))) {
+    if (!(formdata.get('descripcion') && formdata.get('descripcion').length >= 1   && /^[a-zA-Z0-9\s]+$/.test(formdata.get('descripcion')))) {
 
-        generarmensaje("alerta", "La estatura debe ser un número válido en metros")
+        generarmensaje("alerta", "La descripcion no puede tener caracteres especiales")
         return;
 
     }
