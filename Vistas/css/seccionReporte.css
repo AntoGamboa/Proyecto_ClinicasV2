@@ -48,7 +48,7 @@ input{
     min-width: 90%;
     max-width: 90%;
     min-height: 420px;
-    gap: 40px;
+    gap: 20px;
 }
 
 
@@ -57,7 +57,7 @@ input{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px;
+    padding: 90px;
     min-width: 10%;
    
     height: 400px;
@@ -91,5 +91,9 @@ input{
 }
 
 .nivel2 .grafica:nth-child(2) {
-    min-width: 30%;
+    min-width: 27%;
+}
+
+.nivel2 .grafica:nth-child(3) {
+    min-width: 24%;
 }
