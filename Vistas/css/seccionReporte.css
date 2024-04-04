@@ -1,5 +1,5 @@
 .seccioncont{
-    margin-left: 40px;
+    margin-left: 0px;
 
     width: calc(100vw);
     min-height: 100vh;
@@ -10,6 +10,7 @@
     align-items: center;
    
     flex-direction: column;
+    overflow-y: scroll;
     
 }
 
@@ -41,14 +42,15 @@ input{
     gap: 10px;
 }
 
-.nivel1, .nivel2{
+.nivel1, .nivel2, .nivel3{
     display: flex;
     align-items: center;
     justify-content: center;
     min-width: 90%;
     max-width: 90%;
     min-height: 420px;
-    gap: 20px;
+    gap: 40px;
+    margin-left: 80px;
 }
 
 
@@ -57,7 +59,7 @@ input{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 90px;
+    padding: 75px;
     min-width: 10%;
    
     height: 400px;
@@ -68,32 +70,37 @@ input{
 
 .nivel1 .grafica:nth-child(1) {
     
-    min-width: 25%;
-    max-width: 25%;
+    min-width: 42%;
+    max-width: 50%;
+    
 }
 
 .nivel1 .grafica:nth-child(2) {
-    min-width: 40%;
-  }
-
-  .nivel1 .grafica:nth-child(3) {
-    min-width: 30%;
-  }
-
-  .nivel1 .grafica:nth-child(1) {
-    
-    min-width: 25%;
-    max-width: 25%;
+    min-width: 45%;
+    max-width: 50%;
 }
 
+
+
+  
 .nivel2 .grafica:nth-child(1) {
     min-width: 45%;
+    max-width: 50%;
+
 }
 
 .nivel2 .grafica:nth-child(2) {
-    min-width: 27%;
+    min-width: 42%;
+    max-width: 50%;
 }
 
-.nivel2 .grafica:nth-child(3) {
-    min-width: 24%;
+
+.nivel3 .grafica:nth-child(1) {
+    min-width: 42%;
+    max-width: 50%;
+}
+
+.nivel3 .grafica:nth-child(2) {
+    min-width: 47%;
+    max-width: 50%;
 }
