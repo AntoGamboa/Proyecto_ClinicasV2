@@ -17,8 +17,8 @@
                         LEFT JOIN medicoxespecialidad mxe ON m.cedulaMedico = mxe.cedulaMedico
                         LEFT JOIN especialidad e ON mxe.idEspecialidad = e.idEspecialidad
                         INNER JOIN consulta c ON c.cedulaMedico = m.cedulaMedico 
-                        GROUP BY m.cedulaMedico ORDER BY m.cedulaMedico
-                        WHERE c.fechaConsulta BETWEEN ? AND ?;';
+                        WHERE c.fechaConsulta BETWEEN ? AND ? ;
+                        GROUP BY m.cedulaMedico ORDER BY m.cedulaMedico';
             
             $stmt=$this->getConexion()->prepare($query);
             $stmt->execute(array($fechaInicio,$fechaFinal));
@@ -98,7 +98,7 @@
     @$accion = $_POST['accion'];
    
     if($accion == 'pacienteMedicos'){
-        echo $graficas->PacientesMedicos($_POST['FechaInicio'],$_POST['FechaFinal']);
+        echo $graficas->PacientesMedicos($_POST['fechaInicio'],$_POST['fechaFinal']);
     }
     if($accion == 'CantMedicoEsp')
     {
