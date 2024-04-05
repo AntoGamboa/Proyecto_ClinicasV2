@@ -81,7 +81,7 @@
     padding: 20px 15px;
     background-color: var(--color-barra-lateral);
     transition: width 0.5s ease,background-color 0.1s ease,left 0.5s ease;
-    z-index: 50;
+    z-index: 50000000;
     box-shadow:  12px 12px 12px 6px rgba(0, 0, 0, 0.3);;
 }
 
