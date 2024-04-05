@@ -41,7 +41,7 @@ const graficaPacientesMedicos = (fechaIni,FechaFin) => {
 }
 
 const graficaCantidadMedicos = () =>{
-  const formdata = new FormData();
+  let formdata = new FormData();
 
   formdata.append('accion','CantMedicoEsp');
   

@@ -34,9 +34,10 @@
                 GROUP BY e.idEspecialidad ORDER BY e.idEspecialidad;';
                 $stmt=$this->getConexion()->prepare($query);
                 $stmt->execute();
-                return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return json_encode($results);
             } catch (Exception $e) {
-                //throw $th;
+                return json_encode($e->getMessage());
             }
            
         }
@@ -94,25 +95,26 @@
 
     }
     $graficas= new graficas();
-    $accion = $_POST['accion'];
+    @$accion = $_POST['accion'];
+   
     if($accion == 'pacienteMedicos'){
         echo $graficas->PacientesMedicos($_POST['FechaInicio'],$_POST['FechaFinal']);
     }
     if($accion == 'CantMedicoEsp')
     {
-        echo $$graficas->CantidadMedicosEspecialidad();
+        echo $graficas->CantidadMedicosEspecialidad();
     }
-    if($$accion == 'CantPacMedicoSelect')
+    if($accion == 'CantPacMedicoSelect')
     {
         
         $graficas->CantidadPacientesMedicoSolicitado($_POST['FechaInicion'],$_POST['FechaFinal'],$_POST['CedulaMedico']);
     }
-    if($accion = 'CantdPaciAler'){
+    if($accion == 'CantdPaciAler'){
         echo $graficas->CantdPaciAler();
     }
-    if($accion = 'PacRgoEdades')
+    if($accion == 'PacRgoEdades')
     {
-        echo $graficas->PacRgoEdades($_POST['EdadIncio'],$_POST['EdadFinal']);
+        echo $graficas->PacRgoEdades(@$_POST['EdadIncio'],@$_POST['EdadFinal']);
     }
     
 
