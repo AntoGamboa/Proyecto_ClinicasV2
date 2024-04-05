@@ -128,19 +128,19 @@ function avanzar(){
     //validaciones
 
     
-    if (!(formdata.get('cedula') && formdata.get('cedula').length == 8 && /^[0-9]+$/.test(formdata.get('cedula')))) {
+    if (!(formdata.get('cedula') && formdata.get('cedula').length == 8 && /^[0-9\s]+$/.test(formdata.get('cedula')))) {
 
         generarmensaje("alerta", "La cedula debe tener un formato valido, ademas no debe contener caracteres especiales (*-_/@)")
         return;
 
     }
-    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('nombre')))) {
+    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 1   && /^[a-zA-Z\s]+$/.test(formdata.get('nombre')))) {
 
         generarmensaje("alerta", "El nombre solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
         return;
 
     }
-    if (!(formdata.get('apellido') && formdata.get('apellido').length >= 1   && /^[a-zA-Z]+$/.test(formdata.get('apellido')))) {
+    if (!(formdata.get('apellido') && formdata.get('apellido').length >= 1   && /^[a-zA-Z\s]+$/.test(formdata.get('apellido')))) {
 
         generarmensaje("alerta", "El apellido solo puede tener letras, ademas no puede tener caracteres especiales (*-_/@)")
         return;

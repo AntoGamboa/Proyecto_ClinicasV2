@@ -48,7 +48,7 @@ EnviarFormulario.addEventListener('submit',e => {
         return;
 
     }
-    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 2 && /^[a-zA-Z]+$/.test(formdata.get('nombre')))) {
+    if (!(formdata.get('nombre') && formdata.get('nombre').length >= 2 && /^[a-zA-Z\s]+$/.test(formdata.get('nombre')))) {
 
         generarmensaje("alerta", "El nombre de la Patologia solo debe contener letras y debe tener minimo 2 caracteres, ademas no debe contener caracteres especiales (*-_/@)")
         return;

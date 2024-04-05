@@ -231,6 +231,8 @@ EnviarFormulario.addEventListener('submit',e => {
 
     }
 
+    alert("si pase")
+
     formdata.append('patologias',JSON.stringify(PatologiasSeleccionadas));
     formdata.append('cedulaPaciente',CedulaPAciSelec);
     formdata.append('cedulaMedico',cedulamedicoConsulta);
