@@ -67,7 +67,15 @@ input{
     height: 470px;
     background-color: rgb(18, 23, 69);
     border-radius: 20px;
+    transition: background-color 0.2s ease;
 
+}
+
+.grafica:hover{
+
+    
+    background-color: rgb(19, 26, 87);
+    
 }
 
 .nivel1 .grafica:nth-child(1) {
