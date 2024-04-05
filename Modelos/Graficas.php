@@ -9,7 +9,7 @@
         {
             parent::__construct();
         }
-        public function PacientesMedicos()//barras
+        public function PacientesMedicos($fechaInicio,$fechaFinal)//barras
         {
              $query = 'SELECT CONCAT(m.nombreMedico," ",m.apellidoMedico) AS nombre , IFNULL(e.nombreEspecialidad, "Medico General") as espemedico,
                         COUNT(m.cedulaMedico) AS cantidadPA
@@ -17,10 +17,11 @@
                         LEFT JOIN medicoxespecialidad mxe ON m.cedulaMedico = mxe.cedulaMedico
                         LEFT JOIN especialidad e ON mxe.idEspecialidad = e.idEspecialidad
                         INNER JOIN consulta c ON c.cedulaMedico = m.cedulaMedico 
-                        GROUP BY m.cedulaMedico ORDER BY m.cedulaMedico;';
+                        GROUP BY m.cedulaMedico ORDER BY m.cedulaMedico
+                        WHERE c.fechaConsulta BETWEEN ? AND ?;';
             
             $stmt=$this->getConexion()->prepare($query);
-            $stmt->execute();
+            $stmt->execute(array($fechaInicio,$fechaFinal));
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return json_encode($results);
         }
@@ -48,12 +49,25 @@
             return json_encode($results);
 
         }
+        public function CantdPaciAler()
+        {
+            $query = 'SELECT  IFNULL(a.nombreAlergia, "Sin Alergias") AS alergia , COUNT(*) as cantidad 
+            FROM paciente p
+            LEFT JOIN alergiaxpaciente axp ON axp.cedulaPaciente = p.cedulaPaciente
+            LEFT JOIN alergia a ON a.idAlergia = axp.idAlergia
+            GROUP BY a.idAlergia ORDER BY a.idAlergia;';
+            $stmt=$this->getConexion()->prepare($query);
+            $stmt->execute();
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return json_encode($results);
+            
+        }
 
     }
     $graficas= new graficas();
     $accion = $_POST['accion'];
     if($accion == 'pacienteMedicos'){
-        echo $graficas->PacientesMedicos();
+        echo $graficas->PacientesMedicos($_POST['FechaInicio'],$_POST['FechaFinal']);
     }
     if($accion == 'CantMedicoEsp')
     {
@@ -61,7 +75,11 @@
     }
     if($$accion == 'CantPacMedicoSelect')
     {
+        
         $graficas->CantidadPacientesMedicoSolicitado($_POST['FechaInicion'],$_POST['FechaFinal'],$_POST['CedulaMedico']);
+    }
+    if($accion = 'CantdPaciAler'){
+        echo $graficas->CantdPaciAler();
     }
     
 
