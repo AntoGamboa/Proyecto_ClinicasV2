@@ -14,6 +14,7 @@ console.log(reporte1FechaF);
 document.addEventListener('click', (e) =>{
     if (e.target.matches('#filtro1') ) {
       console.log('Click');
+    
       graficaPacientesMedicos(reporte1FechaIni.value,reporte1FechaF.value);
     }
 
@@ -21,6 +22,7 @@ document.addEventListener('click', (e) =>{
 
 document.addEventListener('DOMContentLoaded', ()=>{
   graficaCantidadMedicos();
+
 })
 
 const graficaPacientesMedicos = (fechaIni,FechaFin) => {
