@@ -20,17 +20,14 @@ console.log(reporte1FechaF);
 
 document.addEventListener('click', (e) =>{
     if (e.target.matches('#filtro1') ) {
-      console.log('Click');
-      let fechaInicio = new Date(reporte1FechaIni.value);
-      let fechaFinal = new Date(reporte1FechaF.value);
     
-      console.log(reporte1FechaIni.value);
-      console.log(reporte1FechaF.value);
       graficaPacientesMedicos(reporte1FechaIni.value,reporte1FechaF.value);
     }
     if (e.target.matches('#filtro2')) {
-
-      CantidadConsultasM(inputSegundoI.value,inputSegundoF.value,inputSegundoCedu.textContent);
+      console.log(inputSegundoI.value);
+      console.log(inputSegundoF.value);
+      console.log(inputSegundoCedu.value);
+      CantidadConsultasM(inputSegundoI.value,inputSegundoF.value,inputSegundoCedu.values);
     }
     if(e.target.matches('#filtro3')){
 
@@ -50,6 +47,9 @@ const graficaPacientesMedicos = (fechaIni,FechaFin) => {
   formdata.append('accion','pacienteMedicos');
   formdata.append('fechaInicio',fechaIni);
   formdata.append('fechaFinal',FechaFin);
+
+  console.log(fechaIni);
+  console.log(FechaFin);
 
   fetch(rutaGraficas,{
     method:'POST',
@@ -106,7 +106,7 @@ const CantidadConsultasM = (fechaIni,FechaFin,cedula) => {
 }
 
 const graficaAtendidosM =(data) => new Chart(grafica2Name, {
-  type: 'pie',
+  type: 'line',
   data: {
   labels: data.map(item=> item.medico),
     datasets: [{
