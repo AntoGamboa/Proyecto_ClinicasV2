@@ -11,21 +11,26 @@
         }
         public function PacientesMedicos($fechaInicio,$fechaFinal)//barras
         {
-             $query = 'SELECT CONCAT(m.nombreMedico," ",m.apellidoMedico) AS nombre , IFNULL(e.nombreEspecialidad, "Medico General") as espemedico,
-                        COUNT(m.cedulaMedico) AS cantidadPA
-                        FROM medico m
-                        LEFT JOIN medicoxespecialidad mxe ON m.cedulaMedico = mxe.cedulaMedico
-                        LEFT JOIN especialidad e ON mxe.idEspecialidad = e.idEspecialidad
-                        INNER JOIN consulta c ON c.cedulaMedico = m.cedulaMedico 
-                        GROUP BY m.cedulaMedico ORDER BY m.cedulaMedico
-                        WHERE c.fechaConsulta BETWEEN ? AND ?;';
+            try {
+                $query = 'SELECT CONCAT(m.nombreMedico," ",m.apellidoMedico) AS nombre , IFNULL(e.nombreEspecialidad, "Medico General") as espemedico,
+                COUNT(m.cedulaMedico) AS cantidadPA
+                FROM medico m
+                LEFT JOIN medicoxespecialidad mxe ON m.cedulaMedico = mxe.cedulaMedico
+                LEFT JOIN especialidad e ON mxe.idEspecialidad = e.idEspecialidad
+                INNER JOIN consulta c ON c.cedulaMedico = m.cedulaMedico 
+                GROUP BY m.cedulaMedico ORDER BY m.cedulaMedico
+                WHERE c.fechaConsulta BETWEEN ? AND ?;';
+    
+                $stmt=$this->getConexion()->prepare($query);
+                $stmt->execute(array($fechaInicio,$fechaFinal));
+                $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return json_encode($results);
+            } catch (Exception $e) {
+                //throw $th;
+            }
             
-            $stmt=$this->getConexion()->prepare($query);
-            $stmt->execute(array($fechaInicio,$fechaFinal));
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return json_encode($results);
         }
-        public function CantidadMedicosEspecialidad()//pastel
+        public function CantidadMedicosEspecialidad()//LISTA
         {
             try {
                 $query = 'SELECT IFNULL(e.nombreEspecialidad , "Medico General") AS especialidad ,COUNT(*) as cantidad FROM medico m

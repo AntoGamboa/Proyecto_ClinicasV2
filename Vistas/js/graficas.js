@@ -8,6 +8,7 @@ const grafica2Name = document.getElementById('myChart2');
 const grafica3Name = document.getElementById('myChart3');
 const grafica4Name = document.getElementById('myChart4');
 const grafica5Name = document.getElementById('myChart5');
+const grafica6Name = document.getElementById('myChart6');
 
 
 console.log(reporte1FechaF);
@@ -15,14 +16,17 @@ console.log(reporte1FechaF);
 document.addEventListener('click', (e) =>{
     if (e.target.matches('#filtro1') ) {
       console.log('Click');
+      let fechaInicio = new Date(reporte1FechaIni.value);
+      let fechaFinal = new Date(reporte1FechaF.value);
     
-      graficaPacientesMedicos(reporte1FechaIni.value,reporte1FechaF.value);
+      graficaPacientesMedicos(fechaInicio,fechaFinal);
     }
 
 });
 
 document.addEventListener('DOMContentLoaded', ()=>{
-
+  graficaCantidadMedicos();
+  graficaAlergiasPaciente();
 })
 
 const graficaPacientesMedicos = (fechaIni,FechaFin) => {
@@ -39,10 +43,34 @@ const graficaPacientesMedicos = (fechaIni,FechaFin) => {
   .then(data =>
     {
       console.log(data);
+      primeraGrafica(data)
     })
 }
 
-/*GRAFICA 5*/
+
+const primeraGrafica= (data) => new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: data.map(item => item.nombre),
+      datasets: [{
+        label: 'Grafico de pacientes atendidos por medicos en un rango de fecha ',
+        data: data.map(item=>item.cantidadPA),
+        borderWidth: 1
+      }]
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+
+/*GRAFICA 5 LISTA*/
 
 const graficaCantidadMedicos = () =>{
   let formdata = new FormData();
@@ -55,19 +83,18 @@ const graficaCantidadMedicos = () =>{
   }).then(resp => resp.json())
   .then(data =>{
     console.log(data);
-
+    graficaCantidadMedico(data);
   })
-}
+} 
 
 
-
-const graficaCantidadMedico =new Chart(grafica5Name, {
+const graficaCantidadMedico= (data) =>new Chart(grafica5Name, {
   type: 'bar',
   data: {
-    labels: ['Diabetes', 'Hipertension', 'Hipotension'],
+    labels: data.map(item => item.especialidad),
     datasets: [{
-      label: 'Grafico Pastel de la cantidad de pacientes que presentan una patologia',
-      data: [12, 19, 3],
+      label: 'Grafico Pastel de la cantidad de medicos por Especialidad',
+      data: data.map(item => item.cantidad),
       borderWidth: 1
     }]
   },
@@ -81,45 +108,33 @@ const graficaCantidadMedico =new Chart(grafica5Name, {
   }
 });
 
+//SEXTA GRAFICA LISTA
+
+const graficaAlergiasPaciente = ()=> {
+  let formdata = new FormData();
+
+
+ formdata.append('accion','CantdPaciAler');
+  
+  fetch(rutaGraficas,{
+    method:'POST',
+    body:formdata
+  }).then(resp => resp.json())
+  .then(data =>{
+    console.log(data);
+    CantidadAlergiasP(data);
+  })
+} 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- const graficaConsultas = new Chart(ctx, {
-  type: 'pie',
+const CantidadAlergiasP = (data)=> new Chart(grafica6Name, {
+  type: 'bar',
   data: {
-    labels: ['Diabetes', 'Hipertension', 'Hipotension', 'Cardiopatia '],
+    labels: data.map(item=> item.alergia),
     datasets: [{
-      label: 'Grafico de pacientes atendidos por medicos en un rango de fecha ',
-      data: [12, 19, 3, 5],
+      label: 'Grafico de pacientes atendidos por una especialidad',
+      data: data.map(item=>item.cantidad),
       borderWidth: 1
     }]
   },
@@ -132,6 +147,39 @@ const graficaCantidadMedico =new Chart(grafica5Name, {
     }
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const graficaAreaM = new Chart(grafica2Name, {
   type: 'pie',
