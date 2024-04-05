@@ -83,7 +83,7 @@
 <section class="seccioncont">
         <div class="nivel1">
             <div class="grafica">
-                <h2>Pacientes Atendidos Por Medicos en</h2>
+                <h2>Pacientes Atendidos En un Plazo</h2>
 
                 <div class="fechascont">
                     <div class="fecha">
@@ -104,17 +104,25 @@
 
             </div>
             <div class="grafica">
-                <h2>Pacientes Atendidos Por Especialidad</h2>
+                <h2>Pacientes Atendidos Por Medico</h2>
                 <div class="pacienteimccont">
+
+                    <div class="fecha">
+                        <label for="">Inicio</label>
+                        <input id="fechainicio" type="date">
+                    </div>
+                    
+                    <div class="fecha">
+                        <label for="">Final</label>
+                        <input id="fechafinal" type="date">
+                    </div>
+
                     <div class="datopaciente">
-                        <label for="">Cedula</label>
+                        <label for="">Cedula Medico</label>
                         <input id="Cedulapacienteimc" type="text">
                     </div>
                     
-                    <div class="datopaciente">
-                        <label for="">Nombre</label>
-                        <input id="nombrepacienteimc" type="text">
-                    </div>
+                    
                     <button id="filtro2">Filtrar</button>
                 </div>
 
@@ -127,16 +135,16 @@
         </div>
         <div class="nivel2">
             <div class="grafica">
-                <h2>IMC de un Paciente</h2>
+                <h2>Pacientes Atendidos Por Rango de Edad</h2>
 
                 <div class="rangoedadcont">
                     <div class="edad">
-                        <label for="">Inicio</label>
+                        <label for="">Edad Inicio</label>
                         <input id="Cedulapacienteimc" type="number">
                     </div>
                     
                     <div class="edad">
-                        <label for="">Final</label>
+                        <label for="">Edad Final</label>
                         <input id="nombrepacienteimc" type="number">
                     </div>
                 </div>
@@ -147,10 +155,24 @@
                 
             </div>
             <div class="grafica">
-                <h2>Pacientes Por rango de Edad</h2>
+                <h2>Cantidad de Consultas por Patologia</h2>
+
+                <div class="fechaspatologiacont">
+                    <div class="fecha">
+                        <label for="">Inicio</label>
+                        <input id="fechainicio" type="date">
+                    </div>
+                    
+                    <div class="fecha">
+                        <label for="">Final</label>
+                        <input id="fechafinal" type="date">
+                    </div>
+                </div>
                 <div class="container-grafica3">
                     <canvas id="myChart4"></canvas>
                 </div>
+
+                
             </div>
             
             
