@@ -9,6 +9,7 @@ const grafica3Name = document.getElementById('myChart3');
 const grafica4Name = document.getElementById('myChart4');
 const grafica5Name = document.getElementById('myChart5');
 
+
 console.log(reporte1FechaF);
 
 document.addEventListener('click', (e) =>{
@@ -21,7 +22,6 @@ document.addEventListener('click', (e) =>{
 });
 
 document.addEventListener('DOMContentLoaded', ()=>{
-  graficaCantidadMedicos();
 
 })
 
@@ -29,8 +29,8 @@ const graficaPacientesMedicos = (fechaIni,FechaFin) => {
   const formdata = new FormData();
 
   formdata.append('accion','pacienteMedicos');
-  formdata.append('fechaInicio',fechaIni);
-  formdata.append('fechaFinal',FechaFin);
+  formdata.append('FechaInicio',fechaIni);
+  formdata.append('FechaFinal',FechaFin);
 
   fetch(rutaGraficas,{
     method:'POST',
@@ -41,6 +41,8 @@ const graficaPacientesMedicos = (fechaIni,FechaFin) => {
       console.log(data);
     })
 }
+
+/*GRAFICA 5*/
 
 const graficaCantidadMedicos = () =>{
   let formdata = new FormData();
@@ -53,10 +55,33 @@ const graficaCantidadMedicos = () =>{
   }).then(resp => resp.json())
   .then(data =>{
     console.log(data);
+
   })
-
-
 }
+
+
+
+const graficaCantidadMedico =new Chart(grafica5Name, {
+  type: 'bar',
+  data: {
+    labels: ['Diabetes', 'Hipertension', 'Hipotension'],
+    datasets: [{
+      label: 'Grafico Pastel de la cantidad de pacientes que presentan una patologia',
+      data: [12, 19, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    maintainAspectRatio: false,
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+
 
 
 
@@ -168,25 +193,6 @@ const graficaEdades = new Chart(grafica4Name, {
   }
 });
 
-const graficaPatologia =new Chart(grafica5Name, {
-  type: 'bar',
-  data: {
-    labels: ['Traumatologia', 'Pediatria', 'Internista', ' Medicina General '],
-    datasets: [{
-      label: 'Grafico Pastel de la cantidad de pacientes que presentan una patologia',
-      data: [12, 19, 3, 5],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
 
 
 
