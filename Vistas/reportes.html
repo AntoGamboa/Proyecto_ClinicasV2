@@ -33,7 +33,7 @@
         <ion-icon name="close-outline"></ion-icon>
     </div>
 
-    <div class="barra-lateral mini-barra-lateral">
+    <div class="barra-lateral mini-barra-lateral dark-mode">
         <div>
             <div class="nombre-pagina">
                 <ion-icon id="cloud" name="cloud-outline"></ion-icon>
@@ -80,67 +80,88 @@
         
 </div>
 
+<section class="seccioncont">
+        <div class="nivel1">
+            <div class="grafica">
 
-
-
-    <section class="section-principal">
-        <div class="container-controller">
-            <div class="container">
-                <div class="profile">
-                   <img src="recursos/img/Profile-Reporte.jpeg" alt="">
+                <div class="fechascont">
+                    <div class="fecha">
+                        <label for="">Inicio</label>
+                        <input id="fechainicio" type="date">
+                    </div>
+                    
+                    <div class="fecha">
+                        <label for="">Final</label>
+                        <input id="fechafinal" type="date">
+                    </div>
                 </div>
-                <h1>Reportes</h1>
+
             </div>
-            <div class="container">
-                <div class="container-buttons">
-                    <h2>Reporte referente a incidencias</h2>
-                    <button class="btn-reporteInci">Generar PDF</button>
+            <div class="grafica">
+                <div class="pacienteimccont">
+                    <div class="datopaciente">
+                        <label for="">Cedula</label>
+                        <input id="Cedulapacienteimc" type="text">
+                    </div>
+                    
+                    <div class="datopaciente">
+                        <label for="">Nombre</label>
+                        <input id="nombrepacienteimc" type="text">
+                    </div>
                 </div>
-                <div class="container-buttons">
-                    <h2>Segundo Reporte</h2>
-                    <button class="btn-segundoreporte">Generar PDF</button>
-                </div>
+
             </div>
+            
         </div>
+        <div class="nivel2">
+            <div class="grafica">
 
-        <div class="container-controller">
-            <div class="container-Grafica">
-                <canvas id="myChart" class="Grafica"></canvas>
+                <div class="rangoedadcont">
+                    <div class="edad">
+                        <label for="">Inicio</label>
+                        <input id="Cedulapacienteimc" type="number">
+                    </div>
+                    
+                    <div class="edad">
+                        <label for="">Final</label>
+                        <input id="nombrepacienteimc" type="number">
+                    </div>
+                </div>
+
+                    
+
             </div>
-            <div class="container-Grafica">
-                <canvas id="myChart2" class="Grafica"></canvas>
+            <div class="grafica">
+
             </div>
+            
+            
         </div>
-    </section>
+        <div class="nivel3">
+            <div class="grafica">
 
-    <div class="container-reporte">
-      <div class="container-title">
-          <h1>Incidencias de Pacientes por Especialidad</h1>
-      </div>
-      <div class="container-table">
-          <table id="tabla">
-              <thead>
-                  <tr>
-                      <th>Doctor(a)</th>
-                      <th>Especialidad</th>
-                      <th>Cantidad de Pacientes</th>
-                      <th>Fecha</th>
-                      <th>Turno</th>
+                
 
-                  </tr>
-              </thead>
-              <tbody id="tbody">
-                  <tr>
-                      <td id="nombreM">Marcos Rivas</td>
-                      <td id="especialidadM">Traumatologo</td>
-                      <td id="cantP">5</td>
-                      <td id="fecha">07/11/2024</td>
-                      <td id="turno">Mañana</td>
-                  </tr>
-              </tbody>
-          </table>
-      </div>
-  </div>
+                    
+
+            </div>
+            <div class="grafica">
+
+            </div>
+            
+            
+        </div>
+        
+
+
+    
+</section>
+
+
+
+
+
+    
  
 
 

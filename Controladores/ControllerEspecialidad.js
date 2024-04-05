@@ -22,7 +22,7 @@ formEspecialidad.addEventListener('submit',e =>
         return;
 
     }
-    if (!(formData.get('nombre') && formData.get('nombre').length >= 2 && /^[a-zA-Z]+$/.test(formData.get('nombre')))) {
+    if (!(formData.get('nombre') && formData.get('nombre').length >= 2 && /^[a-zA-Z\s]+$/.test(formData.get('nombre')))) {
 
         generarmensaje("alerta", "El nombre de la especialidad solo debe contener letras y debe tener minimo 2 caracteres, ademas no debe contener caracteres especiales (*-_/@)")
         return;
