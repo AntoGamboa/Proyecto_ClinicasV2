@@ -27,14 +27,18 @@
         }
         public function CantidadMedicosEspecialidad()//pastel
         {
-            $query = 'SELECT IFNULL(e.nombreEspecialidad , "Medico General") AS especialidad ,COUNT(*) as cantidad FROM medico m
-            LEFT JOIN medicoxespecialidad mxe ON mxe.cedulaMedico = m.cedulaMedico
-            LEFT JOIN especialidad  e ON e.idEspecialidad = mxe.idEspecialidad
-            GROUP BY e.idEspecialidad ORDER BY e.idEspecialidad;';
-            $stmt=$this->getConexion()->prepare($query);
-            $stmt->execute();
-            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return json_encode($results);
+            try {
+                $query = 'SELECT IFNULL(e.nombreEspecialidad , "Medico General") AS especialidad ,COUNT(*) as cantidad FROM medico m
+                LEFT JOIN medicoxespecialidad mxe ON mxe.cedulaMedico = m.cedulaMedico
+                LEFT JOIN especialidad  e ON e.idEspecialidad = mxe.idEspecialidad
+                GROUP BY e.idEspecialidad ORDER BY e.idEspecialidad;';
+                $stmt=$this->getConexion()->prepare($query);
+                $stmt->execute();
+                return json_encode($stmt->fetchAll(PDO::FETCH_ASSOC));
+            } catch (Exception $e) {
+                //throw $th;
+            }
+           
         }
         public function CantidadPacientesMedicoSolicitado($fechaInicio,$fechaFinal,$cedulaMedico)//curvas 
         {

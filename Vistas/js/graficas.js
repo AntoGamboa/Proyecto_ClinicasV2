@@ -1,4 +1,4 @@
-const rutaGraficas = 'http://localhost/proyecto_ClinicasV2/Modelos/Graficas.php';
+const rutaGraficas = 'http://localhost/Proyecto_ClinicasV2/Modelos/Graficas.php';
 
 const reporte1FechaIni = document.getElementById('fechainicio');
 const reporte1FechaF = document.getElementById('fechafinal');
@@ -43,7 +43,7 @@ const graficaPacientesMedicos = (fechaIni,FechaFin) => {
 const graficaCantidadMedicos = () =>{
   const formdata = new FormData();
 
-  formdata.append('accion','CantidadMedicosEspecialidad');
+  formdata.append('accion','CantMedicoEsp');
   
   fetch(rutaGraficas,{
     method:'POST',
