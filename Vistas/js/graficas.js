@@ -1,8 +1,90 @@
+const rutaGraficas = 'http://localhost/proyecto_ClinicasV2/Modelos/Graficas.php';
+
+const reporte1FechaIni = document.getElementById('fechainicio');
+const reporte1FechaF = document.getElementById('fechafinal');
+
 const ctx = document.getElementById('myChart');
 const grafica2Name = document.getElementById('myChart2');
 const grafica3Name = document.getElementById('myChart3');
 const grafica4Name = document.getElementById('myChart4');
 const grafica5Name = document.getElementById('myChart5');
+
+console.log(reporte1FechaF);
+
+document.addEventListener('click', (e) =>{
+    if (e.target.matches('#filtro1') ) {
+      console.log('Click');
+      graficaPacientesMedicos(reporte1FechaIni.value,reporte1FechaF.value);
+    }
+
+});
+
+document.addEventListener('DOMContentLoaded', ()=>{
+  graficaCantidadMedicos();
+})
+
+const graficaPacientesMedicos = (fechaIni,FechaFin) => {
+  const formdata = new FormData();
+
+  formdata.append('accion','pacienteMedicos');
+  formdata.append('fechaInicio',fechaIni);
+  formdata.append('fechaFinal',FechaFin);
+
+  fetch(rutaGraficas,{
+    method:'POST',
+    body:formdata
+  }).then(resp => resp.json())
+  .then(data =>
+    {
+      console.log(data);
+    })
+}
+
+const graficaCantidadMedicos = () =>{
+  const formdata = new FormData();
+
+  formdata.append('accion','CantidadMedicosEspecialidad');
+  
+  fetch(rutaGraficas,{
+    method:'POST',
+    body:formdata
+  }).then(resp => resp.json())
+  .then(data =>{
+    console.log(data);
+  })
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
  const graficaConsultas = new Chart(ctx, {
   type: 'pie',
