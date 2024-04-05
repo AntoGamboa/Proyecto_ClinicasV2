@@ -49,7 +49,7 @@
             return json_encode($results);
 
         }
-        public function CantdPaciAler()
+        public function CantdPaciAler()//barras
         {
             $query = 'SELECT  IFNULL(a.nombreAlergia, "Sin Alergias") AS alergia , COUNT(*) as cantidad 
             FROM paciente p
@@ -61,6 +61,31 @@
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return json_encode($results);
             
+        }
+        public function PacRgoEdades($edadInicio,$edadFinal)//LINEAS
+        {   
+            $query = 'SELECT TIMESTAMPDIFF(YEAR, p.fe_nacimiento, NOW()) as edad , COUNT(p.fe_nacimiento) AS cantidad
+            FROM paciente p
+            WHERE TIMESTAMPDIFF(YEAR, p.fe_nacimiento, NOW()) BETWEEN ? AND ?
+            GROUP BY p.fe_nacimiento;';
+            $stmt=$this->getConexion()->prepare($query);
+            $stmt->execute(array($edadInicio,$edadFinal));
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return json_encode($results);
+            
+        }   
+        public function CantConsultaPat($fechaInicio,$fechaFinal)//Barras
+        {
+            $query='SELECT IFNULL(p.nombrePatologia,"Sin patologias") AS patologia , COUNT(*) AS cantidadConsulta
+            FROM consulta c
+            INNER JOIN patologiaxconsulta pxc ON c.id_consulta = pxc.id_consulta
+            INNER JOIN patologia p ON p.idPatologia = pxc.idPatologia 
+            WHERE c.fechaConsulta BETWEEN ? AND ?
+            GROUP BY p.idPatologia ORDER BY p.idPatologia;';
+             $stmt=$this->getConexion()->prepare($query);
+             $stmt->execute(array($fechaInicio,$fechaFinal));
+             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+             return json_encode($results);
         }
 
     }
@@ -80,6 +105,10 @@
     }
     if($accion = 'CantdPaciAler'){
         echo $graficas->CantdPaciAler();
+    }
+    if($accion = 'PacRgoEdades')
+    {
+        echo $graficas->PacRgoEdades($_POST['EdadIncio'],$_POST['EdadFinal']);
     }
     
 
