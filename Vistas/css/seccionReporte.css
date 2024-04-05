@@ -5,30 +5,30 @@
     min-height: 100vh;
     max-height: 100vh;
     position: fixed;
-    background: rgb(8, 10, 27);
+    background: rgb(5, 7, 25);
     display: flex;
     align-items: center;
-   
+   gap: 80px;
     flex-direction: column;
     overflow-y: scroll;
     
 }
 
 input{
-    background-color: rgb(8, 10, 27) ;
+    background-color: rgb(5, 7, 25) ;
     border: none;
     padding: 5px;
     border-radius: 5px;
     color: white;
 }
 .nivel1{
-    margin-top: 18px;
+    margin-top: 80px;
 }
 
 .fechascont, .pacienteimccont, .rangoedadcont{
     display: flex;
     align-items: center;
-    margin-top: -320px;
+    
     justify-content: center;
     gap: 18px;
 }
@@ -61,10 +61,11 @@ input{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding: 75px;
+    gap: 40px;
+    padding: 0px;
     min-width: 10%;
-    height: 400px;
-    background-color: rgb(23, 27, 74);
+    height: 470px;
+    background-color: rgb(18, 23, 69);
     border-radius: 20px;
 
 }
