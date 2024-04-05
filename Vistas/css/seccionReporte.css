@@ -8,10 +8,20 @@
     background: rgb(5, 7, 25);
     display: flex;
     align-items: center;
-   gap: 80px;
+   gap: 100px;
     flex-direction: column;
     overflow-y: scroll;
     
+}
+
+h2{
+    color: white;
+    position: absolute;
+    margin-left: -6%;
+    margin-top: -475px;
+    font-size: 22px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 .seccioncont button{
@@ -46,12 +56,12 @@ input{
     margin-bottom: 80px;
 }
 
-.fechascont, .pacienteimccont, .rangoedadcont{
+.fechascont, .pacienteimccont, .rangoedadcont, .fechaspatologiacont{
     display: flex;
     align-items: center;
     
     justify-content: center;
-    gap: 18px;
+    gap: 8px;
 }
 
 
@@ -83,7 +93,7 @@ input{
     justify-content: center;
     flex-direction: column;
     gap: 40px;
-    padding: 0px;
+    padding: 5px;
     min-width: 10%;
     height: 470px;
     background-color: rgb(18, 23, 69);
@@ -96,6 +106,13 @@ input{
 
     
     background-color: rgb(19, 27, 102);
+    
+}
+
+.grafica:hover h2{
+
+    
+    opacity: 1;
     
 }
 

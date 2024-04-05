@@ -103,7 +103,7 @@
     @$accion = $_POST['accion'];
    
     if($accion == 'pacienteMedicos'){
-        echo $graficas->PacientesMedicos($_POST['FechaInicio'],$_POST['FechaFinal']);
+        echo $graficas->PacientesMedicos($_POST['fechaInicio'],$_POST['fechaFinal']);
     }
     if($accion == 'CantMedicoEsp')
     {
