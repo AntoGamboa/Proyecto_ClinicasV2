@@ -48,15 +48,19 @@
         }
         public function CantidadPacientesMedicoSolicitado($fechaInicio,$fechaFinal,$cedulaMedico)//curvas 
         {
+            try{
             $query='SELECT CONCAT(m.nombreMedico," ",m.apellidoMedico) AS medico,DATE(c.fechaConsulta) AS fecha , COUNT(c.fechaConsulta) AS cantidadP
             FROM medico m
-            INNER JOIN consulta c ON m.cedulaMedico = c.cedulaMedico  WHERE (c.fechaConsulta BETWEEN ? AND ?) 
+            INNER JOIN consulta c ON m.cedulaMedico = c.cedulaMedico  WHERE c.fechaConsulta BETWEEN ? AND ?
             AND c.cedulaMedico = ?
             GROUP BY c.fechaConsulta ORDER BY c.fechaConsulta;';
             $stmt=$this->getConexion()->prepare($query);
             $stmt->execute(array($fechaInicio,$fechaFinal,$cedulaMedico));
             $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return json_encode($results);
+            } catch (Exception $e) {
+                return json_encode($e->getMessage());
+            }
 
         }
         public function CantdPaciAler()//barras
@@ -86,7 +90,7 @@
         }   
         public function CantConsultaPat($fechaInicio,$fechaFinal)//Barras
         {
-            $query='SELECT IFNULL(p.nombrePatologia,"Sin patologias") AS patologia , COUNT(*) AS cantidadConsulta
+            $query='SELECT IFNULL(p.nombrePatologia,"Sin patologias") AS patologia , COUNT(*) AS cantidad
             FROM consulta c
             INNER JOIN patologiaxconsulta pxc ON c.id_consulta = pxc.id_consulta
             INNER JOIN patologia p ON p.idPatologia = pxc.idPatologia 
@@ -112,7 +116,7 @@
     if($accion == 'CantPacMedicoSelect')
     {
         
-        $graficas->CantidadPacientesMedicoSolicitado($_POST['FechaInicion'],$_POST['FechaFinal'],$_POST['CedulaMedico']);
+        echo $graficas->CantidadPacientesMedicoSolicitado($_POST['FechaInicion'],$_POST['FechaFinal'],$_POST['CedulaMedico']);
     }
     if($accion == 'CantdPaciAler'){
         echo $graficas->CantdPaciAler();
@@ -120,6 +124,9 @@
     if($accion == 'PacRgoEdades')
     {
         echo $graficas->PacRgoEdades(@$_POST['EdadIncio'],@$_POST['EdadFinal']);
+    }if($accion == 'CantConsultaPat'){
+
+        echo $graficas->CantConsultaPat($_POST['fechaInicio'],$_POST['fechaFinal']);
     }
     
 

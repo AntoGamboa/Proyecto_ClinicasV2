@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,229 +8,234 @@
     <link rel="stylesheet" href="./css/seccionReporte.css">
     <link rel="stylesheet" href="css/barranav.css">
     <link rel="stylesheet" href="css/mensaje.css">
-    <script src="../Controladores/VerificarSesiones.js" ></script>
+    <script src="../Controladores/VerificarSesiones.js"></script>
 </head>
+
 <body>
-  <section class="mensajecont">
+    <section class="mensajecont">
 
 
-    <div class="mensaje">
+        <div class="mensaje">
 
-        <h2 class="titulomensaje"></h2>
+            <h2 class="titulomensaje"></h2>
 
-        <div class="contenidomensaje"></div>
+            <div class="contenidomensaje"></div>
 
-        <button>Aceptar</button>
-
-    </div>
-
-</section>
-
-
-<div class="navbar">
-
-    <div class="menu">
-        <ion-icon name="menu-outline"></ion-icon>
-        <ion-icon name="close-outline"></ion-icon>
-    </div>
-
-    <div class="barra-lateral mini-barra-lateral dark-mode">
-        <div>
-            <div class="nombre-pagina">
-                <ion-icon id="cloud" name="cloud-outline"></ion-icon>
-                <span class="spannav oculto">Historia Clinica</span>
-            </div>
-            <button class="boton">
-                <ion-icon name="document-text-outline"></ion-icon>
-                <span class="spannav oculto">Menu Principal</span>
-            </button>
-        </div>
-
-        <nav class="navegacion">
-            <ul>
-                <li>
-                    <a id="inbox" class="cerrarsesion" href="login.html">
-                        <ion-icon name="close-sharp"></ion-icon>
-                        <span class="spannav oculto">Cerrar Sesion</span>
-                    </a>
-                </li>
-
-                <li>
-                  <a id="inbox" class="cerrarsesion" href="reportes.html">
-                    <ion-icon name="reader-outline"></ion-icon>
-                      <span class="spannav oculto">Sección Reportes</span>
-                  </a>
-                </li>
-                
-                
-            </ul>
-        </nav>
-
-        <div>
-            <div class="linea"></div>
-
-        
-    
-        
+            <button>Aceptar</button>
 
         </div>
 
-    <div>
+    </section>
 
-</div>
-        
-</div>
 
-<section class="seccioncont">
-        <div class="nivel1">
-            <div class="grafica">
-                <h2>Pacientes Atendidos En un Plazo</h2>
+    <div class="navbar">
 
-                <div class="fechascont">
-                    <div class="fecha">
-                        <label for="">Inicio</label>
-                        <input id="fechainicio" type="date">
-                    </div>
-                    
-                    <div class="fecha">
-                        <label for="">Final</label>
-                        <input id="fechafinal" type="date">
-                    </div>
-                    <button id="filtro1">Filtrar</button>
-                </div>
-
-                <div class="container-grafica">
-                    <canvas id="myChart"></canvas>
-                </div>
-
-            </div>
-            <div class="grafica">
-                <h2>Pacientes Atendidos Por Medico</h2>
-                <div class="pacienteimccont">
-
-                    <div class="fecha">
-                        <label for="">Inicio</label>
-                        <input id="fechainicio" type="date">
-                    </div>
-                    
-                    <div class="fecha">
-                        <label for="">Final</label>
-                        <input id="fechafinal" type="date">
-                    </div>
-
-                    <div class="datopaciente">
-                        <label for="">Cedula Medico</label>
-                        <input id="Cedulamedico" type="text">
-                    </div>
-                    
-                    
-                    <button id="filtro2">Filtrar</button>
-                </div>
-
-                <div class="container-grafica2">
-                    <canvas id="myChart2"></canvas>
-                </div>
-                
-            </div>
-            
+        <div class="menu">
+            <ion-icon name="menu-outline"></ion-icon>
+            <ion-icon name="close-outline"></ion-icon>
         </div>
-        <div class="nivel2">
-            <div class="grafica">
-                <h2>Pacientes Atendidos Por Rango de Edad</h2>
 
-                <div class="rangoedadcont">
-                    <div class="edad">
-                        <label for="">Edad Inicio</label>
-                        <input id="edadPacienteI" type="number">
-                    </div>
-                    
-                    <div class="edad">
-                        <label for="">Edad Final</label>
-                        <input id="EdadPacienteF" type="number">
-                    </div>
-                    <button id="filtro3">Filtrar</button>
+        <div class="barra-lateral mini-barra-lateral dark-mode">
+            <div>
+                <div class="nombre-pagina">
+                    <ion-icon id="cloud" name="cloud-outline"></ion-icon>
+                    <span class="spannav oculto">Historia Clinica</span>
                 </div>
-
-                <div class="container-grafica3">
-                    <canvas id="myChart3"></canvas>
-                </div>
-
-                
-                
+                <button class="boton">
+                    <ion-icon name="document-text-outline"></ion-icon>
+                    <span class="spannav oculto">Menu Principal</span>
+                </button>
             </div>
-            <div class="grafica">
-                <h2>Cantidad de Consultas por Patologia</h2>
 
-                <div class="fechaspatologiacont">
-                    <div class="fecha">
-                        <label for="">Inicio</label>
-                        <input id="fechainicio" type="date">
-                    </div>
-                    
-                    <div class="fecha">
-                        <label for="">Final</label>
-                        <input id="fechafinal" type="date">
-                    </div>
-                </div>
-                <div class="container-grafica3">
-                    <canvas id="myChart4"></canvas>
-                </div>
+            <nav class="navegacion">
+                <ul>
+                    <li>
+                        <a id="inbox" class="cerrarsesion" href="login.html">
+                            <ion-icon name="close-sharp"></ion-icon>
+                            <span class="spannav oculto">Cerrar Sesion</span>
+                        </a>
+                    </li>
 
-                
+                    <li>
+                        <a id="inbox" class="cerrarsesion" href="reportes.html">
+                            <ion-icon name="reader-outline"></ion-icon>
+                            <span class="spannav oculto">Sección Reportes</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </nav>
+
+            <div>
+                <div class="linea"></div>
+
+
+
+
+
             </div>
-            
-            
+
+            <div>
+
+            </div>
+
         </div>
-        <div class="nivel3">
 
-            
-            <div class="grafica">
-                <h2>Pacientes Por Patologia</h2>
+        <section class="seccioncont">
+            <div class="nivel1">
+                <div class="grafica">
+                    <h2>Pacientes Atendidos En un Plazo</h2>
 
-                
+                    <div class="fechascont">
+                        <div class="fecha">
+                            <label for="">Fecha Inicio</label>
+                            <input id="fechainicio" type="date">
+                        </div>
 
-                <div class="container-grafica4">
-                    <canvas id="myChart5"></canvas>
+                        <div class="fecha">
+                            <label for="">Fecha Final</label>
+                            <input id="fechafinal" type="date">
+                        </div>
+                        <button id="filtro1">Filtrar</button>
+                    </div>
+
+                    <div class="container-grafica">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
                 </div>
+                <div class="grafica">
+                    <h2>Pacientes Atendidos Por Medico</h2>
+                    <div class="pacienteimccont">
+                        <div class="fecha">
+                            <label for="">Fecha Inicio</label>
+                            <input id="fechainicio2" type="date">
+                        </div>
+
+                        <div class="fecha">
+
+                            <label for="">Fecha Final</label>
+                            <input id="fechafinal2" type="date" value="">
+                        </div>
+
+                        <div class="datopaciente">
+                            <label for="">Cedula Medico</label>
+                            <input id="Cedulamedico" type="text">
+                        </div>
+
+
+                        <button id="filtro2">Filtrar</button>
+                    </div>
+
+                    <div class="container-grafica2">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+
+                </div>
+
             </div>
-            
-            <div class="grafica">
-                <h2>Cantidad de Alergias por Paciente</h2>
+            <div class="nivel2">
+                <div class="grafica">
+                    <h2>Pacientes Atendidos Por Rango de Edad</h2>
 
-            <div class="container-grafica">
-                <canvas id="myChart6"></canvas>
+                    <div class="rangoedadcont">
+                        <div class="edad">
+                            <label for="">Edad Inicio</label>
+                            <input id="edadPacienteI" type="number">
+                        </div>
+
+                        <div class="edad">
+                            <label for="">Edad Final</label>
+                            <input id="EdadPacienteF" type="number">
+                        </div>
+                        <button id="filtro3">Filtrar</button>
+                    </div>
+
+                    <div class="container-grafica3">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+
+
+
+                </div>
+                <div class="grafica">
+                    <h2>Cantidad de Consultas por Patologia</h2>
+
+                    <div class="fechaspatologiacont">
+                        <div class="fecha">
+                            <label for="">Fecha Inicio</label>
+                            <input id="fechainicio3" type="date">
+                        </div>
+
+                        <div class="fecha">
+                            <label for="">Fecha Final</label>
+                            <input id="fechafinal3" type="date">
+                        </div>
+                        <button id="filtro4">Filtrar</button>
+                    </div>
+                    <div class="container-grafica4">
+                        <canvas id="myChart4"></canvas>
+                    </div>
+
+
+                </div>
+
+
             </div>
-            
-            
-        </div>
-        
+            <div class="nivel3">
 
 
-    
-</section>
+                <div class="grafica">
+                    <h2>Pacientes Por Patologia</h2>
 
 
 
+                    <div class="container-grafica4">
+                        <canvas id="myChart5"></canvas>
+                    </div>
+                </div>
+
+                <div class="grafica">
+                    <h2>Cantidad de Alergias por Paciente</h2>
+
+                    <div class="container-grafica">
+                        <canvas id="myChart6"></canvas>
+                    </div>
 
 
-    
- 
+                </div>
 
 
 
-    <script src="js/interactnav.js"></script>
-    <script src="js/interactform.js"></script>
-    <script src="../Controladores/ControllerReportes.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script src="js/mensaje.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
-        integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        </section>
+        <template id="templatecanvaschart">
+            <canvas id="myChart"></canvas>
+        </template>
+        <template id="templatecanvaschart2">
+            <canvas id="myChart2"></canvas>
+        </template>
+        <template id="templatecanvaschart3">
+            <canvas id="myChart3"></canvas>
+        </template>
+        <template id="templatecanvaschart4">
+            <canvas id="myChart4"></canvas>
+        </template>
+        <script src="js/interactnav.js"></script>
+        <script src="js/interactform.js"></script>
+        <script src="../Controladores/ControllerReportes.js"></script>
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script src="js/mensaje.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="../Vistas/js/graficas.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+            integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="../Vistas/js/graficas.js"></script>
 </body>
+
 </html>
