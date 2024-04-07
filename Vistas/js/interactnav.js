@@ -5,7 +5,9 @@ const palanca = document.querySelector(".switch");
 const circulo = document.querySelector(".circulo");
 const menu = document.querySelector(".menu");
 
-const boton = document.querySelector(".boton");
+const botones = document.querySelectorAll('.boton');
+const boton = botones[0];
+const boton2 = botones[1];
 
 menu.addEventListener("click",()=>{
 
@@ -36,6 +38,10 @@ menu.addEventListener("click",()=>{
 
 boton.addEventListener("click", ()=>{
     window.location.href = "menuprincipal.html";
+});
+
+boton2.addEventListener("click", ()=>{
+    window.location.href = "reportes.html";
 });
 
 cloud.addEventListener("click",()=>{
